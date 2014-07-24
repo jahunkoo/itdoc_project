@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">itdoc</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_search">action_search</string>
+    <string name="action_settings">action_setting</string>
+
+</resources>
