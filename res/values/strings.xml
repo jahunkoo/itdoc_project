@@ -2,8 +2,25 @@
 <resources>
 
     <string name="app_name">itdoc</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_search">action_search</string>
+    <!-- BasicActivity related -->
+    <string name="basic_activity_title">itdoc_basic</string>
+    
+    <string name="action_search">search</string>
     <string name="action_settings">action_setting</string>
-
+	
+	<string-array name="drawer_menu_title_array">
+        <item>menu1</item>
+        <item>menu2</item>
+        <item>menu3</item>
+        <item>menu4</item>
+        <item>menu5</item>
+        <item>menu6</item>
+        <item>menu7</item>
+        <item>menu8</item>
+    </string-array>
+    
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
 </resources>
