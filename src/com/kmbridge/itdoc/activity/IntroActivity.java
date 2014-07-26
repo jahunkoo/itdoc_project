@@ -181,8 +181,8 @@ public class IntroActivity extends FragmentActivity {
 
 	private void isIntro() {
 		//RegionThread.start();
-		Intent intent = new Intent(this, BasicActivity.class); // Mainȭ������
-																// �̵��Ѵ�.
+		Intent intent = new Intent(this, MainDrawerActivity.class); // Mainȭ������
+															// �̵��Ѵ�.
 		startActivity(intent);
 		finish();
 	}

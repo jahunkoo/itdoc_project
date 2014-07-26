@@ -30,14 +30,15 @@ public final class R {
         public static final int menu8=0x7f02000d;
     }
     public static final class id {
-        public static final int action_search=0x7f070008;
+        public static final int action_search=0x7f070009;
         public static final int content_frame=0x7f070002;
         public static final int drawer_layout=0x7f070001;
-        public static final int image=0x7f070007;
-        public static final int image_intro=0x7f070006;
+        public static final int image=0x7f070008;
+        public static final int image_intro=0x7f070007;
         public static final int left_drawer=0x7f070003;
         public static final int linearlayout_connection_loading=0x7f070004;
         public static final int progressbar_connection_loading=0x7f070005;
+        public static final int relativelayout_clinic_list=0x7f070006;
         public static final int relativelayout_intro=0x7f070000;
     }
     public static final class layout {
@@ -47,8 +48,9 @@ public final class R {
         public static final int basic_drawer=0x7f030003;
         public static final int basic_drawer_list_item=0x7f030004;
         public static final int connection_loading=0x7f030005;
-        public static final int fragment_intro=0x7f030006;
-        public static final int fragment_planet=0x7f030007;
+        public static final int fragment_clinic_list=0x7f030006;
+        public static final int fragment_intro=0x7f030007;
+        public static final int fragment_planet=0x7f030008;
     }
     public static final class menu {
         public static final int basic_activity_actions=0x7f060000;
