@@ -3,6 +3,7 @@ package com.kmbridge.itdoc.activity;
 import java.util.Locale;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.fragment.KmClinicListFragment;
 import com.kmbridge.itdoc.fragment.PlanetFragment;
 
 import android.app.Activity;
@@ -30,13 +31,13 @@ import android.widget.ListView;
 
 public class BasicDrawerActivity extends FragmentActivity {
 
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
+    protected DrawerLayout mDrawerLayout;
+    protected ListView mDrawerList;
+    protected ActionBarDrawerToggle mDrawerToggle;
     
-	private String[] mDrawerMenuTitles;
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
+	protected String[] mDrawerMenuTitles;
+    protected CharSequence mDrawerTitle;
+    protected CharSequence mTitle;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -180,13 +181,34 @@ public class BasicDrawerActivity extends FragmentActivity {
     }
 
     private void selectItem(int position) {
+    	
+    	Fragment fragment;
+    	FragmentManager fragmentManager;
+    	Log.d("kim","BasicDrawer(187) position is "+ position);
+    	Bundle args = new Bundle();
+    	
+    	switch (position) {
+    	case 0 :
+    		
+    	fragment = new KmClinicListFragment();
+    	
+    	fragmentManager = getFragmentManager();
+    	fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+    	mDrawerList.setItemChecked(position, true);
+    	setTitle(mDrawerMenuTitles[position]);
+    	        
+    	mDrawerLayout.closeDrawer(mDrawerList);
+    	
+    	break;
+    	default :
+    	
         // update the main content by replacing fragments
-        Fragment fragment = new PlanetFragment();
-        Bundle args = new Bundle();
+        fragment = new PlanetFragment();
+        
         args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
         fragment.setArguments(args);
 
-        FragmentManager fragmentManager = getFragmentManager();
+         fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         // update selected item and title, then close the drawer
@@ -194,8 +216,9 @@ public class BasicDrawerActivity extends FragmentActivity {
         setTitle(mDrawerMenuTitles[position]);
         
         mDrawerLayout.closeDrawer(mDrawerList);
+    	}
     }
-//********************************************* end ***************************************************
+//*********************************************end***************************************************
     
 
 }

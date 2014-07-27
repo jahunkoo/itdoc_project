@@ -1,8 +1,15 @@
 package com.kmbridge.itdoc.util;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.regex.Pattern;
+import java.util.List;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ItDocUtil {
 	
@@ -10,12 +17,39 @@ public class ItDocUtil {
 	private final String REGEX_SHARP = "#";
 	private final String REGEX_DOT = ".";
 	
-	/**
-	 * 이메일과 파일명으로 이미지이름 만들어주는 메서드
-	 * @param email
-	 * @param originalFileName
-	 * @return
-	 */
+
+	
+	public List<String> parseStringToList(String data){
+		List<String> dataList = new ArrayList<String>();
+		String[] dataArr = data.split(",");
+		dataList = Arrays.asList(dataArr);
+		return dataList;
+	}
+	
+	public JSONObject putResult(JSONObject jsonObj, int resultCode) throws JSONException{
+		if(resultCode == ItDocConstants.CODE_ERROR) jsonObj.put(ItDocConstants.RESULT, ItDocConstants.ERROR);
+		if(resultCode == ItDocConstants.CODE_EXIST) jsonObj.put(ItDocConstants.RESULT, ItDocConstants.EXIST);
+		if(resultCode == ItDocConstants.CODE_NOT_EXIST) jsonObj.put(ItDocConstants.RESULT, ItDocConstants.NOT_EXIST);
+		if(resultCode == ItDocConstants.CODE_SUCCESS) jsonObj.put(ItDocConstants.RESULT, ItDocConstants.SUCCESS);
+		return jsonObj;
+	}
+	
+	public String createPictureDirPath(int objectTypeCode){
+		String dirPath =  ItDocConstants.IMG_PATH_BASIC;
+		
+		if(objectTypeCode == ItDocConstants.OBJECT_TYPE_USER){
+			dirPath += ItDocConstants.IMG_PATH_USER;
+		}else if(objectTypeCode == ItDocConstants.OBJECT_TYPE_KM_CLINIC){
+			dirPath += ItDocConstants.IMG_PATH_KM_CLINIC;
+		}else if(objectTypeCode == ItDocConstants.OBJECT_TYPE_KM_DOCTOR){
+			dirPath += ItDocConstants.IMG_PATH_KM_DOCTOR;
+		}else if(objectTypeCode == ItDocConstants.OBJECT_TYPE_REVIEW){
+			dirPath += ItDocConstants.IMG_PATH_REVIEW;
+		}
+
+		return dirPath;
+	}
+	
 	public String createPicturePath(String email, String originalFileName){
 		String[] fileNameArr = originalFileName.split("[.]");
 		String[] tmpArr = email.split(REGEX_AT);
@@ -56,5 +90,7 @@ public class ItDocUtil {
 		int randomNum = (int) (Math.random()* MULTIPLY_NUM);
 		return String.valueOf(randomNum);
 	}
+	
+	
 	
 }

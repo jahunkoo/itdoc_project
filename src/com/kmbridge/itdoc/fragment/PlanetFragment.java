@@ -42,6 +42,4 @@ public class PlanetFragment extends Fragment {
         return rootView;
 	}
 	
-	
-	
 }

@@ -8,7 +8,7 @@
     <string name="action_settings">action_setting</string>
 
     <string-array name="drawer_menu_title_array">
-        <item>menu1</item>
+        <item>둘러보기</item>
         <item>menu2</item>
         <item>menu3</item>
         <item>menu4</item>
