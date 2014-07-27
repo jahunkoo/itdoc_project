@@ -51,21 +51,23 @@ public class JoinFragment extends Fragment {
 	//	setLayoutElement();
 	}*/
 	
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		prop = new Properties();
+		setLayoutElement();
+		
 		//view가져오고 
         View rootView = inflater.inflate(R.layout.fragment_join, container, false);
         return rootView;
 	}
 	
 	
-/*	private void setLayoutElement() {
+	private void setLayoutElement() {
 		// TODO Auto-generated method stub
 		edittxt_activity_join_join_email = (EditText) findViewById(R.id.join_email);
 		edittxt_activity_join_join_password = (EditText) findViewById(R.id.join_password);
 		edittxt_activity_join_join_firstname = (EditText) findViewById(R.id.join_firstname);
 		edittxt_activity_join_join_lasttname = (EditText) findViewById(R.id.join_lastname);
 		btn_activity_join_join_submit = (Button) find
-	}*/
+	}
 }
