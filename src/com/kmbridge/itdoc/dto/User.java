@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.kmbridge.itdoc.exception.UserException;
+import com.kmbridge.itdoc.util.ItDocConstants;
 
 public class User {
 	
@@ -27,7 +28,7 @@ public class User {
 	private int gender 	= DEFAULT_NUM;
 	private int flag	= DEFAULT_NUM;
 	
-		
+	
 	//생성자 이전에 호출되는 부분
 	{
 		Calendar cal = Calendar.getInstance();
@@ -131,7 +132,7 @@ public class User {
 				+ birthYear + ", gender=" + gender + ", flag=" + flag + "]";
 	}
 
-	public boolean isEmailAddress(String email) {
+	private boolean isEmailAddress(String email) {
 	        Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
 	        Matcher emailMatcher = emailPattern.matcher(email);
 

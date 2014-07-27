@@ -5,12 +5,14 @@ public class BasicConstants {
 	public static final int CODE_DEFAULT = 0;
 	public static final int CODE_SUCCESS = 1;
 	public static final int CODE_EXIST = 2;
-
+	public static final int CODE_NOT_EXIST = 3;
+	
 	public static final String RESULT = "result";
 	public static final String ERROR = "error";
 	public static final String DEFAULT = "default";
 	public static final String SUCCESS = "success";
 	public static final String EXIST = "exist";
+	public static final String NOT_EXIST = "not exist";
 	public static final String MESSAGE = "message";
 	
 	public static final int MEN = 1;
@@ -31,6 +33,7 @@ public class BasicConstants {
 	public static final String IMG_PATH_USER = "/user";
 	public static final String IMG_PATH_KM_CLINIC = "/kmclinic";
 	public static final String IMG_PATH_KM_DOCTOR = "/kmdoctor";		
+	public static final String IMG_PATH_REVIEW = "/review";	
 	
 	//image
 	public static final String IMG_DEFAULT_USER = "userProfileDefault.png";
