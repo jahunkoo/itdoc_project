@@ -60,17 +60,9 @@ public class IntroActivity extends FragmentActivity {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
-
-					//intro = (ImageView) findViewById(R.id.intro_Img); 
-					//Animation alphaAnim = AnimationUtils.loadAnimation(
-						//	IntroActivity.this, R.anim.alpha); // �ִ� ���� ����
-					//intro.startAnimation(alphaAnim);
-					
 					Thread.sleep(1000); // 3�ʰ� �ΰ? �����ش�. ��Ʈ�� �����̺κ�
 					RegionThread.start();
 					isIntro();
-					//RegionThread.start();
-
 				}
 
 				catch (Exception e) {
@@ -83,14 +75,14 @@ public class IntroActivity extends FragmentActivity {
 
 	private void setLayoutElement() {
 		// TODO Auto-generated method stub
-		Fragment fragment = new IntroFragment();
-		Bundle args = new Bundle();
-		args.putInt(PlanetFragment.ARG_PLANET_NUMBER, 0);
-		fragment.setArguments(args);
+		Fragment intro_fragment = new IntroFragment();
+		//Bundle args = new Bundle();
+		//args.putInt(PlanetFragment.ARG_PLANET_NUMBER, 0);
+		//intro_fragment.setArguments(args);
 
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction()
-				.replace(R.id.relativelayout_intro, fragment).commit();
+				.replace(R.id.relativelayout_intro, intro_fragment).commit();
 	}
 	
 	Runnable bigRegionRunnable = new Runnable() {
@@ -100,89 +92,49 @@ public class IntroActivity extends FragmentActivity {
 					ItDocConstants.METHOD_URL_GET_BIG_REGION_LIST,
 					IntroActivity.this);
 	Log.d("Big","Success");
-			/*ArrayList<BigRegion> bigRegionList = new ConnectionBridge()
-					.getBigRegionList(
-							ItDocConstants.METHOD_URL_GET_BIG_REGION_LIST,
-							IntroActivity.this);
-			Log.d("Big","Success");*/
-			//String tmpStr = new String();
-			//for (BigRegion bigRegion : bigRegionList) {
-			//	tmpStr += bigRegion.toString();
-			//	tmpStr += "\n";
-			//}
-			//print(tmpStr);
 		}
 	};
 	
 	Runnable middleRegionRunnable = new Runnable() {
 		public void run() {
-			ArrayList<MiddleRegion> middleRegionList = new ConnectionBridge()
+			middleReionList = new ConnectionBridge()
 					.getMiddleRegionList(
 							ItDocConstants.METHOD_URL_GET_MIDDLE_REGION_LIST,
 							IntroActivity.this);
-
-			/*String tmpStr = new String();
-			for (MiddleRegion middleRegion : middleRegionList) {
-				tmpStr += middleRegion.toString();
-				tmpStr += "\n";
-			}
-			print(tmpStr);*/
 		}
 	};
 	
 
 	Runnable gradeRunnable = new Runnable() {
 		public void run() {
-			ArrayList<Grade> gradeList = new ConnectionBridge()
+			gradeList = new ConnectionBridge()
 					.getGradeList(
 							ItDocConstants.METHOD_URL_GET_GRADE_LIST,
 							IntroActivity.this);
-
-			//String tmpStr = new String();
-			//for (Grade grade : gradeList) {
-				//tmpStr += grade.toString();
-				//tmpStr += "\n";
-		//	}
-			//print(tmpStr);
 		}
 	};
 	
 	Runnable weekRunnable = new Runnable() {
 		public void run() {
-			ArrayList<Week> weekList = new ConnectionBridge()
+			weekList = new ConnectionBridge()
 					.getWeekList(
 							ItDocConstants.METHOD_URL_GET_WEEK_LIST,
 							IntroActivity.this);
-
-			//String tmpStr = new String();
-		//	for (Week week : weekList) {
-			//	tmpStr += week.toString();
-				//tmpStr += "\n";
-			//}
-			//print(tmpStr);
 		}
 	};
 	
 	Runnable timeRunnable = new Runnable() {
 		public void run() {
-			ArrayList<Time> timeList = new ConnectionBridge()
+			timeList = new ConnectionBridge()
 					.getTimeList(
 							ItDocConstants.METHOD_URL_GET_TIME_LIST,
 							IntroActivity.this);
-
-			//String tmpStr = new String();
-			//for (Time time : timeList) {
-				//tmpStr += time.toString();
-				//tmpStr += "\n";
-		//	}
-			//print(tmpStr);
 		}
 	};
 
 	private void isIntro() {
 		//RegionThread.start();
-		Intent intent = new Intent(this, BasicActivity.class); // Mainȭ������
-																// �̵��Ѵ�.
+		Intent intent = new Intent(this, BasicActivity.class); 
 		startActivity(intent);
 		finish();
 	}
