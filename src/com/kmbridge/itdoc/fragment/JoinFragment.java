@@ -1,44 +1,71 @@
 package com.kmbridge.itdoc.fragment;
 
+import java.util.Properties;
+
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.connect.ConnectionBridge;
+import com.kmbridge.itdoc.dto.User;
 
 /**
  * Fragment that appears in the "content_frame", shows a planet
  */
 public class JoinFragment extends Fragment {
-		
-	/**
-	 * fragment가 activity에 붙을 때 수행되는 메서드 순서 
-	 * onAttach() : Fragment가 Activity에 붙을때 호출 된다.
-	 * onCreate() : Activity에서의 onCreate()와 비슷하나, ui관련 작업은 할 수 없다.	
-	 * onCreateView(): Layout을 inflater을하여 View작업을 하는곳이다.
-	 * onActivityCreated() : Activity에서 Fragment를 모두 생성하고 난다음 호출 된다. Activity의 onCreate()에서 setContentView()한 다음이라고 생각 하면 쉽게 이해 될것 같다. 여기서 부터는 ui변경작업이 가능하다.
-	 * 
-	 * 출처 : http://www.kmshack.kr/fragment-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0-2-fragment-lifecycle%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0
-	 */
 	
+	//회원가입 입력 상자(사용자 이메일, 비밀번호, 이름, 성, 회원가입 버튼 순)
+	private EditText edittxt_activity_join_join_email; 
+	private EditText edittxt_activity_join_join_password;
+	private EditText edittxt_activity_join_join_lasttname;
+	private EditText edittxt_activity_join_join_firstname;
+	private Button btn_activity_join_join_submit;
+	
+	//회원가입 입력 상자 체크 변수
+	private boolean check = false;
+	private boolean isEmailInput;
+	private boolean isPwdInput;
+	private boolean isNameInput;
+	private final int SUCCESS_NUM = 3;
+
+	private String methodUrl;
+	private String message;
+	private Properties prop;
+
+	public InputMethodManager imm;
+	
+	private ConnectionBridge bridge = new ConnectionBridge();
+	private User user = new User();
+	
+	/*@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		prop = new Properties();
+	//	setLayoutElement();
+	}*/
+	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		//view가져오고 
         View rootView = inflater.inflate(R.layout.fragment_join, container, false);
-        //i번째 스트링값 가져옴
-     //  int i = getArguments().getInt(ARG_PLANET_NUMBER);
-      //  String planet = getResources().getStringArray(R.array.drawer_menu_title_array)[i];
-      //  int imageId = getResources().getIdentifier("intro",
-       //                 "drawable", getActivity().getPackageName());
-       // ((ImageView) joinView.findViewById(R.id.image_intro)).setImageResource(imageId);
-       // getActivity().setTitle(planet);
-        Log.d("test","dddd");
         return rootView;
 	}
 	
 	
-	
+/*	private void setLayoutElement() {
+		// TODO Auto-generated method stub
+		edittxt_activity_join_join_email = (EditText) findViewById(R.id.join_email);
+		edittxt_activity_join_join_password = (EditText) findViewById(R.id.join_password);
+		edittxt_activity_join_join_firstname = (EditText) findViewById(R.id.join_firstname);
+		edittxt_activity_join_join_lasttname = (EditText) findViewById(R.id.join_lastname);
+		btn_activity_join_join_submit = (Button) find
+	}*/
 }
