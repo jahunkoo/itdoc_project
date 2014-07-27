@@ -114,7 +114,7 @@ public class BasicDrawerActivity extends FragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.basic_activity_actions, menu);
+        inflater.inflate(R.menu.activity_basic_actions, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

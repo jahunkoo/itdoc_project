@@ -17,11 +17,13 @@
             android:name="com.kmbridge.itdoc.activity.IntroActivity"
             android:label="@string/title_activity_intro"
             android:theme="@android:style/Theme.NoTitleBar" >
+<!--            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+             -->
         </activity>
         <activity
             android:name="com.kmbridge.itdoc.activity.BasicDrawerActivity"
@@ -37,7 +39,15 @@
         </activity>
 
         <activity android:name=".activity.MainDrawerActivity"></activity>
-         <activity android:name=".activity.TestUserActivity"></activity>
+        <activity android:name=".activity.TestUserActivity"></activity>
+        <activity android:name="com.kmbridge.itdoc.activity.ScreenSlideActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+        </activity> 
     </application>
 
 </manifest>
