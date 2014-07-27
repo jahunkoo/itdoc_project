@@ -26,7 +26,8 @@ public class Sentence {
 	public static final String noInfomationMessage = "모든 정보는 필수 입력사항 입니다.";
 	public static final String noEmailMessage = "이메일을 입력해주세요.";
 	public static final String noPwdMessage = "비밀번호를 입력해주세요.";
-	public static final String noNameMessage = "이름을 입력해주세요.";
+	public static final String noLastNameMessage = "성을 입력해주세요.";
+	public static final String noFirstNameMessage = "이름을 입력해주세요.";
 	public static final String noPhoneMessage = "전화번호를 입력해주세요.";
 	public static final String noAgeMessage = "나이를 입력해주세요.";
 	public static final String notEmailType = "이메일 형식이 아닙니다.";

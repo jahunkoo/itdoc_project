@@ -25,7 +25,8 @@ public class BasicConstants {
 	//address
 	public static final String ADDRESS_MAIN_SERVER_HOST = "http://www.itdoc.co.kr";
 	public static final String ADDRESS_MAIN_SERVER_PROJECT= "ItDocServer";
-	public static final String ADDRESS_IMG_SERVER_HOST = "http://1.234.75.178:8080";
+	//public static final String ADDRESS_IMG_SERVER_HOST = "http://1.234.75.178:8080";
+	public static final String ADDRESS_IMG_SERVER_HOST = "http://yss159.cafe24.com:8080";
 	public static final String ADDRESS_IMG_SERVER_PROJECT = "ItDocImgServer";
 	
 	//image_dir_path 
