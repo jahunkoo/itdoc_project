@@ -20,6 +20,7 @@ import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.fragment.IntroFragment;
 import com.kmbridge.itdoc.fragment.PlanetFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class IntroActivity extends FragmentActivity {
 
@@ -54,7 +55,7 @@ public class IntroActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intro);
-
+		
 		setLayoutElement();
 		
 		new Thread(new Runnable() {
@@ -71,6 +72,7 @@ public class IntroActivity extends FragmentActivity {
 			}
 
 		}).start();
+		
 	}
 
 	private void setLayoutElement() {

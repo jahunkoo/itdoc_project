@@ -10,7 +10,8 @@ package com.kmbridge.itdoc;
 public final class R {
     public static final class array {
         public static final int drawer_menu_title_array=0x7f070000;
-        public static final int imagename_introduce_array=0x7f070001;
+        public static final int screenslide_comment_array=0x7f070002;
+        public static final int screenslide_imagename_array=0x7f070001;
     }
     public static final class attr {
     }
@@ -25,14 +26,15 @@ public final class R {
         public static final int introduce_itdoc2=0x7f020007;
         public static final int introduce_itdoc3=0x7f020008;
         public static final int introduce_itdoc4=0x7f020009;
-        public static final int menu1=0x7f02000a;
-        public static final int menu2=0x7f02000b;
-        public static final int menu3=0x7f02000c;
-        public static final int menu4=0x7f02000d;
-        public static final int menu5=0x7f02000e;
-        public static final int menu6=0x7f02000f;
-        public static final int menu7=0x7f020010;
-        public static final int menu8=0x7f020011;
+        public static final int itdoc_logo=0x7f02000a;
+        public static final int menu1=0x7f02000b;
+        public static final int menu2=0x7f02000c;
+        public static final int menu3=0x7f02000d;
+        public static final int menu4=0x7f02000e;
+        public static final int menu5=0x7f02000f;
+        public static final int menu6=0x7f020010;
+        public static final int menu7=0x7f020011;
+        public static final int menu8=0x7f020012;
     }
     public static final class id {
         public static final int action_flip=0x7f040001;
@@ -45,34 +47,39 @@ public final class R {
     
          */
         public static final int action_next=0x7f040000;
-        public static final int action_previous=0x7f04001e;
-        public static final int action_search=0x7f04001d;
-        public static final int button_fragment_screen_slide_login=0x7f04001c;
-        public static final int button_fragment_screen_slide_register=0x7f04001b;
-        public static final int content_frame=0x7f04000c;
-        public static final int drawer_layout=0x7f04000b;
-        public static final int email_join=0x7f040009;
-        public static final int email_login=0x7f04000a;
-        public static final int facebook=0x7f040008;
-        public static final int image=0x7f040018;
-        public static final int image_intro=0x7f040011;
-        public static final int imageview_fragment_screen_slide_page=0x7f04001a;
-        public static final int join_email=0x7f040013;
-        public static final int join_firstname=0x7f040016;
-        public static final int join_lastname=0x7f040015;
-        public static final int join_password=0x7f040014;
-        public static final int join_submit=0x7f040017;
-        public static final int left_drawer=0x7f04000d;
-        public static final int linearLayout_user_manager=0x7f040007;
-        public static final int linearLayout_user_manager_for_join_fragment=0x7f040006;
-        public static final int linearlayout_connection_loading=0x7f04000e;
-        public static final int pager=0x7f040004;
-        public static final int progressbar_connection_loading=0x7f04000f;
-        public static final int relativeLayout_fragment_screen_slide_content=0x7f040019;
-        public static final int relativeLayout_user_manager=0x7f040005;
-        public static final int relativelayout_clinic_list=0x7f040010;
+        public static final int action_previous=0x7f040023;
+        public static final int action_search=0x7f040022;
+        public static final int button_fragment_screen_slide_login=0x7f040021;
+        public static final int button_fragment_screen_slide_register=0x7f040020;
+        public static final int content_frame=0x7f04000e;
+        public static final int drawer_layout=0x7f04000d;
+        public static final int email_join=0x7f04000b;
+        public static final int email_login=0x7f04000c;
+        public static final int facebook=0x7f04000a;
+        public static final int image=0x7f04001a;
+        public static final int image_intro=0x7f040013;
+        public static final int image_upload=0x7f040005;
+        public static final int imageview_fragment_screen_slide_logo=0x7f04001e;
+        public static final int imageview_fragment_screen_slide_page=0x7f04001c;
+        public static final int join_email=0x7f040015;
+        public static final int join_firstname=0x7f040017;
+        public static final int join_lastname=0x7f040018;
+        public static final int join_password=0x7f040016;
+        public static final int join_submit=0x7f040019;
+        public static final int left_drawer=0x7f04000f;
+        public static final int linearLayout_user_manager=0x7f040009;
+        public static final int linearLayout_user_manager_for_join_fragment=0x7f040008;
+        public static final int linearlayout_connection_loading=0x7f040010;
+        public static final int pager=0x7f040006;
+        public static final int progressbar_connection_loading=0x7f040011;
+        public static final int relativeLayout_fragment_screen_slide_content=0x7f04001b;
+        public static final int relativeLayout_user_manager=0x7f040007;
+        public static final int relativelayout_clinic_list=0x7f040012;
         public static final int relativelayout_intro=0x7f040003;
-        public static final int user_insert_layout=0x7f040012;
+        public static final int textview_slide_screen_comment=0x7f04001f;
+        public static final int textview_slide_screen_divide_line=0x7f04001d;
+        public static final int user_insert_layout=0x7f040014;
+        public static final int user_layout=0x7f040004;
         public static final int usermanger=0x7f040002;
     }
     public static final class integer {
@@ -82,21 +89,22 @@ public final class R {
     public static final class layout {
         public static final int activity_basic=0x7f030000;
         public static final int activity_intro=0x7f030001;
-        public static final int activity_screen_slide=0x7f030002;
-        public static final int activity_user_manager=0x7f030003;
-        public static final int basic_drawer=0x7f030004;
-        public static final int basic_drawer_list_item=0x7f030005;
-        public static final int connection_loading=0x7f030006;
-        public static final int fragment_clinic_list=0x7f030007;
-        public static final int fragment_intro=0x7f030008;
-        public static final int fragment_join=0x7f030009;
-        public static final int fragment_login=0x7f03000a;
-        public static final int fragment_planet=0x7f03000b;
-        public static final int fragment_screen_slide_page=0x7f03000c;
+        public static final int activity_profile_picture=0x7f030002;
+        public static final int activity_screen_slide=0x7f030003;
+        public static final int activity_user_manager=0x7f030004;
+        public static final int basic_drawer=0x7f030005;
+        public static final int basic_drawer_list_item=0x7f030006;
+        public static final int connection_loading=0x7f030007;
+        public static final int fragment_clinic_list=0x7f030008;
+        public static final int fragment_intro=0x7f030009;
+        public static final int fragment_join=0x7f03000a;
+        public static final int fragment_login=0x7f03000b;
+        public static final int fragment_planet=0x7f03000c;
+        public static final int fragment_screen_slide_page=0x7f03000d;
     }
     public static final class menu {
-        public static final int activity_basic_actions=0x7f080000;
-        public static final int activity_screen_slide=0x7f080001;
+        public static final int activity_basic_actions=0x7f090000;
+        public static final int activity_screen_slide=0x7f090001;
     }
     public static final class string {
         public static final int action_add_item=0x7f06000f;
@@ -133,5 +141,27 @@ public final class R {
         public static final int title_activity_intro=0x7f060009;
         public static final int title_activity_user_manager=0x7f06000c;
         public static final int title_template_step=0x7f060016;
+    }
+    public static final class style {
+        /** 
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+       
+    </style>
+ 
+ 
+    Application theme.
+    <style name="AppTheme" parent="AppBaseTheme">
+        All customizations that are NOT specific to a particular API-level can go here.
+    </style>
+ 
+         */
+        public static final int CustomText=0x7f080000;
     }
 }

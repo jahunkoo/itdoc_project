@@ -27,6 +27,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -80,6 +81,8 @@ public class ScreenSlideActivity extends FragmentActivity {
                 invalidateOptionsMenu();
             }
         });
+        
+        Log.d("koo", "onCreate");
     }
 
     @Override

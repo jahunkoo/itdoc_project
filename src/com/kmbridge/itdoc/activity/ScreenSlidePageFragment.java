@@ -71,20 +71,17 @@ public class ScreenSlidePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout containing a title and body text.
-        ViewGroup rootView = (ViewGroup) inflater
+    	Log.d("koo", "onCreateView start");
+    	ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.fragment_screen_slide_page, container, false);
 
-        // Set the title view to show the page number.
-        /*((TextView) rootView.findViewById(android.R.id.text1)).setText(
-                getString(R.string.title_template_step, mPageNumber + 1));
-         */
-        Log.d("koo", "before imageName");
-        String imageName = getResources().getStringArray(R.array.drawer_menu_title_array)[mPageNumber];
-        Log.d("koo", "imageName:"+imageName);
+        //mPageNumber는 0부터 시작된다. 
+        String imageName = getResources().getStringArray(R.array.screenslide_imagename_array)[mPageNumber];
+        String comment = getResources().getStringArray(R.array.screenslide_comment_array)[mPageNumber];
         int imageId = getResources().getIdentifier(imageName.toLowerCase(Locale.getDefault()),
                         "drawable", getActivity().getPackageName());
         ((ImageView) rootView.findViewById(R.id.imageview_fragment_screen_slide_page)).setImageResource(imageId);
-        
+        ((TextView) rootView.findViewById(R.id.textview_slide_screen_comment)).setText(comment);
         return rootView;
     }
 

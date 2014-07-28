@@ -12,8 +12,8 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
-<!-- 
+-->
+<!--
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content"
     android:layout_width="match_parent"
@@ -39,34 +39,68 @@
             android:text="@string/lorem_ipsum" />
 
     </LinearLayout>
-</ScrollView> -->
-<RelativeLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+</ScrollView>
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayout_fragment_screen_slide_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <ImageView 
+    android:layout_height="match_parent" >
+
+    <ImageView
         android:id="@+id/imageview_fragment_screen_slide_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
-		<LinearLayout 
-		    android:layout_alignParentBottom="true"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:orientation="horizontal"
-		    android:weightSum="2">
-	    		<Button 
-	    		    android:id="@+id/button_fragment_screen_slide_register"
-	    		    android:layout_weight="1"
-	    		    android:layout_height="wrap_content"
-	    		    android:text="@string/button_register"/>
-	    		<Button 
-	    		    android:id="@+id/button_fragment_screen_slide_login"
-	    		    android:layout_weight="1"
-	    		    android:layout_height="wrap_content"
-	    		    android:text="@string/button_login"/>
-		</LinearLayout>
+         />
+
+    <TextView
+        android:id="@+id/textview_slide_screen_divide_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="-----------------"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageview_fragment_screen_slide_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textview_slide_screen_divide_line"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/itdoc_logo"/>
+
+    <TextView
+        android:id="@+id/textview_slide_screen_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textview_slide_screen_divide_line"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="20dp"
+        android:text="이제 잇닥을 사용하시기만 하면 됩니다."
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <Button
+            android:id="@+id/button_fragment_screen_slide_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_register" />
+
+        <Button
+            android:id="@+id/button_fragment_screen_slide_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_login" />
+    </LinearLayout>
 
 </RelativeLayout>

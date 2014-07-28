@@ -26,7 +26,7 @@ import com.kmbridge.itdoc.util.JsonParser;
  * 서버로부터 데이터를 내려받을 때,중간 다리 역할을 하는 클래스
  * 
  */
-public class ConnectionBridge{
+public class ConnectionBridge {
 
 	public static final String MAIN_SERVER_ADDRESS = "http://www.itdoc.co.kr";
 	public static final String MAIN_PROJECT_NAME = "ItDocServer";
@@ -194,9 +194,9 @@ public class ConnectionBridge{
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
 
-			KmClinicView = (ArrayList<KmClinicView>) new JsonParser(methodUrl).parse(result);
-	
-			
+			KmClinicView = (ArrayList<KmClinicView>) new JsonParser(methodUrl)
+					.parse(result);
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -212,12 +212,13 @@ public class ConnectionBridge{
 
 		return KmClinicView;
 	}
-	
-	
-	public ArrayList<KmClinicDetailView> getKmClinicDetailViewList(String methodUrl, Context context, int clinicId) {
+
+	public ArrayList<KmClinicDetailView> getKmClinicDetailViewList(
+			String methodUrl, Context context, int clinicId) {
 		ArrayList<KmClinicDetailView> KmClinicDetailViewList = null;
-		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
-		
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
+				methodUrl);
+
 		Properties prop = new Properties();
 		prop.setProperty("kmClinicId", String.valueOf(clinicId));
 		try {
@@ -226,8 +227,9 @@ public class ConnectionBridge{
 			connection.setProperties(prop);
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
-			KmClinicDetailViewList = (ArrayList<KmClinicDetailView>) new JsonParser(methodUrl).parse(result);
-			
+			KmClinicDetailViewList = (ArrayList<KmClinicDetailView>) new JsonParser(
+					methodUrl).parse(result);
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -237,7 +239,7 @@ public class ConnectionBridge{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
-			
+
 		} catch (UnsupportedEncodingException e) {
 		}
 
@@ -246,15 +248,17 @@ public class ConnectionBridge{
 
 	public ArrayList<String> getAllKeywords(String methodUrl, Context context) {
 		ArrayList<String> AllKeywordsList = null;
-		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
-		
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
+				methodUrl);
+
 		try {
 			HttpConnectionModule connection = new HttpConnectionModule(context);
 			connection.setMethod(HttpConnectionModule.GET);
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
-			AllKeywordsList = (ArrayList<String>) new JsonParser(methodUrl).parse(result);
-			
+			AllKeywordsList = (ArrayList<String>) new JsonParser(methodUrl)
+					.parse(result);
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -264,13 +268,12 @@ public class ConnectionBridge{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
-			
+
 		}
 
 		return AllKeywordsList;
 	}
-	
-	
+
 	public String register(String methodUrl, Properties props, Context context) {
 		String result = null;
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
@@ -305,25 +308,23 @@ public class ConnectionBridge{
 	}
 
 	// 이미지 업로드
-	public String insertImage(String methodUrl, File uploadFile, Context context) {
+	public String insertImage(String methodUrl, File uploadFile,
+			Context context, String id) {
 		String result = null;
-		String email = "koo10682@gmail.com";
+		// String email = "koo10682@gmail.com";
 
-		// 저장소 객체를 생성
-		//SharedPreferences shared_user_info = getSharedPreferences("user_info", 0);
-		//String email = shared_user_info.getString("user_email", "");
-		Log.d("kkm",email);
-		
+		Log.d("kim", "ConnectionBridge email ->" +id);
+
 		// String email = user_picture.txt_email.getText().toString();
 		String targetUrl = getFullUrl(ItDocConstants.ADDRESS_IMG_SERVER_HOST,
 				ItDocConstants.ADDRESS_IMG_SERVER_PROJECT, methodUrl);
 
-		String picturePath = new ItDocUtil().createPicturePath(email,
+		String picturePath = new ItDocUtil().createPicturePath(id,
 				uploadFile.getName());
 
 		HttpConnectionModule connection = new HttpConnectionModule(context);
 		connection.setMethod(HttpConnectionModule.MULTIPART_POST);
-		connection.setProfileImgFile(uploadFile, email, picturePath,
+		connection.setProfileImgFile(uploadFile, id, picturePath,
 				ItDocConstants.OBJECT_TYPE_USER);
 
 		connection.downloadTask.execute(targetUrl);

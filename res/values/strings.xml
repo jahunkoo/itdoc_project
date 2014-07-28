@@ -47,12 +47,17 @@
     <!-- fragment_screen_slide_page -->
     <string name="button_register">회원가입</string>
     <string name="button_login">로그인</string>
-    <string-array name="imagename_introduce_array">
+    <string-array name="screenslide_imagename_array">
         <item>introduce_itdoc1</item>
         <item>introduce_itdoc2</item>
         <item>introduce_itdoc3</item>
         <item>introduce_itdoc4</item>
         <item>introduce_itdoc5</item>
     </string-array>
-    
+    <string-array name="screenslide_comment_array">
+        <item>지인들이 알려주는 좋은 한의원 정보!</item>
+        <item>나에게 맞는 한의원을 찾아보세요</item>
+        <item>한의원 갈때 더 이상 고민하지 마세요</item>
+        <item>이제 잇닥을 사용하시면 됩니다.</item>
+    </string-array>
 </resources>

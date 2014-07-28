@@ -44,7 +44,7 @@
                 android:singleLine="true" />
 
             <EditText
-                android:id="@+id/join_lastname"
+                android:id="@+id/join_firstname"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.2"
@@ -52,7 +52,7 @@
                 android:singleLine="true" />
 
             <EditText
-                android:id="@+id/join_firstname"
+                android:id="@+id/join_lastname"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.2"
