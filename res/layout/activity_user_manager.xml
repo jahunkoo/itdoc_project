@@ -47,6 +47,7 @@
                 android:text="페이스북" />
 
             <Button
+                style="@style/CustomText"
                 android:id="@+id/email_join"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
