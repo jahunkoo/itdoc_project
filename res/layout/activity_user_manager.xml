@@ -1,16 +1,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_user_manager"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/relativeLayout_user_manager" >
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:visibility="visible"
-	     android:id="@+id/linearLayout_user_manager_for_join_fragment"
-	     android:orientation="vertical" >
-	</LinearLayout>
-	    
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout_user_manager_for_join_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_user_manager_for_login_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible" >
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout_user_manager"
         android:layout_width="match_parent"
@@ -43,18 +52,16 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="0.2"
-                android:text="페이스북" />
+                android:text="@string/facebook" />
 
             <Button
-                style="@style/CustomText"
                 android:id="@+id/email_join"
+                style="@style/CustomText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="0.2"
-               	
-               	
-                android:text="이메일로 회원가입" />
+                android:text="@string/email_join" />
 
             <Button
                 android:id="@+id/email_login"
@@ -62,21 +69,21 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="0.2"
-                android:text="이메일로 로그인" />
+                android:text="@string/email_login" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.1"
                 android:gravity="center_horizontal"
-                android:text="잇닥(it dot)은 무조건적인 광고성 내용은 " />
+                android:text="@string/user_manager_commnet_1" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.1"
                 android:gravity="center_horizontal"
-                android:text="절대 게재하지 않습니다." />
+                android:text="@string/user_manager_commnet_2" />
         </LinearLayout>
     </LinearLayout>
 

@@ -102,8 +102,8 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 					
 					SharedPreferenceUtil user_info = new SharedPreferenceUtil();
 					
-					user_info.setData(getActivity(), "user_info", "user_email", edittxt_activity_join_join_email.getText().toString());
-					user_info.setData(getActivity(), "user_info", "user_pwd", edittxt_activity_join_join_password.getText().toString());
+					user_info.setData(getActivity(),"user_email", edittxt_activity_join_join_email.getText().toString());
+					user_info.setData(getActivity(), "user_pwd", edittxt_activity_join_join_password.getText().toString());
 					/*
 					SharedPreferences shared_user_info = getActivity().getSharedPreferences("user_info", 0);
 					SharedPreferences.Editor editor = shared_user_info.edit();

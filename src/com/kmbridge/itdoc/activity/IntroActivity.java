@@ -18,11 +18,12 @@ import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.fragment.IntroFragment;
-import com.kmbridge.itdoc.fragment.PlanetFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class IntroActivity extends FragmentActivity {
+
+	public boolean isLogin;
 
 	// 지역정보 및 데이터를 저장할 리스트 생성
 	public static ArrayList<BigRegion> bigReionList;
@@ -135,9 +136,28 @@ public class IntroActivity extends FragmentActivity {
 	};
 
 	private void isIntro() {
+		SharedPreferenceUtil user_info = new SharedPreferenceUtil();
+		isLogin=user_info.isExist(this, "user_email");
 		//RegionThread.start();
-		Intent intent = new Intent(this, TestUserActivity.class);
-		startActivity(intent);
+		if(isLogin==true)
+		{
+			
+			Intent intent = new Intent(this, TestUserActivity.class);
+			startActivity(intent);
+			if(isLogin==true)
+			{
+				Log.d("isLogin","True");
+			}
+			else
+			{
+				Log.d("isLogin","False");
+			}
+		}
+		else
+		{
+			Intent intent = new Intent(this, ScreenSlideActivity.class);
+			startActivity(intent);
+		}
 		finish();
 	}
 
