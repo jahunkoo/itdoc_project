@@ -137,12 +137,12 @@ public class IntroActivity extends FragmentActivity {
 
 	private void isIntro() {
 		SharedPreferenceUtil user_info = new SharedPreferenceUtil();
-		isLogin=user_info.isExist(this, ItDocConstants.SHARED_EMAIL_KEY);
+		isLogin=user_info.isExist(this, ItDocConstants.SHARED_KEY_EMAIL);
 		//RegionThread.start();
 		if(isLogin==true)
 		{
 			
-			Intent intent = new Intent(this, TestUserActivity.class);
+			Intent intent = new Intent(this, MainDrawerActivity.class);
 			startActivity(intent);
 			if(isLogin==true)
 			{

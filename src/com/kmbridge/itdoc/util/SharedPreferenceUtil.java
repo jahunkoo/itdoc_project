@@ -61,7 +61,7 @@ public class SharedPreferenceUtil extends ItDocUtil{
 		String error="error";
 		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
 		Value=pref.getString(key, "");
-		if(Value=="")
+		if(Value.equals(""))
 		{
 			return error;
 		}

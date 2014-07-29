@@ -59,7 +59,7 @@ public class ScreenSlidePageFragment extends Fragment implements View.OnClickLis
     /**
      * The fragment's page number, which is set to the argument value for {@link #ARG_PAGE}.
      */
-    private int mPageNumber;
+    private int mPageNumber=0;
 
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
@@ -79,9 +79,6 @@ public class ScreenSlidePageFragment extends Fragment implements View.OnClickLis
         fragment.setArguments(args);
         return fragment;
     }
-    
-    
-    
     
     private void setAdapter(Adapter adapter) {
 		// TODO Auto-generated method stub

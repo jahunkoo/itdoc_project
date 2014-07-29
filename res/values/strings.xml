@@ -69,6 +69,7 @@
     <string name="profile_commnet_2">회원님에 대해 알려 주세요.</string>
     <!-- Actions -->
     <string name="action_image_upload">이미지 업로드</string>
+    <string name="action_go_login">로그인</string>
 
     <!-- fragment_join_page -->
     <string name="user_email">이메일주소</string>
