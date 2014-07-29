@@ -17,6 +17,7 @@
 package com.kmbridge.itdoc.activity;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.fragment.ScreenSlidePageFragment;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-package com.kmbridge.itdoc.activity;
+package com.kmbridge.itdoc.fragment;
 
 import java.util.Locale;
-
-import com.kmbridge.itdoc.R;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -26,8 +24,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.ScreenSlideActivity;
 
 /**
  * A fragment representing a single step in a wizard. The fragment shows a dummy title indicating
@@ -37,7 +39,11 @@ import android.widget.TextView;
  * ScreenSlideActivity} samples.</p>
  */
 public class ScreenSlidePageFragment extends Fragment {
-    /**
+	private Adapter testAdapter;
+    public void setAdapter(Adapter adapter){
+    	this.testAdapter = adapter;
+    }
+	/**
      * The argument key for the page number this fragment represents.
      */
     public static final String ARG_PAGE = "page";
@@ -50,11 +56,12 @@ public class ScreenSlidePageFragment extends Fragment {
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
      */
-    public static ScreenSlidePageFragment create(int pageNumber) {
+    public static ScreenSlidePageFragment create(int pageNumber, Adapter adapter) {
         ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, pageNumber);
         fragment.setArguments(args);
+        fragment.setAdapter(adapter);
         return fragment;
     }
 
