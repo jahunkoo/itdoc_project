@@ -21,12 +21,16 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.thread.ItDocHandler;
+import com.kmbridge.itdoc.thread.LoadingViewThread;
 
 /**
  * Http통신으로 json형식의 데이터를 주고받을 때 사용되는 클래스
@@ -47,10 +51,9 @@ public class HttpConnectionModule {
 	private Context context;
 	private Activity activity;
 	private View loadingView;
-
 	private File uploadFile;
 	private String fileName;
-	
+	private LoadingViewThread loadingThread;
 	//itDoc을 위한 변수
 	private int objectType;
 	private String email;
@@ -60,11 +63,12 @@ public class HttpConnectionModule {
 		downloadTask = new DownloadTask();
 		this.context = context;
 		activity = (Activity) context;
-		
 		//데이터 주고받을 동안 띄워질  connection_loading.xml 화면  객체화
 		LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		loadingView = inflator.inflate(R.layout.connection_loading, null);
 		activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		loadingThread = new LoadingViewThread(loadingView);
+		Log.d("koo", "HttpConnectionModule creator end");
 	} 
 
 	
@@ -115,6 +119,7 @@ public class HttpConnectionModule {
 	 * @return isConnected
 	 */
 	private boolean isNetworkConnection(){
+		Log.d("koo", "HttpConnectionModule isNetworkConnection start");
 		boolean isConnected = false;
 		ConnectivityManager connMgr = (ConnectivityManager) 
 		        context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -126,6 +131,7 @@ public class HttpConnectionModule {
 		    	//display error
 		    	//Toast.makeText(context, "No network connection available.", Toast.LENGTH_SHORT).show();
 		    }
+		    Log.d("koo", "HttpConnectionModule isNetworkConnection end");
 		return isConnected;
 	}
 	
@@ -137,13 +143,18 @@ public class HttpConnectionModule {
 
         @Override
 		protected void onPreExecute() {
-        	loadingView.setVisibility(View.VISIBLE);
 			super.onPreExecute();
+			loadingThread.start();
+			Log.d("koo", "HttpConnectionModule onPreExecute start");
+			/*Message msg = connectHandler.obtainMessage();
+			msg.what = ItDocHandler.SHOW_LOADING_LAYOUT;
+			connectHandler.sendMessage(msg);*/
+			Log.d("koo", "HttpConnectionModule onPreExecute end");
 		}
 
 		@Override
         protected String doInBackground(String... urls) {
-        	
+			Log.d("koo", "HttpConnectionModule doInBackground start");
             try {
             	if(isNetworkConnection()){
             		 return loadFromNetwork(urls[0]);
@@ -154,6 +165,7 @@ public class HttpConnectionModule {
             	e.printStackTrace();
               return e.getMessage();
             }
+           
         }
 
         /**
@@ -162,12 +174,16 @@ public class HttpConnectionModule {
          */
         @Override
         protected void onPostExecute(String result) {
+        	Log.d("koo", "HttpConnectionModule onPostExecute start");
         	//connection_loading 레이아웃 GONE
-        	loadingView.setVisibility(View.GONE);
+        	/*Message msg = connectHandler.obtainMessage();
+        	msg.what = ItDocHandler.END_LOADING_LAYOUT;
+        	connectHandler.sendMessage(msg);*/
         	if(result.equals("networkNotConnection")){
         		Toast.makeText(context, NETWOEK_NOT_AVAILABLE, Toast.LENGTH_SHORT).show();
         	}	
         	//Log.i(TAG, result);
+        	Log.d("koo", "HttpConnectionModule onPostExecute end");
         }
     }
     
@@ -175,6 +191,7 @@ public class HttpConnectionModule {
     
     /** Initiates the fetch operation. */
     private String loadFromNetwork(String urlString) throws IOException {
+    	Log.d("koo", "HttpConnectionModule loadFromNetwork start");
         InputStream stream = null;
         String str =new String();
 
@@ -192,6 +209,7 @@ public class HttpConnectionModule {
                stream.close();
             }
         }
+        Log.d("koo", "HttpConnectionModule loadFromNetwork end");
         return str;
     }
 
