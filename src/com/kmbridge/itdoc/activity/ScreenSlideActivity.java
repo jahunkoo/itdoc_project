@@ -19,10 +19,10 @@ package com.kmbridge.itdoc.activity;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.fragment.ScreenSlidePageFragment;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v13.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -31,8 +31,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.fragment.ScreenSlidePageFragment;
 
 /**
  * Demonstrates a "screen-slide" animation using a {@link ViewPager}. Because {@link ViewPager}
@@ -70,7 +68,7 @@ public class ScreenSlideActivity extends FragmentActivity{
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
         mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -140,11 +138,14 @@ public class ScreenSlideActivity extends FragmentActivity{
      * sequence.
      */
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
+        
 
-        @Override
+        public ScreenSlidePagerAdapter(android.support.v4.app.FragmentManager fm) {
+			super(fm);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
         public Fragment getItem(int position) {
             return ScreenSlidePageFragment.create(position);
         }

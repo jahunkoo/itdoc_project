@@ -29,11 +29,7 @@
         <activity
             android:name=".activity.BasicDrawerActivity"
             android:label="@string/basic_activity_title" >
-             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".activity.BasicActivity"
@@ -46,7 +42,6 @@
         </activity>
         <activity android:name=".activity.MainDrawerActivity" >
            
-            
         </activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>
