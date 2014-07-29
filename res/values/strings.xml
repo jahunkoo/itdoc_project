@@ -85,6 +85,22 @@
     <string name="email_login">이메일로 로그인</string>
     <string name="user_manager_commnet_1">잇닥(it dot)은 무조건적인 광고성 내용은 </string>
     <string name="user_manager_commnet_2">절대 게재하지 않습니다.</string>
-    <!-- Actions -->
+
+    <!-- activity_config_page -->
+    <string name="push">푸쉬 알림</string>
+    <string name="alarm">알림 소리</string>
+    <string name="helpcomment">도움말</string>
+    <string name="helpdesk">고객센터</string>
+    <string name="evaluation">잇닥(it doc) 평가하기</string>
+    <string name="logout">로그아웃</string>
+    <string name="title_activity_config">ConfigActivity</string>
+    <string name="title_activity_km_clinic_detail">KmClinicDetailActivity</string>
+    
+    <!-- activity_kmclinic_detail_page -->
+    <string name="button_visited">가봤다.</string>
+    <string name="button_call">전화하기</string>
+    <string name="recomend_relatives">추천한 이웃들</string>
+    <string name="all_review">리뷰 모두 보기</string>
+ 
 
 </resources>

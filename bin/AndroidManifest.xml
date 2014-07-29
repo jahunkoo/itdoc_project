@@ -24,24 +24,25 @@
             android:name=".activity.IntroActivity"
             android:label="@string/title_activity_intro"
             android:theme="@android:style/Theme.NoTitleBar" >
-            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.BasicDrawerActivity"
             android:label="@string/basic_activity_title" >
-            
         </activity>
         <activity
             android:name=".activity.BasicActivity"
             android:label="@string/title_activity_basic" >
-            
         </activity>
         <activity
             android:name=".activity.UserManagerActivity"
             android:label="@string/title_activity_user_manager" >
         </activity>
         <activity android:name=".activity.MainDrawerActivity" >
-           
         </activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>
@@ -57,8 +58,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.activity.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".activity.ConfigActivity"
+            android:label="@string/title_activity_config" >
+        </activity>
+        <activity
+            android:name="com.kmbridge.itdoc.activity.KmClinicDetailActivity"
+            android:label="@string/title_activity_km_clinic_detail" >
         </activity>
     </application>
 

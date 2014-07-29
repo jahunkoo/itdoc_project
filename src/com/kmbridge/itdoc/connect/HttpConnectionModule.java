@@ -289,7 +289,7 @@ public class HttpConnectionModule {
 			//addFormField(dos, "fileName", fileName);
 			if(!(fileName==null) && !fileName.isEmpty()) addFormField(dos, "fileName", fileName);
 			if(objectType!=0) addFormField(dos, "objectType", String.valueOf(objectType));
-			if(!(email==null) && !email.isEmpty()) addFormField(dos, "email", email);
+			if(!(email==null) && !email.isEmpty()) addFormField(dos, "id", email);
 			
 			//add File
 			InputStream inputStream = new FileInputStream(uploadFile);

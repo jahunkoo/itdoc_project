@@ -14,11 +14,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.activity.ProfilePictureActivity;
+import com.kmbridge.itdoc.activity.BasicDrawerActivity;
+import com.kmbridge.itdoc.activity.MainDrawerActivity;
+import com.kmbridge.itdoc.activity.ScreenSlideActivity;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.User;
 import com.kmbridge.itdoc.util.Sentence;
-import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 /**
  * Fragment that appears in the "content_frame", shows a planet
@@ -29,7 +30,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 	private EditText edittxt_activity_login_login_password; 
 	private Button btn_activity_login_login_submit;
 	
-	// 회원가입 입력 상자 체크 변수
+	// 로그인 입력 상자 변수
+	private boolean isLoginCheck = false;
 	private boolean check = false;
 	private boolean isEmailInput;
 	private boolean isPwdInput;
@@ -45,9 +47,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		prop = new Properties();
 		// view가져오고
 		View rootView = inflater.inflate(R.layout.fragment_login, container,false);
 		
+		edittxt_activity_login_login_email = (EditText) rootView.findViewById(R.id.login_email);
+		edittxt_activity_login_login_password = (EditText) rootView.findViewById(R.id.login_password);
 		btn_activity_login_login_submit = (Button) rootView.findViewById(R.id.login_submit);
 		btn_activity_login_login_submit.setOnClickListener(this);
 		
@@ -59,25 +64,23 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
 		switch (v.getId()) {
 
-		case R.id.join_submit:
+		case R.id.login_submit:
 			if (!getTextInformation())
 				return;
-			if (isAllInfoInput() == true) {
+			if (isAllInfoInput() == true) {             
 				methodUrl = "login";
 				Log.d("koo", prop.toString());
-				message = bridge.register(methodUrl, prop, getActivity());
-				Log.d("bridge",message);
-				if (message.equals("exist")) {
-					Toast.makeText(getActivity(), Sentence.existEmail,
-							Toast.LENGTH_SHORT).show();
-				} else if (message.equals("error")) {
-					Toast.makeText(getActivity(), Sentence.joinFail,
-							Toast.LENGTH_SHORT).show();
-				} else if (message.equals("success")) {
+				//message = bridge.login(methodUrl, prop, getActivity());
+				isLoginCheck = bridge.login(methodUrl, prop, getActivity());
+				//Log.d("login",message);
+				//if (message.equals("error")) {
+				if(isLoginCheck==false){
+					Toast.makeText(getActivity(), Sentence.errorLogin,Toast.LENGTH_SHORT).show();
+				} else if (isLoginCheck==true) {
 					// 회원가입 성공
 					// phoneBook();
 					
-					SharedPreferenceUtil user_info = new SharedPreferenceUtil();
+					//SharedPreferenceUtil user_info = new SharedPreferenceUtil();
 					
 					//user_info.setData(getActivity(),"user_email", edittxt_activity_join_join_email.getText().toString());
 					//user_info.setData(getActivity(), "user_pwd", edittxt_activity_join_join_password.getText().toString());
@@ -90,10 +93,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 					
 					editor.commit();*/
 					
-					Toast.makeText(getActivity(), Sentence.successJoin,
-							Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(getActivity(),
-							ProfilePictureActivity.class);
+					Toast.makeText(getActivity(), Sentence.successLogin,Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(getActivity(),MainDrawerActivity.class);
 					startActivity(intent);
 				}
 			} else {
@@ -114,30 +115,26 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 		// 테스트 해보니 EditText는 입력을 안해도 공백 자체가 값으로 인식됨. 그래서 공백 여부 check
 		if (email.trim().length() != 0) {
 			if (!user.isEmailAddress(email)) {
-				Toast.makeText(getActivity(), Sentence.notEmailType,
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), Sentence.notEmailType,Toast.LENGTH_SHORT).show();
 			} else {
 				prop.put("email", email);
 				isEmailInput = true;
 			}
 		} else {
-			Toast.makeText(getActivity(), Sentence.noEmailMessage,
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), Sentence.noEmailMessage,Toast.LENGTH_SHORT).show();
 		}
 
 		String password = edittxt_activity_login_login_password.getText()
 				.toString();
 		if (password.trim().length() != 0) {
 			if (password.trim().length() <= 5) {
-				Toast.makeText(getActivity(), Sentence.notPwdType,
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), Sentence.notPwdType,Toast.LENGTH_SHORT).show();
 			} else {
 				prop.put("password", password);
 				isPwdInput = true;
 			}
 		} else {
-			Toast.makeText(getActivity(), Sentence.noPwdMessage,
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), Sentence.noPwdMessage,Toast.LENGTH_SHORT).show();
 		}
 
 		return true;
@@ -148,10 +145,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 		check = false;
 
 		int count = 0;
-		if (isEmailInput == true)
-			count++;
-		if (isPwdInput == true)
-			count++;
+		if (isEmailInput == true) count++;
+		if (isPwdInput == true)	count++;
 		
 		/*
 		 * if (isCellPhoneInput == true) count++; if (isBirthYearInput == true)

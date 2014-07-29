@@ -58,8 +58,16 @@ public class SharedPreferenceUtil extends ItDocUtil{
 	public String getData(Context context, String key) throws RecordNotFoundException{
 		if(!isExist(context, key)) throw new RecordNotFoundException();
 		String Value;
+		String error="error";
 		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
 		Value=pref.getString(key, "");
+		if(Value=="")
+		{
+			return error;
+		}
+		else
+		{
 			return Value;
+		}
 	}
 }

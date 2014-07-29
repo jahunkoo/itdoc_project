@@ -42,7 +42,7 @@ public class BasicDrawerActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.d("koo", "asdaasdasdasdasdasdasdasasdsdasdsd");
+
 		setContentView(R.layout.basic_drawer);
 		Log.d("koo", "end");
 		
@@ -192,7 +192,7 @@ public class BasicDrawerActivity extends FragmentActivity {
     	switch (position) {
     	case 0 :
     		
-    	fragment = new KmClinicListFragment();
+    	fragment = KmClinicListFragment.create(this);
     	
     	fragmentManager = getFragmentManager();
     	fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();

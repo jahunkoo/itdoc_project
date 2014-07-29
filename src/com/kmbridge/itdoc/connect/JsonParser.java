@@ -1,4 +1,4 @@
-package com.kmbridge.itdoc.util;
+package com.kmbridge.itdoc.connect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,7 @@ import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.dto.Week;
+import com.kmbridge.itdoc.util.ItDocConstants;
 
 import android.util.Log;
 
@@ -43,6 +44,8 @@ public class JsonParser {
 			obj = parseMiddleRegionList(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_REGISTER)) {
 			obj = parserRegister(data);
+		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_LOGIN)) {
+			obj = parserLogin(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_GET_GRADE_LIST)) {
 			obj = parseGradeList(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_GET_WEEK_LIST)) {
@@ -63,6 +66,23 @@ public class JsonParser {
 		JSONObject jsonObj = new JSONObject(data);
 		String result = jsonObj.getString("result");
 		return result;
+	}
+	
+	private boolean parserLogin(String data) throws JSONException {
+		JSONObject jsonObj = new JSONObject(data);
+		String result = jsonObj.getString("success");
+		boolean isLogin=false;
+		if(result.equals("true"))
+		{
+			
+			isLogin=true;
+			return isLogin;
+		}
+		else
+		{
+			isLogin=false;
+			return isLogin;
+		}
 	}
 
 	// 메서드 네이밍 : parse+클래스명+자료구조
@@ -200,7 +220,7 @@ public class JsonParser {
 
 			try {
 				for (int idx = 0; idx < JSONindexArray.length(); idx++) {
-					indexobj = JSONindexArray.getJSONObject(i);
+					indexobj = JSONindexArray.getJSONObject(idx);
 
 					UserSimpleInfo userSimpleInfo = new UserSimpleInfo();
 					userSimpleInfo.setEmail(indexobj.getString("email"));
@@ -245,12 +265,16 @@ public class JsonParser {
 			kmClinicView.setRatingNum(indexobj.getInt("ratingNum"));
 			kmClinicView.setPicturePath(indexobj.getString("picturePath"));
 			kmClinicView.setUserLikeNum(indexobj.getInt("userLikeNum"));
+			kmClinicView.setType(indexobj.getInt("type"));
+			
+			Log.d("kim","JsonParser(270) type is " + kmClinicView.getType());
+			
 			JSONArray JSONindexArray = new JSONArray();
 			JSONindexArray = indexobj.getJSONArray("keywordList");
-			List<String> keywordList = new ArrayList();
+			List<String> keywordList = new ArrayList<String>();
 			try {
 				for (int idx = 0; idx < JSONindexArray.length(); idx++) {
-					keywordList.add(JSONindexArray.getString(i));
+					keywordList.add(JSONindexArray.getString(idx));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

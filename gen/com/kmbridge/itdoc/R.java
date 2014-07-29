@@ -17,24 +17,26 @@ public final class R {
     }
     public static final class drawable {
         public static final int drawer_shadow=0x7f020000;
-        public static final int ic_action_search=0x7f020001;
-        public static final int ic_action_settings=0x7f020002;
-        public static final int ic_drawer=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int intro=0x7f020005;
-        public static final int introduce_itdoc1=0x7f020006;
-        public static final int introduce_itdoc2=0x7f020007;
-        public static final int introduce_itdoc3=0x7f020008;
-        public static final int introduce_itdoc4=0x7f020009;
-        public static final int itdoc_logo=0x7f02000a;
-        public static final int menu1=0x7f02000b;
-        public static final int menu2=0x7f02000c;
-        public static final int menu3=0x7f02000d;
-        public static final int menu4=0x7f02000e;
-        public static final int menu5=0x7f02000f;
-        public static final int menu6=0x7f020010;
-        public static final int menu7=0x7f020011;
-        public static final int menu8=0x7f020012;
+        public static final int follow=0x7f020001;
+        public static final int ic_action_search=0x7f020002;
+        public static final int ic_action_settings=0x7f020003;
+        public static final int ic_drawer=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int intro=0x7f020006;
+        public static final int introduce_itdoc1=0x7f020007;
+        public static final int introduce_itdoc2=0x7f020008;
+        public static final int introduce_itdoc3=0x7f020009;
+        public static final int introduce_itdoc4=0x7f02000a;
+        public static final int itdoc_logo=0x7f02000b;
+        public static final int menu1=0x7f02000c;
+        public static final int menu2=0x7f02000d;
+        public static final int menu3=0x7f02000e;
+        public static final int menu4=0x7f02000f;
+        public static final int menu5=0x7f020010;
+        public static final int menu6=0x7f020011;
+        public static final int menu7=0x7f020012;
+        public static final int menu8=0x7f020013;
+        public static final int not_follow=0x7f020014;
     }
     public static final class id {
         public static final int action_flip=0x7f040001;
@@ -47,42 +49,63 @@ public final class R {
     
          */
         public static final int action_next=0x7f040000;
-        public static final int action_previous=0x7f040026;
-        public static final int action_search=0x7f040025;
-        public static final int button_fragment_screen_slide_login=0x7f040024;
-        public static final int button_fragment_screen_slide_register=0x7f040023;
-        public static final int content_frame=0x7f04000f;
-        public static final int drawer_layout=0x7f04000e;
-        public static final int email_join=0x7f04000c;
-        public static final int email_login=0x7f04000d;
-        public static final int facebook=0x7f04000b;
-        public static final int image=0x7f04001d;
-        public static final int image_intro=0x7f040014;
-        public static final int image_upload=0x7f040005;
-        public static final int imageview_fragment_screen_slide_logo=0x7f040021;
-        public static final int imageview_fragment_screen_slide_page=0x7f04001f;
-        public static final int join_email=0x7f040016;
-        public static final int join_firstname=0x7f040018;
-        public static final int join_lastname=0x7f040019;
-        public static final int join_password=0x7f040017;
-        public static final int join_submit=0x7f04001a;
-        public static final int left_drawer=0x7f040010;
-        public static final int linearLayout_user_manager=0x7f04000a;
-        public static final int linearLayout_user_manager_for_join_fragment=0x7f040008;
-        public static final int linearLayout_user_manager_for_login_fragment=0x7f040009;
-        public static final int linearlayout_connection_loading=0x7f040011;
-        public static final int login_submit=0x7f04001c;
-        public static final int pager=0x7f040006;
-        public static final int progressbar_connection_loading=0x7f040012;
-        public static final int relativeLayout_fragment_screen_slide_content=0x7f04001e;
-        public static final int relativeLayout_user_manager=0x7f040007;
-        public static final int relativelayout_clinic_list=0x7f040013;
-        public static final int relativelayout_intro=0x7f040003;
-        public static final int textview_slide_screen_comment=0x7f040022;
-        public static final int textview_slide_screen_divide_line=0x7f040020;
-        public static final int user_insert_layout=0x7f040015;
-        public static final int user_layout=0x7f040004;
-        public static final int user_login_layout=0x7f04001b;
+        public static final int action_previous=0x7f04003b;
+        public static final int action_search=0x7f04003a;
+        public static final int btn_activity_km_clilic_detail_visited=0x7f04000f;
+        public static final int btn_activity_km_clinic_detail_call=0x7f040010;
+        public static final int button_fragment_screen_slide_login=0x7f040039;
+        public static final int button_fragment_screen_slide_register=0x7f040038;
+        public static final int check_alarm=0x7f040008;
+        public static final int check_push=0x7f040006;
+        public static final int content_frame=0x7f04001b;
+        public static final int drawer_layout=0x7f04001a;
+        public static final int email_join=0x7f040018;
+        public static final int email_login=0x7f040019;
+        public static final int facebook=0x7f040017;
+        public static final int image=0x7f040033;
+        public static final int image_intro=0x7f040028;
+        public static final int image_upload=0x7f040012;
+        public static final int imageview_clinic_list_item_clinicimage=0x7f04001d;
+        public static final int imageview_clinic_list_item_follow_img=0x7f040024;
+        public static final int imageview_fragment_screen_slide_logo=0x7f040036;
+        public static final int imageview_fragment_screen_slide_page=0x7f040034;
+        public static final int join_email=0x7f04002a;
+        public static final int join_firstname=0x7f04002c;
+        public static final int join_lastname=0x7f04002d;
+        public static final int join_password=0x7f04002b;
+        public static final int join_submit=0x7f04002e;
+        public static final int left_drawer=0x7f04001c;
+        public static final int linearLayout_config=0x7f040004;
+        public static final int linearLayout_user_manager=0x7f040016;
+        public static final int linearLayout_user_manager_for_join_fragment=0x7f040014;
+        public static final int linearLayout_user_manager_for_login_fragment=0x7f040015;
+        public static final int linearlayout_clinic_list_item=0x7f04001e;
+        public static final int linearlayout_connection_loading=0x7f040025;
+        public static final int listview_clinic_list=0x7f040027;
+        public static final int login_email=0x7f040030;
+        public static final int login_password=0x7f040031;
+        public static final int login_submit=0x7f040032;
+        public static final int pager=0x7f040013;
+        public static final int progressbar_connection_loading=0x7f040026;
+        public static final int relativeLayout_fragment_screen_slide_content=0x7f04000e;
+        public static final int relativeLayout_user_manager=0x7f040003;
+        public static final int relativelayout_intro=0x7f04000d;
+        public static final int textview_clinic_list_item_follower=0x7f040021;
+        public static final int textview_clinic_list_item_keyword=0x7f040023;
+        public static final int textview_clinic_list_item_likenum=0x7f040020;
+        public static final int textview_clinic_list_item_name=0x7f04001f;
+        public static final int textview_clinic_list_item_region=0x7f040022;
+        public static final int textview_slide_screen_comment=0x7f040037;
+        public static final int textview_slide_screen_divide_line=0x7f040035;
+        public static final int txt_view_alarm=0x7f040007;
+        public static final int txt_view_evalution=0x7f04000b;
+        public static final int txt_view_helpcomment=0x7f040009;
+        public static final int txt_view_helpdesk=0x7f04000a;
+        public static final int txt_view_logout=0x7f04000c;
+        public static final int txt_view_push=0x7f040005;
+        public static final int user_insert_layout=0x7f040029;
+        public static final int user_layout=0x7f040011;
+        public static final int user_login_layout=0x7f04002f;
         public static final int usermanger=0x7f040002;
     }
     public static final class integer {
@@ -91,19 +114,22 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_basic=0x7f030000;
-        public static final int activity_intro=0x7f030001;
-        public static final int activity_profile_picture=0x7f030002;
-        public static final int activity_screen_slide=0x7f030003;
-        public static final int activity_user_manager=0x7f030004;
-        public static final int basic_drawer=0x7f030005;
-        public static final int basic_drawer_list_item=0x7f030006;
-        public static final int connection_loading=0x7f030007;
-        public static final int fragment_clinic_list=0x7f030008;
-        public static final int fragment_intro=0x7f030009;
-        public static final int fragment_join=0x7f03000a;
-        public static final int fragment_login=0x7f03000b;
-        public static final int fragment_planet=0x7f03000c;
-        public static final int fragment_screen_slide_page=0x7f03000d;
+        public static final int activity_config=0x7f030001;
+        public static final int activity_intro=0x7f030002;
+        public static final int activity_km_clinic_detail=0x7f030003;
+        public static final int activity_profile_picture=0x7f030004;
+        public static final int activity_screen_slide=0x7f030005;
+        public static final int activity_user_manager=0x7f030006;
+        public static final int basic_drawer=0x7f030007;
+        public static final int basic_drawer_list_item=0x7f030008;
+        public static final int clinic_list_item=0x7f030009;
+        public static final int connection_loading=0x7f03000a;
+        public static final int fragment_clinic_list=0x7f03000b;
+        public static final int fragment_intro=0x7f03000c;
+        public static final int fragment_join=0x7f03000d;
+        public static final int fragment_login=0x7f03000e;
+        public static final int fragment_planet=0x7f03000f;
+        public static final int fragment_screen_slide_page=0x7f030010;
     }
     public static final class menu {
         public static final int activity_basic_actions=0x7f090000;
@@ -126,36 +152,52 @@ public final class R {
          */
         public static final int action_toggle=0x7f06000e;
         public static final int action_websearch=0x7f060007;
+        public static final int alarm=0x7f06002d;
+        public static final int all_review=0x7f060037;
         public static final int app_name=0x7f060000;
         public static final int app_not_available=0x7f060008;
         /**  BasicActivity related 
          */
         public static final int basic_activity_title=0x7f060001;
+        public static final int button_call=0x7f060035;
         public static final int button_login=0x7f060019;
         /**  fragment_screen_slide_page 
          */
         public static final int button_register=0x7f060018;
+        /**  activity_kmclinic_detail_page 
+         */
+        public static final int button_visited=0x7f060034;
         public static final int card_back_description=0x7f060017;
         public static final int drawer_close=0x7f060006;
         public static final int drawer_open=0x7f060005;
         public static final int email_join=0x7f060028;
         public static final int email_login=0x7f060029;
+        public static final int evaluation=0x7f060030;
         /**  activity_user_manager_page 
          */
         public static final int facebook=0x7f060027;
         public static final int hello_world=0x7f06000a;
+        public static final int helpcomment=0x7f06002e;
+        public static final int helpdesk=0x7f06002f;
         public static final int intro_img=0x7f060004;
         public static final int join_comment_1=0x7f060024;
         public static final int join_comment_2=0x7f060025;
         public static final int join_comment_3=0x7f060026;
+        public static final int logout=0x7f060031;
         /**  slide page related 
          */
         public static final int lorem_ipsum=0x7f06000d;
         public static final int profile_commnet_1=0x7f06001d;
         public static final int profile_commnet_2=0x7f06001e;
+        /**  activity_config_page 
+         */
+        public static final int push=0x7f06002c;
+        public static final int recomend_relatives=0x7f060036;
         public static final int sir=0x7f06001c;
         public static final int title_activity_basic=0x7f06000b;
+        public static final int title_activity_config=0x7f060032;
         public static final int title_activity_intro=0x7f060009;
+        public static final int title_activity_km_clinic_detail=0x7f060033;
         public static final int title_activity_login=0x7f06001a;
         public static final int title_activity_user_manager=0x7f06000c;
         public static final int title_template_step=0x7f060016;

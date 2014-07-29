@@ -20,7 +20,6 @@ import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.ItDocUtil;
-import com.kmbridge.itdoc.util.JsonParser;
 
 /**
  * 서버로부터 데이터를 내려받을 때,중간 다리 역할을 하는 클래스
@@ -184,13 +183,16 @@ public class ConnectionBridge {
 	}
 
 	public ArrayList<KmClinicView> getKmClinicViewList(String methodUrl,
-			Context context) {
+			Context context, String email) {
 		ArrayList<KmClinicView> KmClinicView = null;
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
 				methodUrl);
 		HttpConnectionModule connection = new HttpConnectionModule(context);
 		try {
-			connection.setMethod(HttpConnectionModule.GET);
+			connection.setMethod(HttpConnectionModule.POST);
+			Properties prop = new Properties();
+			prop.setProperty("email", email);
+			connection.setProperties(prop);
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
 
@@ -204,10 +206,12 @@ public class ConnectionBridge {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
-			Log.d("kim", "kim");
 			e.printStackTrace();
 		} catch (NullPointerException e) {
 
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return KmClinicView;
@@ -306,10 +310,42 @@ public class ConnectionBridge {
 
 		return result;
 	}
+	
+	public boolean login(String methodUrl, Properties props, Context context) {
+		//String result = null;
+		boolean result=false;
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,methodUrl);
+		Log.d("koo", targetUrl);
+		// http://localhost:8080/ItDocServer/register?email=asd2323sd@gmail.com&password=asdasd
+		HttpConnectionModule connection = new HttpConnectionModule(context);
+		try {
+			connection.setMethod(HttpConnectionModule.POST);
+			connection.setProperties(props);
+			Log.d("koo", props.toString());
+
+			connection.downloadTask.execute(targetUrl);
+			String data = connection.downloadTask.get();
+			result =  (Boolean)new JsonParser(methodUrl).parse(data);
+
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 
 	// 이미지 업로드
-	public String insertImage(String methodUrl, File uploadFile,
-			Context context, String id) {
+	public String insertImage(String methodUrl, File uploadFile, Context context, String id) {
 		String result = null;
 		// String email = "koo10682@gmail.com";
 
