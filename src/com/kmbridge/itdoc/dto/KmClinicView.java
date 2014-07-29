@@ -20,6 +20,7 @@ public class KmClinicView {
 	private int followNum;			// 해당 한의원이 팔로우 된 횟수
 	private int ratingNum;			// 알고리즘 미정 
 	private String picturePath;
+	private int type;
 	private int userLikeNum;		//용해요 - 사용자가 한의원을 추천한 것 - 가본사람이 추천 누른 횟수   
 	private List<String> keywordList;	//각각 한의원의 키워드 배열
 	private List<UserSimpleInfo> userSimpleInfoList;	//추천한 사람들의 간단한 정보들 (이메일, 사진, 이름) -> *지인을 우선으로*  
@@ -29,24 +30,25 @@ public class KmClinicView {
 	}
 
 	public KmClinicView(int id, String name, String mapPoint,
-			List<String> keywordList, int bigRegionCode, String bigRegionName,
-			int middleRegionCode, String middleRegionName, String remainRegion,
-			int userLikeNum, int followNum, int ratingNum, String picturePath,
-			List<UserSimpleInfo> userSimpleInfoList) {
+			int bigRegionCode, String bigRegionName, int middleRegionCode,
+			String middleRegionName, String remainRegion, int followNum,
+			int ratingNum, String picturePath, int type, int userLikeNum,
+			List<String> keywordList, List<UserSimpleInfo> userSimpleInfoList) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.mapPoint = mapPoint;
-		this.keywordList = keywordList;
 		this.bigRegionCode = bigRegionCode;
 		this.bigRegionName = bigRegionName;
 		this.middleRegionCode = middleRegionCode;
 		this.middleRegionName = middleRegionName;
 		this.remainRegion = remainRegion;
-		this.userLikeNum = userLikeNum;
 		this.followNum = followNum;
 		this.ratingNum = ratingNum;
 		this.picturePath = picturePath;
+		this.type = type;
+		this.userLikeNum = userLikeNum;
+		this.keywordList = keywordList;
 		this.userSimpleInfoList = userSimpleInfoList;
 	}
 
@@ -72,14 +74,6 @@ public class KmClinicView {
 
 	public void setMapPoint(String mapPoint) {
 		this.mapPoint = mapPoint;
-	}
-
-	public List<String> getKeywordList() {
-		return keywordList;
-	}
-
-	public void setKeywordList(List<String> keywordList) {
-		this.keywordList = keywordList;
 	}
 
 	public int getBigRegionCode() {
@@ -122,14 +116,6 @@ public class KmClinicView {
 		this.remainRegion = remainRegion;
 	}
 
-	public int getUserLikeNum() {
-		return userLikeNum;
-	}
-
-	public void setUserLikeNum(int userLikeNum) {
-		this.userLikeNum = userLikeNum;
-	}
-
 	public int getFollowNum() {
 		return followNum;
 	}
@@ -154,6 +140,30 @@ public class KmClinicView {
 		this.picturePath = picturePath;
 	}
 
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getUserLikeNum() {
+		return userLikeNum;
+	}
+
+	public void setUserLikeNum(int userLikeNum) {
+		this.userLikeNum = userLikeNum;
+	}
+
+	public List<String> getKeywordList() {
+		return keywordList;
+	}
+
+	public void setKeywordList(List<String> keywordList) {
+		this.keywordList = keywordList;
+	}
+
 	public List<UserSimpleInfo> getUserSimpleInfoList() {
 		return userSimpleInfoList;
 	}
@@ -165,13 +175,13 @@ public class KmClinicView {
 	@Override
 	public String toString() {
 		return "KmClinicView [id=" + id + ", name=" + name + ", mapPoint="
-				+ mapPoint + ", keywordList=" + keywordList
-				+ ", bigRegionCode=" + bigRegionCode + ", bigRegionName="
-				+ bigRegionName + ", middleRegionCode=" + middleRegionCode
-				+ ", middleRegionName=" + middleRegionName + ", remainRegion="
-				+ remainRegion + ", userLikeNum=" + userLikeNum
-				+ ", followNum=" + followNum + ", ratingNum=" + ratingNum
-				+ ", picturePath=" + picturePath + ", userSimpleInfoList="
+				+ mapPoint + ", bigRegionCode=" + bigRegionCode
+				+ ", bigRegionName=" + bigRegionName + ", middleRegionCode="
+				+ middleRegionCode + ", middleRegionName=" + middleRegionName
+				+ ", remainRegion=" + remainRegion + ", followNum=" + followNum
+				+ ", ratingNum=" + ratingNum + ", picturePath=" + picturePath
+				+ ", type=" + type + ", userLikeNum=" + userLikeNum
+				+ ", keywordList=" + keywordList + ", userSimpleInfoList="
 				+ userSimpleInfoList + "]";
 	}
 

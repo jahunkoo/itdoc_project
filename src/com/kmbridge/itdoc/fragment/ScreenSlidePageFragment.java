@@ -19,17 +19,24 @@ package com.kmbridge.itdoc.fragment;
 import java.util.Locale;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+
+import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.activity.ScreenSlideActivity;
+
+import com.kmbridge.itdoc.activity.UserManagerActivity;
+
 
 /**
  * A fragment representing a single step in a wizard. The fragment shows a dummy title indicating
@@ -38,12 +45,12 @@ import com.kmbridge.itdoc.activity.ScreenSlideActivity;
  * <p>This class is used by the {@link CardFlipActivity} and {@link
  * ScreenSlideActivity} samples.</p>
  */
-public class ScreenSlidePageFragment extends Fragment {
-	private Adapter testAdapter;
-    public void setAdapter(Adapter adapter){
-    	this.testAdapter = adapter;
-    }
-	/**
+	
+public class ScreenSlidePageFragment extends Fragment implements View.OnClickListener{
+	private Button btn_activity_screen_slide_button_fragment_screen_slide_register;
+	private Button btn_activity_screen_slide_button_fragment_screen_slide_login;
+	
+    /**
      * The argument key for the page number this fragment represents.
      */
     public static final String ARG_PAGE = "page";
@@ -64,8 +71,23 @@ public class ScreenSlidePageFragment extends Fragment {
         fragment.setAdapter(adapter);
         return fragment;
     }
+    public static ScreenSlidePageFragment create(int pageNumber) {
+        ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_PAGE, pageNumber);
+        fragment.setArguments(args);
+        return fragment;
+    }
+    
+    
+    
+    
+    private void setAdapter(Adapter adapter) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public ScreenSlidePageFragment() {
+	public ScreenSlidePageFragment() {
     }
 
     @Override
@@ -89,6 +111,15 @@ public class ScreenSlidePageFragment extends Fragment {
                         "drawable", getActivity().getPackageName());
         ((ImageView) rootView.findViewById(R.id.imageview_fragment_screen_slide_page)).setImageResource(imageId);
         ((TextView) rootView.findViewById(R.id.textview_slide_screen_comment)).setText(comment);
+        
+        //회원가입 버튼
+        btn_activity_screen_slide_button_fragment_screen_slide_register = (Button) rootView.findViewById(R.id.button_fragment_screen_slide_register);
+        btn_activity_screen_slide_button_fragment_screen_slide_register.setOnClickListener(this);
+        
+        //로그인 버튼
+        btn_activity_screen_slide_button_fragment_screen_slide_login = (Button) rootView.findViewById(R.id.button_fragment_screen_slide_login);
+        btn_activity_screen_slide_button_fragment_screen_slide_login.setOnClickListener(this);
+
         return rootView;
     }
 
@@ -97,5 +128,23 @@ public class ScreenSlidePageFragment extends Fragment {
      */
     public int getPageNumber() {
         return mPageNumber;
+    }
+    
+    @Override
+   	public void onClick(View v) {
+   		switch (v.getId()) {
+   		// 회원가입
+   		case R.id.button_fragment_screen_slide_register:
+   			Intent intent = new Intent(getActivity(), UserManagerActivity.class);
+   			startActivity(intent);
+   			break;
+   		
+   		case R.id.button_fragment_screen_slide_login:
+   			Intent intent2 = new Intent(getActivity(), UserManagerActivity.class);
+   			startActivity(intent2);
+   			//UserManagerActivity uma = new UserManagerActivity();
+   			//uma.loginLayoutElement();
+   			break;
+   		}
     }
 }

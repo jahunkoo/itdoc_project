@@ -42,7 +42,9 @@ public class BasicDrawerActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d("koo", "asdaasdasdasdasdasdasdasasdsdasdsd");
 		setContentView(R.layout.basic_drawer);
+		Log.d("koo", "end");
 		
 		mTitle = mDrawerTitle = getTitle();
 		mDrawerMenuTitles = getResources().getStringArray(R.array.drawer_menu_title_array);
