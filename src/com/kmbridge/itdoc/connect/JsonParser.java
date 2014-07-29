@@ -265,9 +265,13 @@ public class JsonParser {
 			kmClinicView.setRatingNum(indexobj.getInt("ratingNum"));
 			kmClinicView.setPicturePath(indexobj.getString("picturePath"));
 			kmClinicView.setUserLikeNum(indexobj.getInt("userLikeNum"));
+			kmClinicView.setType(indexobj.getInt("type"));
+			
+			Log.d("kim","JsonParser(270) type is " + kmClinicView.getType());
+			
 			JSONArray JSONindexArray = new JSONArray();
 			JSONindexArray = indexobj.getJSONArray("keywordList");
-			List<String> keywordList = new ArrayList();
+			List<String> keywordList = new ArrayList<String>();
 			try {
 				for (int idx = 0; idx < JSONindexArray.length(); idx++) {
 					keywordList.add(JSONindexArray.getString(idx));

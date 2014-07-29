@@ -3,7 +3,6 @@ package com.kmbridge.itdoc.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,9 @@ import android.widget.ListView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.ClinicListAdapter;
+import com.kmbridge.itdoc.exception.RecordNotFoundException;
+import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class KmClinicListFragment extends Fragment{
 
@@ -25,11 +27,21 @@ public class KmClinicListFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		Log.d("kim","KmClinicListFragment(17) Run very well");
+		String email;
+		
+		try {
+			email = new SharedPreferenceUtil().getData(context, ItDocConstants.SHARED_KEY_EMAIL);
+		} catch (RecordNotFoundException e) {
+			email = null;
+			e.printStackTrace();
+		} 
+		
 		
 		View rootView = inflater.inflate(R.layout.fragment_clinic_list, container, false);
 		
-		ClinicListAdapter clinicListAdapter = new ClinicListAdapter(context);
+		email = "chicken@gmail.com";
+		
+		ClinicListAdapter clinicListAdapter = new ClinicListAdapter(context,email);
 		
 		// mListView.addFooterView(mInflater.inflate(R.layout.footer, null));
 		
