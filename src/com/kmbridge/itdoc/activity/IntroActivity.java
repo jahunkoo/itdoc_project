@@ -155,7 +155,7 @@ public class IntroActivity extends FragmentActivity {
 		}
 		else
 		{
-			Intent intent = new Intent(this, ScreenSlideActivity.class);
+			Intent intent = new Intent(this, MainDrawerActivity.class);
 			startActivity(intent);
 		}
 		finish();

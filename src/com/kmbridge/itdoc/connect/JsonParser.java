@@ -220,7 +220,7 @@ public class JsonParser {
 
 			try {
 				for (int idx = 0; idx < JSONindexArray.length(); idx++) {
-					indexobj = JSONindexArray.getJSONObject(i);
+					indexobj = JSONindexArray.getJSONObject(idx);
 
 					UserSimpleInfo userSimpleInfo = new UserSimpleInfo();
 					userSimpleInfo.setEmail(indexobj.getString("email"));
@@ -270,7 +270,7 @@ public class JsonParser {
 			List<String> keywordList = new ArrayList();
 			try {
 				for (int idx = 0; idx < JSONindexArray.length(); idx++) {
-					keywordList.add(JSONindexArray.getString(i));
+					keywordList.add(JSONindexArray.getString(idx));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
