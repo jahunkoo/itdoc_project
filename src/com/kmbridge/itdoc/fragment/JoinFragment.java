@@ -18,6 +18,7 @@ import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.activity.ProfilePictureActivity;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.User;
+import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.Sentence;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
@@ -63,16 +64,11 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 		// view가져오고
 		View rootView = inflater.inflate(R.layout.fragment_join, container,
 				false);
-		edittxt_activity_join_join_email = (EditText) rootView
-				.findViewById(R.id.join_email);
-		edittxt_activity_join_join_password = (EditText) rootView
-				.findViewById(R.id.join_password);
-		edittxt_activity_join_join_firstname = (EditText) rootView
-				.findViewById(R.id.join_firstname);
-		edittxt_activity_join_join_lastname = (EditText) rootView
-				.findViewById(R.id.join_lastname);
-		btn_activity_join_join_submit = (Button) rootView
-				.findViewById(R.id.join_submit);
+		edittxt_activity_join_join_email = (EditText) rootView.findViewById(R.id.join_email);
+		edittxt_activity_join_join_password = (EditText) rootView.findViewById(R.id.join_password);
+		edittxt_activity_join_join_firstname = (EditText) rootView.findViewById(R.id.join_firstname);
+		edittxt_activity_join_join_lastname = (EditText) rootView.findViewById(R.id.join_lastname);
+		btn_activity_join_join_submit = (Button) rootView.findViewById(R.id.join_submit);
 		btn_activity_join_join_submit.setOnClickListener(this);
 		return rootView;
 	}
@@ -102,8 +98,8 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 					
 					SharedPreferenceUtil user_info = new SharedPreferenceUtil();
 					
-					user_info.setData(getActivity(),"user_email", edittxt_activity_join_join_email.getText().toString());
-					user_info.setData(getActivity(), "user_pwd", edittxt_activity_join_join_password.getText().toString());
+					user_info.setData(getActivity(),ItDocConstants.SHARED_EMAIL_KEY, edittxt_activity_join_join_email.getText().toString());
+					user_info.setData(getActivity(),ItDocConstants.SHARED_PASSWORD_KEY, edittxt_activity_join_join_password.getText().toString());
 					/*
 					SharedPreferences shared_user_info = getActivity().getSharedPreferences("user_info", 0);
 					SharedPreferences.Editor editor = shared_user_info.edit();
@@ -113,10 +109,8 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 					
 					editor.commit();*/
 					
-					Toast.makeText(getActivity(), Sentence.successJoin,
-							Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(getActivity(),
-							ProfilePictureActivity.class);
+					Toast.makeText(getActivity(), Sentence.successJoin,Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(getActivity(),ProfilePictureActivity.class);
 					startActivity(intent);
 				}
 			} else {

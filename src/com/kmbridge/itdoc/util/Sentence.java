@@ -35,6 +35,8 @@ public class Sentence {
 	public static final String existEmail = "이미 등록된 이메일 입니다.";
 	public static final String joinFail = "회원가입 실패";
 	public static final String successJoin = "회원가입 완료!";
+	public static final String successLogin = "로그인 되었습니다.";
+	public static final String errorLogin = "로그인 실패! 아이디와 비밀번호를 확인해 주세요.";
 	public static final String rules = "등록 버튼을 누르면 "+"<a href = \"http://blog.naver.com/totoro1012/90184263922\">쌤통(SSamTong) 이용약관</a>"+"에 동의하고 "
 			+"<a href = \"http://blog.naver.com/totoro1012/90184263536\">개인정보 보호정책</a>"+"을 읽고 이해한 것으로 간주됩니다.";
 	/**

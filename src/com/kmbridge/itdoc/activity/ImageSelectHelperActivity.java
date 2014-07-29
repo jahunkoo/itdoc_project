@@ -32,6 +32,9 @@ import android.widget.LinearLayout;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
+import com.kmbridge.itdoc.exception.RecordNotFoundException;
+import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 /**
  * 안드로이드에서 이미지를 불러오는 것을 도와주는  
@@ -253,8 +256,17 @@ public class ImageSelectHelperActivity extends Activity {
 	private void doFinalProcess() {
 		
 		// 저장소 객체를 생성
-		SharedPreferences shared_user_info = getSharedPreferences("user_info", 0);
-		String email = shared_user_info.getString("user_email", "defaultemail@email.com");
+		//SharedPreferences shared_user_info = getSharedPreferences("user_info", 0);
+		//String email = shared_user_info.getString("user_email", "defaultemail@email.com");
+		SharedPreferenceUtil user_info = new SharedPreferenceUtil();
+		String email = null;
+		
+		try {
+			email = user_info.getData(this, ItDocConstants.SHARED_EMAIL_KEY);
+		} catch (RecordNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Log.d("kim","ImageSelectHelperActivity(257) get email -> " + email);
 		
