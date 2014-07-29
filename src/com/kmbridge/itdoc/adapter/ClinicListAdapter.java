@@ -27,14 +27,14 @@ public class ClinicListAdapter extends BaseAdapter {
 	public ImageLoader imageLoader;
 	public ArrayAdapter<ClinicListItem> adapter;
 
-	public ClinicListAdapter(Context context) {
+	public ClinicListAdapter(Context context, String email) {
 
 		inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		imageLoader = new ImageLoader(context);
 
 		ArrayList<KmClinicView> kmClinicViewList = new ArrayList<KmClinicView>();
 		ConnectionBridge connectionBridge = new ConnectionBridge();
-		kmClinicViewList = connectionBridge.getKmClinicViewList("getAllKmClinic", context);
+		kmClinicViewList = connectionBridge.getKmClinicViewList("getAllKmClinic", context, email);
 
 		for (int i = 0; i < kmClinicViewList.size(); i++) {
 
@@ -49,8 +49,9 @@ public class ClinicListAdapter extends BaseAdapter {
 			int followNum = kmClinicView.getFollowNum();
 			int likeNum = kmClinicView.getUserSimpleInfoList().size();
 			String keyword = kmClinicView.getKeywordList().get(0);
-
-			clinicListItemList.add(new ClinicListItem(id, picturepath, name, regionName, keyword, followNum, likeNum));
+			int type = kmClinicView.getType();
+			
+			clinicListItemList.add(new ClinicListItem(id, picturepath, name, regionName, keyword, followNum, likeNum, type));
 
 		}
 
@@ -84,12 +85,14 @@ public class ClinicListAdapter extends BaseAdapter {
 		View view = convertView;
 
 		ImageView img;
+		ImageView followImg;
 		TextView name;
 		TextView regionName;
 		TextView likeNum;
 		TextView followNum;
 		TextView keyword;
-
+		
+		
 		if (view == null) {
 			view = inflator.inflate(R.layout.clinic_list_item, parent,false);
 		}
@@ -101,6 +104,7 @@ public class ClinicListAdapter extends BaseAdapter {
 		likeNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_likenum);
 		followNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_follower);
 		keyword = (TextView) view.findViewById(R.id.textview_clinic_list_item_keyword);
+		followImg = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
 		
 		ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
 
@@ -119,6 +123,12 @@ public class ClinicListAdapter extends BaseAdapter {
 		likeNum.setText(toString().valueOf(clinicListItem.likeNum));
 		followNum.setText(toString().valueOf(clinicListItem.followNum));
 
+		if (clinicListItem.type == 1) {
+			followImg.setImageResource(R.drawable.follow);
+		} else {
+			followImg.setImageResource(R.drawable.not_follow);
+		}
+		
 		return view;
 	}
 
@@ -130,8 +140,9 @@ public class ClinicListAdapter extends BaseAdapter {
 		String keyword;
 		int followNum;
 		int likeNum;
+		int type;
 		
-		public ClinicListItem(int id, String picturepath, String name, String regionName, String keyword, int followNum, int likeNum) {
+		public ClinicListItem(int id, String picturepath, String name, String regionName, String keyword, int followNum, int likeNum, int type) {
 			super();
 			this.id = id;
 			this.picturepath = picturepath;
@@ -140,6 +151,7 @@ public class ClinicListAdapter extends BaseAdapter {
 			this.keyword = keyword;
 			this.followNum = followNum;
 			this.likeNum = likeNum;
+			this.type = type;
 		}
 
 		

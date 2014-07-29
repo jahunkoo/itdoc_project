@@ -183,13 +183,16 @@ public class ConnectionBridge {
 	}
 
 	public ArrayList<KmClinicView> getKmClinicViewList(String methodUrl,
-			Context context) {
+			Context context, String email) {
 		ArrayList<KmClinicView> KmClinicView = null;
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
 				methodUrl);
 		HttpConnectionModule connection = new HttpConnectionModule(context);
 		try {
-			connection.setMethod(HttpConnectionModule.GET);
+			connection.setMethod(HttpConnectionModule.POST);
+			Properties prop = new Properties();
+			prop.setProperty("email", email);
+			connection.setProperties(prop);
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
 
@@ -203,10 +206,12 @@ public class ConnectionBridge {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
-			Log.d("kim", "kim");
 			e.printStackTrace();
 		} catch (NullPointerException e) {
 
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return KmClinicView;

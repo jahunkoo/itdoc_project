@@ -47,7 +47,6 @@ public class ImageLoader {
         }
         else
         {
-        	Log.d("kim","아놔 왜 이미지 안떠");
             queuePhoto(url, imageView);
             imageView.setImageResource(stub_id);
         }

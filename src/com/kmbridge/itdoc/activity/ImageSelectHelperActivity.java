@@ -262,7 +262,7 @@ public class ImageSelectHelperActivity extends Activity {
 		String email = null;
 		
 		try {
-			email = user_info.getData(this, ItDocConstants.SHARED_EMAIL_KEY);
+			email = user_info.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
 		} catch (RecordNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
