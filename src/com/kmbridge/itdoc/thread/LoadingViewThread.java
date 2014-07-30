@@ -1,24 +1,30 @@
 package com.kmbridge.itdoc.thread;
 
+import com.kmbridge.itdoc.R;
+
+import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 
 public class LoadingViewThread extends Thread implements Runnable {
 
 	public static final int SHOW_LOADING_LAYOUT = 0;
 	public static final int END_LOADING_LAYOUT = 1;
-	private View view;
-	Handler mHandler = new Handler() {
+	private View loadingView;
+	private Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			Log.d("koo", "ItDocHandler handleMessage");
 			switch (msg.what) {
 			case SHOW_LOADING_LAYOUT:
-				view.bringToFront();
-				view.setVisibility(View.VISIBLE);
+				loadingView.bringToFront();
+				loadingView.setVisibility(View.VISIBLE);
 				Log.d("koo", "loading page start");
 				break;
 			case END_LOADING_LAYOUT:
@@ -35,9 +41,18 @@ public class LoadingViewThread extends Thread implements Runnable {
 		}
 	};
 
+	
+	public LoadingViewThread(Context context) {
+		super();
+		Activity activity = (Activity) context;
+		LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		loadingView = inflator.inflate(R.layout.connection_loading, null);
+		activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+	}
+	
 	public LoadingViewThread(View view) {
 		super();
-		this.view = view;
+		this.loadingView = view;
 	}
 
 	

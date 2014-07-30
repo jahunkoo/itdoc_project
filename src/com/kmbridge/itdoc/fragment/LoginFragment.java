@@ -14,12 +14,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.activity.BasicDrawerActivity;
 import com.kmbridge.itdoc.activity.MainDrawerActivity;
-import com.kmbridge.itdoc.activity.ScreenSlideActivity;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.User;
+import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.Sentence;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 /**
  * Fragment that appears in the "content_frame", shows a planet
@@ -76,7 +76,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 				//if (message.equals("error")) {
 				if(isLoginCheck==false){
 					Toast.makeText(getActivity(), Sentence.errorLogin,Toast.LENGTH_SHORT).show();
-				} else if (isLoginCheck==true) {
+				} else if (isLoginCheck==true) { //로그인 성공
 					// 회원가입 성공
 					// phoneBook();
 					
@@ -92,10 +92,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 					editor.putString("user_pwd", edittxt_activity_join_join_password.getText().toString());
 					
 					editor.commit();*/
+					SharedPreferenceUtil user_info = new SharedPreferenceUtil();
+					user_info.setData(getActivity(),ItDocConstants.SHARED_KEY_EMAIL, edittxt_activity_login_login_email.getText().toString());
 					
 					Toast.makeText(getActivity(), Sentence.successLogin,Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(getActivity(),MainDrawerActivity.class);
 					startActivity(intent);
+					getActivity().finish();
 				}
 			} else {
 				Toast.makeText(getActivity(), Sentence.noInfomationMessage,

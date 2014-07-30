@@ -29,11 +29,13 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.Sentence;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 /**
@@ -282,8 +284,11 @@ public class ImageSelectHelperActivity extends Activity {
 		saveBitmapToFile(bitmap);
 		//Bitmap bm = BitmapFactory.decodeFile(getTempImageFile().getAbsolutePath());
 		//((ImageView) findViewById(R.id.ivImageSelected)).setImageBitmap(bm);
-		Intent intent = new Intent(this,UserManagerActivity.class);
-		startActivity(intent);
+		
+		Toast.makeText(this, Sentence.successProfileImage,Toast.LENGTH_SHORT).show();
+		
+		//Intent intent = new Intent(this,UserManagerActivity.class);
+		//startActivity(intent);
 		
 		Log.d("koo", "doFinalProcess()");
 	}

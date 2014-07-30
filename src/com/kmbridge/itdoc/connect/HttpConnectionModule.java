@@ -64,10 +64,10 @@ public class HttpConnectionModule {
 		this.context = context;
 		activity = (Activity) context;
 		//데이터 주고받을 동안 띄워질  connection_loading.xml 화면  객체화
-		LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		loadingView = inflator.inflate(R.layout.connection_loading, null);
-		activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-		loadingThread = new LoadingViewThread(loadingView);
+		//LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		//loadingView = inflator.inflate(R.layout.connection_loading, null);
+		//activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		//loadingThread = new LoadingViewThread(loadingView);
 		Log.d("koo", "HttpConnectionModule creator end");
 	} 
 
@@ -144,7 +144,7 @@ public class HttpConnectionModule {
         @Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			loadingThread.start();
+			//loadingThread.start();
 			Log.d("koo", "HttpConnectionModule onPreExecute start");
 			/*Message msg = connectHandler.obtainMessage();
 			msg.what = ItDocHandler.SHOW_LOADING_LAYOUT;
