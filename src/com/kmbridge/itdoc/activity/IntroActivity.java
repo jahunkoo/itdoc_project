@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.kmbridge.itdoc.R;
@@ -18,6 +19,7 @@ import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.fragment.IntroFragment;
+import com.kmbridge.itdoc.image.ImageManager;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
@@ -52,11 +54,18 @@ public class IntroActivity extends FragmentActivity {
 		}
 	});
 
+	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intro);
-		
+		DisplayMetrics displayMetrics = new DisplayMetrics(); 
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
+		    
+		ImageManager.screenWidth = displayMetrics.widthPixels; 
+		ImageManager.screenHeight = displayMetrics.heightPixels;
+		Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
 		setLayoutElement();
 		
 		new Thread(new Runnable() {

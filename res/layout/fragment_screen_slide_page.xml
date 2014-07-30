@@ -44,12 +44,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayout_fragment_screen_slide_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    >
 
     <ImageView
         android:id="@+id/imageview_fragment_screen_slide_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha="50"
          />
 
     <TextView
@@ -66,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/textview_slide_screen_divide_line"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/itdoc_logo"/>
+        android:src="@drawable/itdoc_logo_white"/>
 
     <TextView
         android:id="@+id/textview_slide_screen_comment"

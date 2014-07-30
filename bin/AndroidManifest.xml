@@ -24,11 +24,7 @@
             android:name=".activity.IntroActivity"
             android:label="@string/title_activity_intro"
             android:theme="@android:style/Theme.NoTitleBar" >
-             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             
         </activity>
         <activity
             android:name=".activity.BasicDrawerActivity"
@@ -41,6 +37,7 @@
         <activity
             android:name=".activity.UserManagerActivity"
             android:label="@string/title_activity_user_manager" >
+            
         </activity>
         <activity android:name=".activity.MainDrawerActivity" >
            
@@ -50,6 +47,11 @@
         <activity
             android:name=".activity.ScreenSlideActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.ProfilePictureActivity" >
             
