@@ -186,7 +186,6 @@ public class BasicDrawerActivity extends FragmentActivity {
     	
     	Fragment fragment;
     	FragmentManager fragmentManager;
-    	Log.d("kim","BasicDrawer(187) position is "+ position);
     	Bundle args = new Bundle();
     	
     	switch (position) {

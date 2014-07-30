@@ -14,6 +14,8 @@ public class ItDocConstants extends BasicConstants{
 	public static final String METHOD_URL_GET_ALL_KEYWORDS = "getAllKeywords";
 	public static final String METHOD_URL_REGISTER = "register";
 	public static final String METHOD_URL_LOGIN = "login";
+	public static final String METHOD_URL_INSERT_FOLLOW_NUM = "insertKmClinicFollow";
+	public static final String METHOD_URL_DELETE_FOLLOW_NUM = "deleteKmClinicFollow";
 	
 	public static final String SHARED_KEY_EMAIL = "user_email";
 	public static final String SHARED_KEY_PASSWORD = "user_pwd";

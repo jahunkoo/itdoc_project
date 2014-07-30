@@ -26,9 +26,11 @@ public class ClinicListAdapter extends BaseAdapter {
 	private LayoutInflater inflator;
 	public ImageLoader imageLoader;
 	public ArrayAdapter<ClinicListItem> adapter;
+	public String email;
 
 	public ClinicListAdapter(Context context, String email) {
 
+		this.email = email;
 		inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		imageLoader = new ImageLoader(context);
 
@@ -57,7 +59,6 @@ public class ClinicListAdapter extends BaseAdapter {
 
 		adapter = new ArrayAdapter<ClinicListItem>(context, R.id.listview_clinic_list, clinicListItemList);
 
-		Log.d("kim", "ClinicListAdapter(54) list size is " + kmClinicViewList.size());
 
 	}
 
@@ -68,14 +69,13 @@ public class ClinicListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public ClinicListItem getItem(int position) {
 		// TODO Auto-generated method stub
 		return clinicListItemList.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
@@ -84,7 +84,7 @@ public class ClinicListAdapter extends BaseAdapter {
 
 		View view = convertView;
 
-		ImageView img;
+		ImageView img = null;
 		ImageView followImg;
 		TextView name;
 		TextView regionName;
@@ -92,12 +92,13 @@ public class ClinicListAdapter extends BaseAdapter {
 		TextView followNum;
 		TextView keyword;
 		
-		
+
 		if (view == null) {
 			view = inflator.inflate(R.layout.clinic_list_item, parent,false);
+			view.setTag((Integer)position);
 		}
 
-		
+
 		img = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_clinicimage);
 		name = (TextView) view.findViewById(R.id.textview_clinic_list_item_name);
 		regionName = (TextView) view.findViewById(R.id.textview_clinic_list_item_region);
@@ -105,6 +106,7 @@ public class ClinicListAdapter extends BaseAdapter {
 		followNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_follower);
 		keyword = (TextView) view.findViewById(R.id.textview_clinic_list_item_keyword);
 		followImg = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
+		
 		
 		ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
 
@@ -151,6 +153,22 @@ public class ClinicListAdapter extends BaseAdapter {
 			this.keyword = keyword;
 			this.followNum = followNum;
 			this.likeNum = likeNum;
+			this.type = type;
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+		public int getType() {
+			return type;
+		}
+
+		public void setType(int type) {
 			this.type = type;
 		}
 

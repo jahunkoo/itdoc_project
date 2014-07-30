@@ -270,7 +270,6 @@ public class ImageSelectHelperActivity extends Activity {
 			e.printStackTrace();
 		}
 		
-		Log.d("kim","ImageSelectHelperActivity(257) get email -> " + email);
 		
 		ConnectionBridge bridge = new ConnectionBridge();
 		
