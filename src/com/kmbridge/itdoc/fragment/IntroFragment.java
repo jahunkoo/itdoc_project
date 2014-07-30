@@ -33,12 +33,11 @@ public class IntroFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// view가져오고
-		View introView = inflater.inflate(R.layout.fragment_intro, container,
-				false);
-		int imageId = getResources().getIdentifier("intro", "drawable",
-				getActivity().getPackageName());
-		((ImageView) introView.findViewById(R.id.image_intro))
-				.setImageResource(imageId);
+		View introView = inflater.inflate(R.layout.fragment_intro, container, false);
+		/*int logoImageId = getResources().getIdentifier("intro_logo", "drawable", getActivity().getPackageName());
+		((ImageView) introView.findViewById(R.id.imageview_fragment_intro_logo)).setImageResource(logoImageId);
+		int backgroungImageId = getResources().getIdentifier("intro", "drawable", getActivity().getPackageName());
+		((ImageView) introView.findViewById(R.id.imageview_fragment_intro_background)).setImageResource(backgroungImageId);*/
 		// getActivity().setTitle(planet);
 		return introView;
 	}

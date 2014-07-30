@@ -2,11 +2,11 @@ package com.kmbridge.itdoc.fragment;
 
 import java.util.ArrayList;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,6 +77,7 @@ public class KmClinicListFragment extends Fragment implements OnItemClickListene
 		String email = clinicListAdapter.email;
 
 		Log.d("kim", "1");
+		
 		if (type == 0) {
 			Log.d("kim", "2");
 			ConnectionBridge conn = new ConnectionBridge();

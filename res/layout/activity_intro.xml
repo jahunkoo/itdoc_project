@@ -3,6 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/relativelayout_intro"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="@android:color/white">
 
+<!--     <ImageView 
+    android:id="@+id/imageview_intro_activity_logo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="50dp"
+    android:src="@drawable/intro_logo"
+    
+    /> -->
+
+    <ImageView
+        android:id="@+id/imageview_intro_activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/intro_and_logo"
+        />
 </RelativeLayout>

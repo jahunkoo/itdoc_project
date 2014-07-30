@@ -1,8 +1,10 @@
 package com.kmbridge.itdoc.activity;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -27,7 +29,12 @@ public class UserManagerActivity extends BasicActivity implements OnClickListene
 		//로그인
 		btn_activity_user_manager_email_login = (Button) findViewById(R.id.email_login);
 		btn_activity_user_manager_email_login.setOnClickListener(this);
-
+		
+		Bundle bundle = getIntent().getExtras();
+		if(bundle.containsKey("callLogin")){
+			int code = bundle.getInt("callLogin");
+			loginLayoutElement();
+		}
 	}
 
 	@Override
@@ -55,7 +62,7 @@ public class UserManagerActivity extends BasicActivity implements OnClickListene
 		//args.putInt(PlanetFragment.ARG_PLANET_NUMBER, 0);
 		//join_fragment.setArguments(args);
 
-		FragmentManager fragmentManager = getFragmentManager();
+		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction().add(R.id.linearLayout_user_manager_for_join_fragment, joinFragment).commit();
 		findViewById(R.id.linearLayout_user_manager).setVisibility(View.GONE);
 		findViewById(R.id.linearLayout_user_manager_for_login_fragment).setVisibility(View.GONE);
@@ -68,7 +75,7 @@ public class UserManagerActivity extends BasicActivity implements OnClickListene
 		//args.putInt(PlanetFragment.ARG_PLANET_NUMBER, 0);
 		//join_fragment.setArguments(args);
 
-		FragmentManager fragmentManager = getFragmentManager();
+		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction().add(R.id.linearLayout_user_manager_for_login_fragment, loginFragment).commit();
 		findViewById(R.id.linearLayout_user_manager).setVisibility(View.GONE);
 		findViewById(R.id.linearLayout_user_manager_for_join_fragment).setVisibility(View.GONE);

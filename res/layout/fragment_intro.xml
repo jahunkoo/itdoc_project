@@ -13,11 +13,32 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/image_intro"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativelayout_fragment_intro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:gravity="center"
-    android:padding="32dp" />
+    android:background="@android:color/white"
+    >
+  <!--   <ImageView 
+    android:id="@+id/imageview_fragment_intro_logo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="50dp"
+    />
+
+    <ImageView
+        android:id="@+id/imageview_fragment_intro_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        /> -->
+        <ImageView
+        android:id="@+id/imageview_intro_activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/intro_and_logo"
+        />
+        
+</RelativeLayout>
+
