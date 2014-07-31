@@ -64,7 +64,7 @@
     <string name="title_activity_login">LoginActivity</string>
 
     <!-- activity_profile_picture_page -->
-    <string name="wellcome">회원님 안녕하세요!</string>
+    <string name="welcome">회원님 안녕하세요!</string>
     <string name="sir">회원님</string>
     <string name="profile_commnet_1">프로필에 사진을 추가해서</string>
     <string name="profile_commnet_2">회원님에 대해 알려 주세요.</string>
