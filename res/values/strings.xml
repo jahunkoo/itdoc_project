@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">itdoc</string>
@@ -98,12 +97,12 @@
     <string name="logout">로그아웃</string>
     <string name="title_activity_config">ConfigActivity</string>
     <string name="title_activity_km_clinic_detail">KmClinicDetailActivity</string>
-    
+
     <!-- activity_kmclinic_detail_page -->
     <string name="button_visited">가봤다.</string>
     <string name="button_call">전화하기</string>
     <string name="recomend_relatives">추천한 이웃들</string>
     <string name="all_review">리뷰 모두 보기</string>
- 
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>
