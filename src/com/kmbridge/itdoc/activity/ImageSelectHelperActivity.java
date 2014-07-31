@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.List;
 
+import test.TestThread;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -272,9 +274,10 @@ public class ImageSelectHelperActivity extends Activity {
 		
 		Log.d("kim","ImageSelectHelperActivity(257) get email -> " + email);
 		
-		ConnectionBridge bridge = new ConnectionBridge();
-		
-		bridge.insertImage("insertPicture", getTempImageFile(), this, email);
+		//ConnectionBridge bridge = new ConnectionBridge();
+		//bridge.insertImage("insertPicture", getTempImageFile(), this, email);
+		TestThread thread = new TestThread("insertPicture", getTempImageFile(), this, email);
+		thread.start();
 		
 		// sample size 를 적용하여 bitmap load.
 		Bitmap bitmap = loadImageWithSampleSize(getTempImageFile());

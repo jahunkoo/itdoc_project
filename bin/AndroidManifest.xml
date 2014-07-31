@@ -24,7 +24,7 @@
             android:name=".activity.IntroActivity"
             android:label="@string/title_activity_intro"
             android:theme="@android:style/Theme.NoTitleBar" >
-              <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -59,7 +59,7 @@
            
         </activity>
         <activity android:name=".activity.ProfilePictureActivity" >
-            
+             
         </activity>
         <activity
             android:name=".activity.LoginActivity"
