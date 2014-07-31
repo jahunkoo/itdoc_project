@@ -58,6 +58,8 @@ public class JsonParser {
 			obj = parseKmClinicDetailViewList(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_GET_ALL_KEYWORDS)) {
 			obj = parseAllKeywords(data);
+		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_INSERT_FOLLOW_NUM)) {
+			obj = parseInsertKmClinicFollow(data);
 		}
 		return obj;
 	}
@@ -67,20 +69,17 @@ public class JsonParser {
 		String result = jsonObj.getString("result");
 		return result;
 	}
-	
+
 	private boolean parserLogin(String data) throws JSONException {
 		JSONObject jsonObj = new JSONObject(data);
 		String result = jsonObj.getString("success");
-		boolean isLogin=false;
-		if(result.equals("true"))
-		{
-			
-			isLogin=true;
+		boolean isLogin = false;
+		if (result.equals("true")) {
+
+			isLogin = true;
 			return isLogin;
-		}
-		else
-		{
-			isLogin=false;
+		} else {
+			isLogin = false;
 			return isLogin;
 		}
 	}
@@ -178,14 +177,13 @@ public class JsonParser {
 			KmClinicDetailView kmClinicDetailView = new KmClinicDetailView();
 			kmClinicDetailView.setId(indexobj.getInt("id"));
 			kmClinicDetailView.setName(indexobj.getString("name"));
-			
-			Log.d("kim", "kmClinicDetailView is " + kmClinicDetailView.getName());;
-			
+
+
 			// keywordArray 받아와야 함 Array를 받아 와서 다시 string list 형태로 바꿔 주는 형태
 			JSONArray JSONindexArray = new JSONArray();
 
 			JSONindexArray = indexobj.getJSONArray("keywordList");
-			
+
 			List<String> keywordList = new ArrayList();
 
 			try {
@@ -196,7 +194,6 @@ public class JsonParser {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				Log.d("kim","JsonParser(169)");
 			}
 
 			kmClinicDetailView.setKeywordList(keywordList);
@@ -230,15 +227,14 @@ public class JsonParser {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				Log.d("kim","JsonParser(204)");
 			}
 			kmClinicDetailView.setUserSimpleInfoList(userSimpleInfoList);
 
 			// reviewArray 받아 와야 함. 현재 미구현 review 자체가 현재 미구현 상태
-			
+
 			KmClinicDetailViewList.add(kmClinicDetailView);
 		}
-		
+
 		return KmClinicDetailViewList;
 	}
 
@@ -266,9 +262,8 @@ public class JsonParser {
 			kmClinicView.setPicturePath(indexobj.getString("picturePath"));
 			kmClinicView.setUserLikeNum(indexobj.getInt("userLikeNum"));
 			kmClinicView.setType(indexobj.getInt("type"));
-			
-			Log.d("kim","JsonParser(270) type is " + kmClinicView.getType());
-			
+
+
 			JSONArray JSONindexArray = new JSONArray();
 			JSONindexArray = indexobj.getJSONArray("keywordList");
 			List<String> keywordList = new ArrayList<String>();
@@ -307,21 +302,34 @@ public class JsonParser {
 
 		return kmClinicViewList;
 	}
-	
+
 	// 메서드 네이밍 : parse+클래스명+자료구조
-		private ArrayList<String> parseAllKeywords(String data) throws JSONException {
-			ArrayList<String> AllKeywordsList = new ArrayList<String>();
+	private ArrayList<String> parseAllKeywords(String data) throws JSONException {
+		ArrayList<String> AllKeywordsList = new ArrayList<String>();
 
-			JSONObject jsonObj = new JSONObject(data);
-			JSONArray jsonArray = jsonObj.getJSONArray("keywords");
-			for (int i = 0; i < jsonArray.length(); i++) {
+		JSONObject jsonObj = new JSONObject(data);
+		JSONArray jsonArray = jsonObj.getJSONArray("keywords");
+		for (int i = 0; i < jsonArray.length(); i++) {
 
-				AllKeywordsList.add(jsonArray.getString(i));
-				
-			}
-			
-			return AllKeywordsList;
-			
+			AllKeywordsList.add(jsonArray.getString(i));
+
 		}
-		
+
+		return AllKeywordsList;
+
+	}
+
+	private ArrayList<String> parseInsertKmClinicFollow(String data) throws JSONException {
+		ArrayList<String> insertKmClinicFollow = new ArrayList<String>();
+
+		JSONObject jsonObj = new JSONObject(data);
+
+		String result;
+		result = jsonObj.getString("result");
+
+		insertKmClinicFollow.add(result);
+
+		return insertKmClinicFollow;
+	}
+
 }

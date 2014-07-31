@@ -7,14 +7,15 @@ import com.kmbridge.itdoc.fragment.KmClinicListFragment;
 import com.kmbridge.itdoc.fragment.PlanetFragment;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -186,7 +187,6 @@ public class BasicDrawerActivity extends FragmentActivity {
     	
     	Fragment fragment;
     	FragmentManager fragmentManager;
-    	Log.d("kim","BasicDrawer(187) position is "+ position);
     	Bundle args = new Bundle();
     	
     	switch (position) {
@@ -194,7 +194,7 @@ public class BasicDrawerActivity extends FragmentActivity {
     		
     	fragment = KmClinicListFragment.create(this);
     	
-    	fragmentManager = getFragmentManager();
+    	fragmentManager = getSupportFragmentManager();
     	fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
     	mDrawerList.setItemChecked(position, true);
     	setTitle(mDrawerMenuTitles[position]);
@@ -210,7 +210,7 @@ public class BasicDrawerActivity extends FragmentActivity {
         args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
         fragment.setArguments(args);
 
-         fragmentManager = getFragmentManager();
+         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         // update selected item and title, then close the drawer
