@@ -171,7 +171,6 @@ public class HttpConnectionModule {
     }
     
     
-    
     /** Initiates the fetch operation. */
     private String loadFromNetwork(String urlString) throws IOException {
     	Log.d("koo", "HttpConnectionModule loadFromNetwork start");

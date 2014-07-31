@@ -23,7 +23,7 @@ import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
-public class KmClinicListFragment extends Fragment implements OnItemClickListener, OnClickListener {
+public class KmClinicListFragment extends Fragment {
 
 	private Context context;
 	private LayoutInflater mInflater;
@@ -56,7 +56,7 @@ public class KmClinicListFragment extends Fragment implements OnItemClickListene
 
 		mListView = (ListView) rootView.findViewById(R.id.listview_clinic_list);
 		mListView.setAdapter(clinicListAdapter);
-		mListView.setOnItemClickListener(this);
+
 		return rootView;
 
 	}
@@ -69,13 +69,26 @@ public class KmClinicListFragment extends Fragment implements OnItemClickListene
 		return kmClinicListFragment;
 	}
 
-	@Override
+	/*@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Log.d("kim", "0");
+		
 		int type = clinicListAdapter.getItem(position).getType();
 		int Id = clinicListAdapter.getItem(position).getId();
 		String email = clinicListAdapter.email;
+		ImageView img = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
+		
+		OnClickListener onClickListener = new OnClickListener() {
 
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				
+				
+			}
+		};
+		
+		img.setOnClickListener((android.view.View.OnClickListener) onClickListener);
+		
 		Log.d("kim", "1");
 		
 		if (type == 0) {
@@ -85,7 +98,7 @@ public class KmClinicListFragment extends Fragment implements OnItemClickListene
 
 			if (result.get(0) == "success") {
 				Log.d("kim", "3");
-				ImageView img = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
+				
 				img.setImageResource(R.drawable.follow);
 			}
 
@@ -93,12 +106,6 @@ public class KmClinicListFragment extends Fragment implements OnItemClickListene
 
 		}
 
-	}
-
-	@Override
-	public void onClick(DialogInterface dialog, int which) {
-		// TODO Auto-generated method stub
-
-	}
+	}*/
 
 }

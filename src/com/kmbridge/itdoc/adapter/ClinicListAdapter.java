@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lazyList.ImageLoader;
-import android.R.string;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -16,9 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.KmClinicView;
-import com.kmbridge.itdoc.util.BasicConstants;
 
 public class ClinicListAdapter extends BaseAdapter {
 
@@ -27,10 +30,13 @@ public class ClinicListAdapter extends BaseAdapter {
 	public ImageLoader imageLoader;
 	public ArrayAdapter<ClinicListItem> adapter;
 	public String email;
+	public Context context;
 
 	public ClinicListAdapter(Context context, String email) {
 
 		this.email = email;
+		this.context = context;
+		
 		inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		imageLoader = new ImageLoader(context);
 
@@ -91,7 +97,7 @@ public class ClinicListAdapter extends BaseAdapter {
 		TextView likeNum;
 		TextView followNum;
 		TextView keyword;
-		
+		final int clinicId;
 
 		if (view == null) {
 			view = inflator.inflate(R.layout.clinic_list_item, parent,false);
@@ -108,7 +114,7 @@ public class ClinicListAdapter extends BaseAdapter {
 		followImg = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
 		
 		
-		ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
+		final ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
 
 		String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath +"&objectType=2";
 		
@@ -125,12 +131,63 @@ public class ClinicListAdapter extends BaseAdapter {
 		likeNum.setText(toString().valueOf(clinicListItem.likeNum));
 		followNum.setText(toString().valueOf(clinicListItem.followNum));
 
+		clinicId = clinicListItem.id;
+		final int type = clinicListItem.type;
+		
 		if (clinicListItem.type == 1) {
 			followImg.setImageResource(R.drawable.follow);
 		} else {
 			followImg.setImageResource(R.drawable.not_follow);
 		}
 		
+		followImg.setTag("followImg");
+		img.setTag("clinicImg");
+		OnClickListener onClickListener = new OnClickListener() {
+			
+			
+			
+			@Override
+			public void onClick(View v) {
+				
+				ImageView img = (ImageView) v.findViewWithTag("followImg");
+				ImageView clinicImg = (ImageView) v.findViewWithTag("clinicImg");
+				ConnectionBridge conn = new ConnectionBridge();
+				
+				Log.d("kim","clinic Id is " + clinicId);
+				
+				switch(v.getId()) {
+				
+				case R.id.imageview_clinic_list_item_follow_img :
+
+					if (type == 0) {
+						ArrayList<String> result = conn.insertKmClinicFollow("insertKmClinicFollow", context, email, clinicId);
+						Log.d("kim","result is " + result.get(0).toString() );
+						clinicListItem.type = 1;
+						img.setImageResource(R.drawable.follow);
+			
+					} else {
+						ArrayList<String> result = conn.deleteKmClinicFollow("deleteKmClinicFollow", context, email, clinicId);
+						Log.d("kim","result is " + result.get(0).toString() );
+						clinicListItem.type = 0;
+						img.setImageResource(R.drawable.not_follow);
+			
+					}
+				
+				case R.id.imageview_clinic_list_item_clinicimage :
+					
+					Intent intent = new Intent(context,KmClinicDetailActivity.class);
+					
+					intent.putExtra("clinicId", clinicId);
+					Log.d("kim","clinicListAdapter(181) clinicId is " + clinicId);
+					context.startActivity(intent);
+					
+					
+				}
+			}
+		};
+		
+		followImg.setOnClickListener(onClickListener);
+		img.setOnClickListener(onClickListener);
 		return view;
 	}
 
