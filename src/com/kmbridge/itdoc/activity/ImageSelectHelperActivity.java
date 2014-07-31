@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.List;
 
-import test.TestThread;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -36,6 +35,7 @@ import android.widget.Toast;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
+import com.kmbridge.itdoc.thread.ConnectionThread;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.Sentence;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
@@ -275,7 +275,8 @@ public class ImageSelectHelperActivity extends Activity {
 		
 		//ConnectionBridge bridge = new ConnectionBridge();
 		//bridge.insertImage("insertPicture", getTempImageFile(), this, email);
-		TestThread thread = new TestThread("insertPicture", getTempImageFile(), this, email);
+		
+		ConnectionThread thread = new ConnectionThread("insertPicture", getTempImageFile(), this, email);
 		thread.start();
 		
 		// sample size 를 적용하여 bitmap load.

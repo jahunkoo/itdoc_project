@@ -1,16 +1,17 @@
-package test;
+package com.kmbridge.itdoc.thread;
 
 import java.io.File;
 import java.text.ParseException;
+
 
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 
 import android.content.Context;
 import android.os.Message;
 
-public class TestThread extends Thread{
+public class ConnectionThread extends Thread{
 
-	private CustomHandler handler;
+	private LoadingViewHandler handler;
 	private String methodUrl;
 	private File uploadFile;
 	private Context context;
@@ -18,8 +19,8 @@ public class TestThread extends Thread{
 	
 	
 	
-	public TestThread(String methodUrl, File uploadFile, Context context, String id )  {
-		this.handler = new CustomHandler(context);	
+	public ConnectionThread(String methodUrl, File uploadFile, Context context, String id )  {
+		this.handler = new LoadingViewHandler(context);	
 		this.methodUrl = methodUrl;
 		this.uploadFile = uploadFile;
 		this.context = context;
@@ -30,14 +31,14 @@ public class TestThread extends Thread{
 	@Override
 	public void run() {
 		Message msg = handler.obtainMessage();
-		msg.what = CustomHandler.SHOW_LOADING_LAYOUT;
+		msg.what = LoadingViewHandler.SHOW_LOADING_LAYOUT;
 		handler.sendMessage(msg);
 		
 		ConnectionBridge bridge = new ConnectionBridge();
 		bridge.insertImage(methodUrl, uploadFile, context, id);
 		
 		msg = handler.obtainMessage();
-		msg.what = CustomHandler.END_LOADING_LAYOUT;
+		msg.what = LoadingViewHandler.END_LOADING_LAYOUT;
 		handler.sendMessage(msg);
 	}
 

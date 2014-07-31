@@ -29,8 +29,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.thread.ItDocHandler;
-import com.kmbridge.itdoc.thread.LoadingViewThread;
 
 /**
  * Http통신으로 json형식의 데이터를 주고받을 때 사용되는 클래스
@@ -53,7 +51,6 @@ public class HttpConnectionModule {
 	private View loadingView;
 	private File uploadFile;
 	private String fileName;
-	private LoadingViewThread loadingThread;
 	//itDoc을 위한 변수
 	private int objectType;
 	private String email;
@@ -63,11 +60,6 @@ public class HttpConnectionModule {
 		downloadTask = new DownloadTask();
 		this.context = context;
 		activity = (Activity) context;
-		//데이터 주고받을 동안 띄워질  connection_loading.xml 화면  객체화
-		//LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		//loadingView = inflator.inflate(R.layout.connection_loading, null);
-		//activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-		//loadingThread = new LoadingViewThread(loadingView);
 		Log.d("koo", "HttpConnectionModule creator end");
 	} 
 
@@ -144,12 +136,7 @@ public class HttpConnectionModule {
         @Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			//loadingThread.start();
-			Log.d("koo", "HttpConnectionModule onPreExecute start");
-			/*Message msg = connectHandler.obtainMessage();
-			msg.what = ItDocHandler.SHOW_LOADING_LAYOUT;
-			connectHandler.sendMessage(msg);*/
-			Log.d("koo", "HttpConnectionModule onPreExecute end");
+			
 		}
 
 		@Override
@@ -174,16 +161,12 @@ public class HttpConnectionModule {
          */
         @Override
         protected void onPostExecute(String result) {
-        	Log.d("koo", "HttpConnectionModule onPostExecute start");
-        	//connection_loading 레이아웃 GONE
-        	/*Message msg = connectHandler.obtainMessage();
-        	msg.what = ItDocHandler.END_LOADING_LAYOUT;
-        	connectHandler.sendMessage(msg);*/
+
         	if(result.equals("networkNotConnection")){
         		Toast.makeText(context, NETWOEK_NOT_AVAILABLE, Toast.LENGTH_SHORT).show();
         	}	
         	//Log.i(TAG, result);
-        	Log.d("koo", "HttpConnectionModule onPostExecute end");
+        	
         }
     }
     

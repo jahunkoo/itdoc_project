@@ -1,4 +1,4 @@
-package test;
+package com.kmbridge.itdoc.thread;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,14 +11,14 @@ import android.view.ViewGroup.LayoutParams;
 
 import com.kmbridge.itdoc.R;
 
-public class CustomHandler extends Handler {
+public class LoadingViewHandler extends Handler {
 
 	public static final int SHOW_LOADING_LAYOUT = 0;
 	public static final int END_LOADING_LAYOUT = 1;
 	private View loadingView;
 	
 	
-	public CustomHandler(Context context) {
+	public LoadingViewHandler(Context context) {
 		Activity activity = (Activity) context;
 		LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		loadingView = inflator.inflate(R.layout.connection_loading, null);
