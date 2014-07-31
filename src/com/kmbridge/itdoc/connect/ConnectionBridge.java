@@ -380,6 +380,39 @@ public class ConnectionBridge {
 		return insertKmClinicFollow;
 	}
 	
+	public ArrayList<String> deleteKmClinicFollow(String methodUrl, Context context,  String email,int clinicId) {
+		ArrayList<String> insertKmClinicFollow = null;
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
+		
+		try {
+			HttpConnectionModule connection = new HttpConnectionModule(context);
+			connection.setMethod(HttpConnectionModule.POST);
+			
+			Properties prop = new Properties();
+			
+			prop.setProperty("email", email);
+			prop.setProperty("kmClinicId", toString().valueOf(clinicId));
+			
+			connection.setProperties(prop);
+			
+			connection.downloadTask.execute(targetUrl);
+			String result = connection.downloadTask.get();
+			insertKmClinicFollow = (ArrayList<String>) new JsonParser(methodUrl).parse(result);
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		return insertKmClinicFollow;
+	}
 
 	// 이미지 업로드
 	public String insertImage(String methodUrl, File uploadFile, Context context, String id) {

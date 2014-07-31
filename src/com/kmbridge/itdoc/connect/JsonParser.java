@@ -60,6 +60,8 @@ public class JsonParser {
 			obj = parseAllKeywords(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_INSERT_FOLLOW_NUM)) {
 			obj = parseInsertKmClinicFollow(data);
+		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_DELETE_FOLLOW_NUM)) {
+			obj = parseDeleteKmClinicFollow(data);
 		}
 		return obj;
 	}
@@ -332,4 +334,18 @@ public class JsonParser {
 		return insertKmClinicFollow;
 	}
 
+	private ArrayList<String> parseDeleteKmClinicFollow(String data) throws JSONException {
+		ArrayList<String> deleteKmClinicFollow = new ArrayList<String>();
+
+		JSONObject jsonObj = new JSONObject(data);
+
+		String result;
+		result = jsonObj.getString("result");
+
+		deleteKmClinicFollow.add(result);
+
+		return deleteKmClinicFollow;
+	}
+
+	
 }
