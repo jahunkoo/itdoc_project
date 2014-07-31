@@ -17,6 +17,11 @@ public class ItDocConstants extends BasicConstants{
 	public static final String METHOD_URL_INSERT_FOLLOW_NUM = "insertKmClinicFollow";
 	public static final String METHOD_URL_DELETE_FOLLOW_NUM = "deleteKmClinicFollow";
 	
+	//SharedPreference_key list
 	public static final String SHARED_KEY_EMAIL = "user_email";
 	public static final String SHARED_KEY_PASSWORD = "user_pwd";
+	
+	//fragment tag list
+	public static final String TAG_FRAGMENT_JOIN = "joinFragment";
+	public static final String TAG_FRAGMENT_LOGIN = "loginFragment";
 }

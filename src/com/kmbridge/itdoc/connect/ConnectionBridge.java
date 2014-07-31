@@ -18,7 +18,6 @@ import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.Week;
-import com.kmbridge.itdoc.thread.LoadingViewThread;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.ItDocUtil;
 
@@ -43,8 +42,6 @@ public class ConnectionBridge {
 	 */
 	public ArrayList<BigRegion> getBigRegionList(String methodUrl,
 			Context context) {
-		LoadingViewThread thread = new LoadingViewThread(context);
-		thread.start();
 		ArrayList<BigRegion> bigRegionList = null;
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
 		HttpConnectionModule connection = new HttpConnectionModule(context);

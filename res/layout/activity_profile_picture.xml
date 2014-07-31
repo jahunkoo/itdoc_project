@@ -1,86 +1,124 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="2" >
+
+            <ImageView
+                android:id="@+id/imageview_activity_profile_picture_background_top"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#000000" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageview_activity_profile_picture_user_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/user_profile_default" />
+
+        <TextView
+            android:id="@+id/textview_activity_profile_picture_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imageview_activity_profile_picture_user_profile"
+            android:layout_centerHorizontal="true"
+            android:text="@string/welcome"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageview_activity_profile_picture_user_profile"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/sir" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/user_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="center_vertical"
         android:orientation="vertical"
-        android:weightSum="1" >
+        android:weightSum="3" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical" >
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/wellcome" >
-            </TextView>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:background="#000000" />
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/profile_commnet_1"
+                android:textAppearance="?android:attr/textAppearance" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/sir" />
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/profile_commnet_2"
+                android:textAppearance="?android:attr/textAppearance" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:weightSum="1" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:gravity="center_horizontal"
-                android:text="@string/profile_commnet_1" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                android:gravity="center_horizontal"
-                android:text="@string/profile_commnet_2" />
+            android:layout_weight="2"
+            android:orientation="vertical" >
 
             <Button
-                android:id="@+id/image_upload"
+                android:id="@+id/button_activity_profile_picture_upload"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.3"
-                android:text="@string/action_image_upload" />
+                android:layout_height="wrap_content"
+                android:text="@string/action_image_upload"
+                android:textAppearance="?android:attr/textAppearanceButton" />
 
-            <Button
-                android:id="@+id/go_login"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0.3"
-                android:text="@string/action_go_login" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <Button
+                    android:id="@+id/button_activity_profile_picture_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/action_go_login"
+                    android:textAppearance="?android:attr/textAppearanceButton" />
+
+                <Button
+                    android:id="@+id/button_activity_profile_picture_finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/action_go_login"
+                    android:textAppearance="?android:attr/textAppearanceButton" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

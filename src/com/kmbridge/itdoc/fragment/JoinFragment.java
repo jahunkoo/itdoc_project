@@ -6,6 +6,7 @@ import java.util.Properties;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,6 +114,20 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 					Toast.makeText(getActivity(), Sentence.successJoin,Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(getActivity(),ProfilePictureActivity.class);
 					startActivity(intent);
+					
+					//************************************************add koo*************************************************
+					//프로필사진 올리는 액티비티로 갔을 때, 백버튼 눌렀을때 상황 
+					//1. 회원가입 프래그먼트 뗴어냄
+					//2. UserManagerActivity 화면 보이게 함.
+					//3. login fragment보이게 함
+					//메서드 화 하셈
+					FragmentManager fm = getActivity().getSupportFragmentManager();
+					fm.beginTransaction().detach(this).commit();
+					getActivity().findViewById(R.id.linearLayout_user_manager).setVisibility(View.VISIBLE);
+					getActivity().findViewById(R.id.linearLayout_user_manager_for_login_fragment).setVisibility(View.VISIBLE);
+					//********************************************************************************************************
+					// 회원가입 후 로그인을 할 때, 에디트 텍스트에 hint로   사용자가 가입한 이메일을 띄워주도록 하자. 
+					//
 				}
 			} else {
 				Toast.makeText(getActivity(), Sentence.noInfomationMessage,

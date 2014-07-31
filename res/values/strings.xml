@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">itdoc</string>
@@ -63,7 +64,7 @@
     <string name="title_activity_login">LoginActivity</string>
 
     <!-- activity_profile_picture_page -->
-    <string name="wellcome">회원님 안녕하세요!</string>
+    <string name="welcome">회원님 안녕하세요!</string>
     <string name="sir">회원님</string>
     <string name="profile_commnet_1">프로필에 사진을 추가해서</string>
     <string name="profile_commnet_2">회원님에 대해 알려 주세요.</string>
@@ -81,6 +82,7 @@
     <string name="join_comment_3">보호정책 등에 동의하게 됩니다.</string>
 
     <!-- activity_user_manager_page -->
+    <string name="label_activity_user_manager">회원가입 및 로그인</string>
     <string name="facebook">페이스북</string>
     <string name="email_join">이메일로 회원가입</string>
     <string name="email_login">이메일로 로그인</string>
