@@ -69,8 +69,9 @@
     <string name="profile_commnet_1">프로필에 사진을 추가해서</string>
     <string name="profile_commnet_2">회원님에 대해 알려 주세요.</string>
     <!-- Actions -->
-    <string name="action_image_upload">이미지 업로드</string>
-    <string name="action_go_login">로그인</string>
+    <string name="profile_profile_image_upload">이미지 업로드</string>
+    <string name="profile_profile_image_change">수정하기</string>
+    <string name="profile_profile_finish">완료!</string>
 
     <!-- fragment_join_page -->
     <string name="user_email">이메일주소</string>

@@ -8,13 +8,12 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.List;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
@@ -32,10 +31,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.thread.ConnectionThread;
+import com.kmbridge.itdoc.thread.ProfilePictureConnectThread;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.Sentence;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
@@ -253,7 +251,7 @@ public class ImageSelectHelperActivity extends Activity {
 		Log.d("koo", "onActivityResult");
 	}
 
-	
+	protected Activity callActivity;
 	/**
 	 * 서버로 이미지를 업로드 한 후, 업로드에 성공하면 사용자 뷰에 해당 이미지를 보여줌. 
 	 */
@@ -275,20 +273,19 @@ public class ImageSelectHelperActivity extends Activity {
 		
 		//ConnectionBridge bridge = new ConnectionBridge();
 		//bridge.insertImage("insertPicture", getTempImageFile(), this, email);
-		
-		ConnectionThread thread = new ConnectionThread("insertPicture", getTempImageFile(), this, email);
+		ProfilePictureConnectThread thread = new ProfilePictureConnectThread("insertPicture", getTempImageFile(), this, email);
 		thread.start();
 		
 		// sample size 를 적용하여 bitmap load.
-		Bitmap bitmap = loadImageWithSampleSize(getTempImageFile());
+		//Bitmap bitmap = loadImageWithSampleSize(getTempImageFile());
 		// image boundary size 에 맞도록 이미지 축소.
-		bitmap = resizeImageWithinBoundary(bitmap);
+		//bitmap = resizeImageWithinBoundary(bitmap);
 		// 결과 file 을 얻어갈 수 있는 메서드 제공.
-		saveBitmapToFile(bitmap);
+		//saveBitmapToFile(bitmap);
 		//Bitmap bm = BitmapFactory.decodeFile(getTempImageFile().getAbsolutePath());
 		//((ImageView) findViewById(R.id.ivImageSelected)).setImageBitmap(bm);
 		
-		Toast.makeText(this, Sentence.successProfileImage,Toast.LENGTH_SHORT).show();
+		//Toast.makeText(this, Sentence.successProfileImage,Toast.LENGTH_SHORT).show();
 		
 		//Intent intent = new Intent(this,UserManagerActivity.class);
 		//startActivity(intent);
@@ -296,7 +293,7 @@ public class ImageSelectHelperActivity extends Activity {
 		Log.d("koo", "doFinalProcess()");
 	}
 
-	private void saveBitmapToFile(Bitmap bitmap) {
+	public void saveBitmapToFile(Bitmap bitmap) {
 		File target = getTempImageFile();
 		try {
 			FileOutputStream fos = new FileOutputStream(target, false);
@@ -362,7 +359,7 @@ public class ImageSelectHelperActivity extends Activity {
 	}
 
 	/** 원하는 크기의 이미지로 options 설정. */
-	private Bitmap loadImageWithSampleSize(File file) {
+	public Bitmap loadImageWithSampleSize(File file) {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeFile(file.getAbsolutePath(), options);
@@ -387,7 +384,7 @@ public class ImageSelectHelperActivity extends Activity {
 	 * mImageSizeBoundary 크기로 이미지 크기 조정. mImageSizeBoundary 보다 작은 경우 resize하지
 	 * 않음.
 	 */
-	private Bitmap resizeImageWithinBoundary(Bitmap bitmap) {
+	public Bitmap resizeImageWithinBoundary(Bitmap bitmap) {
 		int width = bitmap.getWidth();
 		int height = bitmap.getHeight();
 

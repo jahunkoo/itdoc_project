@@ -863,10 +863,11 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070003;
+        public static final int abc_search_url_text_holo=0x7f070004;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int translucent_black=0x7f070003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1098,7 +1099,8 @@ containing a value of this type.
         public static final int menu7=0x7f02006d;
         public static final int menu8=0x7f02006e;
         public static final int not_follow=0x7f02006f;
-        public static final int user_profile_default=0x7f020070;
+        public static final int rounded_corner_box=0x7f020070;
+        public static final int user_profile_default=0x7f020071;
     }
     public static final class id {
         public static final int action_bar=0x7f05001e;
@@ -1353,10 +1355,6 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_add_item=0x7f0a001c;
         public static final int action_finish=0x7f0a0020;
-        public static final int action_go_login=0x7f0a002d;
-        /**  Actions 
-         */
-        public static final int action_image_upload=0x7f0a002c;
         public static final int action_info=0x7f0a0021;
         public static final int action_next=0x7f0a001f;
         public static final int action_photo=0x7f0a0022;
@@ -1368,64 +1366,69 @@ containing a value of this type.
          */
         public static final int action_toggle=0x7f0a001b;
         public static final int action_websearch=0x7f0a0014;
-        public static final int alarm=0x7f0a003c;
-        public static final int all_review=0x7f0a0046;
+        public static final int alarm=0x7f0a003d;
+        public static final int all_review=0x7f0a0047;
         public static final int app_name=0x7f0a000d;
         public static final int app_not_available=0x7f0a0015;
         /**  BasicActivity related 
          */
         public static final int basic_activity_title=0x7f0a000e;
-        public static final int button_call=0x7f0a0044;
+        public static final int button_call=0x7f0a0045;
         public static final int button_login=0x7f0a0026;
         /**  fragment_screen_slide_page 
          */
         public static final int button_register=0x7f0a0025;
         /**  activity_kmclinic_detail_page 
          */
-        public static final int button_visited=0x7f0a0043;
+        public static final int button_visited=0x7f0a0044;
         public static final int card_back_description=0x7f0a0024;
         public static final int drawer_close=0x7f0a0013;
         public static final int drawer_open=0x7f0a0012;
-        public static final int email_join=0x7f0a0037;
-        public static final int email_login=0x7f0a0038;
-        public static final int evaluation=0x7f0a003f;
-        public static final int facebook=0x7f0a0036;
+        public static final int email_join=0x7f0a0038;
+        public static final int email_login=0x7f0a0039;
+        public static final int evaluation=0x7f0a0040;
+        public static final int facebook=0x7f0a0037;
         public static final int hello_world=0x7f0a0017;
-        public static final int helpcomment=0x7f0a003d;
-        public static final int helpdesk=0x7f0a003e;
+        public static final int helpcomment=0x7f0a003e;
+        public static final int helpdesk=0x7f0a003f;
         public static final int intro_img=0x7f0a0011;
-        public static final int join_comment_1=0x7f0a0032;
-        public static final int join_comment_2=0x7f0a0033;
-        public static final int join_comment_3=0x7f0a0034;
+        public static final int join_comment_1=0x7f0a0033;
+        public static final int join_comment_2=0x7f0a0034;
+        public static final int join_comment_3=0x7f0a0035;
         /**  activity_user_manager_page 
          */
-        public static final int label_activity_user_manager=0x7f0a0035;
-        public static final int logout=0x7f0a0040;
+        public static final int label_activity_user_manager=0x7f0a0036;
+        public static final int logout=0x7f0a0041;
         /**  slide page related 
          */
         public static final int lorem_ipsum=0x7f0a001a;
         public static final int profile_commnet_1=0x7f0a002a;
         public static final int profile_commnet_2=0x7f0a002b;
+        public static final int profile_profile_finish=0x7f0a002e;
+        public static final int profile_profile_image_change=0x7f0a002d;
+        /**  Actions 
+         */
+        public static final int profile_profile_image_upload=0x7f0a002c;
         /**  activity_config_page 
          */
-        public static final int push=0x7f0a003b;
-        public static final int recomend_relatives=0x7f0a0045;
+        public static final int push=0x7f0a003c;
+        public static final int recomend_relatives=0x7f0a0046;
         public static final int sir=0x7f0a0029;
         public static final int title_activity_basic=0x7f0a0018;
-        public static final int title_activity_config=0x7f0a0041;
+        public static final int title_activity_config=0x7f0a0042;
         public static final int title_activity_intro=0x7f0a0016;
-        public static final int title_activity_km_clinic_detail=0x7f0a0042;
+        public static final int title_activity_km_clinic_detail=0x7f0a0043;
         public static final int title_activity_login=0x7f0a0027;
         public static final int title_activity_user_manager=0x7f0a0019;
         public static final int title_template_step=0x7f0a0023;
         /**  fragment_join_page 
          */
-        public static final int user_email=0x7f0a002e;
-        public static final int user_firstname=0x7f0a0030;
-        public static final int user_lastname=0x7f0a0031;
-        public static final int user_manager_commnet_1=0x7f0a0039;
-        public static final int user_manager_commnet_2=0x7f0a003a;
-        public static final int user_password=0x7f0a002f;
+        public static final int user_email=0x7f0a002f;
+        public static final int user_firstname=0x7f0a0031;
+        public static final int user_lastname=0x7f0a0032;
+        public static final int user_manager_commnet_1=0x7f0a003a;
+        public static final int user_manager_commnet_2=0x7f0a003b;
+        public static final int user_password=0x7f0a0030;
         /**  activity_profile_picture_page 
          */
         public static final int welcome=0x7f0a0028;
