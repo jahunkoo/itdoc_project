@@ -172,7 +172,8 @@ public class ClinicListAdapter extends BaseAdapter {
 						img.setImageResource(R.drawable.not_follow);
 			
 					}
-				
+					break;
+					
 				case R.id.imageview_clinic_list_item_clinicimage :
 					
 					Intent intent = new Intent(context,KmClinicDetailActivity.class);
@@ -180,8 +181,7 @@ public class ClinicListAdapter extends BaseAdapter {
 					intent.putExtra("clinicId", clinicId);
 					Log.d("kim","clinicListAdapter(181) clinicId is " + clinicId);
 					context.startActivity(intent);
-					
-					
+					break;
 				}
 			}
 		};
