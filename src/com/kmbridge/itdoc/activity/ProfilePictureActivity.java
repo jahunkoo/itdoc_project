@@ -32,6 +32,9 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//*****************************actionbar title setting ***********************
+		getActionBar().setTitle(R.string.title_activity_profile_picture);
+		//****************************************************************************
 		setContentView(R.layout.activity_profile_picture);
 		
 		setElements();
@@ -76,6 +79,7 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
 			break;
 		case R.id.button_activity_profile_picture_finish:
 			Intent intent = new Intent(this, MainDrawerActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
 			startActivity(intent);
 			finish();
 			break;

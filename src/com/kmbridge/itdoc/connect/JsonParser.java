@@ -60,6 +60,8 @@ public class JsonParser {
 			obj = parseAllKeywords(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_INSERT_FOLLOW_NUM)) {
 			obj = parseInsertKmClinicFollow(data);
+		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_DELETE_FOLLOW_NUM)) {
+			obj = parseDeleteKmClinicFollow(data);
 		}
 		return obj;
 	}
@@ -206,7 +208,7 @@ public class JsonParser {
 			kmClinicDetailView.setMiddleRegionCode(indexobj.getString("middleRegionCode"));
 			kmClinicDetailView.setMiddleRegionName(indexobj.getString("middleRegionName"));
 			kmClinicDetailView.setRemainRegion(indexobj.getString("remainRegion"));
-			// kmClinicDetailView.setMapPoint(indexobj.getString("mapPoint"));
+			kmClinicDetailView.setMapPoint(indexobj.getString("mapPoint"));
 			kmClinicDetailView.setHomepage(indexobj.getString("homepage"));
 			kmClinicDetailView.setType(indexobj.getInt("type"));
 			// kmClinicDetailView.setFollowNum(indexobj.getInt("followNum"));
@@ -332,4 +334,18 @@ public class JsonParser {
 		return insertKmClinicFollow;
 	}
 
+	private ArrayList<String> parseDeleteKmClinicFollow(String data) throws JSONException {
+		ArrayList<String> deleteKmClinicFollow = new ArrayList<String>();
+
+		JSONObject jsonObj = new JSONObject(data);
+
+		String result;
+		result = jsonObj.getString("result");
+
+		deleteKmClinicFollow.add(result);
+
+		return deleteKmClinicFollow;
+	}
+
+	
 }

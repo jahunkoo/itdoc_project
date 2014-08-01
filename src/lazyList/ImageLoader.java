@@ -15,7 +15,9 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import android.R;
+import com.kmbridge.itdoc.R;
+
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,7 +38,7 @@ public class ImageLoader {
         executorService=Executors.newFixedThreadPool(5);
     }
     
-    final int stub_id=R.id.icon;
+    final int stub_id=R.drawable.intro_logo;
     public void DisplayImage(String url, ImageView imageView)
     {
         imageViews.put(imageView, url);

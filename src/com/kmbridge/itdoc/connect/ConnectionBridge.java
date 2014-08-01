@@ -217,21 +217,20 @@ public class ConnectionBridge {
 	}
 
 	public ArrayList<KmClinicDetailView> getKmClinicDetailViewList(
-			String methodUrl, Context context, int clinicId) {
+			String methodUrl, Context context, int kmClinicId) {
 		ArrayList<KmClinicDetailView> KmClinicDetailViewList = null;
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
 				methodUrl);
 
 		Properties prop = new Properties();
-		prop.setProperty("kmClinicId", String.valueOf(clinicId));
+		prop.setProperty("kmClinicId", String.valueOf(kmClinicId));
 		try {
 			HttpConnectionModule connection = new HttpConnectionModule(context);
 			connection.setMethod(HttpConnectionModule.POST);
 			connection.setProperties(prop);
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
-			KmClinicDetailViewList = (ArrayList<KmClinicDetailView>) new JsonParser(
-					methodUrl).parse(result);
+			KmClinicDetailViewList = (ArrayList<KmClinicDetailView>) new JsonParser(methodUrl).parse(result);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -325,6 +324,7 @@ public class ConnectionBridge {
 			connection.downloadTask.execute(targetUrl);
 			String data = connection.downloadTask.get();
 			result =  (Boolean)new JsonParser(methodUrl).parse(data);
+			Log.d("LoginIs",""+result);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -377,6 +377,39 @@ public class ConnectionBridge {
 		return insertKmClinicFollow;
 	}
 	
+	public ArrayList<String> deleteKmClinicFollow(String methodUrl, Context context,  String email,int clinicId) {
+		ArrayList<String> insertKmClinicFollow = null;
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
+		
+		try {
+			HttpConnectionModule connection = new HttpConnectionModule(context);
+			connection.setMethod(HttpConnectionModule.POST);
+			
+			Properties prop = new Properties();
+			
+			prop.setProperty("email", email);
+			prop.setProperty("kmClinicId", toString().valueOf(clinicId));
+			
+			connection.setProperties(prop);
+			
+			connection.downloadTask.execute(targetUrl);
+			String result = connection.downloadTask.get();
+			insertKmClinicFollow = (ArrayList<String>) new JsonParser(methodUrl).parse(result);
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		return insertKmClinicFollow;
+	}
 
 	// 이미지 업로드
 	public String insertImage(String methodUrl, File uploadFile, Context context, String id) {

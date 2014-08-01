@@ -44,10 +44,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 	private String methodUrl;
 	private String message;
 	private Properties prop;
-	
+	/**
+	 * 프래그먼트가 생성되면 우선 타이틀부터 바꾸자.
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
+		//*****************************actionbar title setting ***********************
+		getActivity().getActionBar().setTitle(R.string.title_fragment_login);
+		//****************************************************************************
 		prop = new Properties();
 		// view가져오고
 		View rootView = inflater.inflate(R.layout.fragment_login, container,false);

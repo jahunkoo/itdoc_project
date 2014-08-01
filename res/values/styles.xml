@@ -1,29 +1,19 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-	
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    
-<!--     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-       
-    </style>
- -->
-    <!-- 
-    Application theme.
-    <style name="AppTheme" parent="AppBaseTheme">
-        All customizations that are NOT specific to a particular API-level can go here.
-    </style>
- -->
+<!-- Theme Style -->
+<style name="ItDocActionBarTheme"
+           parent="@style/Theme.AppCompat.Light">
+        <item name="android:actionBarStyle">@style/ITDocActionBar</item>
 
-<!--  <style name="basic_custom_theme" parent="android:Theme.Holo">
-   <item name="android:actionBarStyle">@style/ActionBar</item>
-</style>
- <style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-    <item name="android:icon">@drawable/action_itdoc_logo</item>
-</style> -->
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/ITDocActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="ITDocActionBar"
+           parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">@android:color/white</item>
+
+        <!-- Support library compatibility -->
+        <!-- <item name="background">@drawable/actionbar_background</item> -->
+    </style>
 </resources>

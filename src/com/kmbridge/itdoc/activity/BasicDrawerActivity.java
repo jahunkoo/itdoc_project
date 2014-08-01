@@ -43,9 +43,7 @@ public class BasicDrawerActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.basic_drawer);
-		Log.d("koo", "end");
 		
 		mTitle = mDrawerTitle = getTitle();
 		mDrawerMenuTitles = getResources().getStringArray(R.array.drawer_menu_title_array);
@@ -186,22 +184,20 @@ public class BasicDrawerActivity extends FragmentActivity {
     private void selectItem(int position) {
     	
     	Fragment fragment;
-    	FragmentManager fragmentManager;
+    	FragmentManager fragmentManager = getSupportFragmentManager();
     	Bundle args = new Bundle();
+    	
     	
     	switch (position) {
     	case 0 :
     		
     	fragment = KmClinicListFragment.create(this);
-    	
-    	fragmentManager = getSupportFragmentManager();
     	fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
     	mDrawerList.setItemChecked(position, true);
     	setTitle(mDrawerMenuTitles[position]);
-    	        
     	mDrawerLayout.closeDrawer(mDrawerList);
-    	
     	break;
+    	
     	default :
     	
         // update the main content by replacing fragments
@@ -222,5 +218,6 @@ public class BasicDrawerActivity extends FragmentActivity {
     }
 //*********************************************end***************************************************
     
+  
 
 }

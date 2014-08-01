@@ -39,6 +39,10 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 		
 		Bundle bundle = getIntent().getExtras();
 		if(!(bundle==null)){
+			if(bundle.containsKey("callRegister")){
+				int code = bundle.getInt("callRegister");
+				joinLayoutElement();
+			}
 			if(bundle.containsKey("callLogin")){
 				int code = bundle.getInt("callLogin");
 				loginLayoutElement();
@@ -104,6 +108,9 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 		Fragment fragment =  getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT);
 		Log.d("koo", "onBackPressed");
 		if(fragment!=null){
+			//*****************************actionbar title setting ***********************
+			getActionBar().setTitle(R.string.title_activity_user_manager);
+			//****************************************************************************
 			Log.d("koo", "onBackPressed not null");
 			String tag = fragment.getTag();
 			Log.d("koo", "onBackPressed not null tag:"+tag);
