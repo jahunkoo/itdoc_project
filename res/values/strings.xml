@@ -16,19 +16,37 @@
     <string name="title_fragment_join">회원가입</string>
     
     <!-- activity -->
-    <!-- basic_drawer_activity related -->
+    <!-- main_drawer_activity related -->
     <string name="action_search">search</string>
     <string name="action_settings">action_setting</string>
-    <string-array name="drawer_menu_title_array">
+    <string-array name="drawer_menu_title_section_array">
+        <item>한의원 찾기</item>
+        <item>Itdoc 플러스</item>
+    </string-array>
+    <string-array name="drawer_menu_title_item_array_search">
+        <item>검색하기</item>
         <item>둘러보기</item>
-        <item>menu2</item>
-        <item>menu3</item>
-        <item>menu4</item>
-        <item>menu5</item>
+        <item>한방정보</item>
+        <item>Itdoc 이용방법</item>
+        <item>환경설정</item>
+    </string-array>
+    <string-array name="drawer_menu_title_item_array_plus">
+        <item>It+ 살펴보기</item>
+        <item>내 친구 관리</item>
+    </string-array>
+    
+    <string-array name="drawer_menu_title_array">
+        <item>검색하기</item>
+        <item>둘러보기</item>
+        <item>한방정보</item>
+        <item>Itdoc 이용방법</item>
+        <item>환경설정</item>
         <item>menu6</item>
         <item>menu7</item>
         <item>menu8</item>
     </string-array>
+    <string name="left_drawer_bottom_comment">회원가입을 하면 Itdoc의 좋은 서비스를 더 많이 경험할 수 있습니다.</string>
+    <string name="left_drawer_bottom_login_or_register">회원가입 및 로그인</string>
     <string name="intro_img"></string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

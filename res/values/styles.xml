@@ -12,8 +12,12 @@
     <style name="ITDocActionBar"
            parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="android:background">@android:color/white</item>
-
+		
         <!-- Support library compatibility -->
         <!-- <item name="background">@drawable/actionbar_background</item> -->
     </style>
+    
+
+    
+
 </resources>
