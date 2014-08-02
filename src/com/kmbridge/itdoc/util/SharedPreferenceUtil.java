@@ -38,8 +38,8 @@ public class SharedPreferenceUtil extends ItDocUtil{
 	public boolean isExist(Context context, String key){
 		String defalutValue;
 		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
-		defalutValue=pref.getString(key, "");
-		if(defalutValue=="")
+		defalutValue=pref.getString(key, null);
+		if(defalutValue==null)
 		{
 			return false;
 		}

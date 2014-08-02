@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -24,25 +25,12 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 	private List<Title> titleList;
 	private LayoutInflater inflator;
 	private int layoutResId; 
-	private LinearLayout leftDrawerBottomLayout;
-	private String userEmail;	//없으면 null로 명시함
-	public DrawerTitleAdapter(Context context,LinearLayout leftDrawerBottomLayout ,int resource,List<Title> titleList) {
+	
+	public DrawerTitleAdapter(Context context,int resource,List<Title> titleList) {
 		super(context, resource, titleList);
 		this.titleList =titleList;  
 		this.layoutResId = resource;
 		inflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		this.leftDrawerBottomLayout = leftDrawerBottomLayout;
-		
-		//이메일이 담겨있는지 확인한다.
-		SharedPreferenceUtil sharedUtil = new SharedPreferenceUtil();
-		try {
-			userEmail = sharedUtil.getData(context, ItDocConstants.SHARED_KEY_EMAIL);
-		} catch (RecordNotFoundException e) {
-			userEmail = null;
-			e.printStackTrace();
-		}
-		
-		
 	}
 
 	@Override
@@ -50,6 +38,8 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 		view = convertView;
 		if(view == null) view = inflator.inflate(layoutResId, null);
 			
+		//******************************** drawer 하단 레이아웃에 새로운 레이아웃 추가 ***********
+
 		Title title = titleList.get(position);
 		if(title!=null){
 			if(title.isSection()){
@@ -57,6 +47,7 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 				TextView textView = (TextView) view.findViewById(R.id.textview_main_drawer_item);
 				textView.setText(sectionTitle.getSectionTitle());
 				textView.setClickable(false);
+				
 			}else {
 				ItemTitle itemTitle = (ItemTitle) title;
 				TextView textView = (TextView) view.findViewById(R.id.textview_main_drawer_item);
@@ -64,7 +55,6 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 				textView.setTextSize(13f);
 			}
 		}
-		
 		
 		return view;
 	}

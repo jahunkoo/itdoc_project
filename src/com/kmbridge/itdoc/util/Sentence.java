@@ -14,15 +14,8 @@ public class Sentence {
 	public static final String networkErrorPleaseRetry= "네트워크 상태가 고르지 않아요. 다시 눌러보세요";
 	public static final String closeAppMessage = "'뒤로'버튼을 한번 더 누르면 종료됩니다.";
 
-	/**
-	 * S_favoriteTeacherList
-	 */
-	public static final String headerStr = "좋아하는 선생님들";
 
-	/**
-	 * T_insertTeacher
-	 */
-	public static final String menuTitle = "선생님 등록하기";
+	
 	public static final String noInfomationMessage = "모든 정보는 필수 입력사항 입니다.";
 	public static final String noEmailMessage = "이메일을 입력해주세요.";
 	public static final String noPwdMessage = "비밀번호를 입력해주세요.";
@@ -38,16 +31,6 @@ public class Sentence {
 	public static final String successLogin = "로그인 되었습니다.";
 	public static final String errorLogin = "로그인 실패! 아이디와 비밀번호를 확인해 주세요.";
 	public static final String successProfileImage = "사진등록 완료!";
-	public static final String rules = "등록 버튼을 누르면 "+"<a href = \"http://blog.naver.com/totoro1012/90184263922\">쌤통(SSamTong) 이용약관</a>"+"에 동의하고 "
-			+"<a href = \"http://blog.naver.com/totoro1012/90184263536\">개인정보 보호정책</a>"+"을 읽고 이해한 것으로 간주됩니다.";
-	/**
-	 * T_getTeacher
-	 */
-	public static final String updateTeacherInfo = "수정하기";
-	public static final String deactivated = "목록에서 숨기기";
-	public static final String reactivated = "목록에 보여주기";
-	public static final String toast_deactivated = "선생님 목록에서 사라졌습니다.";
-	public static final String toast_reactivated = "선생님 목록에 다시 보여집니다.";
 
 	/**
 	 * DialogFragments

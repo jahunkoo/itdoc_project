@@ -2,6 +2,9 @@ package com.kmbridge.itdoc.activity;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,15 +19,17 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.dto.Title;
 import com.kmbridge.itdoc.fragment.JoinFragment;
 import com.kmbridge.itdoc.fragment.LoginFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class UserManagerActivity extends ActionBarActivity implements OnClickListener,CommonMethods {
 	
 	Button btn_activity_user_manager_email_join;
 	Button btn_activity_user_manager_email_login;
-
+	SharedPreferenceUtil user_info = new SharedPreferenceUtil();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,12 +44,12 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 		
 		Bundle bundle = getIntent().getExtras();
 		if(!(bundle==null)){
-			if(bundle.containsKey("callRegister")){
-				int code = bundle.getInt("callRegister");
+			if(bundle.containsKey(ItDocConstants.TAG_FRAGMENT_JOIN)){
+				int code = bundle.getInt(ItDocConstants.TAG_FRAGMENT_JOIN);
 				joinLayoutElement();
 			}
-			if(bundle.containsKey("callLogin")){
-				int code = bundle.getInt("callLogin");
+			if(bundle.containsKey(ItDocConstants.TAG_FRAGMENT_LOGIN)){
+				int code = bundle.getInt(ItDocConstants.TAG_FRAGMENT_LOGIN);
 				loginLayoutElement();
 			}
 		}
@@ -89,6 +94,8 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 	}
 	
 	public void loginLayoutElement() {
+		
+		
 		// TODO Auto-generated method stub
 		Fragment loginFragment = new LoginFragment();
 		//Bundle args = new Bundle();

@@ -42,7 +42,9 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 	private boolean isPwdInput;
 	private boolean isNameInput;
 	private final int SUCCESS_NUM = 3;
-
+	public String firstname;
+	public String lastname;
+	
 	private ConnectionBridge bridge = new ConnectionBridge();
 	private User user = new User();
 
@@ -105,6 +107,7 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 					
 					user_info.setData(getActivity(),ItDocConstants.SHARED_KEY_EMAIL, edittxt_activity_join_join_email.getText().toString());
 					user_info.setData(getActivity(),ItDocConstants.SHARED_KEY_PASSWORD, edittxt_activity_join_join_password.getText().toString());
+					user_info.setData(getActivity(),ItDocConstants.SHARED_KEY_NAME,lastname+firstname);
 					/*
 					SharedPreferences shared_user_info = getActivity().getSharedPreferences("user_info", 0);
 					SharedPreferences.Editor editor = shared_user_info.edit();
@@ -176,9 +179,9 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 			Toast.makeText(getActivity(), Sentence.noPwdMessage,
 					Toast.LENGTH_SHORT).show();
 		}
-		String firstname = edittxt_activity_join_join_firstname.getText()
+		firstname = edittxt_activity_join_join_firstname.getText()
 				.toString();
-		String lastname = edittxt_activity_join_join_lastname.getText()
+		lastname = edittxt_activity_join_join_lastname.getText()
 				.toString();
 		String name = firstname + "_" + lastname;
 		if (name.trim().length() != 0) {

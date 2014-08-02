@@ -102,6 +102,7 @@
     <string name="helpdesk">고객센터</string>
     <string name="evaluation">잇닥(it doc) 평가하기</string>
     <string name="logout">로그아웃</string>
+    <string name="login">로그인</string>
     
 
     <!-- activity_kmclinic_detail_page -->
@@ -126,5 +127,8 @@
     <!-- fragment_screen_slide_page -->
     <string name="button_register">회원가입</string>
     <string name="button_login">로그인</string>
+    
+    <!-- activity_config_page -->
+    <string name="button_config_logout">로그아웃 되었습니다.</string>
     
 </resources>
