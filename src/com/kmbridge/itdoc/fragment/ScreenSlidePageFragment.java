@@ -144,6 +144,7 @@ public class ScreenSlidePageFragment extends Fragment implements View.OnClickLis
    		// 회원가입
    		case R.id.button_fragment_screen_slide_register:
    			Intent intent = new Intent(getActivity(), UserManagerActivity.class);
+   			intent.putExtra("callRegister", 1);
    			startActivity(intent);
    			break;
    		

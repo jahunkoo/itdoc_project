@@ -20,7 +20,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:clickable="false"
-    android:background="@android:color/transparent"
+    android:background="@drawable/rounded_corner_box"
     android:visibility="gone"
     android:orientation="vertical">
 

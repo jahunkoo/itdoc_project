@@ -153,8 +153,8 @@ public class IntroActivity extends FragmentActivity {
 		//RegionThread.start();
 		if(isLogin==true)
 		{
-			
 			Intent intent = new Intent(this,MainDrawerActivity.class);
+
 			startActivity(intent);
 			if(isLogin==true)
 			{

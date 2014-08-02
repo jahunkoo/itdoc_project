@@ -157,12 +157,12 @@ public class JsonParser {
 		ArrayList<Time> timeList = new ArrayList<Time>();
 
 		JSONObject jsonObj = new JSONObject(data);
-		JSONArray jsonArray = jsonObj.getJSONArray("TIme");
+		JSONArray jsonArray = jsonObj.getJSONArray("Time");
 		for (int i = 0; i < jsonArray.length(); i++) {
 			JSONObject indexobj = jsonArray.getJSONObject(i);
 			Time time = new Time();
-			time.setTimeCode(indexobj.getInt("TimeCode"));
-			time.setTimeHalf(indexobj.getString("TimeHalf"));
+			time.setTimeCode(indexobj.getInt("timeCode"));
+			time.setTimeHalf(indexobj.getString("timeHalf"));
 			timeList.add(time);
 		}
 		return timeList;
