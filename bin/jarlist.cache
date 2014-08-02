@@ -1,10 +1,3 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-<<<<<<< HEAD
-=======
-1406819821659 349134 21297ae2bf22a0ce81c9b59992cf0693eec45d5b C:\Users\Min\Documents\GitHub\itdoc_project\libs\android-support-v7-appcompat.jar
-1403773580000 349134 21297ae2bf22a0ce81c9b59992cf0693eec45d5b C:\Users\Min\workspace\android-support-v7-appcompat\libs\android-support-v7-appcompat.jar
-1406654305386 648327 ded9acc6a9792b8f1afc470f0c9cd36d178914cd C:\Users\Min\Documents\GitHub\itdoc_project\libs\android-support-v4.jar
-1403773578000 648327 ded9acc6a9792b8f1afc470f0c9cd36d178914cd C:\Users\Min\workspace\android-support-v7-appcompat\libs\android-support-v4.jar
->>>>>>> 359fce88947a01afe3cdd7209d232d26d1351391

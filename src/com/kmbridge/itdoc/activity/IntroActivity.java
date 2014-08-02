@@ -154,7 +154,7 @@ public class IntroActivity extends FragmentActivity {
 		if(isLogin==true)
 		{
 			
-			Intent intent = new Intent(this,MapActivity.class);
+			Intent intent = new Intent(this,MainDrawerActivity.class);
 			startActivity(intent);
 			if(isLogin==true)
 			{
