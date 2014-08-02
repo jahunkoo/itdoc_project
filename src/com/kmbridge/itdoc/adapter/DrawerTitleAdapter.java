@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -18,7 +19,7 @@ import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
-public class DrawerTitleAdapter extends ArrayAdapter<Title> {
+public class DrawerTitleAdapter extends ArrayAdapter<Title> implements OnClickListener{
 
 	private View view;
 	private List<Title> titleList;
@@ -26,6 +27,8 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 	private int layoutResId; 
 	private LinearLayout leftDrawerBottomLayout;
 	private String userEmail;	//없으면 null로 명시함
+	private boolean isLogin;
+	
 	public DrawerTitleAdapter(Context context,LinearLayout leftDrawerBottomLayout ,int resource,List<Title> titleList) {
 		super(context, resource, titleList);
 		this.titleList =titleList;  
@@ -40,16 +43,27 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 		} catch (RecordNotFoundException e) {
 			userEmail = null;
 			e.printStackTrace();
+		}finally{
+			if(userEmail == null){
+				isLogin = false;
+				LinearLayout linearLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_before_login , null);
+				leftDrawerBottomLayout.addView(linearLayout);
+			}else{
+				isLogin = true;
+				LinearLayout linearLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_after_login , null);
+				leftDrawerBottomLayout.addView(linearLayout);
+			}
 		}
-		
-		
 	}
 
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		view = convertView;
 		if(view == null) view = inflator.inflate(layoutResId, null);
 			
+		//******************************** drawer 하단 레이아웃에 새로운 레이아웃 추가 ***********
+
 		Title title = titleList.get(position);
 		if(title!=null){
 			if(title.isSection()){
@@ -57,6 +71,7 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 				TextView textView = (TextView) view.findViewById(R.id.textview_main_drawer_item);
 				textView.setText(sectionTitle.getSectionTitle());
 				textView.setClickable(false);
+				
 			}else {
 				ItemTitle itemTitle = (ItemTitle) title;
 				TextView textView = (TextView) view.findViewById(R.id.textview_main_drawer_item);
@@ -67,6 +82,17 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 		
 		
 		return view;
+	}
+
+
+	@Override
+	public void onClick(View v) {
+		if(isLogin){
+			
+		}else {
+			
+		}
+		
 	}
 
 	

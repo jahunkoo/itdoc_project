@@ -1274,33 +1274,34 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_light=0x7f020070;
         public static final int drawer_shadow=0x7f020071;
         public static final int follow=0x7f020072;
-        public static final int ic_action_search=0x7f020073;
-        public static final int ic_action_settings=0x7f020074;
-        public static final int ic_drawer=0x7f020075;
-        public static final int ic_launcher=0x7f020076;
-        public static final int ic_plusone_medium_off_client=0x7f020077;
-        public static final int ic_plusone_small_off_client=0x7f020078;
-        public static final int ic_plusone_standard_off_client=0x7f020079;
-        public static final int ic_plusone_tall_off_client=0x7f02007a;
-        public static final int intro=0x7f02007b;
-        public static final int intro_and_logo=0x7f02007c;
-        public static final int intro_logo=0x7f02007d;
-        public static final int introduce_itdoc1=0x7f02007e;
-        public static final int introduce_itdoc2=0x7f02007f;
-        public static final int introduce_itdoc3=0x7f020080;
-        public static final int introduce_itdoc4=0x7f020081;
-        public static final int itdoc_logo_white=0x7f020082;
-        public static final int menu1=0x7f020083;
-        public static final int menu2=0x7f020084;
-        public static final int menu3=0x7f020085;
-        public static final int menu4=0x7f020086;
-        public static final int menu5=0x7f020087;
-        public static final int menu6=0x7f020088;
-        public static final int menu7=0x7f020089;
-        public static final int menu8=0x7f02008a;
-        public static final int not_follow=0x7f02008b;
-        public static final int rounded_corner_box=0x7f02008c;
-        public static final int user_profile_default=0x7f02008d;
+        public static final int ic_action_person=0x7f020073;
+        public static final int ic_action_search=0x7f020074;
+        public static final int ic_action_settings=0x7f020075;
+        public static final int ic_drawer=0x7f020076;
+        public static final int ic_launcher=0x7f020077;
+        public static final int ic_plusone_medium_off_client=0x7f020078;
+        public static final int ic_plusone_small_off_client=0x7f020079;
+        public static final int ic_plusone_standard_off_client=0x7f02007a;
+        public static final int ic_plusone_tall_off_client=0x7f02007b;
+        public static final int intro=0x7f02007c;
+        public static final int intro_and_logo=0x7f02007d;
+        public static final int intro_logo=0x7f02007e;
+        public static final int introduce_itdoc1=0x7f02007f;
+        public static final int introduce_itdoc2=0x7f020080;
+        public static final int introduce_itdoc3=0x7f020081;
+        public static final int introduce_itdoc4=0x7f020082;
+        public static final int itdoc_logo_white=0x7f020083;
+        public static final int menu1=0x7f020084;
+        public static final int menu2=0x7f020085;
+        public static final int menu3=0x7f020086;
+        public static final int menu4=0x7f020087;
+        public static final int menu5=0x7f020088;
+        public static final int menu6=0x7f020089;
+        public static final int menu7=0x7f02008a;
+        public static final int menu8=0x7f02008b;
+        public static final int not_follow=0x7f02008c;
+        public static final int rounded_corner_box=0x7f02008d;
+        public static final int user_profile_default=0x7f02008e;
     }
     public static final class id {
         public static final int action_bar=0x7f060021;
@@ -1324,8 +1325,8 @@ containing a value of this type.
     
          */
         public static final int action_next=0x7f06001d;
-        public static final int action_previous=0x7f060084;
-        public static final int action_search=0x7f060083;
+        public static final int action_previous=0x7f060088;
+        public static final int action_search=0x7f060087;
         public static final int activity_chooser_view_content=0x7f06002a;
         public static final int always=0x7f06000f;
         public static final int beginning=0x7f060014;
@@ -1336,7 +1337,7 @@ containing a value of this type.
         public static final int button_activity_profile_picture_upload=0x7f060055;
         public static final int button_fragment_screen_slide_login=0x7f06007a;
         public static final int button_fragment_screen_slide_register=0x7f060079;
-        public static final int button_left_drawer_bottom_login_or_register=0x7f060081;
+        public static final int button_left_drawer_bottom_login_or_register=0x7f060085;
         public static final int check_alarm=0x7f060046;
         public static final int check_push=0x7f060044;
         public static final int checkbox=0x7f060032;
@@ -1360,6 +1361,7 @@ containing a value of this type.
         public static final int icon=0x7f06002f;
         public static final int ifRoom=0x7f06000e;
         public static final int image=0x7f06002c;
+        public static final int imagebutton_left_drawer_bottom_setting=0x7f060083;
         public static final int imageview_activity_profile_picture_background_top=0x7f060051;
         public static final int imageview_activity_profile_picture_user_profile=0x7f060052;
         public static final int imageview_clinic_list_item_clinicimage=0x7f06005f;
@@ -1367,6 +1369,7 @@ containing a value of this type.
         public static final int imageview_fragment_screen_slide_logo=0x7f060077;
         public static final int imageview_fragment_screen_slide_page=0x7f060075;
         public static final int imageview_intro_activity_background=0x7f06004c;
+        public static final int imageview_left_drawer_bottom_profile=0x7f060081;
         public static final int join_email=0x7f06006c;
         public static final int join_firstname=0x7f06006e;
         public static final int join_lastname=0x7f06006f;
@@ -1380,6 +1383,7 @@ containing a value of this type.
         public static final int linearlayout_clinic_list_item=0x7f060060;
         public static final int linearlayout_connection_loading=0x7f060067;
         public static final int linearlayout_left_drawer_bottom=0x7f06007f;
+        public static final int linearlayout_left_drawer_bottom_go_profile=0x7f060080;
         public static final int listMode=0x7f060005;
         public static final int list_item=0x7f06002e;
         public static final int listview_clinic_list=0x7f060069;
@@ -1426,8 +1430,9 @@ containing a value of this type.
         public static final int textview_clinic_list_item_likenum=0x7f060062;
         public static final int textview_clinic_list_item_name=0x7f060061;
         public static final int textview_clinic_list_item_region=0x7f060064;
-        public static final int textview_left_drawer_bottom_comment=0x7f060080;
-        public static final int textview_main_drawer_item=0x7f060082;
+        public static final int textview_left_drawer_bottom_comment=0x7f060084;
+        public static final int textview_left_drawer_bottom_name=0x7f060082;
+        public static final int textview_main_drawer_item=0x7f060086;
         public static final int textview_slide_screen_comment=0x7f060078;
         public static final int textview_slide_screen_divide_line=0x7f060076;
         public static final int title=0x7f060030;
@@ -1515,9 +1520,10 @@ containing a value of this type.
         public static final int fragment_planet=0x7f030026;
         public static final int fragment_screen_slide_page=0x7f030027;
         public static final int main_drawer=0x7f030028;
-        public static final int main_drawer_item_bottom_login=0x7f030029;
-        public static final int main_drawer_list_item=0x7f03002a;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002b;
+        public static final int main_drawer_item_bottom_after_login=0x7f030029;
+        public static final int main_drawer_item_bottom_before_login=0x7f03002a;
+        public static final int main_drawer_list_item=0x7f03002b;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002c;
     }
     public static final class menu {
         public static final int activity_basic_actions=0x7f0d0000;
