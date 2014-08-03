@@ -26,6 +26,7 @@
         android:icon="@drawable/app_icon_itdoc"
         android:label="@string/app_name"
         android:theme="@style/ItDocActionBarTheme"
+        
         android:logo="@drawable/action_itdoc_logo" >
         
         <activity

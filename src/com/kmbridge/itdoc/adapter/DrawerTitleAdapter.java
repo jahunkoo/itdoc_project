@@ -19,44 +19,20 @@ import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
-public class DrawerTitleAdapter extends ArrayAdapter<Title> implements OnClickListener{
+public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 
 	private View view;
 	private List<Title> titleList;
 	private LayoutInflater inflator;
 	private int layoutResId; 
-	private LinearLayout leftDrawerBottomLayout;
-	private String userEmail;	//없으면 null로 명시함
-	private boolean isLogin;
 	
-	public DrawerTitleAdapter(Context context,LinearLayout leftDrawerBottomLayout ,int resource,List<Title> titleList) {
+	public DrawerTitleAdapter(Context context,int resource,List<Title> titleList) {
 		super(context, resource, titleList);
 		this.titleList =titleList;  
 		this.layoutResId = resource;
 		inflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		this.leftDrawerBottomLayout = leftDrawerBottomLayout;
-		
-		//이메일이 담겨있는지 확인한다.
-		SharedPreferenceUtil sharedUtil = new SharedPreferenceUtil();
-		try {
-			userEmail = sharedUtil.getData(context, ItDocConstants.SHARED_KEY_EMAIL);
-		} catch (RecordNotFoundException e) {
-			userEmail = null;
-			e.printStackTrace();
-		}finally{
-			if(userEmail == null){
-				isLogin = false;
-				LinearLayout linearLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_before_login , null);
-				leftDrawerBottomLayout.addView(linearLayout);
-			}else{
-				isLogin = true;
-				LinearLayout linearLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_after_login , null);
-				leftDrawerBottomLayout.addView(linearLayout);
-			}
-		}
 	}
 
-	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		view = convertView;
@@ -80,19 +56,7 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> implements OnClickLi
 			}
 		}
 		
-		
 		return view;
-	}
-
-
-	@Override
-	public void onClick(View v) {
-		if(isLogin){
-			
-		}else {
-			
-		}
-		
 	}
 
 	
