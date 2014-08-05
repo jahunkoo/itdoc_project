@@ -187,8 +187,7 @@ public class ConnectionBridge {
 	public ArrayList<KmClinicView> getKmClinicViewList(String methodUrl,
 			Context context, String email) {
 		ArrayList<KmClinicView> KmClinicView = null;
-		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
-				methodUrl);
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,methodUrl);
 		HttpConnectionModule connection = new HttpConnectionModule(context);
 		try {
 			connection.setMethod(HttpConnectionModule.POST);
@@ -198,8 +197,7 @@ public class ConnectionBridge {
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
 
-			KmClinicView = (ArrayList<KmClinicView>) new JsonParser(methodUrl)
-					.parse(result);
+			KmClinicView = (ArrayList<KmClinicView>) new JsonParser(methodUrl).parse(result);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -424,11 +422,9 @@ public class ConnectionBridge {
 		// String email = "koo10682@gmail.com";
 
 		// String email = user_picture.txt_email.getText().toString();
-		String targetUrl = getFullUrl(ItDocConstants.ADDRESS_IMG_SERVER_HOST,
-				ItDocConstants.ADDRESS_IMG_SERVER_PROJECT, methodUrl);
+		String targetUrl = getFullUrl(ItDocConstants.ADDRESS_IMG_SERVER_HOST,ItDocConstants.ADDRESS_IMG_SERVER_PROJECT, methodUrl);
 
-		String picturePath = new ItDocUtil().createPicturePath(id,
-				uploadFile.getName());
+		String picturePath = new ItDocUtil().createPicturePath(id,uploadFile.getName());
 
 		HttpConnectionModule connection = new HttpConnectionModule(context);
 		connection.setMethod(HttpConnectionModule.MULTIPART_POST);

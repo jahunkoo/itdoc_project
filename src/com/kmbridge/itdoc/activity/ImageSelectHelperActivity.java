@@ -260,11 +260,10 @@ public class ImageSelectHelperActivity extends Activity {
 		// 저장소 객체를 생성
 		//SharedPreferences shared_user_info = getSharedPreferences("user_info", 0);
 		//String email = shared_user_info.getString("user_email", "defaultemail@email.com");
-		SharedPreferenceUtil user_info = new SharedPreferenceUtil();
 		String email = null;
 		
 		try {
-			email = user_info.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
+			email = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
 		} catch (RecordNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

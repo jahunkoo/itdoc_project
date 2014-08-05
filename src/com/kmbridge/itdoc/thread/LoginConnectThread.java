@@ -45,6 +45,9 @@ public class LoginConnectThread extends Thread{
 		
 		String LoginCheck = loginMap.get(ItDocConstants.PARSE_LOGINRESULT);
 		String LoginName = loginMap.get(ItDocConstants.PARSE_NAME);
+		String LoginPicture = loginMap.get(ItDocConstants.PARSE_LOGINPICTURE);
+		Log.d("kim3",LoginPicture);
+		
 		Log.d("kim2","LoginThread : "+LoginCheck);
 		Log.d("kim2","LoginTHread : "+LoginName);
 		
@@ -60,6 +63,10 @@ public class LoginConnectThread extends Thread{
 			String firstName = LoginName.split("_")[0];
 			String lastName = LoginName.split("_")[1];
 			SharedPreferenceUtil.setData(context, ItDocConstants.SHARED_KEY_NAME, lastName+firstName);
+			
+			//사진 URL저장
+			SharedPreferenceUtil.setData(context, ItDocConstants.SHARED_KEY_PICTURE_URL, LoginPicture);
+			
 			msg = handler.obtainMessage();
 			msg.what = LoginConnectHandler.SHOW_LOGIN;
 			handler.sendMessage(msg);
