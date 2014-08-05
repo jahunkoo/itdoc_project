@@ -383,7 +383,7 @@ public class ConnectionBridge {
 	}
 	
 	public ArrayList<String> deleteKmClinicFollow(String methodUrl, Context context,  String email,int clinicId) {
-		ArrayList<String> insertKmClinicFollow = null;
+		ArrayList<String> deleteKmClinicFollow = null;
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
 		
 		try {
@@ -399,7 +399,7 @@ public class ConnectionBridge {
 			
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
-			insertKmClinicFollow = (ArrayList<String>) new JsonParser(methodUrl).parse(result);
+			deleteKmClinicFollow = (ArrayList<String>) new JsonParser(methodUrl).parse(result);
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -413,9 +413,46 @@ public class ConnectionBridge {
 			e.printStackTrace();
 		}
 
-		return insertKmClinicFollow;
+		return deleteKmClinicFollow;
 	}
 
+	
+	public ArrayList<KmClinicView> getAllKmClinicListKeyword(String methodUrl, Context context,  String keyword) {
+		ArrayList<KmClinicView> allKmClinicListKeyword = null;
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
+		
+		try {
+			HttpConnectionModule connection = new HttpConnectionModule(context);
+			connection.setMethod(HttpConnectionModule.POST);
+			
+			Properties prop = new Properties();
+			prop.setProperty("keyword", keyword);
+			
+			connection.setProperties(prop);
+			
+			connection.downloadTask.execute(targetUrl);
+			String result = connection.downloadTask.get();
+			Log.d("kim","ConnectionBridge(430) result is " + result);
+			allKmClinicListKeyword = (ArrayList<KmClinicView>) new JsonParser(methodUrl).parse(result);
+			
+			Log.d("kim","ConnectionBridge (434) keyword clinicList is " + allKmClinicListKeyword.toString());
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		return allKmClinicListKeyword;
+	}
+	
+	
 	// 이미지 업로드
 	public String insertImage(String methodUrl, File uploadFile, Context context, String id) {
 		String result = null;

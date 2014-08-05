@@ -69,6 +69,8 @@ public class JsonParser {
 			obj = parseInsertKmClinicFollow(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_DELETE_FOLLOW_NUM)) {
 			obj = parseDeleteKmClinicFollow(data);
+		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_GET_KM_CLINIC_LIST_BY_KEYWORD)) {
+			obj = parseKmClinicViewList(data);
 		}else if(methodUrl.equals(ItDocConstants.METHOD_URL_GET_USERVIEW_BY_EMAIL)){
 			obj = parseGetUserViewByEmail(data);
 		}
@@ -365,14 +367,18 @@ public class JsonParser {
 
 	private ArrayList<KmClinicView> parseKmClinicViewList(String data) throws JSONException {
 		ArrayList<KmClinicView> kmClinicViewList = new ArrayList<KmClinicView>();
-
+		Log.d("kim","1");
+		Log.d("kim","Data is " + data);
 		JSONObject jsonObj = new JSONObject(data);
-		JSONArray jsonArray = jsonObj.getJSONArray("KmClinicView");
 
+		Log.d("kim","2");
+		JSONArray jsonArray = jsonObj.getJSONArray("KmClinicView");
+		Log.d("kim","3");
 		for (int i = 0; i < jsonArray.length(); i++) {
 			KmClinicView kmClinicView = new KmClinicView();
+			Log.d("kim","4");
 			JSONObject indexobj = jsonArray.getJSONObject(i);
-
+			Log.d("kim","indexobj is " + indexobj.toString());
 			kmClinicView.setId(indexobj.getInt("id"));
 			kmClinicView.setName(indexobj.getString("name"));
 			// 맵포인트는 아직 존재하지 않아서 받아오지 않음

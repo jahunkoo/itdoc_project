@@ -15,6 +15,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,6 +40,7 @@ import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.fragment.KmClinicListFragment;
+import com.kmbridge.itdoc.fragment.SearchFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
@@ -51,12 +54,23 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	protected ListView mDrawerList;
 	protected ActionBarDrawerToggle mDrawerToggle;
 
-	//protected String[] mDrawerMenuTitles;
+	// protected String[] mDrawerMenuTitles;
 	protected CharSequence mDrawerTitle;
 	protected CharSequence mTitle;
 
 	private List<Title> mDrawerMenuTitleList;
-	
+
+	// For make fragment
+	Fragment fragment;
+	FragmentManager fragmentManager = getSupportFragmentManager();
+
+	private final int POSITION_SEARCH_FRAGMENT = 1;
+	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 2;
+
+	// action view 좀 돼라
+
+	int position = -1;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,8 +79,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		imageLoader = new ImageLoader(this);
 
 		mTitle = mDrawerTitle = getTitle();
-		// ********** stringarray 받기 시작 
-		//mDrawerMenuTitles = getResources().getStringArray(R.array.drawer_menu_title_array);
+		// ********** stringarray 받기 시작
+		// mDrawerMenuTitles =
+		// getResources().getStringArray(R.array.drawer_menu_title_array);
 		setDrawerTitleList();
 		// ********** end
 
@@ -76,9 +91,12 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		leftDrawerBottomLayout = (LinearLayout) mDrawerRelativeLayout.findViewById(R.id.linearlayout_left_drawer_bottom);
 		// set a custom shadow that overlays the main content when the drawer
 		// opens
-		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-				GravityCompat.START);
+		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 		// Set the adapter for the list view
+		// mDrawerList.setAdapter(new
+		// ArrayAdapter<String>(this,R.layout.main_drawer_list_item,
+		// mDrawerMenuTitles));
+		
 		//mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.main_drawer_list_item, mDrawerMenuTitles));
 		mDrawerList.setAdapter(new DrawerTitleAdapter(this,R.layout.main_drawer_list_item, mDrawerMenuTitleList));
 		// Set the list's click listener
@@ -115,6 +133,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		}
 
 	}
+
 	
 	private String userEmail;	//없으면 null로 명시함
 	private boolean isLogin;
@@ -215,14 +234,13 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			sectionTitle.setSectionTitle(mDrawerSectionTitles[i]);
 			titleList.add(sectionTitle);
 
-			
 			if (i == 0) {
 				for (int j = 0; j < mDrawerSearchItemTitles.length; j++) {
 					ItemTitle itemTitle = new ItemTitle();
 					itemTitle.setItemTitle(mDrawerSearchItemTitles[j]);
 					titleList.add(itemTitle);
 				}
-			}else if (i == 1) {
+			} else if (i == 1) {
 				for (int j = 0; j < mDrawerPlusItemTitles.length; j++) {
 					ItemTitle itemTitle = new ItemTitle();
 					itemTitle.setItemTitle(mDrawerPlusItemTitles[j]);
@@ -230,11 +248,10 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				}
 			}
 		}
-		
+
 		mDrawerMenuTitleList = titleList;
 	}
-	
-	
+
 	// ***************************************** mDrawerToggle 부분
 	// *******************************************
 	// *********************************************************************************************************
@@ -261,13 +278,17 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	// **************************************** actionBar 부분
 	// ***************************************************
-	// *********************************************************************************************************
+
 	// onCreateOptionsMenu는 말그대로 actionBar에서 옵션메뉴를 추가할때 MenuInflater를 이용해서 생성하는
 	// 부분
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+
+
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.activity_basic_drawer_actions, menu);
+
+		inflater.inflate(R.menu.activity_basic_actions, menu);
+		
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -282,11 +303,13 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
 		// view
-		//boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList); // 안에 들어있는
-																		// listview가
-																		// 보여지는지로
-																		// 판단하네
+		// boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList); // 안에
+		// 들어있는
+		// listview가
+		// 보여지는지로
+		// 판단하네
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerRelativeLayout);
+		
 		menu.findItem(R.id.action_search).setVisible(!drawerOpen); // drawer가
 																	// 닫혀있으면
 																	// 안보이지
@@ -305,6 +328,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		// 아이템 아이디를 받아서 select가 되었을때 코드를 넣네
 		switch (item.getItemId()) {
 		case R.id.action_search:
+			selectItem(POSITION_SEARCH_FRAGMENT);
+
 			// create intent to perform web search for this planet
 			/*
 			 * Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
@@ -333,59 +358,68 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	// ****************************************
 	// *********************************************************************************************************
 	/* The click listner for ListView in the navigation drawer */
-	private class DrawerItemClickListener implements
-			ListView.OnItemClickListener {
+	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			selectItem(position);
 		}
 	}
 
-	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 2;
-
 	private void selectItem(int position) {
 
-		Fragment fragment;
-		FragmentManager fragmentManager = getSupportFragmentManager();
-		Bundle args = new Bundle();
+		this.position = position;
 
 		switch (position) {
+
+		case POSITION_SEARCH_FRAGMENT:
+
+			createSearchFragment(fragmentManager, position);
+			break;
+
 		case POSITION_KMCLINIC_LIST_FRAGMENT:
 			createKmClinicListFragment(fragmentManager, position);
 			break;
 
-		/*default:
-
-			// update the main content by replacing fragments
-			fragment = new PlanetFragment();
-
-			args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-			fragment.setArguments(args);
-
-			fragmentManager = getSupportFragmentManager();
-			fragmentManager.beginTransaction()
-					.replace(R.id.content_frame, fragment).commit();
-
-			// update selected item and title, then close the drawer
-			mDrawerList.setItemChecked(position, true);
-			setTitle(mDrawerMenuTitles[position]);
-
-			mDrawerLayout.closeDrawer(mDrawerList);
-			*/
+		/*
+		 * default:
+		 * 
+		 * // update the main content by replacing fragments fragment = new
+		 * PlanetFragment();
+		 * 
+		 * args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+		 * fragment.setArguments(args);
+		 * 
+		 * fragmentManager = getSupportFragmentManager();
+		 * fragmentManager.beginTransaction() .replace(R.id.content_frame,
+		 * fragment).commit();
+		 * 
+		 * // update selected item and title, then close the drawer
+		 * mDrawerList.setItemChecked(position, true);
+		 * setTitle(mDrawerMenuTitles[position]);
+		 * 
+		 * mDrawerLayout.closeDrawer(mDrawerList);
+		 */
 		}
 	}
 
 	// *********************************************end***************************************************
-	private void createKmClinicListFragment(FragmentManager fragmentManager,
-			int position) {
+	private void createKmClinicListFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = KmClinicListFragment.create(this);
-		fragmentManager.beginTransaction()
-				.replace(R.id.content_frame, fragment).commit();
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 		mDrawerList.setItemChecked(position, true);
-		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position); 
+		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
 		setTitle(title.getItemTitle());
-		//mDrawerLayout.closeDrawer(mDrawerList);
+		// mDrawerLayout.closeDrawer(mDrawerList);
+		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
+	}
+
+	private void createSearchFragment(FragmentManager fragmentManager, int position) {
+		Fragment fragment = SearchFragment.create(this);
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+		mDrawerList.setItemChecked(position, true);
+		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
+		setTitle(title.getItemTitle());
+		// mDrawerLayout.closeDrawer(mDrawerList);
 		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
 	}
 	

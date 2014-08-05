@@ -6,7 +6,6 @@
 
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/ITDocActionBar</item>
-        <item name="android:windowActionBarOverlay">false</item>
     </style>
 
     <!-- ActionBar styles -->

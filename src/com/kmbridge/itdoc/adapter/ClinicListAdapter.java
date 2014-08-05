@@ -36,12 +36,15 @@ public class ClinicListAdapter extends BaseAdapter {
 
 		this.email = email;
 		this.context = context;
-		
+
 		inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		imageLoader = new ImageLoader(context);
 
 		ArrayList<KmClinicView> kmClinicViewList = new ArrayList<KmClinicView>();
 		ConnectionBridge connectionBridge = new ConnectionBridge();
+
+		email = "eggk@gmail.com";
+
 		kmClinicViewList = connectionBridge.getKmClinicViewList("getAllKmClinic", context, email);
 
 		for (int i = 0; i < kmClinicViewList.size(); i++) {
@@ -58,13 +61,17 @@ public class ClinicListAdapter extends BaseAdapter {
 			int likeNum = kmClinicView.getUserSimpleInfoList().size();
 			String keyword = kmClinicView.getKeywordList().get(0);
 			int type = kmClinicView.getType();
-			
+
+			try {
+				Thread.currentThread().sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			clinicListItemList.add(new ClinicListItem(id, picturepath, name, regionName, keyword, followNum, likeNum, type));
 
 		}
 
 		adapter = new ArrayAdapter<ClinicListItem>(context, R.id.listview_clinic_list, clinicListItemList);
-
 
 	}
 
@@ -100,10 +107,9 @@ public class ClinicListAdapter extends BaseAdapter {
 		final int clinicId;
 
 		if (view == null) {
-			view = inflator.inflate(R.layout.clinic_list_item, parent,false);
-			view.setTag((Integer)position);
+			view = inflator.inflate(R.layout.clinic_list_item, parent, false);
+			view.setTag((Integer) position);
 		}
-
 
 		img = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_clinicimage);
 		name = (TextView) view.findViewById(R.id.textview_clinic_list_item_name);
@@ -112,80 +118,72 @@ public class ClinicListAdapter extends BaseAdapter {
 		followNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_follower);
 		keyword = (TextView) view.findViewById(R.id.textview_clinic_list_item_keyword);
 		followImg = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
-		
-		
+
 		final ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
 
-		String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath +"&objectType=2";
-		
+		String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath + "&objectType=2";
+
 		try {
 			imageLoader.DisplayImage(url, img);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		name.setText(clinicListItem.name);
 		regionName.setText(clinicListItem.regionName);
 		keyword.setText(clinicListItem.keyword);
-		
+
 		likeNum.setText(toString().valueOf(clinicListItem.likeNum));
 		followNum.setText(toString().valueOf(clinicListItem.followNum));
 
 		clinicId = clinicListItem.id;
 		final int type = clinicListItem.type;
-		
+
 		if (clinicListItem.type == 1) {
 			followImg.setImageResource(R.drawable.follow);
 		} else {
 			followImg.setImageResource(R.drawable.not_follow);
 		}
-		
+
 		followImg.setTag("followImg");
 		img.setTag("clinicImg");
 		OnClickListener onClickListener = new OnClickListener() {
-			
-			
-			
+
 			@Override
 			public void onClick(View v) {
-				
+
 				ImageView img = (ImageView) v.findViewWithTag("followImg");
 				ImageView clinicImg = (ImageView) v.findViewWithTag("clinicImg");
 				ConnectionBridge conn = new ConnectionBridge();
-				
-				Log.d("kim","clinic Id is " + clinicId);
-				
-				switch(v.getId()) {
-				
-				case R.id.imageview_clinic_list_item_follow_img :
+
+				switch (v.getId()) {
+
+				case R.id.imageview_clinic_list_item_follow_img:
 
 					if (type == 0) {
 						ArrayList<String> result = conn.insertKmClinicFollow("insertKmClinicFollow", context, email, clinicId);
-						Log.d("kim","result is " + result.get(0).toString() );
 						clinicListItem.type = 1;
 						img.setImageResource(R.drawable.follow);
-			
+
 					} else {
 						ArrayList<String> result = conn.deleteKmClinicFollow("deleteKmClinicFollow", context, email, clinicId);
-						Log.d("kim","result is " + result.get(0).toString() );
 						clinicListItem.type = 0;
 						img.setImageResource(R.drawable.not_follow);
-			
+
 					}
-				
-				case R.id.imageview_clinic_list_item_clinicimage :
-					
-					Intent intent = new Intent(context,KmClinicDetailActivity.class);
-					
+					break;
+
+				case R.id.imageview_clinic_list_item_clinicimage:
+
+					Intent intent = new Intent(context, KmClinicDetailActivity.class);
+
 					intent.putExtra("clinicId", clinicId);
-					Log.d("kim","clinicListAdapter(181) clinicId is " + clinicId);
 					context.startActivity(intent);
-					
-					
+					break;
 				}
 			}
 		};
-		
+
 		followImg.setOnClickListener(onClickListener);
 		img.setOnClickListener(onClickListener);
 		return view;
@@ -200,7 +198,7 @@ public class ClinicListAdapter extends BaseAdapter {
 		int followNum;
 		int likeNum;
 		int type;
-		
+
 		public ClinicListItem(int id, String picturepath, String name, String regionName, String keyword, int followNum, int likeNum, int type) {
 			super();
 			this.id = id;
@@ -228,8 +226,6 @@ public class ClinicListAdapter extends BaseAdapter {
 		public void setType(int type) {
 			this.type = type;
 		}
-
-		
 
 	}
 
