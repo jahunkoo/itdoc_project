@@ -22,12 +22,12 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
+        android:name=".util.Font"
         android:allowBackup="true"
         android:icon="@drawable/app_icon_itdoc"
         android:label="@string/app_name"
         android:logo="@drawable/action_itdoc_logo"
-        android:theme="@style/ItDocActionBarTheme" 
-        android:name=".util.Font" >
+        android:theme="@style/ItDocActionBarTheme" >
         <activity
             android:name=".activity.IntroActivity"
             android:label="@string/app_name"
@@ -55,8 +55,7 @@
         </activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>
-        <activity
-            android:name=".activity.ScreenSlideActivity">
+        <activity android:name=".activity.ScreenSlideActivity" >
         </activity>
         <activity android:name=".activity.ProfilePictureActivity" >
         </activity>
@@ -75,6 +74,10 @@
         <activity
             android:name="com.kmbridge.itdoc.activity.MapActivity"
             android:label="@string/title_activity_map" >
+        </activity>
+        <activity
+            android:name="com.kmbridge.itdoc.activity.UserProfileActivity"
+            android:label="@string/title_activity_user_profile" >
         </activity>
 
         <meta-data

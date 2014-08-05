@@ -3,6 +3,8 @@ package com.kmbridge.itdoc.connect;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -17,6 +19,7 @@ import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.Time;
+import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.ItDocUtil;
@@ -309,9 +312,11 @@ public class ConnectionBridge {
 		return result;
 	}
 	
-	public boolean login(String methodUrl, Properties props, Context context) {
+	public Map<String, String> login(String methodUrl, Properties props, Context context) {
 		//String result = null;
-		boolean result=false;
+		//boolean result=false;
+		Map<String, String> loginMap = new HashMap<String, String>();
+		
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,methodUrl);
 		Log.d("koo", targetUrl);
 		// http://localhost:8080/ItDocServer/register?email=asd2323sd@gmail.com&password=asdasd
@@ -323,8 +328,9 @@ public class ConnectionBridge {
 
 			connection.downloadTask.execute(targetUrl);
 			String data = connection.downloadTask.get();
-			result =  (Boolean)new JsonParser(methodUrl).parse(data);
-			Log.d("LoginIs",""+result);
+			//result =  (Boolean)new JsonParser(methodUrl).parse(data);
+			loginMap = (Map)new JsonParser(methodUrl).parse(data);
+			//Log.d("LoginIs",""+result);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -340,7 +346,8 @@ public class ConnectionBridge {
 			e.printStackTrace();
 		}
 
-		return result;
+		//return result;
+		return loginMap;
 	}
 	
 	public ArrayList<String> insertKmClinicFollow(String methodUrl, Context context,  String email,int clinicId) {
@@ -444,7 +451,41 @@ public class ConnectionBridge {
 		result = ItDocConstants.SUCCESS;
 		return result;
 	}
-
+	
+	public UserView getUserViewByEmail(Context context,String methodUrl ,String myEmail ,String userEmail){
+		UserView userView = null;
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
+		
+		HttpConnectionModule connection = new HttpConnectionModule(context);
+		connection.setMethod(HttpConnectionModule.POST);
+		Properties prop = new Properties();
+		prop.setProperty("myEmail", myEmail);
+		prop.setProperty("userEmail", userEmail);
+		try {
+			connection.setProperties(prop);
+			connection.downloadTask.execute(targetUrl);
+			String result = connection.downloadTask.get();
+			userView = (UserView) new JsonParser(methodUrl).parse(result);
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return userView;
+	}
+	
+	
 	private String getFullUrl(String serverUrl, String projectUrl,
 			String methodUrl) {
 		return serverUrl + "/" + projectUrl + "/" + methodUrl;

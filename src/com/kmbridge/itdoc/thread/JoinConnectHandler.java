@@ -84,16 +84,18 @@ public class JoinConnectHandler extends Handler {
 			
 			//처음 설치 여부를 확인
 	    	isNotFirst=SharedPreferenceUtil.isExist(activity, ItDocConstants.SHARED_KEY_FIRST_CHECK);
-	    	//Log.d("check_kim","join_check = "+isNotFirst);
+	    	Log.d("kim","join_check = "+isNotFirst);
 	    	if(isNotFirst==true)
 	    	{
 	    		//처음 실행 여부 체크
 	    		SharedPreferenceUtil.setData(activity, ItDocConstants.SHARED_KEY_FIRST_CHECK, "notfirst");
+	    		Log.d("kim","join_check = "+isNotFirst);
 	    	}
 	    	else
 	    	{
 	    		//처음 실행 여부 체크
 	    		SharedPreferenceUtil.setData(activity, ItDocConstants.SHARED_KEY_FIRST_CHECK, null);
+	    		Log.d("kim","join_check = "+isNotFirst);
 	    	}
 	    	
 			Intent intent = new Intent(activity,ProfilePictureActivity.class);

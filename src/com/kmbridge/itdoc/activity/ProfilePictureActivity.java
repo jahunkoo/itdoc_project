@@ -106,8 +106,8 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
     	actionbar.hide();
     	
     	//처음 설치 여부를 확인
-    	SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
-    	isNotFirst=userInfo.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
+    	//SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
+    	isNotFirst=SharedPreferenceUtil.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
 		
 		Log.d("check_kim","join_check = "+isNotFirst);
     	//처음 설치가 처음 설치가 아닌경우 메인으로 이동

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 한의원 상세 정보를 담는 클래스
  * @author Administrator
- *	
+ *
  */
 public class KmClinicDetailView {
 

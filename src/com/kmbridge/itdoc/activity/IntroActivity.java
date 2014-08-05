@@ -86,6 +86,7 @@ public class IntroActivity extends FragmentActivity {
 
 		}).start();
 		
+		
 	}
 
 	private void setLayoutElement() {
@@ -148,13 +149,15 @@ public class IntroActivity extends FragmentActivity {
 	};
 
 	private void isIntro() {
-		SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
-		isLogin=userInfo.isExist(this, ItDocConstants.SHARED_KEY_EMAIL);
-		isNotFirst=userInfo.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
+		isLogin=SharedPreferenceUtil.isExist(this, ItDocConstants.SHARED_KEY_EMAIL);
+		isNotFirst=SharedPreferenceUtil.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
+		
+		Log.d("kim","isNotFirst :"+isNotFirst);
 		
 		//로그인 상태이거나 처음 설치가 아닌경우 메인으로 이동
 		if(isLogin==true || isNotFirst==true)
 		{
+			Log.d("kim","isNotFirst :"+isNotFirst);
 			Intent intent = new Intent(this,MainDrawerActivity.class);
 			startActivity(intent);
 		}

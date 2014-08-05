@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.kmbridge.itdoc.exception.UserException;
-import com.kmbridge.itdoc.util.ItDocConstants;
 
 public class User {
 	
@@ -20,14 +19,23 @@ public class User {
 	public static final String NOT_EMAIL_TYPE = "이메일 형식이 아닙니다.";
 	public static final String PASSWORD_LENGTH_NEED_UP_TO_SIX = "비밀번호는 6자리 이상이어야 합니다.";
 	public static final String NOT_CORRECT_BIRTH_YEAR = "올바른 연도를 입력하세요";
+	
 	private String email;
 	private String password;
 	private String name;
 	private String cellPhone;
-	private int birthYear;
+	private int birthday;
 	private int gender 	= DEFAULT_NUM;
+	private String registerDate;
+	private String school;
+	private String job;
+	private String introduce;
+	private int gradeCode;
+	private int bigRegionCode;
+	private int middleRegionCode;
+	private String remainRegion;
 	private int flag	= DEFAULT_NUM;
-	
+	private int certificationCode;
 	
 	//생성자 이전에 호출되는 부분
 	{
@@ -35,21 +43,37 @@ public class User {
 		currentYear = Calendar.getInstance().get ( cal.YEAR );
 	}
 	
+	
 	public User() {
 		super();
 	}
 
-	public User(String email, String password, String name, String cellPhone,
-			int birthYear, int gender, int flag) {
+	public User(int currentYear, String email, String password, String name,
+			String cellPhone, int birthday, int gender, String registerDate,
+			String school, String job, String introduce, int gradeCode,
+			int bigRegionCode, int middleRegionCode, String remainRegion,
+			int flag, int certificationCode) {
 		super();
+		this.currentYear = currentYear;
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.cellPhone = cellPhone;
-		this.birthYear = birthYear;
+		this.birthday = birthday;
 		this.gender = gender;
+		this.registerDate = registerDate;
+		this.school = school;
+		this.job = job;
+		this.introduce = introduce;
+		this.gradeCode = gradeCode;
+		this.bigRegionCode = bigRegionCode;
+		this.middleRegionCode = middleRegionCode;
+		this.remainRegion = remainRegion;
 		this.flag = flag;
+		this.certificationCode = certificationCode;
 	}
+
+
 
 	public String getEmail() {
 		return email;
@@ -94,17 +118,12 @@ public class User {
 		this.cellPhone = cellPhone;
 	}
 
-	public int getBirthYear() {
-		return birthYear;
+	public int getBirthday() {
+		return birthday;
 	}
 
-	public void setBirthYear(int birthYear) throws UserException {
-		if(birthYear>=BIRTH_YEAR_MIN && birthYear<=currentYear){
-			this.birthYear = birthYear;
-		}else{
-			throw new UserException(NOT_CORRECT_BIRTH_YEAR);
-		}
-		
+	public void setBirthday(int birthday) {
+		this.birthday = birthday;
 	}
 
 	public int getGender() {
@@ -115,21 +134,84 @@ public class User {
 		this.gender = gender;
 	}
 
+	public String getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
+	}
+
+	public String getIntroduce() {
+		return introduce;
+	}
+
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+
+	public int getGradeCode() {
+		return gradeCode;
+	}
+
+	public void setGradeCode(int gradeCode) {
+		this.gradeCode = gradeCode;
+	}
+
+	public int getBigRegionCode() {
+		return bigRegionCode;
+	}
+
+	public void setBigRegionCode(int bigRegionCode) {
+		this.bigRegionCode = bigRegionCode;
+	}
+
+	public int getMiddleRegionCode() {
+		return middleRegionCode;
+	}
+
+	public void setMiddleRegionCode(int middleRegionCode) {
+		this.middleRegionCode = middleRegionCode;
+	}
+
+	public String getRemainRegion() {
+		return remainRegion;
+	}
+
+	public void setRemainRegion(String remainRegion) {
+		this.remainRegion = remainRegion;
+	}
+
 	public int getFlag() {
 		return flag;
 	}
 
 	public void setFlag(int flag) {
 		this.flag = flag;
-	}	
-	
-	   @Override
-	public String toString() {
-		return "User [DEFAULT_NUM=" + DEFAULT_NUM + ", MIN_PASSWORD_NUM="
-				+ MIN_PASSWORD_NUM + ", EMAIL_PATTERN=" + EMAIL_PATTERN
-				+ ", email=" + email + ", password=" + password + ", name="
-				+ name + ", cellPhone=" + cellPhone + ", birthYear="
-				+ birthYear + ", gender=" + gender + ", flag=" + flag + "]";
+	}
+
+	public int getCertificationCode() {
+		return certificationCode;
+	}
+
+	public void setCertificationCode(int certificationCode) {
+		this.certificationCode = certificationCode;
 	}
 
 	public boolean isEmailAddress(String email) {
@@ -138,5 +220,22 @@ public class User {
 
 	        return emailMatcher.matches();
 	    }
+
+	@Override
+	public String toString() {
+		return "User [DEFAULT_NUM=" + DEFAULT_NUM + ", MIN_PASSWORD_NUM="
+				+ MIN_PASSWORD_NUM + ", BIRTH_YEAR_MIN=" + BIRTH_YEAR_MIN
+				+ ", currentYear=" + currentYear + ", EMAIL_PATTERN="
+				+ EMAIL_PATTERN + ", email=" + email + ", password=" + password
+				+ ", name=" + name + ", cellPhone=" + cellPhone + ", birthday="
+				+ birthday + ", gender=" + gender + ", registerDate="
+				+ registerDate + ", school=" + school + ", job=" + job
+				+ ", introduce=" + introduce + ", gradeCode=" + gradeCode
+				+ ", bigRegionCode=" + bigRegionCode + ", middleRegionCode="
+				+ middleRegionCode + ", remainRegion=" + remainRegion
+				+ ", flag=" + flag + ", certificationCode=" + certificationCode
+				+ "]";
+	}
 	   
+	
 }

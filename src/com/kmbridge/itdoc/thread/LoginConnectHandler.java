@@ -69,11 +69,14 @@ public class LoginConnectHandler extends Handler {
 			EditText edittxt_activity_login_login_email = (EditText) activity.findViewById(R.id.login_email);
 			
 			SharedPreferenceUtil.setData(activity,ItDocConstants.SHARED_KEY_EMAIL, edittxt_activity_login_login_email.getText().toString());
-			SharedPreferenceUtil.setData(activity, ItDocConstants.SHARED_KEY_FIRST_CHECK, "notfirst");
 			
+			SharedPreferenceUtil.setData(activity, ItDocConstants.SHARED_KEY_FIRST_CHECK, "notfirst");
+			Log.d("kim","Login check ;"+SharedPreferenceUtil.setData(activity, ItDocConstants.SHARED_KEY_FIRST_CHECK, "notfirst"));
 			Toast.makeText(activity, Sentence.successLogin,Toast.LENGTH_SHORT).show();
+			
 			Intent intent = new Intent(activity,MainDrawerActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //기존 설치 -> 로그인 -> 메인드로워만 남김 -> 뒤로가기 -> 종료
+			
 			activity.startActivity(intent);
 			activity.finish(); //처음 설치 ->로그인->뒤로가기->스크린 슬라이드로 이동하게함
 			

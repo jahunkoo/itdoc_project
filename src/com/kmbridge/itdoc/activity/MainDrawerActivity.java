@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
@@ -112,12 +113,11 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private String userEmail;	//없으면 null로 명시함
 	private boolean isLogin;
 	private LinearLayout leftBottomLayout;
-	
+
 	public void setDrawerLeft() {
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		SharedPreferenceUtil sharedUtil = new SharedPreferenceUtil();
 				try {
-					userEmail = sharedUtil.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
+					userEmail = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
 				} catch (RecordNotFoundException e) {
 					userEmail = null;
 					e.printStackTrace();
@@ -138,6 +138,20 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 						//환경설정 이미지 클릭시 컨피그(환경설정)액티비티로 이동하는 버튼
 						ImageButton imgBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imagebutton_left_drawer_bottom_setting);
 						imgBtn.setOnClickListener(this);
+						
+						TextView nameTextView = (TextView) leftBottomLayout.findViewById(R.id.textview_left_drawer_bottom_name);
+						nameTextView.setOnClickListener(this);
+						String profileName = null;
+						
+						try {
+							profileName = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_NAME);
+						} catch (RecordNotFoundException e) {
+							e.printStackTrace();
+						}
+						
+						nameTextView.setText(profileName);
+						
+						
 						
 						//사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
 						ImageButton imgProfileBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
@@ -347,7 +361,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId())
 		{
 			case R.id.button_left_drawer_bottom_login_or_register:
@@ -355,18 +369,27 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				//intent_register.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 				startActivity(intent_register);
 				break;
-			case R.id.imagebutton_left_drawer_bottom_setting:
-				Log.d("kim","config_click!");
-				Intent intent_setting = new Intent(this,ConfigActivity.class);
-				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-				//startActivityForResult(intent_setting,0);
-				startActivity(intent_setting);
 				
 			case R.id.imageview_left_drawer_bottom_profile:
 				Intent intent_profile_picture = new Intent(this,ProfilePictureActivity.class);
 				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 				//startActivityForResult(intent_setting,0);
 				startActivity(intent_profile_picture);
+				break;
+				
+			case R.id.textview_left_drawer_bottom_name:
+				Intent intentUserProfile = new Intent(this,UserProfileActivity.class);
+				intentUserProfile.putExtra(ItDocConstants.EMAIL, ItDocConstants.SHARED_KEY_EMAIL);
+				startActivity(intentUserProfile);
+				break;
+				
+			case R.id.imagebutton_left_drawer_bottom_setting:
+				Log.d("kim","config_click!");
+				Intent intent_setting = new Intent(this,ConfigActivity.class);
+				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				//startActivityForResult(intent_setting,0);
+				startActivity(intent_setting);
+				break;
 				
 		}
 		
@@ -389,7 +412,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			break;
 		}
 	}
-	
 	
 
 }
