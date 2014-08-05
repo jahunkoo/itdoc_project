@@ -12,8 +12,11 @@ import com.kmbridge.itdoc.dto.Grade;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.MiddleRegion;
+import com.kmbridge.itdoc.dto.ReviewKeyword;
+import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
+import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.util.ItDocConstants;
 
@@ -62,16 +65,109 @@ public class JsonParser {
 			obj = parseInsertKmClinicFollow(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_DELETE_FOLLOW_NUM)) {
 			obj = parseDeleteKmClinicFollow(data);
+		}else if(methodUrl.equals(ItDocConstants.METHOD_URL_GET_USERVIEW_BY_EMAIL)){
+			obj = parseGetUserViewByEmail(data);
 		}
 		return obj;
 	}
 
+	private UserView parseGetUserViewByEmail(String data) throws JSONException {
+		UserView userView = new UserView();
+		Log.d("koo", data);
+		JSONObject jsonObj = new JSONObject(data.trim());
+		Log.d("koo", jsonObj.getString(ItDocConstants.RESULT));
+		if(isSuccess(jsonObj.getString(ItDocConstants.RESULT))){
+			JSONArray jsonArray = jsonObj.getJSONArray("UserView");
+			Log.d("koo", "line 80");
+			jsonObj = (JSONObject) jsonArray.get(0);
+			//ok
+			userView.setFollowNum(jsonObj.getInt("followNum"));
+			userView.setBirthday(jsonObj.getInt("birthday"));
+			userView.setBigRegionCode(jsonObj.getInt("bigRegionCode"));
+			userView.setRegisterDate(jsonObj.getString("registerDate"));
+			userView.setIntroduce(jsonObj.getString("introduce"));
+			userView.setJob(jsonObj.getString("job"));
+			userView.setRemainRegion(jsonObj.getString("remainRegion"));
+			userView.setFollowingNum(jsonObj.getInt("followingNum"));
+			userView.setSchool(jsonObj.getString("school"));
+			userView.setPicturePath(jsonObj.getString("picturePath"));
+			userView.setEmail(jsonObj.getString("email"));
+			userView.setMiddleRegionCode(jsonObj.getInt("middleRegionCode"));
+			userView.setName(jsonObj.getString("name"));
+			userView.setCertificationCode(jsonObj.getInt("certificationCode"));
+			userView.setGender(jsonObj.getInt("gender"));
+			userView.setGradeCode(jsonObj.getInt("gradeCode"));
+			Log.d("koo", "follow:"+jsonObj.getBoolean("follow"));
+			userView.setFollow(jsonObj.getBoolean("follow"));
+			jsonArray = jsonObj.getJSONArray("reviewViewList");
+			List<ReviewView> reviewViewList = new ArrayList<ReviewView>();
+			for(int i=0;i<jsonArray.length();i++){
+				
+				ReviewView reviewView = new ReviewView();
+				jsonObj = jsonArray.getJSONObject(i);
+				String picturePath = null; 
+				if(jsonObj.has("kmClinicPicturePath"))	picturePath = jsonObj.getString("kmClinicPicturePath");
+				else									picturePath = ItDocConstants.IMG_PATH_KM_CLINIC;
+				
+				Log.d("koo", "picturePath"+picturePath);
+				reviewView.setKmClinicPicturePath(jsonObj.getString("kmClinicPicturePath"));
+				String reviewTime = jsonObj.getString("reviewTime");
+				Log.d("koo", "reviewTime"+reviewTime);
+				reviewView.setReviewTime(jsonObj.getString("reviewTime"));
+				reviewView.setKmClinicName(jsonObj.getString("kmClinicName"));
+				reviewView.setKmClinicId(jsonObj.getInt("kmClinicId"));
+				reviewView.setUserEmail(jsonObj.getString("userEmail"));
+				reviewView.setKmClinicBigRegionName(jsonObj.getString("kmClinicBigRegionName"));
+				reviewView.setReviewId(jsonObj.getInt("reviewId"));
+				reviewView.setKmClinicRemainRegion(jsonObj.getString("kmClinicRemainRegion"));
+				reviewView.setFavoriteType(jsonObj.getInt("favoriteType"));
+				reviewView.setKmClinicBigRegionCode(jsonObj.getInt("kmClinicBigRegionCode"));
+				reviewView.setKmClinicMiddleRegionCode(jsonObj.getInt("kmClinicMiddleRegionCode"));
+				reviewView.setKmClinicMiddleRegionName(jsonObj.getString("kmClinicMiddleRegionName"));
+				reviewView.setUserName(jsonObj.getString("userName"));
+				reviewView.setComment(jsonObj.getString("comment"));
+				
+				List<ReviewKeyword> reviewKeywordList = new ArrayList<ReviewKeyword>();
+				JSONArray reviewKeywordJsonArray = jsonObj.getJSONArray("reviewKeywordList");
+				for(int j=0;j<reviewKeywordJsonArray.length();j++){
+					jsonObj = reviewKeywordJsonArray.getJSONObject(j);
+					ReviewKeyword reviewKeyword = new ReviewKeyword();
+					reviewKeyword.setId(jsonObj.getInt("id"));
+					reviewKeyword.setKeyword(jsonObj.getString("keyword"));
+					reviewKeyword.setReviewId(jsonObj.getInt("reviewId"));
+					reviewKeyword.setObjectType(jsonObj.getInt("objectType"));
+					reviewKeywordList.add(reviewKeyword);
+				}
+				reviewView.setReviewKeywordList(reviewKeywordList);
+				
+				reviewViewList.add(reviewView);
+			}
+			userView.setReviewViewList(reviewViewList);
+			
+		}else{
+			
+			
+		}
+		
+		
+		return userView;
+	}
+	
+	private boolean isSuccess(String resultValue){
+		boolean flag = false;
+		if(resultValue.equals(ItDocConstants.SUCCESS)) 	flag = true;
+		if(resultValue.equals(ItDocConstants.ERROR))	flag = false;
+		Log.d("koo", "isSuccess:"+flag);
+		return flag;	
+	}
+	
 	private String parserRegister(String data) throws JSONException {
 		JSONObject jsonObj = new JSONObject(data);
 		String result = jsonObj.getString("result");
 		return result;
 	}
 
+	
 	private boolean parserLogin(String data) throws JSONException {
 		JSONObject jsonObj = new JSONObject(data);
 		String result = jsonObj.getString("success");

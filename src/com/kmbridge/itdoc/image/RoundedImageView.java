@@ -46,12 +46,12 @@ public class RoundedImageView extends ImageView {
 
 		int w = getWidth(), h = getHeight();
 
-		Bitmap roundBitmap = getCroppedBitmap(bitmap, w);
+		Bitmap roundBitmap = getRoundedBitmap(bitmap, w);
 		canvas.drawBitmap(roundBitmap, 0, 0, null);
 
 	}
 
-	public static Bitmap getCroppedBitmap(Bitmap bmp, int radius) {
+	public static Bitmap getRoundedBitmap(Bitmap bmp, int radius) {
 		Bitmap sbmp;
 
 		if (bmp.getWidth() != radius || bmp.getHeight() != radius) {

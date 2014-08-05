@@ -104,6 +104,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 					
 					Toast.makeText(getActivity(), Sentence.successLogin,Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(getActivity(),MainDrawerActivity.class);
+					//intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 					startActivity(intent);
 					getActivity().finish();
 				}

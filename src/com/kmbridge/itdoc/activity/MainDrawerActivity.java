@@ -3,7 +3,10 @@ package com.kmbridge.itdoc.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -110,7 +113,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private String userEmail;	//없으면 null로 명시함
 	private boolean isLogin;
 	private LinearLayout leftBottomLayout;
-	private void setDrawerLeft() {
+
+	public void setDrawerLeft() {
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		SharedPreferenceUtil sharedUtil = new SharedPreferenceUtil();
 				try {
@@ -328,12 +332,35 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	
 	@Override
 	public void onClick(View v) {
-		if(v.getId() == R.id.button_left_drawer_bottom_login_or_register){
-			Log.d("koo", "click! button_left_drawer_bottom_login_or_register");
-		}else if(v.getId() == R.id.imagebutton_left_drawer_bottom_setting){
-			Log.d("koo", "click! imagebutton_left_drawer_bottom_setting");
+
+		switch (v.getId())
+		{
+			case R.id.button_left_drawer_bottom_login_or_register:
+				Intent intent_register = new Intent(this,UserManagerActivity.class);
+				startActivity(intent_register);
+				break;
+			case R.id.imagebutton_left_drawer_bottom_setting:
+				Intent intent_setting = new Intent(this,ConfigActivity.class);
+				startActivityForResult(intent_setting,0);
+				//startActivity(intent_setting);
 		}
 		
 	}
+
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode ,data);
+		switch(resultCode){
+		case Activity.RESULT_OK: 
+			//*****************************actionbar title setting ***********************
+			getActionBar().setTitle(R.string.title_activity_main_drawer);
+			//****************************************************************************
+			Log.d("test", "jlkjkj:"+data.getExtras().getString("data"));
+			setDrawerLeft() ;
+			break;
+		}
+	}
+	
 
 }

@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.image.RoundedImageView;
 
 
 import android.content.Context;
@@ -52,7 +53,25 @@ public class ImageLoader {
             imageView.setImageResource(stub_id);
         }
     }
-        
+    
+    //************************생성자 추가함 **********************
+    public void DisplayUserImage(String url, ImageView imageView)
+    {
+    	final int user_stub_id = R.drawable.user_profile_default;
+        imageViews.put(imageView, url);
+        Bitmap bitmap=memoryCache.get(url);
+        if(bitmap!=null) {
+            imageView.setImageBitmap(bitmap);
+        }
+        else
+        {
+            queuePhoto(url, imageView);
+            imageView.setImageResource(user_stub_id);
+        }
+    }
+    //*****************************************************
+    
+    
     private void queuePhoto(String url, ImageView imageView)
     {
         PhotoToLoad p=new PhotoToLoad(url, imageView);
@@ -151,6 +170,9 @@ public class ImageLoader {
                 if(imageViewReused(photoToLoad))
                     return;
                 Bitmap bmp=getBitmap(photoToLoad.url);
+                //비트맵을 동그랗게 만들어 줌****************
+                bmp = RoundedImageView.getRoundedBitmap(bmp, bmp.getWidth());
+                //*******************************
                 memoryCache.put(photoToLoad.url, bmp);
                 if(imageViewReused(photoToLoad))
                     return;

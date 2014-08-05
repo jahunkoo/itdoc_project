@@ -25,10 +25,9 @@
         android:allowBackup="true"
         android:icon="@drawable/app_icon_itdoc"
         android:label="@string/app_name"
-        android:theme="@style/ItDocActionBarTheme"
-        
-        android:logo="@drawable/action_itdoc_logo" >
-        
+
+        android:logo="@drawable/action_itdoc_logo"
+        android:theme="@style/ItDocActionBarTheme" >
         <activity
             android:name=".activity.IntroActivity"
             android:label="@string/app_name"
@@ -38,11 +37,6 @@
         <activity
             android:name=".activity.MainDrawerActivity"
             android:label="@string/title_activity_main_drawer" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!-- 지워도 됨 -->
         <activity
@@ -51,13 +45,10 @@
             android:label="@string/title_activity_basic"
             android:theme="@style/Theme.AppCompat.Light" >
         </activity>
-        
         <activity
             android:name=".activity.UserManagerActivity"
             android:label="@string/title_activity_user_manager" >
-      
         </activity>
-        
         <activity android:name=".activity.TestUserActivity" >
         </activity>
         <activity
@@ -65,7 +56,6 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity android:name=".activity.ProfilePictureActivity" >
-			
         </activity>
         <activity
             android:name=".activity.LoginActivity"
@@ -83,7 +73,15 @@
             android:name="com.kmbridge.itdoc.activity.MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
+		<activity
+            android:name="com.kmbridge.itdoc.activity.UserProfileActivity"
+            android:label="@string/title_activity_user_profile" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDtrhkgaVMoM-UEYJ2G3Xk-cvlp9VwgzJc" />

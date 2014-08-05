@@ -40,6 +40,7 @@ import com.kmbridge.itdoc.activity.ScreenSlideActivity;
 
 import com.kmbridge.itdoc.activity.UserManagerActivity;
 import com.kmbridge.itdoc.image.ImageManager;
+import com.kmbridge.itdoc.util.ItDocConstants;
 
 
 
@@ -144,14 +145,14 @@ public class ScreenSlidePageFragment extends Fragment implements View.OnClickLis
    		// 회원가입
    		case R.id.button_fragment_screen_slide_register:
    			Intent intent = new Intent(getActivity(), UserManagerActivity.class);
-   			intent.putExtra("callRegister", 1);
+   			intent.putExtra(ItDocConstants.TAG_FRAGMENT_JOIN, 1);
    			startActivity(intent);
    			break;
    		
    		case R.id.button_fragment_screen_slide_login:
    			
    			Intent intent2 = new Intent(getActivity(), UserManagerActivity.class);
-   			intent2.putExtra("callLogin", 2);
+   			intent2.putExtra(ItDocConstants.TAG_FRAGMENT_LOGIN, 2);
    			startActivity(intent2);
    			//UserManagerActivity uma = new UserManagerActivity();
    			//uma.loginLayoutElement();

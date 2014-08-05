@@ -17,6 +17,7 @@ import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.Time;
+import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.ItDocUtil;
@@ -444,7 +445,41 @@ public class ConnectionBridge {
 		result = ItDocConstants.SUCCESS;
 		return result;
 	}
-
+	
+	public UserView getUserViewByEmail(Context context,String methodUrl ,String myEmail ,String userEmail){
+		UserView userView = null;
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
+		
+		HttpConnectionModule connection = new HttpConnectionModule(context);
+		connection.setMethod(HttpConnectionModule.POST);
+		Properties prop = new Properties();
+		prop.setProperty("myEmail", myEmail);
+		prop.setProperty("userEmail", userEmail);
+		try {
+			connection.setProperties(prop);
+			connection.downloadTask.execute(targetUrl);
+			String result = connection.downloadTask.get();
+			userView = (UserView) new JsonParser(methodUrl).parse(result);
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return userView;
+	}
+	
+	
 	private String getFullUrl(String serverUrl, String projectUrl,
 			String methodUrl) {
 		return serverUrl + "/" + projectUrl + "/" + methodUrl;
