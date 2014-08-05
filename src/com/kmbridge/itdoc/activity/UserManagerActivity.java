@@ -2,30 +2,22 @@ package com.kmbridge.itdoc.activity;
 
 
 
-import java.util.HashMap;
-import java.util.Map;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.dto.Title;
 import com.kmbridge.itdoc.fragment.JoinFragment;
 import com.kmbridge.itdoc.fragment.LoginFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
-public class UserManagerActivity extends ActionBarActivity implements OnClickListener,CommonMethods {
+public class UserManagerActivity extends ActionBarActivity implements OnClickListener{
 	
 	Button btn_activity_user_manager_email_join;
 	Button btn_activity_user_manager_email_login;
@@ -34,7 +26,8 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_manager);
-		setActionBar(getSupportActionBar());
+		
+		
 		//회원가입
 		btn_activity_user_manager_email_join = (Button) findViewById(R.id.email_join);
 		btn_activity_user_manager_email_join.setOnClickListener(this);
@@ -60,14 +53,20 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 	public void onClick(View v) {
 		switch (v.getId()) {
 
+		
 		// 회원가입
 		case R.id.email_join:
+			//처음 실행이 아닐 때
+			//SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
+			//userInfo.setData(this, ItDocConstants.SHARED_KEY_FIRST_CHECK, null);
+			//Log.d("first",""+userInfo.setData(this, ItDocConstants.SHARED_KEY_FIRST_CHECK, null));
 			joinLayoutElement();
 			//Toast.makeText(this, "이메일로그인", Toast.LENGTH_SHORT).show();
 			break;
 		
 		//
 		case R.id.email_login:
+			
 			loginLayoutElement();
 			break;
 		}
@@ -134,16 +133,5 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 		super.onBackPressed();
 	    
 	}
-	
-	
-	//액션바 세팅하는 부분
-	@Override
-	public void setActionBar(ActionBar actionBar) {
-		//actionBar.setTitle(R.string.a)
-		actionBar.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-		
-	}
-	
-	
-	
+
 }

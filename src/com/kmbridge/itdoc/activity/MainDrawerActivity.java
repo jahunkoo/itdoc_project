@@ -125,21 +125,37 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 					if(userEmail == null){
 						Log.d("koo", "userEmail is null");
 						isLogin = false;
-						leftBottomLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_before_login , null);
+						beforeLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_before_login , null);
+						leftBottomLayout = beforeLoginLayout;
 						Button button = (Button) leftBottomLayout .findViewById(R.id.button_left_drawer_bottom_login_or_register);
 						button.setOnClickListener(this);
 						leftDrawerBottomLayout.addView(leftBottomLayout);
 					}else{
 						isLogin = true;
-						leftBottomLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_after_login , null);
+						afterLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_after_login , null);
+						leftBottomLayout= afterLoginLayout;
+						
+						//환경설정 이미지 클릭시 컨피그(환경설정)액티비티로 이동하는 버튼
 						ImageButton imgBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imagebutton_left_drawer_bottom_setting);
 						imgBtn.setOnClickListener(this);
+						
+						//사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
+						ImageButton imgProfileBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
+						imgProfileBtn.setOnClickListener(this);
 						leftDrawerBottomLayout.addView(leftBottomLayout);
 					}
 					leftBottomLayout.setOnClickListener(this);
 				}
 	}
-	
+	private LinearLayout afterLoginLayout;
+	private LinearLayout beforeLoginLayout;
+	public void setLayoutVisible(boolean isShowAfterLayout ,boolean isShowBeforeLayout){
+		if(isShowAfterLayout)	afterLoginLayout.setVisibility(View.VISIBLE);
+		else 					afterLoginLayout.setVisibility(View.GONE);
+		
+		if(isShowBeforeLayout)	beforeLoginLayout.setVisibility(View.VISIBLE);
+		else					beforeLoginLayout.setVisibility(View.GONE);
+	}
 	
 	private void setDrawerTitleList(){
 		String[] mDrawerSectionTitles = getResources().getStringArray(
@@ -336,12 +352,22 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		{
 			case R.id.button_left_drawer_bottom_login_or_register:
 				Intent intent_register = new Intent(this,UserManagerActivity.class);
+				//intent_register.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 				startActivity(intent_register);
 				break;
 			case R.id.imagebutton_left_drawer_bottom_setting:
+				Log.d("kim","config_click!");
 				Intent intent_setting = new Intent(this,ConfigActivity.class);
-				startActivityForResult(intent_setting,0);
-				//startActivity(intent_setting);
+				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				//startActivityForResult(intent_setting,0);
+				startActivity(intent_setting);
+				
+			case R.id.imageview_left_drawer_bottom_profile:
+				Intent intent_profile_picture = new Intent(this,ProfilePictureActivity.class);
+				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				//startActivityForResult(intent_setting,0);
+				startActivity(intent_profile_picture);
+				
 		}
 		
 	}
@@ -355,8 +381,11 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			//*****************************actionbar title setting ***********************
 			getActionBar().setTitle(R.string.title_activity_main_drawer);
 			//****************************************************************************
-			Log.d("test", "jlkjkj:"+data.getExtras().getString("data"));
-			setDrawerLeft() ;
+			Bundle bundle = data.getExtras();
+			boolean isLogin = bundle.getBoolean("isLogin");
+			if(isLogin)	setLayoutVisible(true, false);
+			else		setLayoutVisible(false, true);
+			
 			break;
 		}
 	}

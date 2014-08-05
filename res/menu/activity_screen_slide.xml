@@ -19,6 +19,10 @@
     <!-- Adds an item to the list. -->
     <item android:id="@+id/action_previous"
         android:title="@string/action_previous"
+        android:showAsAction="never" />
+<!-- 
+  <item android:id="@+id/action_previous"
+        android:title="@string/action_previous"
         android:showAsAction="ifRoom|withText" />
-
+ -->
 </menu>

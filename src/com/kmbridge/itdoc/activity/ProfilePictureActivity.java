@@ -3,11 +3,14 @@ package com.kmbridge.itdoc.activity;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class ProfilePictureActivity extends ImageSelectHelperActivity implements View.OnClickListener{
 
@@ -16,6 +19,7 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
 	private Button btn_activity_profile_change;
 	private Button btn_activity_profile_finish;
     private ImageView userProfileImgView;
+    public boolean isNotFirst; //처음 설치 여부 체크 변수
     
 	public void setButtonsVisible(boolean isShowUploadBtn, boolean isShowChangeBtn, boolean isShowFinishBtn){
 		if(isShowUploadBtn)	btn_activity_profile_upload.setVisibility(View.VISIBLE);
@@ -80,6 +84,7 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
 		case R.id.button_activity_profile_picture_finish:
 			Intent intent = new Intent(this, MainDrawerActivity.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_TASK_ON_HOME);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			finish();
 			break;
@@ -92,5 +97,37 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
 		btn_activity_profile_upload.setEnabled(isEnable);
 		btn_activity_profile_change.setEnabled(isEnable);
 		btn_activity_profile_finish.setEnabled(isEnable);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		
+		ActionBar actionbar = this.getActionBar();
+    	actionbar.hide();
+    	
+    	//처음 설치 여부를 확인
+    	SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
+    	isNotFirst=userInfo.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
+		
+		Log.d("check_kim","join_check = "+isNotFirst);
+    	//처음 설치가 처음 설치가 아닌경우 메인으로 이동
+    	if(isNotFirst==true)
+    	{
+    		Intent intent = new Intent(this,MainDrawerActivity.class);
+    		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+    	}
+    	else
+    	{
+    		Intent intent = new Intent(this,ScreenSlideActivity.class);
+    		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    		startActivity(intent);
+    	}
+		/*findViewById(R.id.linearLayout_pager).setVisibility(View.VISIBLE);
+		findViewById(R.id.linearLayout_screen_slide_for_join).setVisibility(View.GONE);
+		findViewById(R.id.linearLayout_screen_slide_for_login).setVisibility(View.GONE);
+		*/
+		//밑에 코드에 의해서 실제 백버튼 기능이 수행됨.
+		super.onBackPressed();
 	}
 }

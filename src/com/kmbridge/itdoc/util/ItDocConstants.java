@@ -21,6 +21,7 @@ public class ItDocConstants extends BasicConstants{
 	public static final String SHARED_KEY_EMAIL = "user_email";
 	public static final String SHARED_KEY_PASSWORD = "user_pwd";
 	public static final String SHARED_KEY_NAME = "user_name";
+	public static final String SHARED_KEY_FIRST_CHECK = "first";
 	
 	//fragment tag list
 	public static final String TAG_FRAGMENT_JOIN = "joinFragment";

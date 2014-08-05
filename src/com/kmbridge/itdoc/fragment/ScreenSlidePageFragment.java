@@ -18,29 +18,22 @@ package com.kmbridge.itdoc.fragment;
 
 import java.util.Locale;
 
-
-import android.app.FragmentManager;
-import android.content.Intent;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
-
 import android.widget.Button;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.activity.ScreenSlideActivity;
-
-import com.kmbridge.itdoc.activity.UserManagerActivity;
 import com.kmbridge.itdoc.image.ImageManager;
-import com.kmbridge.itdoc.util.ItDocConstants;
 
 
 
@@ -100,10 +93,9 @@ public class ScreenSlidePageFragment extends Fragment implements View.OnClickLis
         mPageNumber = getArguments().getInt(ARG_PAGE);
         imageManager = new ImageManager();
     }
-
+    //private ViewGroup container;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout containing a title and body text.
     	Log.d("koo", "onCreateView start");
     	ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_screen_slide_page, container, false);
@@ -111,8 +103,7 @@ public class ScreenSlidePageFragment extends Fragment implements View.OnClickLis
         //mPageNumber는 0부터 시작된다. 
         String imageName = getResources().getStringArray(R.array.screenslide_imagename_array)[mPageNumber];
         String comment = getResources().getStringArray(R.array.screenslide_comment_array)[mPageNumber];
-        int imageId = getResources().getIdentifier(imageName.toLowerCase(Locale.getDefault()),
-                        "drawable", getActivity().getPackageName());
+        int imageId = getResources().getIdentifier(imageName.toLowerCase(Locale.getDefault()), "drawable", getActivity().getPackageName());
         
         ImageView slideImage = ((ImageView) rootView.findViewById(R.id.imageview_fragment_screen_slide_page)); 
         Log.d("koo", "size:width"+ImageManager.screenWidth/2+" height:"+ImageManager.screenHeight/2);
@@ -139,42 +130,47 @@ public class ScreenSlidePageFragment extends Fragment implements View.OnClickLis
         return mPageNumber;
     }
     
+    //// ScreenSlideActivity 로 데이터를 전달할 커스텀 리스너
+    private CustomOnClickListener customJoinListener;
+    
+    // ScreenSlideActivity 로 데이터를 전달할 커스텀 리스너의 인터페이스
+    public interface CustomOnClickListener{
+        public void onClicked(int id);
+    }
+    
+    //private String TAG_FRAGMENT;
     @Override
    	public void onClick(View v) {
-   		switch (v.getId()) {
+    	// 버튼에 설정한 OnClickListener의 구현, 버튼이 클릭 될 때마다 {ScreenSlidActivity의 커스텀 리스너를 호출함
+    	
+    	customJoinListener.onClicked(v.getId());
+    	Log.d("debug","check1");
+   		/*switch (v.getId()) {
    		// 회원가입
    		case R.id.button_fragment_screen_slide_register:
    			Intent intent = new Intent(getActivity(), UserManagerActivity.class);
    			intent.putExtra(ItDocConstants.TAG_FRAGMENT_JOIN, 1);
    			startActivity(intent);
+   			joinLayoutElement();
+   			FragmentManager fm = getActivity().getSupportFragmentManager();
+   	    	Fragment joinFragment = new JoinFragment();
+   	    	TAG_FRAGMENT = ItDocConstants.TAG_FRAGMENT_JOIN;
+   	    	fm.beginTransaction().replace(container.getId(), joinFragment,TAG_FRAGMENT).commit();
    			break;
    		
    		case R.id.button_fragment_screen_slide_login:
-   			
    			Intent intent2 = new Intent(getActivity(), UserManagerActivity.class);
    			intent2.putExtra(ItDocConstants.TAG_FRAGMENT_LOGIN, 2);
    			startActivity(intent2);
-   			//UserManagerActivity uma = new UserManagerActivity();
-   			//uma.loginLayoutElement();
+   			loginLayoutElement();
    			break;
-   		}
+   		}*/
     }
     
-    public void loginLayoutElement() {
-    	
-		// TODO Auto-generated method stub
-		
-		//Bundle args = new Bundle();
-		//args.putInt(PlanetFragment.ARG_PLANET_NUMBER, 0);
-		//join_fragment.setArguments(args);
-
-		FragmentTransaction ft = getFragmentManager().beginTransaction();
-		Fragment loginFragment = new LoginFragment();
-		ft.replace(R.id.pager, loginFragment);
-		ft.commit();
-		/*
-		fragmentManager.beginTransaction().add(R.id.linearLayout_user_manager_for_login_fragment, loginFragment).commit();
-		findViewById(R.id.linearLayout_user_manager).setVisibility(View.GONE);
-		findViewById(R.id.linearLayout_user_manager_for_join_fragment).setVisibility(View.GONE);*/
-	}
+    // ScreenSlideActivity 로 데이터를 전달할 커스텀 리스너를 연결
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        customJoinListener = (CustomOnClickListener)activity;
+    }
 }

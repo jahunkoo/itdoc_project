@@ -26,7 +26,7 @@ import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 public class IntroActivity extends FragmentActivity {
 
 	public boolean isLogin;
-
+	public boolean isNotFirst; //처음 설치 여부 체크
 	// 지역정보 및 데이터를 저장할 리스트 생성
 	public static ArrayList<BigRegion> bigReionList;
 	public static ArrayList<MiddleRegion> middleReionList;
@@ -148,22 +148,15 @@ public class IntroActivity extends FragmentActivity {
 	};
 
 	private void isIntro() {
-		SharedPreferenceUtil user_info = new SharedPreferenceUtil();
-		isLogin=user_info.isExist(this, ItDocConstants.SHARED_KEY_EMAIL);
-		//RegionThread.start();
-		if(isLogin==true)
+		SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
+		isLogin=userInfo.isExist(this, ItDocConstants.SHARED_KEY_EMAIL);
+		isNotFirst=userInfo.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
+		
+		//로그인 상태이거나 처음 설치가 아닌경우 메인으로 이동
+		if(isLogin==true || isNotFirst==true)
 		{
 			Intent intent = new Intent(this,MainDrawerActivity.class);
-
 			startActivity(intent);
-			if(isLogin==true)
-			{
-				Log.d("isLogin","True");
-			}
-			else
-			{
-				Log.d("isLogin","False");
-			}
 		}
 		else
 		{
