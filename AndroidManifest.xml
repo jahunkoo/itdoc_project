@@ -22,22 +22,30 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
+        android:name=".util.Font"
         android:allowBackup="true"
         android:icon="@drawable/app_icon_itdoc"
         android:label="@string/app_name"
-
         android:logo="@drawable/action_itdoc_logo"
         android:theme="@style/ItDocActionBarTheme" >
         <activity
             android:name=".activity.IntroActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
             
         </activity>
         <activity
             android:name=".activity.MainDrawerActivity"
             android:label="@string/title_activity_main_drawer" >
+           
         </activity>
+
         <!-- 지워도 됨 -->
         <activity
             android:name=".activity.BasicActivity"
@@ -56,9 +64,7 @@
         </activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>
-        <activity
-            android:name=".activity.ScreenSlideActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        <activity android:name=".activity.ScreenSlideActivity" >
         </activity>
         <activity android:name=".activity.ProfilePictureActivity" >
         </activity>
@@ -78,11 +84,11 @@
             android:name="com.kmbridge.itdoc.activity.MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
-		<activity
+        <activity
             android:name="com.kmbridge.itdoc.activity.UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
-            
         </activity>
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDtrhkgaVMoM-UEYJ2G3Xk-cvlp9VwgzJc" />

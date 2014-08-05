@@ -171,7 +171,7 @@ public class ImageLoader {
                     return;
                 Bitmap bmp=getBitmap(photoToLoad.url);
                 //비트맵을 동그랗게 만들어 줌****************
-                bmp = RoundedImageView.getRoundedBitmap(bmp, bmp.getWidth());
+                //bmp = RoundedImageView.getRoundedBitmap(bmp, bmp.getWidth());
                 //*******************************
                 memoryCache.put(photoToLoad.url, bmp);
                 if(imageViewReused(photoToLoad))

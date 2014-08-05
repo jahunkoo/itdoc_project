@@ -1,24 +1,15 @@
 package com.kmbridge.itdoc.fragment;
 
-import java.util.ArrayList;
-
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.ClinicListAdapter;
-import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
@@ -48,8 +39,6 @@ public class KmClinicListFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_clinic_list, container, false);
 
-		email = "chicken@gmail.com";
-
 		clinicListAdapter = new ClinicListAdapter(context, email);
 
 		// mListView.addFooterView(mInflater.inflate(R.layout.footer, null));
@@ -69,43 +58,5 @@ public class KmClinicListFragment extends Fragment {
 		return kmClinicListFragment;
 	}
 
-	/*@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		
-		int type = clinicListAdapter.getItem(position).getType();
-		int Id = clinicListAdapter.getItem(position).getId();
-		String email = clinicListAdapter.email;
-		ImageView img = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
-		
-		OnClickListener onClickListener = new OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				
-				
-				
-			}
-		};
-		
-		img.setOnClickListener((android.view.View.OnClickListener) onClickListener);
-		
-		Log.d("kim", "1");
-		
-		if (type == 0) {
-			Log.d("kim", "2");
-			ConnectionBridge conn = new ConnectionBridge();
-			ArrayList<String> result = conn.insertKmClinicFollow("insertKmClinicFollow", context, email, Id);
-
-			if (result.get(0) == "success") {
-				Log.d("kim", "3");
-				
-				img.setImageResource(R.drawable.follow);
-			}
-
-		} else {
-
-		}
-
-	}*/
 
 }

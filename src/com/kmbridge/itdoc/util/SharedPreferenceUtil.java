@@ -1,5 +1,7 @@
 package com.kmbridge.itdoc.util;
 
+import java.util.Set;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -10,7 +12,7 @@ import com.kmbridge.itdoc.exception.RecordNotFoundException;
 public class SharedPreferenceUtil extends ItDocUtil{
 	
 	//SharedPreference에 사용되는 변수
-	private final String PREF_NAME = "com.kmbridge.itdoc.util.pref";
+	private final static String PREF_NAME = "com.kmbridge.itdoc.util.pref";
 	//public final static String PREF_INTRO_USER_AGREEMENT = "PREF_USER_AGREEMENT";
 	//public final static String PREF_MAIN_VALUE = "PREF_MAIN_VALUE";
 
@@ -21,12 +23,35 @@ public class SharedPreferenceUtil extends ItDocUtil{
 	 * @param value
 	 * @return
 	 */
-	public boolean setData(Context context, String key, String value){
+	public static boolean setData(Context context, String key, String value){
 		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = pref.edit();
 		editor.putString(key, value);
 		editor.commit();
 		return true;
+	}
+	
+	
+	/**
+	 * 해당 프로세스(어플리케이션)내에 File에 저장된 값 value(String타입)을 가져온다. (Key)
+	 * @param context
+	 * @param key
+	 * @return
+	 */
+	public static String getData(Context context, String key) throws RecordNotFoundException{
+		if(!isExist(context, key)) throw new RecordNotFoundException();
+		String Value;
+		String error="error";
+		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
+		Value=pref.getString(key, null);
+		if(Value==null)
+		{
+			return error;
+		}
+		else
+		{
+			return Value;
+		}
 	}
 	
 	/**
@@ -35,7 +60,7 @@ public class SharedPreferenceUtil extends ItDocUtil{
 	 * @param key
 	 * @return
 	 */
-	public boolean isExist(Context context, String key){
+	public static boolean isExist(Context context, String key){
 		String defalutValue;
 		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
 		defalutValue=pref.getString(key, null);
@@ -50,24 +75,19 @@ public class SharedPreferenceUtil extends ItDocUtil{
 	}
 	
 	/**
-	 * 해당 프로세스(어플리케이션)내에 File에 저장된 값 value(String타입)을 가져온다. (Key)
+	 * 해당 프로세스(어플리케이션)내에 Set<String> 형태로 데이터를 저장해준다. (Key, Value)
 	 * @param context
 	 * @param key
+	 * @param value
 	 * @return
 	 */
-	public String getData(Context context, String key) throws RecordNotFoundException{
-		if(!isExist(context, key)) throw new RecordNotFoundException();
-		String Value;
-		String error="error";
+	public boolean setStringSetData(Context context, String key, String value){
 		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
-		Value=pref.getString(key, "");
-		if(Value.equals(""))
-		{
-			return error;
-		}
-		else
-		{
-			return Value;
-		}
+		SharedPreferences.Editor editor = pref.edit();
+		
+		
+		editor.commit();
+		return true;
 	}
+	
 }

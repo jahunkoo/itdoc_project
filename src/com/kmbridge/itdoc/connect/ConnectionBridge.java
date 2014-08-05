@@ -3,6 +3,8 @@ package com.kmbridge.itdoc.connect;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -185,8 +187,7 @@ public class ConnectionBridge {
 	public ArrayList<KmClinicView> getKmClinicViewList(String methodUrl,
 			Context context, String email) {
 		ArrayList<KmClinicView> KmClinicView = null;
-		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,
-				methodUrl);
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,methodUrl);
 		HttpConnectionModule connection = new HttpConnectionModule(context);
 		try {
 			connection.setMethod(HttpConnectionModule.POST);
@@ -196,8 +197,7 @@ public class ConnectionBridge {
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
 
-			KmClinicView = (ArrayList<KmClinicView>) new JsonParser(methodUrl)
-					.parse(result);
+			KmClinicView = (ArrayList<KmClinicView>) new JsonParser(methodUrl).parse(result);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -310,9 +310,11 @@ public class ConnectionBridge {
 		return result;
 	}
 	
-	public boolean login(String methodUrl, Properties props, Context context) {
+	public Map<String, String> login(String methodUrl, Properties props, Context context) {
 		//String result = null;
-		boolean result=false;
+		//boolean result=false;
+		Map<String, String> loginMap = new HashMap<String, String>();
+		
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME,methodUrl);
 		Log.d("koo", targetUrl);
 		// http://localhost:8080/ItDocServer/register?email=asd2323sd@gmail.com&password=asdasd
@@ -324,8 +326,9 @@ public class ConnectionBridge {
 
 			connection.downloadTask.execute(targetUrl);
 			String data = connection.downloadTask.get();
-			result =  (Boolean)new JsonParser(methodUrl).parse(data);
-			Log.d("LoginIs",""+result);
+			//result =  (Boolean)new JsonParser(methodUrl).parse(data);
+			loginMap = (Map)new JsonParser(methodUrl).parse(data);
+			//Log.d("LoginIs",""+result);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -341,7 +344,8 @@ public class ConnectionBridge {
 			e.printStackTrace();
 		}
 
-		return result;
+		//return result;
+		return loginMap;
 	}
 	
 	public ArrayList<String> insertKmClinicFollow(String methodUrl, Context context,  String email,int clinicId) {
@@ -379,7 +383,7 @@ public class ConnectionBridge {
 	}
 	
 	public ArrayList<String> deleteKmClinicFollow(String methodUrl, Context context,  String email,int clinicId) {
-		ArrayList<String> insertKmClinicFollow = null;
+		ArrayList<String> deleteKmClinicFollow = null;
 		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
 		
 		try {
@@ -395,7 +399,7 @@ public class ConnectionBridge {
 			
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
-			insertKmClinicFollow = (ArrayList<String>) new JsonParser(methodUrl).parse(result);
+			deleteKmClinicFollow = (ArrayList<String>) new JsonParser(methodUrl).parse(result);
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -409,20 +413,55 @@ public class ConnectionBridge {
 			e.printStackTrace();
 		}
 
-		return insertKmClinicFollow;
+		return deleteKmClinicFollow;
 	}
 
+	
+	public ArrayList<KmClinicView> getAllKmClinicListKeyword(String methodUrl, Context context,  String keyword) {
+		ArrayList<KmClinicView> allKmClinicListKeyword = null;
+		String targetUrl = getFullUrl(MAIN_SERVER_ADDRESS, MAIN_PROJECT_NAME, methodUrl);
+		
+		try {
+			HttpConnectionModule connection = new HttpConnectionModule(context);
+			connection.setMethod(HttpConnectionModule.POST);
+			
+			Properties prop = new Properties();
+			prop.setProperty("keyword", keyword);
+			
+			connection.setProperties(prop);
+			
+			connection.downloadTask.execute(targetUrl);
+			String result = connection.downloadTask.get();
+			Log.d("kim","ConnectionBridge(430) result is " + result);
+			allKmClinicListKeyword = (ArrayList<KmClinicView>) new JsonParser(methodUrl).parse(result);
+			
+			Log.d("kim","ConnectionBridge (434) keyword clinicList is " + allKmClinicListKeyword.toString());
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		return allKmClinicListKeyword;
+	}
+	
+	
 	// 이미지 업로드
 	public String insertImage(String methodUrl, File uploadFile, Context context, String id) {
 		String result = null;
 		// String email = "koo10682@gmail.com";
 
 		// String email = user_picture.txt_email.getText().toString();
-		String targetUrl = getFullUrl(ItDocConstants.ADDRESS_IMG_SERVER_HOST,
-				ItDocConstants.ADDRESS_IMG_SERVER_PROJECT, methodUrl);
+		String targetUrl = getFullUrl(ItDocConstants.ADDRESS_IMG_SERVER_HOST,ItDocConstants.ADDRESS_IMG_SERVER_PROJECT, methodUrl);
 
-		String picturePath = new ItDocUtil().createPicturePath(id,
-				uploadFile.getName());
+		String picturePath = new ItDocUtil().createPicturePath(id,uploadFile.getName());
 
 		HttpConnectionModule connection = new HttpConnectionModule(context);
 		connection.setMethod(HttpConnectionModule.MULTIPART_POST);

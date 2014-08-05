@@ -16,12 +16,15 @@ public class ItDocConstants extends BasicConstants{
 	public static final String METHOD_URL_LOGIN = "login";
 	public static final String METHOD_URL_INSERT_FOLLOW_NUM = "insertKmClinicFollow";
 	public static final String METHOD_URL_DELETE_FOLLOW_NUM = "deleteKmClinicFollow";
+	public static final String METHOD_URL_GET_KM_CLINIC_LIST_BY_KEYWORD = "getKmClinicListByKeyword";
 	public static final String METHOD_URL_GET_USERVIEW_BY_EMAIL = "getUserViewByEmail";
 	
 	//SharedPreference_key list
 	public static final String SHARED_KEY_EMAIL = "user_email";
 	public static final String SHARED_KEY_PASSWORD = "user_pwd";
 	public static final String SHARED_KEY_NAME = "user_name";
+	public static final String SHARED_KEY_FIRST_CHECK = "first";
+	public static final String SHARED_KEY_PICTURE_URL = "user_picture";
 	
 	//fragment tag list
 	public static final String TAG_FRAGMENT_JOIN = "joinFragment";

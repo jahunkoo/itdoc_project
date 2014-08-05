@@ -17,7 +17,7 @@ public class ItDocUtil {
 	private final String REGEX_SHARP = "#";
 	private final String REGEX_DOT = ".";
 	
-
+	
 	
 	public List<String> parseStringToList(String data){
 		List<String> dataList = new ArrayList<String>();

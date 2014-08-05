@@ -46,4 +46,9 @@ public class BasicConstants {
 	public static final int OBJECT_TYPE_KM_DOCTOR = 3;	
 	public static final int OBJECT_TYPE_REVIEW = 4;	
 	
+	//login_parser
+	public static final String PARSE_NAME = "parse_name";
+	public static final String PARSE_LOGINRESULT = "parse_result";
+	public static final String PARSE_LOGINPICTURE = "parse_picture";
+	
 }

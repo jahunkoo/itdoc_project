@@ -24,7 +24,7 @@ public class ConfigActivity extends FragmentActivity implements OnClickListener 
 	private Button btn_activity_config_evaluation;
 	private Button btn_activity_config_logout;
 	private Button btn_activity_config_login;
-	private int config_login_cou=0;
+	
 	
 	private String TAG_FRAGMENT;
 	
@@ -101,14 +101,14 @@ public class ConfigActivity extends FragmentActivity implements OnClickListener 
 			btn_activity_config_logout.setVisibility(View.GONE);
 			btn_activity_config_login.setVisibility(View.VISIBLE);
 			
-			user_info.setData(this, ItDocConstants.SHARED_KEY_EMAIL, null);
+			SharedPreferenceUtil.setData(this, ItDocConstants.SHARED_KEY_EMAIL, null);
 			
 			TAG_FRAGMENT = ItDocConstants.TAG_FRAGMENT_JOIN;
 			//fragmentManager.beginTransaction().add(R.id.relativeLayout_activity_config, loginFragment,TAG_FRAGMENT).addToBackStack(null).commit();
 			Log.d("tag",TAG_FRAGMENT);
 			
 			break;
-
+			
 		case R.id.btn_view_login:
 			Toast.makeText(this, "로그인 페이지 이동.", Toast.LENGTH_SHORT).show();
 			
@@ -134,18 +134,20 @@ public class ConfigActivity extends FragmentActivity implements OnClickListener 
 	public void onBackPressed() {
 		//Fragment fragment =  getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT);
 		
-		//if(fragment!=null){
-			
+	/*	//if(fragment!=null){
+			boolean isLogin = user_info.isExist(this, ItDocConstants.SHARED_KEY_EMAIL);
 			Intent intent = new Intent();
+			intent.putExtra("isLogin", isLogin);
 			intent.putExtra("data", TAG_FRAGMENT);
 			setResult(RESULT_OK,intent);
-			finish();
+			finish();*/
 			//기존 액티비티에 달린 레이아웃 뷰  visible 시킴 프래그먼크 view는 gone
-			/*if(TAG_FRAGMENT.equals(ItDocConstants.TAG_FRAGMENT_JOIN)){			// join fragmnet에서 돌아왔을 때, 다시 나머지 뷰들 보여줌
+			if(TAG_FRAGMENT.equals(ItDocConstants.TAG_FRAGMENT_JOIN)){			// join fragmnet에서 돌아왔을 때, 다시 나머지 뷰들 보여줌
 				//findViewById(R.id.relativeLayout_activity_config).setVisibility(View.GONE);
 				Log.d("tag",TAG_FRAGMENT);
 				Intent intent = new Intent(this, MainDrawerActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				//intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
 			//	main_drawer_activity.setDrawerLeft();
 				
@@ -154,15 +156,19 @@ public class ConfigActivity extends FragmentActivity implements OnClickListener 
 				//findViewById(R.id.relativeLayout_activity_config).setVisibility(View.GONE);
 				Log.d("tag",TAG_FRAGMENT);
 				//main_drawer_activity.setDrawerLeft();
-				findViewById(R.id.relativeLayout_activity_config).setVisibility(View.VISIBLE);
-				findViewById(R.id.linearLayout_config).setVisibility(View.VISIBLE);
+				//findViewById(R.id.relativeLayout_activity_config).setVisibility(View.VISIBLE);
+				//findViewById(R.id.linearLayout_config).setVisibility(View.VISIBLE);
+				Intent intent = new Intent(this, MainDrawerActivity.class);
+				//intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
 				
 				
 				//fragmentManager.beginTransaction().add(R.id.relativeLayout_activity_config, loginFragment,TAG_FRAGMENT).addToBackStack(null).commit();
 				//Intent intent = new Intent(this, MainDrawerActivity.class);
 				//startActivity(intent);
 				
-			}*/
+			}
 	//	}
 		
 		super.onBackPressed();

@@ -1,11 +1,16 @@
 package com.kmbridge.itdoc.connect;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
+import android.widget.Toast;
 
 import com.kmbridge.itdoc.dto.BigRegion;
 import com.kmbridge.itdoc.dto.Grade;
@@ -19,8 +24,7 @@ import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.dto.Week;
 import com.kmbridge.itdoc.util.ItDocConstants;
-
-import android.util.Log;
+import com.kmbridge.itdoc.util.Sentence;
 
 public class JsonParser {
 
@@ -65,6 +69,8 @@ public class JsonParser {
 			obj = parseInsertKmClinicFollow(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_DELETE_FOLLOW_NUM)) {
 			obj = parseDeleteKmClinicFollow(data);
+		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_GET_KM_CLINIC_LIST_BY_KEYWORD)) {
+			obj = parseKmClinicViewList(data);
 		}else if(methodUrl.equals(ItDocConstants.METHOD_URL_GET_USERVIEW_BY_EMAIL)){
 			obj = parseGetUserViewByEmail(data);
 		}
@@ -168,18 +174,41 @@ public class JsonParser {
 	}
 
 	
-	private boolean parserLogin(String data) throws JSONException {
+	private Map parserLogin(String data) throws JSONException {
 		JSONObject jsonObj = new JSONObject(data);
-		String result = jsonObj.getString("success");
-		boolean isLogin = false;
-		if (result.equals("true")) {
+		
+		Map<String, String> loginMap = new HashMap<String, String>();
+		
+		String loginResult = jsonObj.getString("success");
+		//Log.d("kim2","Parser : "+loginResult);
+		
+		String loginName  = null;
+		if(jsonObj.has("name"))	loginName = jsonObj.getString("name");
+		else 	loginName = "";
+		
+		String loginPicture  = null;
+		if(jsonObj.has("picturePath"))	loginPicture = jsonObj.getString("picturePath");
+		else 	loginPicture = "";
+		
+		//Log.d("kim2","Parser : "+loginName);
+		loginMap.put(ItDocConstants.PARSE_LOGINRESULT, loginResult);
+		loginMap.put(ItDocConstants.PARSE_NAME, loginName);
+		loginMap.put(ItDocConstants.PARSE_LOGINPICTURE, loginPicture);
+		
+		Log.d("kim3",loginPicture);
+		
+		//map.containsKey(result);
+		 return loginMap;
+		
+		//boolean isLogin = false;
+		/*if (result.equals("true")) {
 
 			isLogin = true;
 			return isLogin;
 		} else {
 			isLogin = false;
 			return isLogin;
-		}
+		}*/
 	}
 
 	// 메서드 네이밍 : parse+클래스명+자료구조
@@ -338,14 +367,18 @@ public class JsonParser {
 
 	private ArrayList<KmClinicView> parseKmClinicViewList(String data) throws JSONException {
 		ArrayList<KmClinicView> kmClinicViewList = new ArrayList<KmClinicView>();
-
+		Log.d("kim","1");
+		Log.d("kim","Data is " + data);
 		JSONObject jsonObj = new JSONObject(data);
-		JSONArray jsonArray = jsonObj.getJSONArray("KmClinicViewList");
 
+		Log.d("kim","2");
+		JSONArray jsonArray = jsonObj.getJSONArray("KmClinicView");
+		Log.d("kim","3");
 		for (int i = 0; i < jsonArray.length(); i++) {
 			KmClinicView kmClinicView = new KmClinicView();
+			Log.d("kim","4");
 			JSONObject indexobj = jsonArray.getJSONObject(i);
-
+			Log.d("kim","indexobj is " + indexobj.toString());
 			kmClinicView.setId(indexobj.getInt("id"));
 			kmClinicView.setName(indexobj.getString("name"));
 			// 맵포인트는 아직 존재하지 않아서 받아오지 않음
