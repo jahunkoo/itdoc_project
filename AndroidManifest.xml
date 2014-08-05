@@ -48,6 +48,11 @@
         <activity
             android:name=".activity.UserManagerActivity"
             android:label="@string/title_activity_user_manager" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>
@@ -76,11 +81,7 @@
 		<activity
             android:name="com.kmbridge.itdoc.activity.UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

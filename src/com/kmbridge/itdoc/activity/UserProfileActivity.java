@@ -65,6 +65,8 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	//기능을 위해 만든 맴버변수들
 	private boolean isMyPage; 
 	private boolean isLogin;
+	private String userEmail;
+	private String myEmail;
 	
 	public ImageView getUserProfileImgView(){
 		return userProfileImgView;
@@ -76,34 +78,27 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		setContentView(R.layout.activity_user_profile);
 		setElements();
 		setListner();
-		
-		String userEmail = "asda@gmail.com";
+		try {
 		//**************현재 들어온 사람이 본인인지 아니면 다른 사람인지 판별 **************************
-		
 		Bundle bundle = getIntent().getExtras();
+		
 		if(bundle.containsKey(ItDocConstants.EMAIL)){
-			//userEmail = bundle.getString(ItDocConstants.EMAIL);
+			userEmail = bundle.getString(ItDocConstants.EMAIL);
 		}else{
 			Log.d("koo", "Intent에 ItDocConstants.EMAIL를 담아서 email값을 보내야 됨 ");
 			finish();
 		}
+		myEmail = new SharedPreferenceUtil().getData(this, ItDocConstants.SHARED_KEY_EMAIL);
+		isLogin = true;	
 		
-		/*				
-		try {
-			String myEmail = new SharedPreferenceUtil().getData(this, ItDocConstants.SHARED_KEY_EMAIL);
-			isLogin = true;
-			
-			if(myEmail.equals(userEmail)) 	isMyPage = true;
-			else 							isMyPage = false;
+		if(myEmail.equals(userEmail)) 	isMyPage = true;
+		else 							isMyPage = false;
+		
 		} catch (RecordNotFoundException e2) {
 			isLogin = false;
 		}
-		*/
-			String myEmail = "chicken@gmail.com";
-			isLogin = true;
-			
-			if(myEmail.equals(userEmail)) 	isMyPage = true;
-			else 							isMyPage = false;
+		//if(myEmail.equals(userEmail)) 	isMyPage = true;
+		//else 							isMyPage = false;
 		//*********************************************************************		
 		
 			
@@ -140,7 +135,6 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	
 	
 	public void setDownloadData(UserView downloadedUserView){
-		
 		userNameTextView.setText(downloadedUserView.getName());
 		int reviewSize = downloadedUserView.getReviewViewList().size();
 		reviewNumTextView.setText(""+reviewSize);
