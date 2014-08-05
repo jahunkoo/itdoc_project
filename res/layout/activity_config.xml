@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout_user_manager"
+    android:id="@+id/relativeLayout_activity_config"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -18,8 +18,9 @@
             android:orientation="horizontal"
             android:weightSum="1" >
 
-            <TextView
-                android:id="@+id/txt_view_push"
+            <Button
+                android:id="@+id/btn_view_push"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -31,7 +32,6 @@
                 android:id="@+id/check_push"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="100dp"
                 android:layout_weight="0.2" />
         </LinearLayout>
 
@@ -42,8 +42,9 @@
             android:orientation="horizontal"
             android:weightSum="1" >
 
-            <TextView
-                android:id="@+id/txt_view_alarm"
+            <Button
+                android:id="@+id/btn_view_alarm"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -55,7 +56,6 @@
                 android:id="@+id/check_alarm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="100dp"
                 android:layout_weight="0.2" />
         </LinearLayout>
 
@@ -64,12 +64,12 @@
             android:layout_height="0dp"
             android:layout_weight="0.1" >
 
-            <TextView
-                android:id="@+id/txt_view_helpcomment"
-                android:layout_width="0dp"
+            <Button
+                android:id="@+id/btn_view_helpcomment"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="0.8"
                 android:gravity="center_vertical"
                 android:text="@string/helpcomment" />
         </LinearLayout>
@@ -79,12 +79,12 @@
             android:layout_height="0dp"
             android:layout_weight="0.1" >
 
-            <TextView
-                android:id="@+id/txt_view_helpdesk"
-                android:layout_width="0dp"
+            <Button
+                android:id="@+id/btn_view_helpdesk"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="0.8"
                 android:gravity="center_vertical"
                 android:text="@string/helpdesk" />
         </LinearLayout>
@@ -94,29 +94,40 @@
             android:layout_height="0dp"
             android:layout_weight="0.1" >
 
-            <TextView
-                android:id="@+id/txt_view_evalution"
-                android:layout_width="0dp"
+            <Button
+                android:id="@+id/btn_view_evalution"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="0.8"
                 android:gravity="center_vertical"
                 android:text="@string/evaluation" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearlayout_login_in_out_bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.1" >
+            android:layout_weight="0.1"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/txt_view_logout"
-                android:layout_width="0dp"
+            <Button
+                android:id="@+id/btn_view_logout"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="0.8"
                 android:gravity="center_vertical"
                 android:text="@string/logout" />
+
+            <Button
+                android:id="@+id/btn_view_login"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/login" />
         </LinearLayout>
     </LinearLayout>
 

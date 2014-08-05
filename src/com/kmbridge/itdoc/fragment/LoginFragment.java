@@ -2,11 +2,9 @@ package com.kmbridge.itdoc.fragment;
 
 import java.util.Properties;
 
-
-import android.content.Intent;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.activity.MainDrawerActivity;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.User;
-import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.thread.LoginConnectThread;
 import com.kmbridge.itdoc.util.Sentence;
-import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 /**
  * Fragment that appears in the "content_frame", shows a planet
@@ -48,8 +44,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 	 * 프래그먼트가 생성되면 우선 타이틀부터 바꾸자.
 	 */
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+		
+		ActionBar actionbar = getActivity().getActionBar();
+	    actionbar.show();
+	    actionbar.setTitle(R.string.title_fragment_login);
 		
 		//*****************************actionbar title setting ***********************
 		getActivity().getActionBar().setTitle(R.string.title_fragment_login);
@@ -75,11 +74,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 			if (!getTextInformation())
 				return;
 			if (isAllInfoInput() == true) {             
-				methodUrl = "login";
-				Log.d("koo", prop.toString());
+				//methodUrl = "login";
+				//Log.d("koo", prop.toString());
 				//message = bridge.login(methodUrl, prop, getActivity());
-				isLoginCheck = bridge.login(methodUrl, prop, getActivity());
-				//Log.d("login",message);
+				
+				//isLoginCheck = bridge.login(methodUrl, prop, getActivity());
+				
+				LoginConnectThread thread = new LoginConnectThread("login",prop, getActivity());
+				thread.start();
+				
+				/*//Log.d("login",message);
 				//if (message.equals("error")) {
 				if(isLoginCheck==false){
 					Toast.makeText(getActivity(), Sentence.errorLogin,Toast.LENGTH_SHORT).show();
@@ -91,23 +95,26 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 					
 					//user_info.setData(getActivity(),"user_email", edittxt_activity_join_join_email.getText().toString());
 					//user_info.setData(getActivity(), "user_pwd", edittxt_activity_join_join_password.getText().toString());
-					/*
+					
 					SharedPreferences shared_user_info = getActivity().getSharedPreferences("user_info", 0);
 					SharedPreferences.Editor editor = shared_user_info.edit();
 					
 					editor.putString("user_email", edittxt_activity_join_join_email.getText().toString());
 					editor.putString("user_pwd", edittxt_activity_join_join_password.getText().toString());
 					
-					editor.commit();*/
-					SharedPreferenceUtil user_info = new SharedPreferenceUtil();
-					user_info.setData(getActivity(),ItDocConstants.SHARED_KEY_EMAIL, edittxt_activity_login_login_email.getText().toString());
+					editor.commit();
+					SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
+					userInfo.setData(getActivity(),ItDocConstants.SHARED_KEY_EMAIL, edittxt_activity_login_login_email.getText().toString());
+					userInfo.setData(getActivity(), ItDocConstants.SHARED_KEY_FIRST_CHECK, "notfirst");
 					
 					Toast.makeText(getActivity(), Sentence.successLogin,Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(getActivity(),MainDrawerActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //기존 설치 -> 로그인 -> 메인드로워만 남김 -> 뒤로가기 -> 종료
 					startActivity(intent);
-					getActivity().finish();
+					getActivity().finish(); //처음 설치 ->로그인->뒤로가기->스크린 슬라이드로 이동하게함
+					//getActivity().finish();
 				}
-			} else {
+			*/} else {
 				Toast.makeText(getActivity(), Sentence.noInfomationMessage,
 						Toast.LENGTH_LONG).show();
 			}

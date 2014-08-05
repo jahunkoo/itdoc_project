@@ -16,20 +16,24 @@
 
 package com.kmbridge.itdoc.activity;
 
-import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.fragment.ScreenSlidePageFragment;
-
-import android.support.v4.app.Fragment;
-import android.app.FragmentManager;
+import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
+
+import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.fragment.JoinFragment;
+import com.kmbridge.itdoc.fragment.LoginFragment;
+import com.kmbridge.itdoc.fragment.ScreenSlidePageFragment;
+import com.kmbridge.itdoc.util.ItDocConstants;
 
 
 /**
@@ -43,7 +47,7 @@ import android.widget.Button;
  *
  * @see ScreenSlidePageFragment
  */
-public class ScreenSlideActivity extends FragmentActivity{
+public class ScreenSlideActivity extends FragmentActivity implements ScreenSlidePageFragment.CustomOnClickListener{
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
@@ -65,6 +69,9 @@ public class ScreenSlideActivity extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
+        
+        ActionBar actionbar = this.getActionBar();
+    	actionbar.hide();
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -98,8 +105,8 @@ public class ScreenSlideActivity extends FragmentActivity{
                 (mPager.getCurrentItem() == mPagerAdapter.getCount() - 1)
                         ? R.string.action_finish
                         : R.string.action_next);
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        
+        //item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         return true;
         
     }
@@ -155,4 +162,56 @@ public class ScreenSlideActivity extends FragmentActivity{
             return NUM_PAGES;
         }
     }
+
+    private String TAG_FRAGMENT;
+    
+    // ScreenSlidePageFragment.CustomOnClickListener의 구현
+	@Override
+	public void onClicked(int id) {
+
+		
+		 switch(id){
+	        case R.id.button_fragment_screen_slide_register:
+	        	joinLayoutElement();
+	    		break;
+	        case R.id.button_fragment_screen_slide_login:
+	        	loginLayoutElement();
+	            break;
+	        }
+	    }
+
+	private void joinLayoutElement() {
+		Log.d("debug","check2");
+		Fragment joinFragment = new JoinFragment();
+		TAG_FRAGMENT = ItDocConstants.TAG_FRAGMENT_JOIN;
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		fragmentManager.beginTransaction().add(R.id.linearLayout_screen_slide_for_join, joinFragment,TAG_FRAGMENT).addToBackStack(null).commit();
+		findViewById(R.id.linearLayout_pager).setVisibility(View.GONE);
+		findViewById(R.id.linearLayout_screen_slide_for_join).setVisibility(View.VISIBLE);
+		findViewById(R.id.linearLayout_screen_slide_for_login).setVisibility(View.GONE);
+	}
+	
+	private void loginLayoutElement() {
+		Fragment loginFragment = new LoginFragment();
+		TAG_FRAGMENT = ItDocConstants.TAG_FRAGMENT_JOIN;
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		fragmentManager.beginTransaction().add(R.id.linearLayout_screen_slide_for_login, loginFragment,TAG_FRAGMENT).addToBackStack(null).commit();
+		findViewById(R.id.linearLayout_pager).setVisibility(View.GONE);
+		findViewById(R.id.linearLayout_screen_slide_for_join).setVisibility(View.GONE);
+		findViewById(R.id.linearLayout_screen_slide_for_login).setVisibility(View.VISIBLE);
+		
+	}
+	
+	@Override
+	public void onBackPressed() {
+		ActionBar actionbar = this.getActionBar();
+    	actionbar.hide();
+		
+		findViewById(R.id.linearLayout_pager).setVisibility(View.VISIBLE);
+		findViewById(R.id.linearLayout_screen_slide_for_join).setVisibility(View.GONE);
+		findViewById(R.id.linearLayout_screen_slide_for_login).setVisibility(View.GONE);
+		
+		//밑에 코드에 의해서 실제 백버튼 기능이 수행됨.
+		super.onBackPressed();
+	}
 }

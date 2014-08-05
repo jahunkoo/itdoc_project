@@ -19,7 +19,6 @@ public class SectionTitle implements Title{
 		this.sectionTitle = sectionTitle;
 	}
 
-
 	@Override
 	public String toString() {
 		return "SectionTitle [sectionTitle=" + sectionTitle + "]";

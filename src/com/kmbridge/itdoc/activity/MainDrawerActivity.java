@@ -3,8 +3,10 @@ package com.kmbridge.itdoc.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.SearchManager;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -16,27 +18,36 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
 import com.kmbridge.itdoc.dto.ItemTitle;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
+import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.fragment.KmClinicListFragment;
 import com.kmbridge.itdoc.fragment.SearchFragment;
+import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
-public class MainDrawerActivity extends FragmentActivity {
+public class MainDrawerActivity extends FragmentActivity implements OnClickListener{
 
 	protected DrawerLayout mDrawerLayout;
 	protected RelativeLayout mDrawerRelativeLayout;
+	protected LinearLayout leftDrawerBottomLayout;
 	protected ListView mDrawerList;
 	protected ActionBarDrawerToggle mDrawerToggle;
 
@@ -72,7 +83,7 @@ public class MainDrawerActivity extends FragmentActivity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerRelativeLayout = (RelativeLayout) findViewById(R.id.relativelayout_left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
-		LinearLayout leftDrawerBottomLayout = (LinearLayout) mDrawerRelativeLayout.findViewById(R.id.linearlayout_left_drawer_bottom);
+		leftDrawerBottomLayout = (LinearLayout) mDrawerRelativeLayout.findViewById(R.id.linearlayout_left_drawer_bottom);
 		// set a custom shadow that overlays the main content when the drawer
 		// opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -80,10 +91,14 @@ public class MainDrawerActivity extends FragmentActivity {
 		// mDrawerList.setAdapter(new
 		// ArrayAdapter<String>(this,R.layout.main_drawer_list_item,
 		// mDrawerMenuTitles));
-		mDrawerList.setAdapter(new DrawerTitleAdapter(this, leftDrawerBottomLayout, R.layout.main_drawer_list_item, mDrawerMenuTitleList));
+		
+		//mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.main_drawer_list_item, mDrawerMenuTitles));
+		mDrawerList.setAdapter(new DrawerTitleAdapter(this,R.layout.main_drawer_list_item, mDrawerMenuTitleList));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
+		setDrawerLeft();
+		
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -114,11 +129,76 @@ public class MainDrawerActivity extends FragmentActivity {
 
 	}
 
-	private void setDrawerTitleList() {
-		String[] mDrawerSectionTitles = getResources().getStringArray(R.array.drawer_menu_title_section_array);
-		String[] mDrawerSearchItemTitles = getResources().getStringArray(R.array.drawer_menu_title_item_array_search);
-		String[] mDrawerPlusItemTitles = getResources().getStringArray(R.array.drawer_menu_title_item_array_plus);
+	
+	private String userEmail;	//없으면 null로 명시함
+	private boolean isLogin;
+	private LinearLayout leftBottomLayout;
 
+	public void setDrawerLeft() {
+		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				try {
+					userEmail = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
+				} catch (RecordNotFoundException e) {
+					userEmail = null;
+					e.printStackTrace();
+				}finally{
+					if(userEmail == null){
+						Log.d("koo", "userEmail is null");
+						isLogin = false;
+						beforeLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_before_login , null);
+						leftBottomLayout = beforeLoginLayout;
+						Button button = (Button) leftBottomLayout .findViewById(R.id.button_left_drawer_bottom_login_or_register);
+						button.setOnClickListener(this);
+						leftDrawerBottomLayout.addView(leftBottomLayout);
+					}else{
+						isLogin = true;
+						afterLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_after_login , null);
+						leftBottomLayout= afterLoginLayout;
+						
+						//환경설정 이미지 클릭시 컨피그(환경설정)액티비티로 이동하는 버튼
+						ImageButton imgBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imagebutton_left_drawer_bottom_setting);
+						imgBtn.setOnClickListener(this);
+						
+						TextView nameTextView = (TextView) leftBottomLayout.findViewById(R.id.textview_left_drawer_bottom_name);
+						nameTextView.setOnClickListener(this);
+						String profileName = null;
+						
+						try {
+							profileName = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_NAME);
+						} catch (RecordNotFoundException e) {
+							e.printStackTrace();
+						}
+						
+						nameTextView.setText(profileName);
+						
+						
+						
+						//사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
+						ImageButton imgProfileBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
+						imgProfileBtn.setOnClickListener(this);
+						leftDrawerBottomLayout.addView(leftBottomLayout);
+					}
+					leftBottomLayout.setOnClickListener(this);
+				}
+	}
+	private LinearLayout afterLoginLayout;
+	private LinearLayout beforeLoginLayout;
+	public void setLayoutVisible(boolean isShowAfterLayout ,boolean isShowBeforeLayout){
+		if(isShowAfterLayout)	afterLoginLayout.setVisibility(View.VISIBLE);
+		else 					afterLoginLayout.setVisibility(View.GONE);
+		
+		if(isShowBeforeLayout)	beforeLoginLayout.setVisibility(View.VISIBLE);
+		else					beforeLoginLayout.setVisibility(View.GONE);
+	}
+	
+	private void setDrawerTitleList(){
+		String[] mDrawerSectionTitles = getResources().getStringArray(
+				R.array.drawer_menu_title_section_array);
+		String[] mDrawerSearchItemTitles = getResources().getStringArray(
+				R.array.drawer_menu_title_item_array_search);
+		String[] mDrawerPlusItemTitles = getResources().getStringArray(
+				R.array.drawer_menu_title_item_array_plus);
+		
 		List<Title> titleList = new ArrayList<Title>();
 		for (int i = 0; i < mDrawerSectionTitles.length; i++) {
 			SectionTitle sectionTitle = new SectionTitle();
@@ -313,5 +393,60 @@ public class MainDrawerActivity extends FragmentActivity {
 		// mDrawerLayout.closeDrawer(mDrawerList);
 		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
 	}
+	
+	@Override
+	public void onClick(View v) {
+
+		switch (v.getId())
+		{
+			case R.id.button_left_drawer_bottom_login_or_register:
+				Intent intent_register = new Intent(this,UserManagerActivity.class);
+				//intent_register.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				startActivity(intent_register);
+				break;
+				
+			case R.id.imageview_left_drawer_bottom_profile:
+				Intent intent_profile_picture = new Intent(this,ProfilePictureActivity.class);
+				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				//startActivityForResult(intent_setting,0);
+				startActivity(intent_profile_picture);
+				break;
+				
+			case R.id.textview_left_drawer_bottom_name:
+				Intent intentUserProfile = new Intent(this,UserProfileActivity.class);
+				intentUserProfile.putExtra(ItDocConstants.EMAIL, ItDocConstants.SHARED_KEY_EMAIL);
+				startActivity(intentUserProfile);
+				break;
+				
+			case R.id.imagebutton_left_drawer_bottom_setting:
+				Log.d("kim","config_click!");
+				Intent intent_setting = new Intent(this,ConfigActivity.class);
+				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				//startActivityForResult(intent_setting,0);
+				startActivity(intent_setting);
+				break;
+				
+		}
+		
+	}
+
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode ,data);
+		switch(resultCode){
+		case Activity.RESULT_OK: 
+			//*****************************actionbar title setting ***********************
+			getActionBar().setTitle(R.string.title_activity_main_drawer);
+			//****************************************************************************
+			Bundle bundle = data.getExtras();
+			boolean isLogin = bundle.getBoolean("isLogin");
+			if(isLogin)	setLayoutVisible(true, false);
+			else		setLayoutVisible(false, true);
+			
+			break;
+		}
+	}
+	
 
 }

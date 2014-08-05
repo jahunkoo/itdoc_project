@@ -63,7 +63,7 @@ public class ProfilePictureConnectHandler extends Handler {
 			Bitmap bitmap = profilePictureActivity.loadImageWithSampleSize(uploadFile);
 			// image boundary size 에 맞도록 이미지 축소.
 			bitmap = profilePictureActivity.resizeImageWithinBoundary(bitmap);
-			bitmap = RoundedImageView.getCroppedBitmap(bitmap, bitmap.getWidth());
+			bitmap = RoundedImageView.getRoundedBitmap(bitmap, bitmap.getWidth());
 			View view = activity.findViewById(R.id.imageview_activity_profile_picture_user_profile);
 			ImageView imgView = (ImageView) view;
 			imgView.setImageBitmap(bitmap);

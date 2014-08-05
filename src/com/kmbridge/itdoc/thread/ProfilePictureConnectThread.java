@@ -38,8 +38,7 @@ public class ProfilePictureConnectThread extends Thread{
 	@Override
 	public void run() {
 		Message msg = handler.obtainMessage();
-		msg.what = ProfilePictureConnectHandler.SHOW_LOADING_LAYOUT;
-		handler.sendMessage(msg);
+		handler.sendEmptyMessage(ProfilePictureConnectHandler.SHOW_LOADING_LAYOUT);
 		
 		ConnectionBridge bridge = new ConnectionBridge();
 		String result = bridge.insertImage(methodUrl, uploadFile, context, id);
@@ -51,9 +50,7 @@ public class ProfilePictureConnectThread extends Thread{
 		}else{	// 에러 표시를 해줘야 함
 			
 		}
-		msg = handler.obtainMessage();
-		msg.what = ProfilePictureConnectHandler.END_LOADING_LAYOUT;
-		handler.sendMessage(msg);
+		handler.sendEmptyMessage(ProfilePictureConnectHandler.END_LOADING_LAYOUT);
 	}
 
 	

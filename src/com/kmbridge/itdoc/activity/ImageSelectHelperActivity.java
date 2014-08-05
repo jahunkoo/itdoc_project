@@ -276,7 +276,7 @@ public class ImageSelectHelperActivity extends Activity {
 		ProfilePictureConnectThread thread = new ProfilePictureConnectThread("insertPicture", getTempImageFile(), this, email);
 		thread.start();
 		
-		// sample size 를 적용하여 bitmap load.
+		// sample size 를 적용하여 bitmap load.popo
 		//Bitmap bitmap = loadImageWithSampleSize(getTempImageFile());
 		// image boundary size 에 맞도록 이미지 축소.
 		//bitmap = resizeImageWithinBoundary(bitmap);

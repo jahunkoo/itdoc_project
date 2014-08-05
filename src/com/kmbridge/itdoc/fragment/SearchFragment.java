@@ -46,7 +46,9 @@ public class SearchFragment extends Fragment implements OnClickListener, OnItemC
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.fragment_search, container, false);
-
+		
+		share.setData(context, RECENT_KEYWORD, "윤보미짱" + ",");
+		
 		ConnectionBridge keywordConnection = new ConnectionBridge();
 
 		search = (AutoCompleteTextView) rootView.findViewById(R.id.autocomplete_textview_fragment_search);
