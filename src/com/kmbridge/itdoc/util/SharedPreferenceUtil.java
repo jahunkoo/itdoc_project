@@ -1,5 +1,7 @@
 package com.kmbridge.itdoc.util;
 
+import java.util.Set;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -70,4 +72,21 @@ public class SharedPreferenceUtil extends ItDocUtil{
 			return Value;
 		}
 	}
+	
+	/**
+	 * 해당 프로세스(어플리케이션)내에 Set<String> 형태로 데이터를 저장해준다. (Key, Value)
+	 * @param context
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public boolean setStringSetData(Context context, String key, String value){
+		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = pref.edit();
+		
+		
+		editor.commit();
+		return true;
+	}
+	
 }

@@ -30,16 +30,14 @@ public class ConnectionThread extends Thread{
 
 	@Override
 	public void run() {
-		Message msg = handler.obtainMessage();
-		msg.what = LoadingViewHandler.SHOW_LOADING_LAYOUT;
-		handler.sendMessage(msg);
+		
+		handler.sendEmptyMessage(LoadingViewHandler.SHOW_LOADING_LAYOUT) ;
 		
 		ConnectionBridge bridge = new ConnectionBridge();
 		bridge.insertImage(methodUrl, uploadFile, context, id);
 		
-		msg = handler.obtainMessage();
-		msg.what = LoadingViewHandler.END_LOADING_LAYOUT;
-		handler.sendMessage(msg);
+		handler.sendEmptyMessage(LoadingViewHandler.END_LOADING_LAYOUT) ;
+		
 	}
 
 	

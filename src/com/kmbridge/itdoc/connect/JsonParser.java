@@ -62,6 +62,8 @@ public class JsonParser {
 			obj = parseInsertKmClinicFollow(data);
 		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_DELETE_FOLLOW_NUM)) {
 			obj = parseDeleteKmClinicFollow(data);
+		} else if (methodUrl.equals(ItDocConstants.METHOD_URL_GET_KM_CLINIC_LIST_BY_KEYWORD)) {
+			obj = parseKmClinicViewList(data);
 		}
 		return obj;
 	}
@@ -157,12 +159,12 @@ public class JsonParser {
 		ArrayList<Time> timeList = new ArrayList<Time>();
 
 		JSONObject jsonObj = new JSONObject(data);
-		JSONArray jsonArray = jsonObj.getJSONArray("TIme");
+		JSONArray jsonArray = jsonObj.getJSONArray("Time");
 		for (int i = 0; i < jsonArray.length(); i++) {
 			JSONObject indexobj = jsonArray.getJSONObject(i);
 			Time time = new Time();
-			time.setTimeCode(indexobj.getInt("TimeCode"));
-			time.setTimeHalf(indexobj.getString("TimeHalf"));
+			time.setTimeCode(indexobj.getInt("timeCode"));
+			time.setTimeHalf(indexobj.getString("timeHalf"));
 			timeList.add(time);
 		}
 		return timeList;
@@ -208,7 +210,7 @@ public class JsonParser {
 			kmClinicDetailView.setMiddleRegionCode(indexobj.getString("middleRegionCode"));
 			kmClinicDetailView.setMiddleRegionName(indexobj.getString("middleRegionName"));
 			kmClinicDetailView.setRemainRegion(indexobj.getString("remainRegion"));
-			// kmClinicDetailView.setMapPoint(indexobj.getString("mapPoint"));
+			kmClinicDetailView.setMapPoint(indexobj.getString("mapPoint"));
 			kmClinicDetailView.setHomepage(indexobj.getString("homepage"));
 			kmClinicDetailView.setType(indexobj.getInt("type"));
 			// kmClinicDetailView.setFollowNum(indexobj.getInt("followNum"));
@@ -242,14 +244,17 @@ public class JsonParser {
 
 	private ArrayList<KmClinicView> parseKmClinicViewList(String data) throws JSONException {
 		ArrayList<KmClinicView> kmClinicViewList = new ArrayList<KmClinicView>();
-
+		Log.d("kim","1");
+		Log.d("kim","Data is " + data);
 		JSONObject jsonObj = new JSONObject(data);
-		JSONArray jsonArray = jsonObj.getJSONArray("KmClinicViewList");
-
+		Log.d("kim","2");
+		JSONArray jsonArray = jsonObj.getJSONArray("KmClinicView");
+		Log.d("kim","3");
 		for (int i = 0; i < jsonArray.length(); i++) {
 			KmClinicView kmClinicView = new KmClinicView();
+			Log.d("kim","4");
 			JSONObject indexobj = jsonArray.getJSONObject(i);
-
+			Log.d("kim","indexobj is " + indexobj.toString());
 			kmClinicView.setId(indexobj.getInt("id"));
 			kmClinicView.setName(indexobj.getString("name"));
 			// 맵포인트는 아직 존재하지 않아서 받아오지 않음

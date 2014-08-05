@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
+	<!-- menifest related -->
+	<!-- actionbar titles -->
     <string name="app_name">itdoc</string>
-    <!-- BasicActivity related -->
-    <string name="basic_activity_title">itdoc_basic</string>
+    <string name="basic_activity_title">기본</string>
+    <string name="title_activity_login">로그인</string>
+    <string name="title_activity_user_manager">회원가입 및 로그인</string>
+    <string name="title_activity_profile_picture">프로필 사진 추가</string>
+    <string name="title_activity_main_drawer">둘러보기</string>
+    <string name="title_activity_config">환경 설정</string>
+    <string name="title_activity_km_clinic_detail">병원상세 페이지</string>
+    <string name="title_activity_basic">BasicActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_fragment_login">로그인</string>
+    <string name="title_fragment_join">회원가입</string>
+    
+    <!-- activity -->
+    <!-- main_drawer_activity related -->
     <string name="action_search">search</string>
     <string name="action_settings">action_setting</string>
-
-    <string-array name="drawer_menu_title_array">
+    <string-array name="drawer_menu_title_section_array">
+        <item>한의원 찾기</item>
+        <item>Itdoc 플러스</item>
+    </string-array>
+    <string-array name="drawer_menu_title_item_array_search">
+        <item>검색하기</item>
         <item>둘러보기</item>
-        <item>menu2</item>
-        <item>menu3</item>
-        <item>menu4</item>
-        <item>menu5</item>
+        <item>한방정보</item>
+        <item>Itdoc 이용방법</item>
+        <item>환경설정</item>
+    </string-array>
+    <string-array name="drawer_menu_title_item_array_plus">
+        <item>It+ 살펴보기</item>
+        <item>내 친구 관리</item>
+    </string-array>
+    
+    <string-array name="drawer_menu_title_array">
+        <item>검색하기</item>
+        <item>둘러보기</item>
+        <item>한방정보</item>
+        <item>Itdoc 이용방법</item>
+        <item>환경설정</item>
         <item>menu6</item>
         <item>menu7</item>
         <item>menu8</item>
     </string-array>
-
+    <string name="left_drawer_bottom_comment">회원가입을 하면 Itdoc의 좋은 서비스를 더 많이 경험할 수 있습니다.</string>
+    <string name="left_drawer_bottom_login_or_register">회원가입 및 로그인</string>
     <string name="intro_img"></string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
@@ -26,27 +54,8 @@
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
     <string name="title_activity_intro">IntroActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_basic">BasicActivity</string>
-    <string name="title_activity_user_manager">UserManagerActivity</string>
-
-    <!-- slide page related -->
-    <string name="lorem_ipsum"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et magna ut erat elementum cursus in quis ipsum. Nam faucibus ultrices eros, vel tempor leo semper sit amet. Duis magna quam, congue vitae interdum nec, condimentum ut lectus. Sed commodo venenatis eros a dignissim. Nunc adipiscing turpis nec magna venenatis at ultricies ipsum bibendum. Sed volutpat urna quis nisi vulputate egestas. Etiam eu dui a enim lacinia dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\nPhasellus orci mi, eleifend nec congue id, volutpat at neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer semper velit vel leo rutrum sed fermentum elit porta.]]></string>
-    <!-- Actions -->
-    <string name="action_toggle">Toggle indicator</string>
-    <string name="action_add_item">Add item</string>
-    <string name="action_remove_item">Remove item</string>
-    <string name="action_previous">Previous</string>
-    <string name="action_next">Next</string>
-    <string name="action_finish">Finish</string>
-    <string name="action_info">Photo info</string>
-    <string name="action_photo">View photo</string>
-    <string name="title_template_step">Step <xliff:g id="step_number">%1$d</xliff:g>: LoremIpsum</string>
-    <string name="card_back_description"><![CDATA[Lorem ipsum dolor sit]]></string>
-
-    <!-- fragment_screen_slide_page -->
-    <string name="button_register">회원가입</string>
-    <string name="button_login">로그인</string>
-
+    
+    <!-- activity_screen_slide_page related -->
     <string-array name="screenslide_imagename_array">
         <item>introduce_itdoc1</item>
         <item>introduce_itdoc2</item>
@@ -60,34 +69,31 @@
         <item>한의원 갈때 더 이상 고민하지 마세요</item>
         <item>이제 잇닥을 사용하시면 됩니다.</item>
     </string-array>
-
-    <string name="title_activity_login">LoginActivity</string>
-
-    <!-- activity_profile_picture_page -->
-    <string name="welcome">회원님 안녕하세요!</string>
-    <string name="sir">회원님</string>
-    <string name="profile_commnet_1">프로필에 사진을 추가해서</string>
-    <string name="profile_commnet_2">회원님에 대해 알려 주세요.</string>
-    <!-- Actions -->
-    <string name="action_image_upload">이미지 업로드</string>
-    <string name="action_go_login">로그인</string>
-
-    <!-- fragment_join_page -->
-    <string name="user_email">이메일주소</string>
-    <string name="user_password">비밀번호</string>
-    <string name="user_firstname">이름</string>
-    <string name="user_lastname">성</string>
-    <string name="join_comment_1">회원가입을 함으로써</string>
-    <string name="join_comment_2">잇닥(it doc)의 서비스 약관 가입정보 </string>
-    <string name="join_comment_3">보호정책 등에 동의하게 됩니다.</string>
+    <string name="action_toggle">Toggle indicator</string>
+    <string name="action_add_item">Add item</string>
+    <string name="action_remove_item">Remove item</string>
+    <string name="action_previous">Previous</string>
+    <string name="action_next">Next</string>
+    <string name="action_finish">Finish</string>
+    <string name="action_info">Photo info</string>
+    <string name="action_photo">View photo</string>
+    <string name="card_back_description"><![CDATA[Lorem ipsum dolor sit]]></string>
 
     <!-- activity_user_manager_page -->
-    <string name="label_activity_user_manager">회원가입 및 로그인</string>
     <string name="facebook">페이스북</string>
     <string name="email_join">이메일로 회원가입</string>
     <string name="email_login">이메일로 로그인</string>
     <string name="user_manager_commnet_1">잇닥(it dot)은 무조건적인 광고성 내용은 </string>
     <string name="user_manager_commnet_2">절대 게재하지 않습니다.</string>
+    
+    <!-- activity_profile_picture_page -->
+    <string name="welcome">회원님 안녕하세요!</string>
+    <string name="sir">회원님</string>
+    <string name="profile_commnet_1">프로필에 사진을 추가해서</string>
+    <string name="profile_commnet_2">회원님에 대해 알려 주세요.</string>
+    <string name="profile_profile_image_upload">이미지 업로드</string>
+    <string name="profile_profile_image_change">수정하기</string>
+    <string name="profile_profile_finish">완료!</string>
 
     <!-- activity_config_page -->
     <string name="push">푸쉬 알림</string>
@@ -96,14 +102,29 @@
     <string name="helpdesk">고객센터</string>
     <string name="evaluation">잇닥(it doc) 평가하기</string>
     <string name="logout">로그아웃</string>
-    <string name="title_activity_config">ConfigActivity</string>
-    <string name="title_activity_km_clinic_detail">KmClinicDetailActivity</string>
     
+
     <!-- activity_kmclinic_detail_page -->
     <string name="button_visited">가봤다.</string>
     <string name="button_call">전화하기</string>
     <string name="recomend_relatives">추천한 이웃들</string>
     <string name="all_review">리뷰 모두 보기</string>
- 
+    
 
+    
+    
+    <!-- fragment -->
+    <!-- fragment_join_page -->
+    <string name="user_email">이메일주소</string>
+    <string name="user_password">비밀번호</string>
+    <string name="user_firstname">이름</string>
+    <string name="user_lastname">성</string>
+    <string name="join_comment_1">회원가입을 함으로써</string>
+    <string name="join_comment_2">잇닥(it doc)의 서비스 약관 가입정보 </string>
+    <string name="join_comment_3">보호정책 등에 동의하게 됩니다.</string>
+    
+    <!-- fragment_screen_slide_page -->
+    <string name="button_register">회원가입</string>
+    <string name="button_login">로그인</string>
+    
 </resources>

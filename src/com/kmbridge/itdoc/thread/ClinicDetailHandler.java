@@ -31,6 +31,10 @@ public class ClinicDetailHandler extends Handler{
 		activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
 	
+	protected void setElements(KmClinicDetailView kmClinicDetailView) {
+		this.kmClinicDetailView = kmClinicDetailView;
+		
+	}
 	
 
 	@Override
@@ -49,12 +53,11 @@ public class ClinicDetailHandler extends Handler{
 			break;
 			
 		case SET_ELEMENTS :
-			Log.d("kim","ClinicDetailHandler is " + msg.obj.toString());
-			kmClinicDetailView = (KmClinicDetailView) msg.obj;
-			Log.d("kim","kmClinicDetailView get name is  " + kmClinicDetailView.getName());
 			KmClinicDetailActivity activity = (KmClinicDetailActivity) context;
-			activity.setElements();
+			
+			activity.setElements(kmClinicDetailView);
 			break;
+	
 			
 		/*
 		 * case SEND_THREAD_STOP_MESSAGE: mCountThread.stopThread();

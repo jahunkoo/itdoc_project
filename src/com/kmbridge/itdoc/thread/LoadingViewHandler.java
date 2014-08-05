@@ -40,6 +40,7 @@ public class LoadingViewHandler extends Handler {
 			loadingView.setVisibility(View.GONE);
 			Log.d("koo", "loading page end");
 			break;
+			
 		/*
 		 * case SEND_THREAD_STOP_MESSAGE: mCountThread.stopThread();
 		 * tv_Count.setText("Count Thread가 중지 되었습니다."); break;

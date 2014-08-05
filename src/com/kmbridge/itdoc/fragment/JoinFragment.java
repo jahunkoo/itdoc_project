@@ -62,6 +62,9 @@ public class JoinFragment extends Fragment implements View.OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		//*****************************actionbar title setting ***********************
+		getActivity().getActionBar().setTitle(R.string.title_fragment_join);
+		//****************************************************************************
 		prop = new Properties();
 		// view가져오고
 		View rootView = inflater.inflate(R.layout.fragment_join, container,
