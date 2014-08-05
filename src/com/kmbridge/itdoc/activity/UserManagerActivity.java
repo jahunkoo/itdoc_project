@@ -2,6 +2,10 @@ package com.kmbridge.itdoc.activity;
 
 
 
+
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +14,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import android.widget.LinearLayout;
+
+
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.fragment.JoinFragment;
@@ -21,13 +29,18 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 	
 	Button btn_activity_user_manager_email_join;
 	Button btn_activity_user_manager_email_login;
+	private LinearLayout joinContainLayout;
+	private LinearLayout loginContainLayout;
 	SharedPreferenceUtil user_info = new SharedPreferenceUtil();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_manager);
-		
-		
+
+		joinContainLayout = (LinearLayout) findViewById(R.id.linearLayout_user_manager_for_join_fragment);
+		loginContainLayout = (LinearLayout) findViewById(R.id.linearLayout_user_manager_for_login_fragment);
+
+	
 		//회원가입
 		btn_activity_user_manager_email_join = (Button) findViewById(R.id.email_join);
 		btn_activity_user_manager_email_join.setOnClickListener(this);
@@ -56,17 +69,14 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 		
 		// 회원가입
 		case R.id.email_join:
-			//처음 실행이 아닐 때
-			//SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
-			//userInfo.setData(this, ItDocConstants.SHARED_KEY_FIRST_CHECK, null);
-			//Log.d("first",""+userInfo.setData(this, ItDocConstants.SHARED_KEY_FIRST_CHECK, null));
+			joinContainLayout.setBackgroundResource(android.R.drawable.screen_background_light);
 			joinLayoutElement();
 			//Toast.makeText(this, "이메일로그인", Toast.LENGTH_SHORT).show();
 			break;
 		
-		//
+		
 		case R.id.email_login:
-			
+			loginContainLayout.setBackgroundResource(android.R.drawable.screen_background_light);
 			loginLayoutElement();
 			break;
 		}
@@ -93,8 +103,6 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 	}
 	
 	public void loginLayoutElement() {
-		
-		
 		// TODO Auto-generated method stub
 		Fragment loginFragment = new LoginFragment();
 		//Bundle args = new Bundle();
@@ -117,13 +125,17 @@ public class UserManagerActivity extends ActionBarActivity implements OnClickLis
 			//*****************************actionbar title setting ***********************
 			getActionBar().setTitle(R.string.title_activity_user_manager);
 			//****************************************************************************
+			//*****************************actionbar title setting ***********************
+			//****************************************************************************
 			Log.d("koo", "onBackPressed not null");
 			String tag = fragment.getTag();
 			Log.d("koo", "onBackPressed not null tag:"+tag);
 			if(tag.equals(ItDocConstants.TAG_FRAGMENT_JOIN)){			// join fragmnet에서 돌아왔을 때, 다시 나머지 뷰들 보여줌
+				joinContainLayout.setBackgroundColor(Color.TRANSPARENT);
 				findViewById(R.id.linearLayout_user_manager).setVisibility(View.VISIBLE);
 				findViewById(R.id.linearLayout_user_manager_for_login_fragment).setVisibility(View.VISIBLE);
 			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_LOGIN)){	// login fragmnet에서 돌아왔을 때, 다시 나머지 뷰들 보여줌
+				loginContainLayout.setBackgroundColor(Color.TRANSPARENT);
 				findViewById(R.id.linearLayout_user_manager).setVisibility(View.VISIBLE);
 				findViewById(R.id.linearLayout_user_manager_for_join_fragment).setVisibility(View.VISIBLE);
 			}

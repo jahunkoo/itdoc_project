@@ -1,5 +1,6 @@
 package com.kmbridge.itdoc.thread;
 
+import lazyList.ImageLoader;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
@@ -44,6 +46,7 @@ public class LoginConnectHandler extends Handler {
 		//activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		activity.addContentView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		loginFragment = ((LoginFragment)fragment);
+		
 	}
 	
 	@Override
@@ -66,6 +69,7 @@ public class LoginConnectHandler extends Handler {
 			break;
 		case SHOW_LOGIN:
 			Log.d("koo", "loading end imageview_show start");
+			
 			EditText edittxt_activity_login_login_email = (EditText) activity.findViewById(R.id.login_email);
 			
 			SharedPreferenceUtil.setData(activity,ItDocConstants.SHARED_KEY_EMAIL, edittxt_activity_login_login_email.getText().toString());

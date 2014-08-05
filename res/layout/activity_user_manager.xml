@@ -3,7 +3,26 @@
     android:id="@+id/relativeLayout_user_manager"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+	
+  <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@drawable/user_manager_background" />
+    <TextView 
+        android:id="@+id/textview_userManager_center_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"/>
+     
+    
+     <ImageView 
+        android:id="@+id/imageview_activity_user_manager_itdoc_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textview_userManager_center_line"
+        android:src="@drawable/intro_logo"/>
+     
     <LinearLayout
         android:id="@+id/linearLayout_user_manager_for_join_fragment"
         android:layout_width="match_parent"
@@ -20,23 +39,14 @@
         android:visibility="visible" >
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/linearLayout_user_manager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_alignParentBottom="true"
         android:weightSum="1" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5" >
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#000000" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +62,6 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="0.2"
-                android:visibility="gone"
                 android:text="@string/facebook" />
 
             <Button

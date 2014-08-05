@@ -3,7 +3,7 @@
 <style name="ItDocActionBarTheme"
            parent="@style/Theme.AppCompat.Light">
         <item name="android:actionBarStyle">@style/ITDocActionBar</item>
-
+        
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/ITDocActionBar</item>
     </style>
@@ -16,8 +16,7 @@
         <!-- Support library compatibility -->
         <!-- <item name="background">@drawable/actionbar_background</item> -->
     </style>
-    
-
+ 
     
 
 </resources>

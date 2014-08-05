@@ -3,7 +3,7 @@ package com.kmbridge.itdoc.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import lazyList.ImageLoader;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +27,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -45,6 +46,8 @@ import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class MainDrawerActivity extends FragmentActivity implements OnClickListener{
 
+	public ImageLoader imageLoader;
+	
 	protected DrawerLayout mDrawerLayout;
 	protected RelativeLayout mDrawerRelativeLayout;
 	protected LinearLayout leftDrawerBottomLayout;
@@ -72,6 +75,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_drawer);
+		
+		imageLoader = new ImageLoader(this);
 
 		mTitle = mDrawerTitle = getTitle();
 		// ********** stringarray 받기 시작
@@ -135,6 +140,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private LinearLayout leftBottomLayout;
 
 	public void setDrawerLeft() {
+		
+		
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				try {
 					userEmail = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
@@ -162,7 +169,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 						TextView nameTextView = (TextView) leftBottomLayout.findViewById(R.id.textview_left_drawer_bottom_name);
 						nameTextView.setOnClickListener(this);
 						String profileName = null;
-						
 						try {
 							profileName = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_NAME);
 						} catch (RecordNotFoundException e) {
@@ -171,7 +177,30 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 						
 						nameTextView.setText(profileName);
 						
+						ImageView img = null;//사용자 사진 저장 객체
+						img = (ImageView) leftBottomLayout.findViewById (R.id.imageview_left_drawer_bottom_profile);
 						
+						//로그인시 사용자 사진 달기
+						//String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath +"&objectType=1";
+						
+						String picturePath = null;
+						try {
+							picturePath = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_PICTURE_URL);
+							Log.d("kim3","Main Drawer :"+picturePath);
+						} catch (RecordNotFoundException e1) {
+							e1.printStackTrace();
+						}
+						
+						String url  = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + picturePath + "&objectType=1";
+						
+						Log.d("kim3","url :"+url);
+						
+					
+						try {
+							imageLoader.DisplayImage(url, img);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 						
 						//사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
 						ImageButton imgProfileBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);

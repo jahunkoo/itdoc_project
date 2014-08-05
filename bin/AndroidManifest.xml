@@ -56,6 +56,11 @@
         <activity
             android:name=".activity.UserManagerActivity"
             android:label="@string/title_activity_user_manager" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>

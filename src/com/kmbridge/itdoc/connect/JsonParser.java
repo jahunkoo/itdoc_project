@@ -180,18 +180,22 @@ public class JsonParser {
 		Map<String, String> loginMap = new HashMap<String, String>();
 		
 		String loginResult = jsonObj.getString("success");
-		Log.d("kim2","Parser : "+loginResult);
+		//Log.d("kim2","Parser : "+loginResult);
 		
 		String loginName  = null;
 		if(jsonObj.has("name"))	loginName = jsonObj.getString("name");
 		else 	loginName = "";
 		
-		Log.d("kim2","Parser : "+loginName);
+		String loginPicture  = null;
+		if(jsonObj.has("picturePath"))	loginPicture = jsonObj.getString("picturePath");
+		else 	loginPicture = "";
 		
-		
+		//Log.d("kim2","Parser : "+loginName);
 		loginMap.put(ItDocConstants.PARSE_LOGINRESULT, loginResult);
 		loginMap.put(ItDocConstants.PARSE_NAME, loginName);
+		loginMap.put(ItDocConstants.PARSE_LOGINPICTURE, loginPicture);
 		
+		Log.d("kim3",loginPicture);
 		
 		//map.containsKey(result);
 		 return loginMap;
@@ -366,6 +370,7 @@ public class JsonParser {
 		Log.d("kim","1");
 		Log.d("kim","Data is " + data);
 		JSONObject jsonObj = new JSONObject(data);
+
 		Log.d("kim","2");
 		JSONArray jsonArray = jsonObj.getJSONArray("KmClinicView");
 		Log.d("kim","3");
