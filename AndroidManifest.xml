@@ -27,23 +27,24 @@
         android:icon="@drawable/app_icon_itdoc"
         android:label="@string/app_name"
         android:logo="@drawable/action_itdoc_logo"
+        android:screenOrientation="portrait"
         android:theme="@style/ItDocActionBarTheme" >
         <activity
             android:name=".activity.IntroActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
-             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             
             
         </activity>
         <activity
             android:name=".activity.MainDrawerActivity"
-            android:label="@string/title_activity_main_drawer" >
-           
+            android:label="@string/title_activity_main_drawer" 
+           >
+           <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- 지워도 됨 -->

@@ -28,9 +28,9 @@
         <item>검색하기</item>
         <item>둘러보기</item>
         <item>한방정보</item>
-        <item>Itdoc 이용방법</item>
-        <item>환경설정</item>
+        <item>찜한 한의원</item>
     </string-array>
+    
     <string-array name="drawer_menu_title_item_array_plus">
         <item>It+ 살펴보기</item>
         <item>내 친구 관리</item>
@@ -134,7 +134,7 @@
     
     
     <!-- activity_user_profile -->
-    <string name="activity_user_profile_default_user_name">홍길동</string>
+    <string name="activity_user_profile_default_user_name">윤성수</string>
     <string name="activity_user_profile_default_button_follow">+ 팔로우</string>
     <string name="activity_user_profile_default_text_review">리뷰</string>
     <string name="activity_user_profile_default_text_follow">팔로워</string>

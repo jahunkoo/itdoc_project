@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="#DCDCDC"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearlayout_clinic_list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textview_clinic_list_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="고당비한의원"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="추천" />
+
+            <TextView
+                android:id="@+id/textview_clinic_list_item_likenum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="21"
+                android:textColor="#B2EBF4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="팔로워" />
+
+            <TextView
+                android:id="@+id/textview_clinic_list_item_follower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="11"
+                android:textColor="#B2EBF4" />
+
+            <TextView
+                android:id="@+id/textview_clinic_list_item_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text=" 서울시 강남구 테헤란로" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageview_clinic_list_item_clinicimage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/linearlayout_clinic_list_item"
+        android:contentDescription="asdf"
+        android:src="@drawable/biman_godangbi" />
+
+    <TextView
+        android:id="@+id/textview_clinic_list_item_keyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:background="#80000000"
+        android:paddingBottom="5dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:text="다이어트"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/imageview_clinic_list_item_follow_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/textview_clinic_list_item_keyword"
+        android:src="@drawable/user2" />
+
+    <ImageView
+        android:id="@+id/imageview_clinic_list_item_follow_img"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/linearlayout_clinic_list_item"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="17dp"
+        android:src="@drawable/not_follow" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:src="@drawable/user4" />
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imageView2"
+        android:src="@drawable/user7" />
+
+</RelativeLayout>
