@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -15,15 +17,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.SearchView.OnQueryTextListener;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -32,22 +35,25 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
 import com.kmbridge.itdoc.dto.ItemTitle;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
-import com.kmbridge.itdoc.exception.RecordNotFoundException;
-import com.kmbridge.itdoc.fragment.KmClinicListFragment;
-import com.kmbridge.itdoc.fragment.SearchFragment;
+
+import com.kmbridge.itdoc.hardcoding.ClinicListFragment;
+import com.kmbridge.itdoc.hardcoding.HardSearchFragment;
+import com.kmbridge.itdoc.image.ImageManager;
+import com.kmbridge.itdoc.image.RoundedImageView;
 import com.kmbridge.itdoc.util.ItDocConstants;
-import com.kmbridge.itdoc.util.SharedPreferenceUtil;
+
 
 public class MainDrawerActivity extends FragmentActivity implements OnClickListener{
 
 	public ImageLoader imageLoader;
-	
+	public boolean closeApplication;
 	protected DrawerLayout mDrawerLayout;
 	protected RelativeLayout mDrawerRelativeLayout;
 	protected LinearLayout leftDrawerBottomLayout;
@@ -66,7 +72,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	private final int POSITION_SEARCH_FRAGMENT = 1;
 	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 2;
-
+	
 	// action view 좀 돼라
 
 	int position = -1;
@@ -85,6 +91,14 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		setDrawerTitleList();
 		// ********** end
 
+		//************************************ koo *********************************************************
+				DisplayMetrics displayMetrics = new DisplayMetrics(); 
+				getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
+				    
+				ImageManager.screenWidth = displayMetrics.widthPixels; 
+				ImageManager.screenHeight = displayMetrics.heightPixels;
+				Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
+				//************************************ koo *********************************************************
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerRelativeLayout = (RelativeLayout) findViewById(R.id.relativelayout_left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -138,16 +152,13 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private String userEmail;	//없으면 null로 명시함
 	private boolean isLogin;
 	private LinearLayout leftBottomLayout;
-
+	
 	public void setDrawerLeft() {
 		
 		
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				try {
-					userEmail = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_EMAIL);
-				} catch (RecordNotFoundException e) {
-					userEmail = null;
-					e.printStackTrace();
+					userEmail = "test@gmail.com";
 				}finally{
 					if(userEmail == null){
 						Log.d("koo", "userEmail is null");
@@ -168,39 +179,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 						
 						TextView nameTextView = (TextView) leftBottomLayout.findViewById(R.id.textview_left_drawer_bottom_name);
 						nameTextView.setOnClickListener(this);
-						String profileName = null;
-						try {
-							profileName = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_NAME);
-						} catch (RecordNotFoundException e) {
-							e.printStackTrace();
-						}
-						
+						String profileName = "윤 성수";
 						nameTextView.setText(profileName);
 						
 						ImageView img = null;//사용자 사진 저장 객체
 						img = (ImageView) leftBottomLayout.findViewById (R.id.imageview_left_drawer_bottom_profile);
+						Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user5);
+						bitmap = RoundedImageView.getRoundedBitmap(bitmap, 80);
+						img.setImageBitmap(bitmap);
 						
-						//로그인시 사용자 사진 달기
-						//String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath +"&objectType=1";
-						
-						String picturePath = null;
-						try {
-							picturePath = SharedPreferenceUtil.getData(this, ItDocConstants.SHARED_KEY_PICTURE_URL);
-							Log.d("kim3","Main Drawer :"+picturePath);
-						} catch (RecordNotFoundException e1) {
-							e1.printStackTrace();
-						}
-						
-						String url  = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + picturePath + "&objectType=1";
-						
-						Log.d("kim3","url :"+url);
-						
-					
-						try {
-							imageLoader.DisplayImage(url, img);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
 						
 						//사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
 						ImageButton imgProfileBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
@@ -209,7 +196,12 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 					}
 					leftBottomLayout.setOnClickListener(this);
 				}
+				
+									
 	}
+	
+	
+	
 	private LinearLayout afterLoginLayout;
 	private LinearLayout beforeLoginLayout;
 	public void setLayoutVisible(boolean isShowAfterLayout ,boolean isShowBeforeLayout){
@@ -275,15 +267,14 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	// ******************************************** end
 	// ***************************************************
-
+	
 	// **************************************** actionBar 부분
 	// ***************************************************
-
+	
 	// onCreateOptionsMenu는 말그대로 actionBar에서 옵션메뉴를 추가할때 MenuInflater를 이용해서 생성하는
 	// 부분
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
 
 		MenuInflater inflater = getMenuInflater();
 
@@ -329,7 +320,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		switch (item.getItemId()) {
 		case R.id.action_search:
 			selectItem(POSITION_SEARCH_FRAGMENT);
-
+			
 			// create intent to perform web search for this planet
 			/*
 			 * Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
@@ -404,6 +395,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	// *********************************************end***************************************************
 	private void createKmClinicListFragment(FragmentManager fragmentManager, int position) {
+		Fragment fragment = ClinicListFragment.create(this);
+		FRAGMENT_TAG = "CLINIC_LIST";
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
+		
+		mDrawerList.setItemChecked(position, true);
+		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
+		setTitle(title.getItemTitle());
+		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
+		/*
 		Fragment fragment = KmClinicListFragment.create(this);
 		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 		mDrawerList.setItemChecked(position, true);
@@ -411,17 +411,23 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		setTitle(title.getItemTitle());
 		// mDrawerLayout.closeDrawer(mDrawerList);
 		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
+		*/
 	}
-
+	private String FRAGMENT_TAG; 
 	private void createSearchFragment(FragmentManager fragmentManager, int position) {
-		Fragment fragment = SearchFragment.create(this);
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+		Fragment fragment = HardSearchFragment.create(this);
+		FRAGMENT_TAG = "SEARCH";
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.GONE);
+		
 		mDrawerList.setItemChecked(position, true);
 		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
 		setTitle(title.getItemTitle());
 		// mDrawerLayout.closeDrawer(mDrawerList);
 		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
 	}
+	
 	
 	@Override
 	public void onClick(View v) {
@@ -459,6 +465,26 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		
 	}
 
+	
+
+	@Override
+	public void onBackPressed() {
+		Fragment fragment =  getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+		if(fragment !=null){
+			String tag = fragment.getTag();
+			if(tag.equals("SEARCH")){
+				fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				fragment.getView().setVisibility(View.VISIBLE);
+				/*fragment = ClinicListFragment.create(this);
+				FRAGMENT_TAG = "CLINIC_LIST";
+				fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
+				*/
+			}else if(tag.equals("CLINIC_LIST")){
+				
+			}
+		}
+		super.onBackPressed();
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -476,6 +502,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			break;
 		}
 	}
-	
 
+	
 }

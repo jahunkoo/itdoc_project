@@ -26,6 +26,12 @@ import com.kmbridge.itdoc.dto.KmClinicView;
 public class ClinicListAdapter extends BaseAdapter {
 
 	public List<ClinicListItem> clinicListItemList = new ArrayList<ClinicListItem>();
+	private int[] kmClinicImgArr = {R.drawable.oriental_medicine_clinic1,R.drawable.oriental_medicine_clinic2,
+								R.drawable.oriental_medicine_clinic3,R.drawable.oriental_medicine_clinic4,
+								R.drawable.oriental_medicine_clinic5,R.drawable.oriental_medicine_clinic6,
+								R.drawable.oriental_medicine_clinic7,R.drawable.oriental_medicine_clinic8,
+								R.drawable.oriental_medicine_clinic9,R.drawable.oriental_medicine_clinic10}; 
+	
 	private LayoutInflater inflator;
 	public ImageLoader imageLoader;
 	public ArrayAdapter<ClinicListItem> adapter;
@@ -33,7 +39,7 @@ public class ClinicListAdapter extends BaseAdapter {
 	public Context context;
 
 	public ClinicListAdapter(Context context, String email) {
-
+		
 		this.email = email;
 		this.context = context;
 
@@ -48,11 +54,8 @@ public class ClinicListAdapter extends BaseAdapter {
 		kmClinicViewList = connectionBridge.getKmClinicViewList("getAllKmClinic", context, email);
 
 		for (int i = 0; i < kmClinicViewList.size(); i++) {
-
 			KmClinicView kmClinicView = kmClinicViewList.get(i);
-
 			String local = kmClinicView.getBigRegionName() + " " + kmClinicView.getMiddleRegionName();
-
 			int id = kmClinicView.getId();
 			String picturepath = kmClinicView.getPicturePath();
 			String name = kmClinicView.getName();
@@ -68,11 +71,8 @@ public class ClinicListAdapter extends BaseAdapter {
 				e.printStackTrace();
 			}
 			clinicListItemList.add(new ClinicListItem(id, picturepath, name, regionName, keyword, followNum, likeNum, type));
-
 		}
-
 		adapter = new ArrayAdapter<ClinicListItem>(context, R.id.listview_clinic_list, clinicListItemList);
-
 	}
 
 	@Override
@@ -121,14 +121,15 @@ public class ClinicListAdapter extends BaseAdapter {
 
 		final ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
 
-		String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath + "&objectType=2";
-
+		//String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath + "&objectType=2";
+/*
 		try {
 			imageLoader.DisplayImage(url, img);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+*/
+		img.setImageResource(kmClinicImgArr[position]);
 		name.setText(clinicListItem.name);
 		regionName.setText(clinicListItem.regionName);
 		keyword.setText(clinicListItem.keyword);

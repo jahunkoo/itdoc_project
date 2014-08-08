@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="#DCDCDC">
+	<TextView 
+	    android:id="@+id/txtview_hard_layout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:layout_centerInParent="true"/>
+    <ImageView
+        android:id="@+id/imageview_clinic_list_item_clinicimage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="asdf"
+        android:layout_centerInParent="true"
+        android:src="@drawable/images" />
+
+	<TextView
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/txtview_hard_layout1"
+	    android:layout_alignParentLeft="true"
+	    android:gravity="center_horizontal"
+	    android:textColor="@android:color/white"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:text="아이를 생각한다면" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtview_hard_layout1"
+        android:layout_marginTop="22dp"
+        android:gravity="center_horizontal"
+        android:text="강남구"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
