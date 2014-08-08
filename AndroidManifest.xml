@@ -32,18 +32,15 @@
             android:name=".activity.IntroActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
-             <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
-            
         </activity>
         <activity
             android:name=".activity.MainDrawerActivity"
             android:label="@string/title_activity_main_drawer" >
-           
         </activity>
 
         <!-- 지워도 됨 -->
@@ -81,11 +78,11 @@
             android:label="@string/title_activity_km_clinic_detail" >
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.activity.MapActivity"
+            android:name=".activity.MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.activity.UserProfileActivity"
+            android:name=".activity.UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
         </activity>
 
@@ -95,6 +92,23 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".activity.RelativesActivity"
+            android:label="@string/title_activity_relatives" >
+        </activity>
+        <activity
+            android:name=".activity.KmClinicAllreviewActivity"
+            android:label="@string/title_activity_allreview" >
+        </activity>
+        <activity
+            android:name=".activity.KmClinicMoreInfoActivity"
+            android:label="@string/title_activity_km_clinic_more_info" >
+        </activity>
+        <activity
+            android:name="com.kmbridge.itdoc.activity.KmClinicMoreDoctorActivity"
+            android:label="@string/title_activity_km_clinic_more_doctor" >
+        </activity>
     </application>
 
     <uses-feature

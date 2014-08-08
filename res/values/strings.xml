@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-	<!-- menifest related -->
-	<!-- actionbar titles -->
+
+    <!-- menifest related -->
+    <!-- actionbar titles -->
     <string name="app_name">itdoc</string>
     <string name="basic_activity_title">기본</string>
     <string name="title_activity_login">로그인</string>
@@ -15,11 +16,16 @@
     <string name="title_activity_user_profile">프로필</string>
     <string name="title_fragment_login">로그인</string>
     <string name="title_fragment_join">회원가입</string>
-    
+    <string name="title_activity_relatives">OO한의원</string>
+    <string name="title_activity_allreview">OO한의원, 리뷰</string>
+    <string name="title_activity_km_clinic_more_info">OO한의원</string>
+    <string name="title_activity_km_clinic_more_doctor">OO한의원</string>
+
     <!-- activity -->
     <!-- main_drawer_activity related -->
     <string name="action_search">search</string>
     <string name="action_settings">action_setting</string>
+
     <string-array name="drawer_menu_title_section_array">
         <item>한의원 찾기</item>
         <item>Itdoc 플러스</item>
@@ -35,7 +41,6 @@
         <item>It+ 살펴보기</item>
         <item>내 친구 관리</item>
     </string-array>
-    
     <string-array name="drawer_menu_title_array">
         <item>검색하기</item>
         <item>둘러보기</item>
@@ -46,6 +51,7 @@
         <item>menu7</item>
         <item>menu8</item>
     </string-array>
+
     <string name="left_drawer_bottom_comment">회원가입을 하면 Itdoc의 좋은 서비스를 더 많이 경험할 수 있습니다.</string>
     <string name="left_drawer_bottom_login_or_register">회원가입 및 로그인</string>
     <string name="intro_img"></string>
@@ -55,7 +61,7 @@
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
     <string name="title_activity_intro">IntroActivity</string>
     <string name="hello_world">Hello world!</string>
-    
+
     <!-- activity_screen_slide_page related -->
     <string-array name="screenslide_imagename_array">
         <item>introduce_itdoc1</item>
@@ -70,6 +76,7 @@
         <item>한의원 갈때 더 이상 고민하지 마세요</item>
         <item>이제 잇닥을 사용하시면 됩니다.</item>
     </string-array>
+
     <string name="action_toggle">Toggle indicator</string>
     <string name="action_add_item">Add item</string>
     <string name="action_remove_item">Remove item</string>
@@ -86,7 +93,7 @@
     <string name="email_login">이메일로 로그인</string>
     <string name="user_manager_commnet_1">잇닥(it dot)은 무조건적인 광고성 내용은 </string>
     <string name="user_manager_commnet_2">절대 게재하지 않습니다.</string>
-    
+
     <!-- activity_profile_picture_page -->
     <string name="welcome">회원님 안녕하세요!</string>
     <string name="sir">회원님</string>
@@ -104,17 +111,15 @@
     <string name="evaluation">잇닥(it doc) 평가하기</string>
     <string name="logout">로그아웃</string>
     <string name="login">로그인</string>
-    
 
     <!-- activity_kmclinic_detail_page -->
     <string name="button_visited">가봤다.</string>
     <string name="button_call">전화하기</string>
     <string name="recomend_relatives">추천한 이웃들</string>
     <string name="all_review">리뷰 모두 보기</string>
-    
+    <string name="more_clinic_info">한의원 설명 더보기</string>
+    <string name="more_doctor_info">의료진에 대해서 더보기</string>
 
-    
-    
     <!-- fragment -->
     <!-- fragment_join_page -->
     <string name="user_email">이메일주소</string>
@@ -124,15 +129,14 @@
     <string name="join_comment_1">회원가입을 함으로써</string>
     <string name="join_comment_2">잇닥(it doc)의 서비스 약관 가입정보 </string>
     <string name="join_comment_3">보호정책 등에 동의하게 됩니다.</string>
-    
+
     <!-- fragment_screen_slide_page -->
     <string name="button_register">회원가입</string>
     <string name="button_login">로그인</string>
-    
+
     <!-- activity_config_page -->
     <string name="button_config_logout">로그아웃 되었습니다.</string>
-    
-    
+
     <!-- activity_user_profile -->
     <string name="activity_user_profile_default_user_name">홍길동</string>
     <string name="activity_user_profile_default_button_follow">+ 팔로우</string>
@@ -149,7 +153,9 @@
     <string name="button_user_profile_followed">팔로우 중</string>
     <string name="button_user_profile_go_certifiction">신원 인증하기</string>
     <string name="button_user_profile_certification_message">본인 인증은 잇닥(itdoc)커뮤니티의 신뢰 구축에 많은 도움이 됩니다.</string>
-    
+
     <!-- layout_review related -->
     <string name="layout_review_message_no_review">작성한 리뷰가 없습니다.</string>
+    
+
 </resources>
