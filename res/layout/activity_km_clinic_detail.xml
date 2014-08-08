@@ -12,8 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="5" 
-            >
+            android:weightSum="5" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,14 +44,30 @@
                     android:text="한의원 주소 뿌려질 곳"
                     android:textSize="5pt" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
-                    android:text="@string/recomend_relatives"
-                    android:textSize="5pt" />
+                    android:layout_weight="0.1" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:text="@string/recomend_relatives"
+                        android:textSize="5pt" 
+                        android:gravity="center"
+                        />
+                    
+                    <Button 
+                        android:id="@+id/button_km_clinic_detail_gotofollower"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:text="Go to Follower"
+                        />
+                    
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

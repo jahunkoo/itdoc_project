@@ -103,8 +103,8 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		
 			
 		//*******************************  통신    ********************************
-		UserProfileConnectionThread thread = new UserProfileConnectionThread(this, ItDocConstants.METHOD_URL_GET_USERVIEW_BY_EMAIL, myEmail, userEmail);
-		thread.start();
+//		UserProfileConnectionThread thread = new UserProfileConnectionThread(this, ItDocConstants.METHOD_URL_GET_USERVIEW_BY_EMAIL, myEmail, userEmail);
+//		thread.start();
 		//*********************************************************************
 	}
 
