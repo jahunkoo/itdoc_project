@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Theme1PageFragment extends Fragment {
+public class Theme2PageFragment extends Fragment {
 
 	private int mPageNumber;
 
-	public static Theme1PageFragment create(int pageNumber) {
-		Theme1PageFragment fragment = new Theme1PageFragment();
+	public static Theme2PageFragment create(int pageNumber) {
+		Theme2PageFragment fragment = new Theme2PageFragment();
 		Bundle args = new Bundle();
 		args.putInt("page", pageNumber);
 		fragment.setArguments(args);
@@ -34,8 +34,8 @@ public class Theme1PageFragment extends Fragment {
 		ViewGroup rootView  = null;
 		
 		switch(mPageNumber){
-		case 0: rootView = (ViewGroup) inflater.inflate(R.layout.clinic_list_item3_1, container, false);break;
-		case 1: rootView = (ViewGroup) inflater.inflate(R.layout.clinic_list_item3_2, container, false);break;
+		case 0: rootView = (ViewGroup) inflater.inflate(R.layout.clinic_list_item4_1, container, false);break;
+		case 1: rootView = (ViewGroup) inflater.inflate(R.layout.clinic_list_item4_2, container, false);break;
 		}
 		
 		
