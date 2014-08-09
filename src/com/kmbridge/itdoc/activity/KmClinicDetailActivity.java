@@ -1,5 +1,7 @@
 package com.kmbridge.itdoc.activity;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.thread.ClinicDetailThread;
 
@@ -44,8 +47,24 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		setLayout();
 		setListener();
 		
+		//json파서 로드
 		LoadData load = new LoadData(this);
-		KmClinicDetailView view = load.getKm2DetailView();
+		
+		//한의원 객체를 가져옴
+		KmClinicDetailView view = load.getKmClinicDetailView(2);
+		
+		//리뷰 객체를 가져옴
+		KmClinicDetailView Review = (KmClinicDetailView) load.getAllReviewView();
+		
+		List<ReviewView> list = Review.getReviewList();
+		list.get(0).getUserName();
+		
+		/*List<ReviewView> reviewList = Review.getReviewList();
+		for(int i=0; i<((TextView) reviewList).length();i++){
+		}*/
+		
+		
+		
 		
 		//병원 이름 지정
 		kmName = (TextView) findViewById(R.id.kmclinic_detail_kmname);
@@ -139,9 +158,4 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 			break;
 		}
 	}
-	
-
-
-	
-
 }

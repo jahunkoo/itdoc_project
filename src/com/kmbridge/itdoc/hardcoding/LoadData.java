@@ -17,6 +17,8 @@ import android.util.Log;
 import com.kmbridge.itdoc.dto.BigRegion;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.MiddleRegion;
+import com.kmbridge.itdoc.dto.ReviewKeyword;
+import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.dto.Week;
@@ -45,6 +47,55 @@ public class LoadData {
 		
 		
 		return buffer.toString();
+	}
+	public List<ReviewView> getAllReviewView(){
+		String json = null;
+		JSONObject jsonObj = null;
+		JSONArray jsonArr = null;
+		List<ReviewView> reviewList = new ArrayList<ReviewView>();
+		
+		try{
+			json = getJsonFromFile(context,"review_view.json");
+			jsonObj = new JSONObject(json);
+			jsonArr = jsonObj.getJSONArray("ReviewView");
+			for(int i=0;i<jsonArr.length();i++){
+				ReviewView review = new ReviewView();
+				jsonObj = jsonArr.getJSONObject(i);
+				review.setReviewTime(jsonObj.getString("reviewTime"));
+				review.setKmClinicName(jsonObj.getString("kmClinicName"));
+				review.setKmClinicId(jsonObj.getInt("kmClinicId"));
+				review.setUserEmail(jsonObj.getString("userEmail"));
+				review.setKmClinicBigRegionName(jsonObj.getString("kmClinicBigRegionName"));
+				review.setReviewId(jsonObj.getInt("reviewId"));
+				review.setFavoriteType(jsonObj.getInt("favoriteType"));
+				review.setKmClinicRemainRegion(jsonObj.getString("kmClinicRemainRegion"));
+				review.setKmClinicBigRegionCode(jsonObj.getInt("kmClinicBigRegionCode"));
+				review.setKmClinicMiddleRegionCode(jsonObj.getInt("kmClinicMiddleRegionCode"));
+				review.setUserName(jsonObj.getString("userName"));
+				review.setKmClinicMiddleRegionName(jsonObj.getString("kmClinicMiddleRegionName"));
+				review.setComment(jsonObj.getString("comment"));
+				
+				JSONArray innerArr = jsonObj.getJSONArray("reviewKeywordList");
+				List<ReviewKeyword> reviewKeywordList = new ArrayList<ReviewKeyword>();
+				for(int j=0;j<innerArr.length();j++){
+					JSONObject innerObj = innerArr.getJSONObject(j);
+					ReviewKeyword rk = new ReviewKeyword();
+					rk.setId(innerObj.getInt("id"));
+					rk.setKeyword(innerObj.getString("keyword"));
+					reviewKeywordList.add(rk);
+				}
+				
+				Log.d("koo", "end reviewView||"+review.toString());
+				reviewList.add(review);
+				
+			}
+			
+		}catch(Exception e){
+			
+		}
+		
+		
+		return reviewList;
 	}
 	
 	public List<UserSimpleInfo> getAllUserSimpleInfo(){
@@ -78,16 +129,21 @@ public class LoadData {
 	}
 	
 	/**
-	 * 강남 보성 한의원
+	 * 한의원 아이디를 넣으면 해당 한의원의 상세정보 객체를 가져옴
+	 * @param kmClinicId
 	 * @return
 	 */
-	public KmClinicDetailView getKm2DetailView(){
+	public KmClinicDetailView getKmClinicDetailView(int kmClinicId){
 		KmClinicDetailView view = new KmClinicDetailView();
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
 		try {
-			json = getJsonFromFile(context,"kmclinic_detail_2.json");
+			switch(kmClinicId){
+			case 2: json = getJsonFromFile(context,"kmclinic_detail_2.json");break;
+			}
+			
+			
 			jsonObj = new JSONObject(json);
 			jsonArr = jsonObj.getJSONArray("KmClinicDetailView");
 			jsonObj = jsonArr.getJSONObject(0);
@@ -101,7 +157,10 @@ public class LoadData {
 			view.setLinePhone(jsonObj.getString("linePhone"));
 			view.setDetails(jsonObj.getString("details"));
 			view.setType(jsonObj.getInt("type"));
-			view.setPicturePath("biman_bosung");
+			switch(kmClinicId){
+			case 2: view.setPicturePath("biman_bosung");break;
+			}
+			
 			jsonArr = jsonObj.getJSONArray("keywordList");
 			List<String> keywords = new ArrayList<String>();
 			for(int i=0;i<jsonArr.length();i++){
@@ -111,6 +170,7 @@ public class LoadData {
 			List<UserSimpleInfo> userList = getAllUserSimpleInfo();
 			view.setUserSimpleInfoList(userList);
 			
+			view.setReviewList(getAllReviewView());
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -124,6 +184,7 @@ public class LoadData {
 		
 		return view;
 	}
+	
 	
 	public ArrayList<Time> getTimeList(){
 		ArrayList<Time> timeList = new ArrayList<Time>();

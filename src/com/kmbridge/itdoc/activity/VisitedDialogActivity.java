@@ -1,5 +1,6 @@
 package com.kmbridge.itdoc.activity;
 
+import junit.framework.Test;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -11,8 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.util.ItDocConstants;
-import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class VisitedDialogActivity extends Dialog implements OnClickListener {
 
@@ -92,8 +91,8 @@ public class VisitedDialogActivity extends Dialog implements OnClickListener {
 			
 		case R.id.btn_dialog_complete:
 			//SharedPreferenceUtil.setData(mContext, "keyword_selected", keywordResult);
-			VisitedActivity visitedActivity = new VisitedActivity();
-			visitedActivity.txtVisitedChoice.setText(keywordResult);
+			//VisitedActivity visitedActivity = new VisitedActivity();
+			//visitedActivity.txtVisitedChoice.setText(keywordResult);
 			dismiss();
 			break;
 			
