@@ -35,7 +35,7 @@ public class Theme1PageFragment extends Fragment {
 		
 		switch(mPageNumber){
 		case 0: rootView = (ViewGroup) inflater.inflate(R.layout.clinic_list_item3_1, container, false);break;
-		case 1: rootView = (ViewGroup) inflater.inflate(R.layout.clinic_list_item3_1, container, false);break;
+		case 1: rootView = (ViewGroup) inflater.inflate(R.layout.clinic_list_item3_2, container, false);break;
 		}
 		
 		

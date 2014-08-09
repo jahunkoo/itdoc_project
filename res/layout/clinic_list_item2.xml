@@ -101,7 +101,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:layout_toRightOf="@+id/textview_clinic_list_item_keyword"
-        android:src="@drawable/user6" />
+        android:src="@drawable/face4" />
 
     <ImageView
         android:id="@+id/imageview_clinic_list_item_follow_img"
@@ -120,6 +120,6 @@
         android:layout_alignTop="@+id/imageView1"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imageView1"
-        android:src="@drawable/user3" />
+        android:src="@drawable/face19" />
 
 </RelativeLayout>

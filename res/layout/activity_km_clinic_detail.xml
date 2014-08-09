@@ -31,6 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.3"
+                    android:layout_marginTop="10dp"
                     android:gravity="center_horizontal"
                     android:text="병원 이름 들어갈 곳"
                     android:textSize="10pt" />
@@ -42,7 +43,16 @@
                     android:layout_weight="0.2"
                     android:gravity="center_horizontal"
                     android:text="병원 주소 들어 갈 곳"
-                    android:textSize="8pt" />
+                    android:textSize="6pt" />
+                
+                <TextView
+                    android:id="@+id/kmclinic_detail_kmlocation_remain"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center_horizontal"
+                    android:text="병원 주소 들어 갈 곳"
+                    android:textSize="6pt" />
             </LinearLayout>
 
             <LinearLayout

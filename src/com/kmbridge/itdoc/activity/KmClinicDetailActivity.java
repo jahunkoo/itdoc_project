@@ -1,18 +1,14 @@
 package com.kmbridge.itdoc.activity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,7 +17,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.dto.KmClinicView;
+import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.thread.ClinicDetailThread;
 
 public class KmClinicDetailActivity extends FragmentActivity implements	OnClickListener {
@@ -32,6 +29,10 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	Button detailClinicMoreDoctor;
 	Button detailClinicVisited;
 	Button detailClinicCall;
+	
+	TextView kmName;
+	TextView kmLoacation;
+	TextView kmLoacationRemain;
 
 	GoogleMap HaniMap;
 
@@ -42,7 +43,20 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 
 		setLayout();
 		setListener();
-
+		
+		LoadData load = new LoadData(this);
+		KmClinicDetailView view = load.getKm2DetailView();
+		
+		//병원 이름 지정
+		kmName = (TextView) findViewById(R.id.kmclinic_detail_kmname);
+		kmName.setText(view.getName());
+		
+		//병원 주소 지정
+		kmLoacation = (TextView) findViewById(R.id.kmclinic_detail_kmlocation);
+		kmLoacationRemain = (TextView) findViewById(R.id.kmclinic_detail_kmlocation_remain);
+		kmLoacation.setText(view.getBigRegionName()+view.getMiddleRegionName());
+		kmLoacationRemain.setText(view.getRemainRegion());
+		
 		// LatLng loc = new LatLng(Double.parseDouble(latitude),
 		// Double.parseDouble(longitude));
 		LatLng loc = new LatLng(37.49927, 127.03748);

@@ -19,7 +19,7 @@ public class VisitedActivity extends Activity implements OnClickListener {
 	Button btnFaceBad;
 	Button btnCamera;
 	TextView txtFaceSelectResult;
-	TextView txtVisitedChoice;
+	public TextView txtVisitedChoice;
 	//TextView txtKeywordDisplay;
 
 	@Override
