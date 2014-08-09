@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.thread.ClinicDetailThread;
@@ -36,6 +38,9 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	TextView kmName;
 	TextView kmLoacation;
 	TextView kmLoacationRemain;
+	TextView kmUserName;
+	ImageView kmUserImage;
+	ImageView kmClinicImage;
 
 	GoogleMap HaniMap;
 
@@ -54,16 +59,16 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		KmClinicDetailView view = load.getKmClinicDetailView(2);
 		
 		//리뷰 객체를 가져옴
-		KmClinicDetailView Review = (KmClinicDetailView) load.getAllReviewView();
 		
-		List<ReviewView> list = Review.getReviewList();
-		list.get(0).getUserName();
-		
-		/*List<ReviewView> reviewList = Review.getReviewList();
-		for(int i=0; i<((TextView) reviewList).length();i++){
-		}*/
+		List<ReviewView> list = load.getAllReviewView();
+//		List<ReviewKeyword> listKeyword = load.getAllReviewView().get(2).getReviewKeywordList();
 		
 		
+		//병원 사진 지정
+		kmClinicImage = (ImageView) findViewById(R.id.kmclinic_detail_picture);
+		//String kmclinicImagePath = list.get(2).getKmClinicPicturePath();
+		//Log.d("kim",kmclinicImagePath);
+		//kmClinicImage.setImageResource(list.get(2).getKmClinicPicturePath());
 		
 		
 		//병원 이름 지정
@@ -75,6 +80,12 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		kmLoacationRemain = (TextView) findViewById(R.id.kmclinic_detail_kmlocation_remain);
 		kmLoacation.setText(view.getBigRegionName()+view.getMiddleRegionName());
 		kmLoacationRemain.setText(view.getRemainRegion());
+		
+		//사용자 사진 지정
+		
+		//사용자 이름 지정
+		kmUserName = (TextView) findViewById(R.id.km_detail_user_name);
+		kmUserName.setText(list.get(0).getUserName());
 		
 		// LatLng loc = new LatLng(Double.parseDouble(latitude),
 		// Double.parseDouble(longitude));
