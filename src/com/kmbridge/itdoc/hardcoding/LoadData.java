@@ -29,10 +29,10 @@ public class LoadData {
 	
 	public LoadData(Context context) {
 		this.context= context;
-				
 	}
 
 
+	
 	public String getJsonFromFile(Context context,String fileName) throws IOException{
 		String assetPath = "tables/"+fileName;
 		InputStream fin = context.getAssets().open(assetPath);
@@ -85,7 +85,6 @@ public class LoadData {
 					reviewKeywordList.add(rk);
 				}
 				
-				Log.d("koo", "end reviewView||"+review.toString());
 				reviewList.add(review);
 				
 			}
@@ -128,6 +127,7 @@ public class LoadData {
 		return userList;
 	}
 	
+	
 	/**
 	 * 한의원 아이디를 넣으면 해당 한의원의 상세정보 객체를 가져옴
 	 * @param kmClinicId
@@ -140,14 +140,43 @@ public class LoadData {
 		JSONArray jsonArr = null;
 		try {
 			switch(kmClinicId){
+			case 1: json = getJsonFromFile(context,"kmclinic_detail_1.json");break;
 			case 2: json = getJsonFromFile(context,"kmclinic_detail_2.json");break;
+			case 3: json = getJsonFromFile(context,"kmclinic_detail_3.json");break;
+			case 4: json = getJsonFromFile(context,"kmclinic_detail_4.json");break;
+			case 5: json = getJsonFromFile(context,"kmclinic_detail_5.json");break;
+			case 6: json = getJsonFromFile(context,"kmclinic_detail_6.json");break;
+			case 7: json = getJsonFromFile(context,"kmclinic_detail_7.json");break;
+			case 8: json = getJsonFromFile(context,"kmclinic_detail_8.json");break;
+			case 9: json = getJsonFromFile(context,"kmclinic_detail_9.json");break;
+			case 10: json = getJsonFromFile(context,"kmclinic_detail_10.json");break;
+			case 11: json = getJsonFromFile(context,"kmclinic_detail_11.json");break;
+			case 12: json = getJsonFromFile(context,"kmclinic_detail_12.json");break;
+			case 13: json = getJsonFromFile(context,"kmclinic_detail_13.json");break;
+			case 14: json = getJsonFromFile(context,"kmclinic_detail_14.json");break;
+			case 15: json = getJsonFromFile(context,"kmclinic_detail_15.json");break;
+			case 16: json = getJsonFromFile(context,"kmclinic_detail_16.json");break;
+			case 17: json = getJsonFromFile(context,"kmclinic_detail_17.json");break;
+			case 18: json = getJsonFromFile(context,"kmclinic_detail_18.json");break;
+			case 19: json = getJsonFromFile(context,"kmclinic_detail_19.json");break;
+			case 20: json = getJsonFromFile(context,"kmclinic_detail_20.json");break;
+			case 21: json = getJsonFromFile(context,"kmclinic_detail_21.json");break;
+			case 22: json = getJsonFromFile(context,"kmclinic_detail_22.json");break;
+			case 23: json = getJsonFromFile(context,"kmclinic_detail_23.json");break;
+			case 24: json = getJsonFromFile(context,"kmclinic_detail_24.json");break;
+			case 25: json = getJsonFromFile(context,"kmclinic_detail_25.json");break;
+			case 26: json = getJsonFromFile(context,"kmclinic_detail_26.json");break;
+			case 27: json = getJsonFromFile(context,"kmclinic_detail_27.json");break;
+			case 28: json = getJsonFromFile(context,"kmclinic_detail_28.json");break;
+			case 29: json = getJsonFromFile(context,"kmclinic_detail_29.json");break;
+			case 30: json = getJsonFromFile(context,"kmclinic_detail_30.json");break;
 			}
 			
 			
 			jsonObj = new JSONObject(json);
 			jsonArr = jsonObj.getJSONArray("KmClinicDetailView");
 			jsonObj = jsonArr.getJSONObject(0);
-			
+			view.setId(jsonObj.getInt("id"));
 			view.setName(jsonObj.getString("name"));
 			view.setBigRegionName("서울시");
 			view.setMiddleRegionName(jsonObj.getString("middleRegionName"));
@@ -157,8 +186,14 @@ public class LoadData {
 			view.setLinePhone(jsonObj.getString("linePhone"));
 			view.setDetails(jsonObj.getString("details"));
 			view.setType(jsonObj.getInt("type"));
+			
 			switch(kmClinicId){
+			case 1: view.setPicturePath("biman_bosung");break;
 			case 2: view.setPicturePath("biman_bosung");break;
+			case 7: view.setPicturePath("biman_godangbi");break;
+			case 11: view.setPicturePath("biman_dongbang");break;
+			case 14: view.setPicturePath("body_miache");break;
+			case 30: view.setPicturePath("body_kyunghee");break;
 			}
 			
 			jsonArr = jsonObj.getJSONArray("keywordList");
@@ -295,7 +330,6 @@ public class LoadData {
 		return timeList;
 	}
 
-
 	public ArrayList<Week> getWeekList(){
 		Week week1 = new Week(1, "월요일");
 		Week week2 = new Week(1, "화요일");
@@ -316,7 +350,6 @@ public class LoadData {
 		
 		return weekList;
 	}
-	
 	
 	public ArrayList<BigRegion> getBigRegionList(){
 		BigRegion bigRegion1 = new BigRegion(1, "서울");
@@ -383,120 +416,6 @@ public class LoadData {
 		return middleRegion;
 	}
 	
-	/*
-	public static ArrayList<KmClinicView> getKmClinicViewList(){
-		
-		
-		UserSimpleInfo user1 = new UserSimpleInfo("test01@gmail.com", "구자훈", null);
-		UserSimpleInfo user2 = new UserSimpleInfo("test02@gmail.com", "김구라", null);
-		UserSimpleInfo user3 = new UserSimpleInfo("test03@gmail.com", "홍세훈", null);
-		UserSimpleInfo user4 = new UserSimpleInfo("test04@gmail.com", "김기리", null);
-		UserSimpleInfo user5 = new UserSimpleInfo("test05@gmail.com", "나현우", null);
-		UserSimpleInfo user6 = new UserSimpleInfo("test06@gmail.com", "유민상", null);
-		UserSimpleInfo user7 = new UserSimpleInfo("test07@gmail.com", "탁재훈", null);
-		UserSimpleInfo user8 = new UserSimpleInfo("test08@gmail.com", "홍승기", null);
-		UserSimpleInfo user9 = new UserSimpleInfo("test09@gmail.com", "맹신지", null);
-		UserSimpleInfo user10 = new UserSimpleInfo("test10@gmail.com", "고상호", null);
-		UserSimpleInfo user11 = new UserSimpleInfo("test11@gmail.com", "대문호", null);
-		UserSimpleInfo user12 = new UserSimpleInfo("test12@gmail.com", "문진환", null);
-		UserSimpleInfo user13 = new UserSimpleInfo("test13@gmail.com", "배새진", null);
-		UserSimpleInfo user14 = new UserSimpleInfo("test14@gmail.com", "이수진", null);
-		UserSimpleInfo user15 = new UserSimpleInfo("test15@gmail.com", "박가연", null);
-		
-		List<UserSimpleInfo> userList1 = new ArrayList<UserSimpleInfo>();
-		userList1.add(user1);
-		userList1.add(user2);
-		userList1.add(user3);
-		
-		List<UserSimpleInfo> userList2 = new ArrayList<UserSimpleInfo>();
-		userList2.add(user1);
-		userList2.add(user3);
-		userList2.add(user4);
-		userList2.add(user7);
-		
-		List<UserSimpleInfo> userList3 = new ArrayList<UserSimpleInfo>();
-		userList3.add(user4);
-		userList3.add(user5);
-		userList3.add(user6);
-		userList3.add(user7);
-		userList3.add(user8);
-		
-		List<UserSimpleInfo> userList4 = new ArrayList<UserSimpleInfo>();
-		userList4.add(user6);
-		userList4.add(user7);
-		userList4.add(user8);
-		userList4.add(user9);
-		userList4.add(user10);
-		userList4.add(user11);
-		userList4.add(user12);
-		
-		List<UserSimpleInfo> userList5 = new ArrayList<UserSimpleInfo>();
-		userList5.add(user9);
-		userList5.add(user10);
-		userList5.add(user11);
-		userList5.add(user12);
-		userList5.add(user13);
-		userList5.add(user14);
-		userList5.add(user15);
-		
-		List<UserSimpleInfo> userList6 = new ArrayList<UserSimpleInfo>();
-		userList6.add(user2);
-		userList6.add(user3);
-		userList6.add(user4);
-		userList6.add(user5);
-		userList6.add(user8);
-		userList6.add(user10);
-		userList6.add(user12);
-		userList6.add(user13);
-		
-		List<UserSimpleInfo> userList7 = new ArrayList<UserSimpleInfo>();
-		userList7.add(user3);
-		userList7.add(user5);
-		userList7.add(user7);
-		userList7.add(user9);
-		userList7.add(user11);
-		
-		
-		List<String>keyword1 = new ArrayList<String>();
-		keyword1.add("M자 탈모");
-		keyword1.add("열성");
-		keyword1.add("원형");
-		keyword1.add("지루성 탈모");
-		KmClinicView km1 = 	new KmClinicView(1, "강남발머스한의원", null, 1, "서울특별시" , 23, "강남구", "테헤란로14길 6 602호(역삼동, 남도빌딩)", 14, 5, null, 2, 10, keyword1 , userList1);
-		
-		List<String>keyword2 = new ArrayList<String>();
-		//비만 다이어트, 피부, 교통사고 후유증, 전신관절통증, 한약, 보약, 침, 물리치료, 봉약침
-		keyword2.add("비만");
-		keyword2.add("다이어트");
-		keyword2.add("피부");
-		keyword2.add("교통사고 후유증");
-		keyword2.add("전신관절통증");
-		keyword2.add("한약");
-		keyword2.add("보약");
-		keyword2.add("침");
-		keyword2.add("물리치료");
-		keyword2.add("봉약침");
-		KmClinicView km2 = new KmClinicView(2,"강남보성한의원 ", null, 1, "서울특별시", 23, "강남구", "선릉로 513 402호(역삼동, APEX타워) ", 6, 4, null, 2, 6, keyword2, userList2);	
-		//new KmClinicView(2, "강남보성한의원 ", null, 1, "서울특별시", 23, "강남구", remainRegion, followNum, ratingNum, picturePath, 2, userLikeNum, keywordList, userSimpleInfoList)
-		
-		String keyword3 = "여드름, 흉터, 편평사마귀, 모공각화증, 탈모치료, 피부질환";
-		keyword3 = keyword3.trim();
-		String[] keywordArr3 = keyword3.split(",");
-		List<String>keywordList3 = Arrays.asList(keywordArr3);
-		KmClinicView km3 =  new KmClinicView(3, "강남화접몽한의원 ", null, 1, "서울특별시", 23, "강남구", "강남대로84길 8 9층 (역삼동)", 8, 5, null, 2, 19, keywordList3, userList3);
-		
-		String keyword4 = "경락, 한방피부성형, 비만, 여성, 전통기공침, 보약클리닉";
-		keyword4 = keyword4.trim();
-		String[] keywordArr4 = keyword3.split(",");
-		List<String>keywordList4 = Arrays.asList(keywordArr3);
-		KmClinicView km4 = new KmClinicView(4,"강석일한의원  ",null,1,"서울특별시",23,"강남구","봉은사로 304 2층(역삼동,동광빌딩)", 5, 5, null, 2, 49, keywordList4, userList4);
-		
-		
-	}
-	
-	
-	
-	*/
-	
+
 	
 }
