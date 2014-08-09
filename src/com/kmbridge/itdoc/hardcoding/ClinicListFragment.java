@@ -121,7 +121,7 @@ public class ClinicListFragment extends Fragment {
 
 		@Override
 		public int getCount() {
-			return 1;  // 총 5개의 page를 보여줍니다.
+			return 2;  // 총 5개의 page를 보여줍니다.
 		}
 
 	}
@@ -136,7 +136,7 @@ public class ClinicListFragment extends Fragment {
 		public Fragment getItem(int position) {
                         // 해당하는 page의 Fragment를 생성합니다.
 			Log.d("koo", "PagerAdapter getItem 1");		
-			return Theme1PageFragment.create(position);
+			return Theme2PageFragment.create(position);
 		}
 
 		@Override
