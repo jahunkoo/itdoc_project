@@ -13,7 +13,7 @@ public class KmClinicDetailView {
 	private int id;
 	private String name;
 	private String mapPoint;		//한의원 위치정보
-	private String bigRegionCode;
+	private int  bigRegionCode;
 	private String bigRegionName;
 	private String middleRegionCode;
 	private String middleRegionName;
@@ -23,6 +23,15 @@ public class KmClinicDetailView {
 	private String linePhone;
 	private String details;			//한의원 소개글 
 	private int type;				//0:default, 1:한방병원, 2:한의원
+	private String picturePath;
+	public String getPicturePath() {
+		return picturePath;
+	}
+
+	public void setPicturePath(String picturePath) {
+		this.picturePath = picturePath;
+	}
+
 	//private int userLikeNum;		//용해요 - 사용자가 한의원을 추천한 것 - 가본사람이 추천 누른 횟수    -> userSimpleList의 size()로 얻을 수 있다. 
 	private List<String> keywordList;	//한의원의 키워드 배열
 	private List<UserSimpleInfo> userSimpleInfoList;	//추천한 사람들의 간단한 정보들 (이메일, 사진, 이름)  
@@ -35,7 +44,7 @@ public class KmClinicDetailView {
 	}
 
 	public KmClinicDetailView(int id, String name, String mapPoint,
-			String bigRegionCode, String bigRegionName,
+			int bigRegionCode, String bigRegionName,
 			String middleRegionCode, String middleRegionName,
 			String remainRegion, int followNum, String homepage,
 			String linePhone, String details, int type,
@@ -85,11 +94,11 @@ public class KmClinicDetailView {
 		this.mapPoint = mapPoint;
 	}
 
-	public String getBigRegionCode() {
+	public int getBigRegionCode() {
 		return bigRegionCode;
 	}
 
-	public void setBigRegionCode(String bigRegionCode) {
+	public void setBigRegionCode(int bigRegionCode) {
 		this.bigRegionCode = bigRegionCode;
 	}
 
@@ -205,11 +214,14 @@ public class KmClinicDetailView {
 				+ middleRegionCode + ", middleRegionName=" + middleRegionName
 				+ ", remainRegion=" + remainRegion + ", followNum=" + followNum
 				+ ", homepage=" + homepage + ", linePhone=" + linePhone
-				+ ", details=" + details + ", type=" + type + ", keywordList="
-				+ keywordList + ", userSimpleInfoList=" + userSimpleInfoList
+				+ ", details=" + details + ", type=" + type + ", picturePath="
+				+ picturePath + ", keywordList=" + keywordList
+				+ ", userSimpleInfoList=" + userSimpleInfoList
 				+ ", reviewList=" + reviewList + ", kmClinicPictureList="
 				+ kmClinicPictureList + "]";
 	}
+
+
 
 	
 }

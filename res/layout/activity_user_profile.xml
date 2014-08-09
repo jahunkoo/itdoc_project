@@ -7,20 +7,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#DCDCDC"
         android:gravity="center"
-        android:orientation="vertical" 
-       	android:background="#DCDCDC">
+        android:orientation="vertical" >
 
         <!-- 리뷰 위 레이아웃 -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:layout_margin="5dp"
+            android:background="@drawable/setting_section_bg3"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
             android:weightSum="4" >
 
             <LinearLayout
@@ -175,28 +174,33 @@
                 </ListView>
             </LinearLayout> -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#FFFFFF" >
-            
-            <TextView 
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="윤보미"
-                />
-            
-        </LinearLayout>
-
+       <include
+           android:layout_margin="5dp" 
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           layout="@layout/review_list_item_1"
+           />
+       
+       <TextView 
+           android:id="@+id/textview_user_profile_see_all_review"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="리뷰 모두 보기"
+           android:background="@drawable/setting_section_bg3"
+           android:textSize="15sp"
+           android:layout_margin="5dp"
+           android:gravity="center"
+           />
+       
+       
         <!-- 인증 목록 부분 -->
 
         <LinearLayout
             android:id="@+id/linearlayout_activity_user_profile_certification_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:layout_margin="5dp"
+            android:background="@drawable/setting_section_bg3"
             android:orientation="vertical"
             android:padding="10dp" >
 
@@ -327,9 +331,10 @@
             android:id="@+id/textview_activity_user_profile_no_review"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:gravity="center"
+            android:layout_margin="5dp"
             android:background="#FFFFFF"
+            android:gravity="center"
+            android:padding="10dp"
             android:text="@string/layout_review_message_no_review" />
     </LinearLayout>
 

@@ -1,15 +1,7 @@
 package com.kmbridge.itdoc.activity;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.List;
-
 import lazyList.ImageLoader;
-
-import org.json.JSONException;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -20,18 +12,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.adapter.ReviewAdapter;
-import com.kmbridge.itdoc.connect.JsonParser;
-import com.kmbridge.itdoc.dto.ReviewKeyword;
-import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
-import com.kmbridge.itdoc.thread.UserProfileConnectionThread;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 /**
@@ -67,6 +53,10 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	private boolean isLogin;
 	private String userEmail;
 	private String myEmail;
+	
+	//하드 코딩
+	
+	private TextView seeAllReview;
 	
 	public ImageView getUserProfileImgView(){
 		return userProfileImgView;
@@ -110,6 +100,7 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 
 	private void setListner() {
 		followButton.setOnClickListener(this);
+		seeAllReview.setOnClickListener(this);
 	}
 	
 	
@@ -130,6 +121,8 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		certiPhoneImgButton 	= (ImageButton) findViewById(R.id.imagebutton_activity_user_profile_certification_phone);
 		certiFacebookImgButton 	= (ImageButton) findViewById(R.id.imagebutton_activity_user_profile_certification_facebook);
 		actionCertiLayout 		= (LinearLayout) findViewById(R.id.linearlayout_activity_user_profile_action_my_certi);
+		
+		seeAllReview = (TextView) findViewById(R.id.textview_user_profile_see_all_review);
 	}
 	
 	
@@ -169,11 +162,23 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	
 	@Override
 	public void onClick(View v) {
-		int viewId = v.getId();
 
-		if(viewId == followButton.getId()){
-			Log.d("koo", "thread update num");
+		
+		switch(v.getId()) {
+		
+		case R.id.textview_user_profile_see_all_review:
+			
+			Intent intent = new Intent (this,SeeAllReviewListActivity.class);
+			startActivity(intent);
+			
+			break;
+			
+			default :
+				break;
+		
 		}
+		
+		
 	}
 
 	
