@@ -129,7 +129,13 @@ public class LoadData {
 	
 	
 	/**
+	 * 
 	 * 한의원 아이디를 넣으면 해당 한의원의 상세정보 객체를 가져옴
+	 * 보성한의원id 	:2
+	 * 고당비한의원id	:7 
+	 * 동방한의원id	:11 
+	 * 미아체한의원id :14 
+	 * 청구경희한의원id:30 
 	 * @param kmClinicId
 	 * @return
 	 */
@@ -190,10 +196,10 @@ public class LoadData {
 			switch(kmClinicId){
 			case 1: view.setPicturePath("biman_bosung");break;
 			case 2: view.setPicturePath("biman_bosung");break;
-			case 7: view.setPicturePath("biman_godangbi");break;
-			case 11: view.setPicturePath("biman_dongbang");break;
-			case 14: view.setPicturePath("body_miache");break;
-			case 30: view.setPicturePath("body_kyunghee");break;
+			case 7: view.setPicturePath("biman_godangbi");break;	//고당비한의원id: 7
+			case 11: view.setPicturePath("biman_dongbang");break;	//동방한의원id: 11
+			case 14: view.setPicturePath("body_miache");break;		//미아체한의원 : 14
+			case 30: view.setPicturePath("body_kyunghee");break;	//청구경희한의원: 30
 			}
 			
 			jsonArr = jsonObj.getJSONArray("keywordList");
