@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -20,16 +21,17 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.thread.ClinicDetailThread;
 
 public class KmClinicDetailActivity extends FragmentActivity implements	OnClickListener {
-	MainDialog mMainDialog;
 	
 	ImageView detailRelatives; // 추천한 이웃들 이미지
 	Button detailAllreview; // 리뷰 모두 보기
 	Button detailClinicMoreInfo;
 	Button detailClinicMoreDoctor;
 	Button detailClinicVisited;
+	Button detailClinicCall;
 
 	GoogleMap HaniMap;
 
@@ -72,6 +74,12 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		detailClinicMoreInfo = (Button) findViewById(R.id.kmclinic_detail_moreinfo);
 		detailClinicMoreDoctor = (Button) findViewById(R.id.kmclinic_detail_moredoctor);
 		detailClinicVisited = (Button) findViewById(R.id.btn_activity_km_clilic_detail_visited);
+		detailClinicCall = (Button) findViewById(R.id.btn_activity_km_clinic_detail_call);
+		
+		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
+		alphaVisited.setAlpha(99);
+		Drawable alphaCall = ((Button)findViewById(R.id.btn_activity_km_clinic_detail_call)).getBackground();
+		alphaCall.setAlpha(99);
 	}
 
 	public void setListener() {
@@ -80,6 +88,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		detailClinicMoreInfo.setOnClickListener(this);
 		detailClinicMoreDoctor.setOnClickListener(this);
 		detailClinicVisited.setOnClickListener(this);
+		detailClinicCall.setOnClickListener(this);
 	}
 
 	@Override
@@ -110,34 +119,14 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 			break;
 		
 		case R.id.btn_activity_km_clilic_detail_visited:
-			mMainDialog = new MainDialog();
-			mMainDialog.show(getFragmentManager(), "");
+			Intent intentVisited = new Intent(this, VisitedActivity.class);
+			intentVisited.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intentVisited);
 			break;
 		}
 	}
 	
-	public static class MainDialog extends DialogFragment {
 
-		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
-			AlertDialog.Builder mBuilder = new AlertDialog.Builder(
-					getActivity());
-			LayoutInflater mLayoutInflater = getActivity().getLayoutInflater();
-			//LinearLayout dialogLayout;
-			//dialogLayout = (LinearLayout) mLayoutInflater.inflate(R.layout.dialog_main, null);
-			mBuilder.setView(mLayoutInflater.inflate(R.layout.dialog_main, null));
-			//mBuilder.setTitle("Dialog Titleeeeee");
-			//mBuilder.setMessage("Dialog Messageeeeeee");
-			//mBuilder.setView(dialogLayout);
-			return mBuilder.create();
-		}
-
-		@Override
-		public void onStop() {
-			super.onStop();
-		}
-
-	}
 
 	
 

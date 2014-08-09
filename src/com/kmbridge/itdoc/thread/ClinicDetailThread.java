@@ -26,7 +26,7 @@ public class ClinicDetailThread extends Thread {
 	@Override
 	public void run() {
 		
-		handler.sendEmptyMessage(ClinicDetailHandler.SHOW_LOADING_LAYOUT);
+		/*handler.sendEmptyMessage(ClinicDetailHandler.SHOW_LOADING_LAYOUT);
 
 		ConnectionBridge bridge = new ConnectionBridge();
 		ArrayList<KmClinicDetailView> kmClinicDetailView = bridge.getKmClinicDetailViewList(methodUrl, context, id);
@@ -34,7 +34,7 @@ public class ClinicDetailThread extends Thread {
 		
 		handler.sendEmptyMessage(ClinicDetailHandler.SET_ELEMENTS);
 
-		handler.sendEmptyMessage(ClinicDetailHandler.END_LOADING_LAYOUT);
+		handler.sendEmptyMessage(ClinicDetailHandler.END_LOADING_LAYOUT);*/
 
 	}
 
