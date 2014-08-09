@@ -45,6 +45,7 @@ import com.kmbridge.itdoc.dto.Title;
 
 import com.kmbridge.itdoc.hardcoding.ClinicListFragment;
 import com.kmbridge.itdoc.hardcoding.HardSearchFragment;
+import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.image.ImageManager;
 import com.kmbridge.itdoc.image.RoundedImageView;
 import com.kmbridge.itdoc.util.ItDocConstants;
@@ -146,6 +147,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			selectItem(POSITION_KMCLINIC_LIST_FRAGMENT);
 		}
 
+		
+		LoadData load = new LoadData(this);
+		load.getKm2DetailView();
 	}
 
 	

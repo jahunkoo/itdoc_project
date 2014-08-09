@@ -328,7 +328,7 @@ public class JsonParser {
 
 			kmClinicDetailView.setDetails(indexobj.getString("details"));
 			kmClinicDetailView.setLinePhone(indexobj.getString("linePhone"));
-			kmClinicDetailView.setBigRegionCode(indexobj.getString("bigRegionCode"));
+			//kmClinicDetailView.setBigRegionCode(indexobj.getString("bigRegionCode"));
 			kmClinicDetailView.setBigRegionName(indexobj.getString("bigRegionName"));
 			kmClinicDetailView.setMiddleRegionCode(indexobj.getString("middleRegionCode"));
 			kmClinicDetailView.setMiddleRegionName(indexobj.getString("middleRegionName"));

@@ -1,11 +1,21 @@
 package com.kmbridge.itdoc.hardcoding;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.util.Log;
+
 import com.kmbridge.itdoc.dto.BigRegion;
-import com.kmbridge.itdoc.dto.KmClinicView;
+import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.Time;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
@@ -13,17 +23,109 @@ import com.kmbridge.itdoc.dto.Week;
 
 public class LoadData {
 	
-	/*public static ArrayList<KmClinicView> getKmClinicList(){
-		ArrayList<KmClinicView> clinicList = new ArrayList<KmClinicView>();
-		
-		
-		clinicList.add()
-		
-		
-		return 
-	}*/
+	private Context context;
 	
-	public static ArrayList<Time> getTimeList(){
+	public LoadData(Context context) {
+		this.context= context;
+				
+	}
+
+
+	public String getJsonFromFile(Context context,String fileName) throws IOException{
+		String assetPath = "tables/"+fileName;
+		InputStream fin = context.getAssets().open(assetPath);
+		BufferedReader br = new BufferedReader(new InputStreamReader(fin));
+
+		StringBuilder buffer = new StringBuilder();
+		String line;
+		while ((line=br.readLine())!=null) {
+			buffer.append(line);
+		}
+		fin.close();
+		
+		
+		return buffer.toString();
+	}
+	
+	public List<UserSimpleInfo> getAllUserSimpleInfo(){
+		String json = null;
+		JSONObject jsonObj = null;
+		JSONArray jsonArr = null;
+		List<UserSimpleInfo> userList = new ArrayList<UserSimpleInfo>();
+		try {
+			json = getJsonFromFile(context,"user_simple.json");
+			jsonObj = new JSONObject(json);
+			jsonArr = jsonObj.getJSONArray("UserLikeKmClinic");
+			for(int i=0;i<jsonArr.length();i++){
+				jsonObj = jsonArr.getJSONObject(i);
+				UserSimpleInfo user = new UserSimpleInfo();
+				user.setEmail(jsonObj.getString("email"));
+				user.setName(jsonObj.getString("name"));
+				user.setPicturePath("picturePath");
+				userList.add(user);
+			}
+			
+		}catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			
+		return userList;
+	}
+	
+	/**
+	 * 강남 보성 한의원
+	 * @return
+	 */
+	public KmClinicDetailView getKm2DetailView(){
+		KmClinicDetailView view = new KmClinicDetailView();
+		String json = null;
+		JSONObject jsonObj = null;
+		JSONArray jsonArr = null;
+		try {
+			json = getJsonFromFile(context,"kmclinic_detail_2.json");
+			jsonObj = new JSONObject(json);
+			jsonArr = jsonObj.getJSONArray("KmClinicDetailView");
+			jsonObj = jsonArr.getJSONObject(0);
+			
+			view.setName(jsonObj.getString("name"));
+			view.setBigRegionName("서울시");
+			view.setMiddleRegionName(jsonObj.getString("middleRegionName"));
+			view.setRemainRegion(jsonObj.getString("remainRegion"));
+			view.setFollowNum(12);
+			view.setHomepage(jsonObj.getString("homepage"));
+			view.setLinePhone(jsonObj.getString("linePhone"));
+			view.setDetails(jsonObj.getString("details"));
+			view.setType(jsonObj.getInt("type"));
+			view.setPicturePath("biman_bosung");
+			jsonArr = jsonObj.getJSONArray("keywordList");
+			List<String> keywords = new ArrayList<String>();
+			for(int i=0;i<jsonArr.length();i++){
+				String keyword = (String) jsonArr.get(i);
+				keywords.add(keyword);
+			}
+			List<UserSimpleInfo> userList = getAllUserSimpleInfo();
+			view.setUserSimpleInfoList(userList);
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Log.d("koo", "start||"+view.toString());
+		
+		return view;
+	}
+	
+	public ArrayList<Time> getTimeList(){
 		ArrayList<Time> timeList = new ArrayList<Time>();
 		Time time1 = new Time(1, "00:00");
 		Time time2 = new Time(2, "00:30");
@@ -133,7 +235,7 @@ public class LoadData {
 	}
 
 
-	public static ArrayList<Week> getWeekList(){
+	public ArrayList<Week> getWeekList(){
 		Week week1 = new Week(1, "월요일");
 		Week week2 = new Week(1, "화요일");
 		Week week3 = new Week(1, "수요일");
@@ -155,7 +257,7 @@ public class LoadData {
 	}
 	
 	
-	public static ArrayList<BigRegion> getBigRegionList(){
+	public ArrayList<BigRegion> getBigRegionList(){
 		BigRegion bigRegion1 = new BigRegion(1, "서울");
 		ArrayList<BigRegion> list = new ArrayList<BigRegion>();
 		list.add(bigRegion1);
@@ -163,7 +265,7 @@ public class LoadData {
 		return list; 
 	}
 		
-	public static ArrayList<MiddleRegion> getMiddleRegionList(){
+	public ArrayList<MiddleRegion> getMiddleRegionList(){
 		MiddleRegion middle1 = new MiddleRegion(1, "종로구", 1);
 		MiddleRegion middle2 = new MiddleRegion(1, "중구", 1);
 		MiddleRegion middle3 = new MiddleRegion(1, "용산구", 1);
