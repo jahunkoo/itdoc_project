@@ -1569,20 +1569,21 @@ containing a value of this type.
         public static final int powered_by_google_dark=0x7f0200df;
         public static final int powered_by_google_light=0x7f0200e0;
         public static final int rounded_corner_box=0x7f0200e1;
-        public static final int theme1=0x7f0200e2;
-        public static final int theme2=0x7f0200e3;
-        public static final int theme3=0x7f0200e4;
-        public static final int theme4=0x7f0200e5;
-        public static final int theme5=0x7f0200e6;
-        public static final int user1=0x7f0200e7;
-        public static final int user2=0x7f0200e8;
-        public static final int user3=0x7f0200e9;
-        public static final int user4=0x7f0200ea;
-        public static final int user5=0x7f0200eb;
-        public static final int user6=0x7f0200ec;
-        public static final int user7=0x7f0200ed;
-        public static final int user_manager_background=0x7f0200ee;
-        public static final int user_profile_default=0x7f0200ef;
+        public static final int setting_section_bg2=0x7f0200e2;
+        public static final int theme1=0x7f0200e3;
+        public static final int theme2=0x7f0200e4;
+        public static final int theme3=0x7f0200e5;
+        public static final int theme4=0x7f0200e6;
+        public static final int theme5=0x7f0200e7;
+        public static final int user1=0x7f0200e8;
+        public static final int user2=0x7f0200e9;
+        public static final int user3=0x7f0200ea;
+        public static final int user4=0x7f0200eb;
+        public static final int user5=0x7f0200ec;
+        public static final int user6=0x7f0200ed;
+        public static final int user7=0x7f0200ee;
+        public static final int user_manager_background=0x7f0200ef;
+        public static final int user_profile_default=0x7f0200f0;
     }
     public static final class id {
         public static final int ImageView01=0x7f0500ad;

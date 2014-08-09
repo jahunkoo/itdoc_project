@@ -1,7 +1,6 @@
 package com.kmbridge.itdoc.hardcoding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,7 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.kmbridge.itdoc.R;
@@ -33,7 +32,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 	private Context context;
 
 	AutoCompleteTextView search;
-	Button searchButton;
+	ImageButton searchButton;
 
 	ListView recentListView;
 
@@ -54,7 +53,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		ConnectionBridge keywordConnection = new ConnectionBridge();
 
 		search = (AutoCompleteTextView) rootView.findViewById(R.id.autocomplete_textview_fragment_search);
-		searchButton = (Button) rootView.findViewById(R.id.button_fragment_search);
+		searchButton = (ImageButton) rootView.findViewById(R.id.button_fragment_search);
 		recentListView = (ListView) rootView.findViewById(R.id.listview_fragment_search_recent_search);
 
 		searchButton.setOnClickListener(this);
@@ -83,7 +82,6 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		for(int i=0;i<stringArr.length;i++){
 			allKeywordsList.add(stringArr[i]);
 		}
-		
 		
 		
 		

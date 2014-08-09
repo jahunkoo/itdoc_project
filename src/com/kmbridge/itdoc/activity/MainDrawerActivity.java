@@ -16,7 +16,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -159,8 +163,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private LinearLayout leftBottomLayout;
 	
 	public void setDrawerLeft() {
-		
-		
+	
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				try {
 					userEmail = "test@gmail.com";
@@ -201,8 +204,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 					}
 					leftBottomLayout.setOnClickListener(this);
 				}
-				
-									
+		
 	}
 	
 	
@@ -276,6 +278,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	// **************************************** actionBar 부분
 	// ***************************************************
 	
+	public SearchView searchView;
 	// onCreateOptionsMenu는 말그대로 actionBar에서 옵션메뉴를 추가할때 MenuInflater를 이용해서 생성하는
 	// 부분
 	@Override
@@ -295,6 +298,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	// onCreateOptionsMenu가 수행되고 바로 실행되는 메서드라 생각하자
 	// 이 메서드는 drawer화면이 전환될 때마다 수행됨 -> 그 이유가 토글에서 invalidateOptionsMenu()를 실행했기
 	// 때문임.
+	public MenuItem searchItem;
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
@@ -305,7 +309,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		// 보여지는지로
 		// 판단하네
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerRelativeLayout);
-		
+		searchItem = menu.findItem(R.id.action_search);
 		menu.findItem(R.id.action_search).setVisible(!drawerOpen); // drawer가
 																	// 닫혀있으면
 																	// 안보이지
@@ -324,6 +328,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		// 아이템 아이디를 받아서 select가 되었을때 코드를 넣네
 		switch (item.getItemId()) {
 		case R.id.action_search:
+			MenuInflater inflater = getMenuInflater();
+			searchItem.setVisible(false); 
 			selectItem(POSITION_SEARCH_FRAGMENT);
 			
 			// create intent to perform web search for this planet
@@ -480,6 +486,10 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			if(tag.equals("SEARCH")){
 				fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
 				fragment.getView().setVisibility(View.VISIBLE);
+				//*****************************actionbar title setting ***********************
+				getActionBar().setTitle(R.string.title_activity_main_drawer);
+				searchItem.setVisible(true);
+				//****************************************************************************
 				/*fragment = ClinicListFragment.create(this);
 				FRAGMENT_TAG = "CLINIC_LIST";
 				fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
@@ -508,5 +518,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		}
 	}
 
+	
 	
 }

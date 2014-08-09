@@ -9,24 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="1" >
+        android:weightSum="4"
+        android:background="@drawable/setting_section_bg2" >
 
         <AutoCompleteTextView
             android:id="@+id/autocomplete_textview_fragment_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_weight="0.8"
+            android:layout_weight="3"
             android:completionThreshold="1"
-            android:hint="병명 또는 증상을 입력하세요"
-            android:lines="1" />
+            android:hint="어떤 이유로 가세요?"
+            android:singleLine="true"
+             />
 
-        <Button
+        <ImageButton
             android:id="@+id/button_fragment_search"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:background="@drawable/ic_action_search" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_search"
+       		style="?android:attr/borderlessButtonStyle"
+            />
     </LinearLayout>
 
     <TextView
