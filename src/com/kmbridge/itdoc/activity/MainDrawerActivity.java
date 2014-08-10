@@ -153,7 +153,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 		
 		LoadData load = new LoadData(this);
-		load.getKmClinicDetailView(2);
+		//load.getUserView("test@gmail.com");
+		
 	}
 
 	

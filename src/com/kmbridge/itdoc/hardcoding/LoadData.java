@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,22 +18,64 @@ import android.util.Log;
 
 import com.kmbridge.itdoc.dto.BigRegion;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.Time;
+import com.kmbridge.itdoc.dto.UserSimpleFollow;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
+import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.dto.Week;
 
 public class LoadData {
 	
 	private Context context;
-	
+	private Map<Integer,String> keywordMap; 
 	public LoadData(Context context) {
 		this.context= context;
+		
+		createKeywordMap();	
 	}
 
-
+	private void createKeywordMap(){
+		keywordMap = new HashMap<Integer, String>();
+		keywordMap.put(1, "M자탈모,열성,원형,지루성 탈모");
+		keywordMap.put(2, "비만 다이어트,피부,교통사고,전신관절통증,한약,보약,침,물리치료,봉약침");
+		keywordMap.put(3, "여드름,흉터,편평사마귀,모공각화증,탈모치료,피부질환");
+		keywordMap.put(4, "경락,한방피부성형,비만,여성,전통기공침,보약클리닉");
+		keywordMap.put(5, "체중비만,하체비만,스트레스,직장인 증후군,과민성장증후군");
+		keywordMap.put(6, "타하라디톡스,통증,탈모,추나,여성클리닉");
+		keywordMap.put(7, "한방다이어트약,비만한약,장쾌해독,변비치료,교통사고,공진단,만성피로");
+		keywordMap.put(8, "한방 다이어트,지방분해 식욕억제 다이어트한약,한약재");
+		keywordMap.put(9, "면역치료,류마티스관절염,베체트병,산후풍,구내염,강직성척추염,소화기질환");
+		keywordMap.put(10, "성기능장애,조루증,발기부전,성불감증,불임");
+		keywordMap.put(11, "다이어트,피부질환");
+		keywordMap.put(12, "남성,여성,원형,정수리,지루성 탈모치료");
+		keywordMap.put(13, "한의원,성조숙증,성장저해질환,소아비만,비염,보약");
+		keywordMap.put(14, "안구건조증,안구질환,성형후관리,피부클리닉,비만클리닉,교정클리닉,여성클리닉");
+		keywordMap.put(15, "비만,여드름,피부질환,에스테틱");
+		keywordMap.put(16, "침톡스,한방성형,다이어트,안면비대칭교정,주름,가슴힙,코성형,붓기관리,안면홍조,통증");
+		keywordMap.put(17, "위대장,호흡기,피부 질환,24체질연구소,체칠침");
+		keywordMap.put(18, "한방 다이어트,성형,섭식장애 교정,일대일 맞춤 컨설팅,다이어리 관리,탕약");
+		keywordMap.put(19, "성조숙증 치료,한방부읜과전문의,초경지연");
+		keywordMap.put(20, "양한방 협진,목,허리디스크,신경통증,근골격계 질환");
+		keywordMap.put(21, "위염,역류성식도염,신경성소화불량,만성장염");
+		keywordMap.put(22, "천식,폐질환,대장염,아토피,피부염");
+		keywordMap.put(23, "질염,방광염,질건조증,산후몸조리,한방성형");
+		keywordMap.put(24, "한방 각과,침구과,사상체질과");
+		keywordMap.put(25, "편두통,신경성 두통,아토피성 피부,체력저하,여드름,비염,스테미너");
+		keywordMap.put(26, "비만,성장,탈모,비염,피부");
+		keywordMap.put(27, "산후 다이어트,비만,산후보약,근육통");
+		keywordMap.put(28, "비만,여드름,생리");
+		keywordMap.put(29, "난치성 여드름,화농성,좁쌀 여드름");
+		keywordMap.put(30, "비수술 척추,체형,골반교정,턱관절,일자목,산후관리,교통사고후유증,추나요법");
+	}
+	/*
+	 * 병원 아이디랑 키워드랑 묶자 
+	 *  
+	 *
+	 */
 	
 	public String getJsonFromFile(Context context,String fileName) throws IOException{
 		String assetPath = "tables/"+fileName;
@@ -127,6 +171,235 @@ public class LoadData {
 		return userList;
 	}
 	
+	public ArrayList<KmClinicView> searchClinicListByKeyword(String keyword){
+		Map<Integer,KmClinicView> allMap = getKmClinicViewMap();
+		Log.d("koo", "test"+allMap.size());
+		ArrayList<KmClinicView> clinicList = new ArrayList<KmClinicView>();
+		for(int i=0;i<keywordMap.size();i++){
+			Integer integer = new Integer(i+1);
+			String keywords = keywordMap.get(integer);
+			if(keywords.contains(keyword)){
+				clinicList.add(allMap.get(integer));
+				Log.d("koo", String.valueOf(i+1));
+			}
+		}
+		
+		for(KmClinicView tmpView : clinicList){
+			Log.d("koo", tmpView.toString());
+		}
+		
+		return clinicList;
+	}
+	
+	public Map<Integer,KmClinicView> getKmClinicViewMap(){
+		ArrayList<KmClinicView> viewList = getAllKmClinicView();
+		Map<Integer,KmClinicView> viewMap = new HashMap<Integer,KmClinicView>();
+		for(int i=0;i<viewList.size();i++){
+			Log.d("koo", "test getKmClinicViewMap "+i);
+			viewMap.put(i+1, viewList.get(i));
+			
+		}
+		return viewMap;
+	}
+	
+	public ArrayList<KmClinicView> getAllKmClinicView(){
+		ArrayList<KmClinicView> clinicList = new ArrayList<KmClinicView>();
+		String json = null;
+		JSONObject jsonObj = null;
+		JSONArray jsonArr = null;
+		try {
+			json = getJsonFromFile(context,"kmclinic_all_list.json");
+			// ok
+			jsonObj = new JSONObject(json);
+			jsonArr = jsonObj.getJSONArray("KmClinicView");
+			for(int i=0;i<jsonArr.length();i++){
+				jsonObj = jsonArr.getJSONObject(i);
+				Log.d("koo", "test getAllKmClinicView "+jsonObj.toString());
+				KmClinicView view = new KmClinicView();
+				view.setId(jsonObj.getInt("id"));
+				view.setFollowNum(jsonObj.getInt("followNum"));
+				view.setBigRegionCode(jsonObj.getInt("bigRegionCode"));
+				view.setBigRegionName(jsonObj.getString("bigRegionName"));
+				view.setMiddleRegionCode(jsonObj.getInt("middleRegionCode"));
+				view.setMiddleRegionName(jsonObj.getString("middleRegionName"));
+				view.setRemainRegion(jsonObj.getString("remainRegion"));
+				view.setPicturePath(jsonObj.getString("picturePath"));
+				view.setName(jsonObj.getString("name"));
+				
+				JSONArray innerArr = new JSONArray();
+				List<String> keywordList = new ArrayList<String>();
+				innerArr = jsonObj.getJSONArray("keywordList");
+				for(int j=0;j<innerArr.length();j++){
+					String keyword = (String) innerArr.get(j);
+					keywordList.add(keyword);
+				}
+				view.setKeywordList(keywordList);
+				
+				List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
+				innerArr = jsonObj.getJSONArray("userSimpleInfoList");
+				for(int j=0;j<innerArr.length();j++){
+					JSONObject innerObj = innerArr.getJSONObject(j);
+					UserSimpleInfo info = new UserSimpleInfo();
+					info.setEmail(innerObj.getString("email"));
+					info.setPicturePath(innerObj.getString("picturePath"));
+					info.setName(innerObj.getString("name"));
+					simpleList.add(info);
+				}
+				view.setUserSimpleInfoList(simpleList);
+				
+				clinicList.add(view);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return clinicList;
+	}
+	
+	private int getIdFromUserEmail(String email){
+		int id =0;
+		if(email.equals("test@gmail.com")) id =0; 
+		else if(email.equals("user1@gmail.com")) id =1;
+		else if(email.equals("user2@gmail.com")) id =2;
+		else if(email.equals("user3@gmail.com")) id =3;
+		else if(email.equals("user4@gmail.com")) id =4;
+		else if(email.equals("user5@gmail.com")) id =5;
+		else if(email.equals("user6@gmail.com")) id =6;
+		else if(email.equals("user7@gmail.com")) id =7;
+		else if(email.equals("user8@gmail.com")) id =8;
+		else if(email.equals("user9@gmail.com")) id =9;
+		else if(email.equals("user10@gmail.com")) id =10;
+		else if(email.equals("user11@gmail.com")) id =11;
+		else if(email.equals("user12@gmail.com")) id =12;
+		else if(email.equals("user13@gmail.com")) id =13;
+		else if(email.equals("user14@gmail.com")) id =14;
+		else if(email.equals("user15@gmail.com")) id =15;
+		
+		return id;
+	}
+	
+	/**
+	 * 
+	 * @param userNum
+	 * @return
+	 */
+	public UserView getUserView(String userEmail){
+		UserView userView = new UserView();
+		String json = null;
+		JSONObject jsonObj = null;
+		JSONArray jsonArr = null;
+		
+		int userNum = getIdFromUserEmail(userEmail);
+		try {
+			
+			switch(userNum){
+			case 0: json = getJsonFromFile(context,"profile_user0.json");break;
+			case 1: json = getJsonFromFile(context,"profile_user1.json");break;
+			case 2: json = getJsonFromFile(context,"profile_user2.json");break;
+			case 3: json = getJsonFromFile(context,"profile_user3.json");break;
+			case 4: json = getJsonFromFile(context,"profile_user4.json");break;
+			case 5: json = getJsonFromFile(context,"profile_user5.json");break;
+			case 6: json = getJsonFromFile(context,"profile_user6.json");break;
+			case 7: json = getJsonFromFile(context,"profile_user7.json");break;
+			case 8: json = getJsonFromFile(context,"profile_user8.json");break;
+			case 9: json = getJsonFromFile(context,"profile_user9.json");break;
+			case 10: json = getJsonFromFile(context,"profile_user10.json");break;
+			case 11: json = getJsonFromFile(context,"profile_user11.json");break;
+			case 12: json = getJsonFromFile(context,"profile_user12.json");break;
+			case 13: json = getJsonFromFile(context,"profile_user13.json");break;
+			case 14: json = getJsonFromFile(context,"profile_user14.json");break;
+			case 15: json = getJsonFromFile(context,"profile_user15.json");break;
+			}
+			
+			jsonObj = new JSONObject(json);
+			jsonArr = jsonObj.getJSONArray("UserView");
+			jsonObj = jsonArr.getJSONObject(0);
+			
+			userView.setFollowNum(jsonObj.getInt("followNum"));
+			userView.setBirthday(jsonObj.getInt("birthday"));
+			userView.setBigRegionCode(jsonObj.getInt("bigRegionCode"));
+			userView.setRegisterDate(jsonObj.getString("registerDate"));
+			userView.setCellPhone(jsonObj.getString("cellPhone"));
+			userView.setRemainRegion(jsonObj.getString("remainRegion"));
+			userView.setFollowingNum(jsonObj.getInt("followingNum"));
+			userView.setPicturePath(jsonObj.getString("picturePath"));
+			userView.setEmail(jsonObj.getString("email"));
+			userView.setMiddleRegionCode(jsonObj.getInt("middleRegionCode"));
+			userView.setName(jsonObj.getString("name"));
+			userView.setCertificationCode(jsonObj.getInt("certificationCode"));
+			userView.setGender(jsonObj.getInt("gender"));
+			userView.setFollow(jsonObj.getBoolean("follow"));
+			userView.setGradeCode(jsonObj.getInt("gradeCode"));
+			
+			jsonArr = jsonObj.getJSONArray("followList");
+			List<UserSimpleFollow> usfList = new ArrayList<UserSimpleFollow>();
+			for(int i=0;i<jsonArr.length();i++){
+				JSONObject innerObj = jsonArr.getJSONObject(i);
+				UserSimpleFollow uf = new UserSimpleFollow();
+				uf.setEmail(innerObj.getString("email"));
+				uf.setName(innerObj.getString("name"));
+				uf.setPicturePath(innerObj.getString("picturePath"));
+				uf.setFollowNum(innerObj.getInt("followNum"));
+				Log.d("koo", "LoadData 328:"+uf.toString());
+				usfList.add(uf);
+			}
+			userView.setFollowList(usfList);
+			
+			jsonArr = jsonObj.getJSONArray("followingList");
+			List<UserSimpleFollow> followingList = new ArrayList<UserSimpleFollow>();
+			for(int i=0;i<jsonArr.length();i++){
+				JSONObject innerObj = jsonArr.getJSONObject(i);
+				UserSimpleFollow uf = new UserSimpleFollow();
+				uf.setEmail(innerObj.getString("email"));
+				uf.setName(innerObj.getString("name"));
+				uf.setPicturePath(innerObj.getString("picturePath"));
+				uf.setFollowNum(innerObj.getInt("followNum"));
+				Log.d("koo", "LoadData 342:"+uf.toString());
+				followingList.add(uf);
+			}
+			
+			List<ReviewView> reviewList = new ArrayList<ReviewView>();
+			jsonArr = jsonObj.getJSONArray("reviewViewList");
+			for(int i=0;i<jsonArr.length();i++){
+				JSONObject innerObj = jsonArr.getJSONObject(i);
+				ReviewView review = new ReviewView();
+				review.setReviewTime(innerObj.getString("reviewTime"));
+				review.setKmClinicName(innerObj.getString("kmClinicName"));
+				review.setKmClinicId(innerObj.getInt("kmClinicId"));
+				review.setUserEmail(innerObj.getString("userEmail"));
+				review.setKmClinicBigRegionName(innerObj.getString("kmClinicBigRegionName"));
+				review.setReviewId(innerObj.getInt("reviewId"));
+				review.setFavoriteType(innerObj.getInt("favoriteType"));
+				review.setKmClinicRemainRegion(innerObj.getString("kmClinicRemainRegion"));
+				review.setKmClinicBigRegionCode(innerObj.getInt("kmClinicBigRegionCode"));
+				review.setKmClinicMiddleRegionCode(innerObj.getInt("kmClinicMiddleRegionCode"));
+				review.setUserName(innerObj.getString("userName"));
+				review.setKmClinicMiddleRegionName(innerObj.getString("kmClinicMiddleRegionName"));
+				review.setComment(innerObj.getString("comment"));
+					
+				JSONArray innerArr = innerObj.getJSONArray("reviewKeywordList");
+				List<ReviewKeyword> reviewKeywordList = new ArrayList<ReviewKeyword>();
+				for(int j=0;j<innerArr.length();j++){
+					JSONObject inner2Obj = innerArr.getJSONObject(j);
+					ReviewKeyword rk = new ReviewKeyword();
+					rk.setId(inner2Obj.getInt("id"));
+					rk.setKeyword(inner2Obj.getString("keyword"));
+					reviewKeywordList.add(rk);
+				}
+				reviewList.add(review);		
+				Log.d("koo", "LoadData 375:"+review.toString());
+			}
+			userView.setReviewViewList(reviewList);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return userView;
+	}
 	
 	/**
 	 * 

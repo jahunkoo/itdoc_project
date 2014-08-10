@@ -1353,20 +1353,21 @@ containing a value of this type.
         public static final int oriental_medicine_clinic9=0x7f0200be;
         public static final int rounded_corner_box=0x7f0200bf;
         public static final int setting_section_bg2=0x7f0200c0;
-        public static final int theme1=0x7f0200c1;
-        public static final int theme2=0x7f0200c2;
-        public static final int theme3=0x7f0200c3;
-        public static final int theme4=0x7f0200c4;
-        public static final int theme5=0x7f0200c5;
-        public static final int user1=0x7f0200c6;
-        public static final int user2=0x7f0200c7;
-        public static final int user3=0x7f0200c8;
-        public static final int user4=0x7f0200c9;
-        public static final int user5=0x7f0200ca;
-        public static final int user6=0x7f0200cb;
-        public static final int user7=0x7f0200cc;
-        public static final int user_manager_background=0x7f0200cd;
-        public static final int user_profile_default=0x7f0200ce;
+        public static final int setting_section_bg3=0x7f0200c1;
+        public static final int theme1=0x7f0200c2;
+        public static final int theme2=0x7f0200c3;
+        public static final int theme3=0x7f0200c4;
+        public static final int theme4=0x7f0200c5;
+        public static final int theme5=0x7f0200c6;
+        public static final int user1=0x7f0200c7;
+        public static final int user2=0x7f0200c8;
+        public static final int user3=0x7f0200c9;
+        public static final int user4=0x7f0200ca;
+        public static final int user5=0x7f0200cb;
+        public static final int user6=0x7f0200cc;
+        public static final int user7=0x7f0200cd;
+        public static final int user_manager_background=0x7f0200ce;
+        public static final int user_profile_default=0x7f0200cf;
     }
     public static final class id {
         public static final int ImageView01=0x7f050085;

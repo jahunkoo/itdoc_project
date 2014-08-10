@@ -20,22 +20,29 @@ public class UserView {
 	private String middleRegionName;		
 	private String remainRegion;			//나머지지역
 	private String picturePath;				//사진이름
-	private int certificationCode;			//인증코드
+	private int certificationCode;			//인증코드  0:기본 
 	private int followNum;
 	private int followingNum;
-	private boolean isFollow = false;		//follow  yes or no
+	private boolean isFollow = false;		//
 	private List<ReviewView> reviewViewList;
+	private List<UserSimpleFollow> followList;
+	private List<UserSimpleFollow> followingList;
 	public UserView() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
 	public UserView(String email, String name, String cellPhone, int birthday,
 			int gender, String registerDate, String school, String job,
 			String introduce, int gradeCode, int bigRegionCode,
 			String bigRegionName, int middleRegionCode,
 			String middleRegionName, String remainRegion, String picturePath,
 			int certificationCode, int followNum, int followingNum,
-			boolean isFollow, List<ReviewView> reviewViewList) {
+			boolean isFollow, List<ReviewView> reviewViewList,
+			List<UserSimpleFollow> followList,
+			List<UserSimpleFollow> followingList) {
 		super();
 		this.email = email;
 		this.name = name;
@@ -58,7 +65,12 @@ public class UserView {
 		this.followingNum = followingNum;
 		this.isFollow = isFollow;
 		this.reviewViewList = reviewViewList;
+		this.followList = followList;
+		this.followingList = followingList;
 	}
+
+
+
 	public String getEmail() {
 		return email;
 	}
@@ -185,6 +197,22 @@ public class UserView {
 	public void setReviewViewList(List<ReviewView> reviewViewList) {
 		this.reviewViewList = reviewViewList;
 	}
+	
+	public List<UserSimpleFollow> getFollowList() {
+		return followList;
+	}
+	public void setFollowList(List<UserSimpleFollow> followList) {
+		this.followList = followList;
+	}
+	
+	public List<UserSimpleFollow> getFollowingList() {
+		return followingList;
+	}
+
+	public void setFollowingList(List<UserSimpleFollow> followingList) {
+		this.followingList = followingList;
+	}
+
 	@Override
 	public String toString() {
 		return "UserView [email=" + email + ", name=" + name + ", cellPhone="
@@ -198,7 +226,8 @@ public class UserView {
 				+ picturePath + ", certificationCode=" + certificationCode
 				+ ", followNum=" + followNum + ", followingNum=" + followingNum
 				+ ", isFollow=" + isFollow + ", reviewViewList="
-				+ reviewViewList + "]";
+				+ reviewViewList + ", followList=" + followList
+				+ ", followingList=" + followingList + "]";
 	}
 
 	
