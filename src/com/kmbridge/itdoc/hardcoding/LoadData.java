@@ -48,11 +48,11 @@ public class LoadData {
 		
 		return buffer.toString();
 	}
-	public List<ReviewView> getAllReviewView(){
+	public ArrayList<ReviewView> getAllReviewView(){
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
-		List<ReviewView> reviewList = new ArrayList<ReviewView>();
+		ArrayList<ReviewView> reviewList = new ArrayList<ReviewView>();
 		
 		try{
 			json = getJsonFromFile(context,"review_view.json");

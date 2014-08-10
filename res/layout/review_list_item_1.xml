@@ -69,7 +69,7 @@
         android:layout_alignBottom="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:paddingBottom="5dp"
-        android:text="윤보미 원장" />
+        android:text="서울시강남구" />
 
     <ImageView
         android:id="@+id/imageView2"

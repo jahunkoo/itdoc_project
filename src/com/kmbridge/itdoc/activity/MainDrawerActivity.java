@@ -42,6 +42,7 @@ import android.widget.TextView;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
 import com.kmbridge.itdoc.dto.ItemTitle;
+import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
 import com.kmbridge.itdoc.hardcoding.ClinicListFragment;
