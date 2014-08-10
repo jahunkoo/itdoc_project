@@ -1,9 +1,7 @@
 package com.kmbridge.itdoc.hardcoding;
 
-import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.fragment.KmClinicListFragment;
-
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,7 +11,12 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+
+import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
+import com.kmbridge.itdoc.activity.KmClinicMoreDoctorActivity;
 
 public class ClinicListFragment extends Fragment {
 
@@ -145,4 +148,6 @@ public class ClinicListFragment extends Fragment {
 		}
 
 	}
+	
+
 }

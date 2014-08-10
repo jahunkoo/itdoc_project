@@ -55,7 +55,7 @@ public class ClinicDetailHandler extends Handler{
 		case SET_ELEMENTS :
 			KmClinicDetailActivity activity = (KmClinicDetailActivity) context;
 			
-			activity.setElements(kmClinicDetailView);
+			//activity.setElements(kmClinicDetailView);
 			break;
 	
 			

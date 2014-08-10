@@ -17,7 +17,6 @@ import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 public class KmClinicListFragment extends Fragment {
 
 	private Context context;
-	private LayoutInflater mInflater;
 	ListView mListView;
 	ClinicListAdapter clinicListAdapter;
 
@@ -29,7 +28,8 @@ public class KmClinicListFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		String email;
 		try {
-			email = new SharedPreferenceUtil().getData(context, ItDocConstants.SHARED_KEY_EMAIL);
+			new SharedPreferenceUtil();
+			email = SharedPreferenceUtil.getData(context, ItDocConstants.SHARED_KEY_EMAIL);
 		} catch (RecordNotFoundException e) {
 			email = null;
 			e.printStackTrace();

@@ -92,11 +92,11 @@ public class LoadData {
 		
 		return buffer.toString();
 	}
-	public List<ReviewView> getAllReviewView(){
+	public ArrayList<ReviewView> getAllReviewView(){
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
-		List<ReviewView> reviewList = new ArrayList<ReviewView>();
+		ArrayList<ReviewView> reviewList = new ArrayList<ReviewView>();
 		
 		try{
 			json = getJsonFromFile(context,"review_view.json");
@@ -404,7 +404,7 @@ public class LoadData {
 	/**
 	 * 
 	 * 한의원 아이디를 넣으면 해당 한의원의 상세정보 객체를 가져옴
-	 * 보성한의원id 	s:2
+	 * 보성한의원id 	:2
 	 * 고당비한의원id	:7 
 	 * 동방한의원id	:11 
 	 * 미아체한의원id :14 

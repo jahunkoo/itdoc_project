@@ -1,93 +1,120 @@
 package com.kmbridge.itdoc.adapter;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import lazyList.ImageLoader;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
-import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.hardcoding.LoadData;
 
-public class ReviewAdapter extends ArrayAdapter<ReviewView> {
+public class ReviewAdapter extends BaseAdapter {
 
-	private List<ReviewView> reviewViewList;
-	private FragmentActivity activity;
 	private LayoutInflater inflator;
-	public ImageLoader imageLoader;
-	
-	public ReviewAdapter(Context context, int textViewResourceId, List<ReviewView> reviewViewList) {
-		super(context, textViewResourceId, reviewViewList);
+	Context context;
+	LoadData loadData;
+	ArrayList<ReviewView> loadReviewViewList;
+	ArrayList<ReviewView> reviewViewList;
+	boolean bGood;
+	boolean bSoso;
+	boolean bBad;
+
+	public ReviewAdapter(Context context, boolean bGood, boolean bSoso, boolean bBad) {
+		super();
+		this.context = context;
+		this.bGood = bGood;
+		this.bSoso = bSoso;
+		this.bBad = bBad;
+
+		inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		loadData = new LoadData(context);
+		loadReviewViewList = (ArrayList<ReviewView>) loadData.getAllReviewView();
+
+		reviewViewList = new ArrayList<ReviewView>();
 		
-		this.reviewViewList = reviewViewList;
-		this.activity = (FragmentActivity) context;
-		imageLoader=new ImageLoader(activity.getApplicationContext());
-		inflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		for (int i = 0; i < loadReviewViewList.size(); i++) {
+
+			switch (loadReviewViewList.get(i).getFavoriteType()) {
+
+			case 1:
+				if (bGood)
+					reviewViewList.add(loadReviewViewList.get(i));
+				break;
+			case 2:
+				if (bSoso)
+					reviewViewList.add(loadReviewViewList.get(i));
+				break;
+			case 3:
+				if (bBad)
+					reviewViewList.add(loadReviewViewList.get(i));
+				break;
+			}
+
+		}
+
 	}
 
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return reviewViewList.size();
+	}
 
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return reviewViewList.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+
 		View view = convertView;
-		if(view == null) view = inflator.inflate(R.layout.layout_review, null);
-		
-		Log.d("koo", "getView position:"+position);
+
+		ImageView face;
+		ImageView recommendImg;
+		TextView clinicName;
+		TextView location;
+		TextView date;
+		TextView recommendText;
+		TextView reviewDetail;
+
+		if (view == null) {
+			view = inflator.inflate(R.layout.review_list_item_1, parent, false);
+			view.setTag((Integer) position);
+		}
+
+		face = (ImageView) view.findViewById(R.id.imageView1);
+		recommendImg = (ImageView) view.findViewById(R.id.imageView2);
+		clinicName = (TextView) view.findViewById(R.id.textView1);
+		location = (TextView) view.findViewById(R.id.textView2);
+		date = (TextView) view.findViewById(R.id.textView3);
+		recommendText = (TextView) view.findViewById(R.id.textView5);
+		reviewDetail = (TextView) view.findViewById(R.id.textView6);
+
 		ReviewView reviewView = reviewViewList.get(position);
-		
-		ImageView kmClinicImgView = (ImageView) view.findViewById(R.id.imageview_layout_review_profile);
-		
-		TextView kmCLinicNameTextView = (TextView) view.findViewById(R.id.textview_layout_review_kmclinic_name);
-		TextView kmClinicLocationTextView = (TextView) view.findViewById(R.id.textview_layout_review_kmclinic_location);
-		TextView kmClinicDateTextView = (TextView) view.findViewById(R.id.textview_layout_review_date);
-		TextView keywordsTextView = (TextView) view.findViewById(R.id.textview_layout_review_keywords);
-		ImageView emotionImgView = (ImageView) view.findViewById(R.id.imageview_layout_review_emotion);
-		TextView commentTextView = (TextView) view.findViewById(R.id.textview_layout_review_comment);
-		
-		
-		kmCLinicNameTextView.setText( reviewView.getKmClinicName() );
-		String fullLocation = reviewView.getKmClinicBigRegionName() +" "+ reviewView.getKmClinicMiddleRegionName() +" "+reviewView.getKmClinicRemainRegion(); 
-		kmClinicLocationTextView.setText( fullLocation );
-		kmClinicDateTextView.setText( reviewView.getReviewTime() );
-		
-		List<ReviewKeyword> reviewKeywordList = reviewView.getReviewKeywordList();
-		StringBuffer keywordBuffer = new StringBuffer();
-		for(int i=0;i<reviewKeywordList.size();i++){
-			ReviewKeyword reviewKeyword = reviewKeywordList.get(i);
-			if(i == reviewKeywordList.size()-1){
-				keywordBuffer.append(reviewKeyword.getKeyword());
-			}
-			keywordBuffer.append(reviewKeyword.getKeyword()).append(",");
-		}
-		keywordsTextView.setText(keywordBuffer.toString());
-		
-		int favoriteType = reviewView.getFavoriteType();
-		switch(favoriteType){
-		case ItDocConstants.FAVORITE_GOOD:
-			emotionImgView.setImageResource(R.drawable.emoticon_good_red);break;
-		case ItDocConstants.FAVORITE_SOSO:
-			emotionImgView.setImageResource(R.drawable.emoticon_soso_red);break;
-		case ItDocConstants.FAVORITE_BAD:
-			emotionImgView.setImageResource(R.drawable.emoticon_bad_red);break;
-		}
-		
-		commentTextView.setText(reviewView.getComment());
-		
+
+		clinicName.setText(reviewView.getKmClinicName());
+		reviewDetail.setText(reviewView.getComment());
+		location.setText(reviewView.getKmClinicBigRegionName() + " " + reviewView.getKmClinicMiddleRegionName());
+
+		Log.d("kim", "ReviewAdapter favorate type is " + reviewView.getFavoriteType());
+
 		return view;
 	}
 
-	
-	
-	
-	
 }
