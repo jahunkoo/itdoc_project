@@ -138,7 +138,7 @@
     <string name="button_config_logout">로그아웃 되었습니다.</string>
 
     <!-- activity_user_profile -->
-    <string name="activity_user_profile_default_user_name">홍길동</string>
+    <string name="activity_user_profile_default_user_name">윤성수</string>
     <string name="activity_user_profile_default_button_follow">+ 팔로우</string>
     <string name="activity_user_profile_default_text_review">리뷰</string>
     <string name="activity_user_profile_default_text_follow">팔로워</string>

@@ -86,6 +86,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		
 		
 		//allKeywordsList = keywordConnection.getAllKeywords("getAllKeywords", context);
+		//ArrayAdapter<String> keywordsAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, allKeywordsList);
 		ArrayAdapter<String> keywordsAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, allKeywordsList);
 		search.setAdapter(keywordsAdapter);
 
@@ -125,8 +126,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 
 			String text = search.getText().toString();
 
-			ConnectionBridge conn = new ConnectionBridge();
-			ArrayList<KmClinicView> kmClinicViewList = conn.getAllKmClinicListKeyword("getKmClinicListByKeyword", context, text);
+			LoadData load = new LoadData(context);
+			ArrayList<KmClinicView> kmClinicViewList = load.searchClinicListByKeyword(text);
 			kmClinicViewList.toString();
 
 			if (share.isExist(context, RECENT_KEYWORD)) {
@@ -169,11 +170,10 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
 		Log.d("kim", "itemClick item is " + searchAdapter.getItem(position));
-
 		search.setText((CharSequence) searchAdapter.getItem(keywords1.length - position - 1));
-
 	}
 
+	
+	
 }

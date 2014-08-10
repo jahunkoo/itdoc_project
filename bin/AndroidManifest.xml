@@ -96,6 +96,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <activity android:name=".activity.UserLikeClinicActivity"></activity>
 
         <activity
             android:name=".activity.RelativesActivity"
@@ -121,6 +122,8 @@
             android:name="com.kmbridge.itdoc.activity.VisitedDialogActivity"
             android:label="@string/title_activity_visited_dialog" >
         </activity>
+        <activity android:name=".activity.UserFollowerActivity"></activity>
+        <activity android:name=".activity.SeeAllReviewListActivity"></activity>
     </application>
 
     <uses-feature

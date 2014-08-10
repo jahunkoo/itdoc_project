@@ -22,7 +22,6 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,7 +38,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
@@ -47,7 +45,6 @@ import com.kmbridge.itdoc.dto.ItemTitle;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
-
 import com.kmbridge.itdoc.hardcoding.ClinicListFragment;
 import com.kmbridge.itdoc.hardcoding.HardSearchFragment;
 import com.kmbridge.itdoc.hardcoding.LoadData;
@@ -154,7 +151,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 		
 		LoadData load = new LoadData(this);
-		load.getKmClinicDetailView(2);
+		//load.getUserView("test@gmail.com");
+		
 	}
 
 	

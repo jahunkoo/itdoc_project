@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,7 +25,6 @@ import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.thread.ClinicDetailThread;
-
 public class KmClinicDetailActivity extends FragmentActivity implements	OnClickListener {
 	
 	ImageView detailRelatives; // 추천한 이웃들 이미지
@@ -46,6 +44,10 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 
 	GoogleMap HaniMap;
 
+	TextView name;
+	Button gotoFollower;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
