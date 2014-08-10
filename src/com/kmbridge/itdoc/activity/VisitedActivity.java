@@ -1,7 +1,5 @@
 package com.kmbridge.itdoc.activity;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,7 +8,7 @@ import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 
-public class VisitedActivity extends Activity implements OnClickListener {
+public class VisitedActivity extends ImageSelectHelperActivity implements OnClickListener {
 	//MainDialog mMainDialog;
 	private VisitedDialogActivity visitedDlg;
 	private View.OnClickListener mClickListener;
@@ -29,6 +27,8 @@ public class VisitedActivity extends Activity implements OnClickListener {
 
 		setLayout();
 		setListener();
+		
+		getSelectedImageFile(); // extract selected & saved image file.
 		
 	}
 	
@@ -75,9 +75,16 @@ public class VisitedActivity extends Activity implements OnClickListener {
 		btnFaceNice.setOnClickListener(this);
 		btnFaceNotbad.setOnClickListener(this);
 		btnFaceBad.setOnClickListener(this);
+		btnCamera.setOnClickListener(this);
 		txtVisitedChoice.setOnClickListener(this);
 	}
 
+	private void callImageActivity(){
+		super.callActivity = this;
+		setImageSizeBoundary(400);
+		setCropOption(1, 1);
+		startSelectImage();
+	}
 	
 	@Override
 	public void onClick(View v) {
@@ -101,6 +108,7 @@ public class VisitedActivity extends Activity implements OnClickListener {
 			txtFaceSelectResult.setText("비추천");
 			break;
 		case R.id.btn_camara:
+			callImageActivity();
 			break;
 		case R.id.kmclinic_visited_choice:
 			visitedDlg = new VisitedDialogActivity(this, mClickListener);
