@@ -1,12 +1,12 @@
 package com.kmbridge.itdoc.activity;
 
 import java.util.List;
-import java.util.Map;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,12 +21,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
-import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.thread.ClinicDetailThread;
 public class KmClinicDetailActivity extends FragmentActivity implements	OnClickListener {
 	
+			
 	ImageView detailRelatives; // 추천한 이웃들 이미지
 	Button detailAllreview; // 리뷰 모두 보기
 	Button detailClinicMoreInfo;
@@ -52,7 +52,12 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_km_clinic_detail);
-
+		
+		//인텐트로 넘겨준 값을 받아온다.
+		Intent intent = getIntent();
+		int clinicNumber = intent.getExtras().getInt("clinicNumber");
+		Log.d("kim3","KmclinicDetail Activity : "+clinicNumber);
+		
 		setLayout();
 		setListener();
 		
@@ -60,7 +65,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		LoadData load = new LoadData(this);
 		
 		//한의원 객체를 가져옴
-		KmClinicDetailView view = load.getKmClinicDetailView(2);
+		KmClinicDetailView view = load.getKmClinicDetailView(clinicNumber);
 		
 		//리뷰 객체를 가져옴
 		
