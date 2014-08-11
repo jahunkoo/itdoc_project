@@ -28,19 +28,26 @@
     <string name="action_settings">action_setting</string>
 
     <string-array name="drawer_menu_title_section_array">
-        <item>한의원 찾기</item>
-        <item>Itdoc 플러스</item>
+        <item>한의콕</item>
+        <item>한의원 정보</item>
+        <item>한방 정보</item>
     </string-array>
+    
+     <string-array name="drawer_menu_title_item_array_honikok">
+          <item>둘러보기</item>
+          <item>나의 콕!리스트</item>
+     </string-array>
     <string-array name="drawer_menu_title_item_array_search">
-        <item>검색하기</item>
-        <item>둘러보기</item>
-        <item>한방정보</item>
-        <item>찜한 한의원</item>
+        <item>한의원 검색하기</item>
+        <item>한의콕 서포터즈</item>
+        <item>셀럽 추천 한의원</item>
     </string-array>
     <string-array name="drawer_menu_title_item_array_plus">
-        <item>It+ 살펴보기</item>
-        <item>내 친구 관리</item>
+        <item>한의콕s 한방정보</item>
+        <item>궁금해요 Q<![CDATA[&]]>A</item>
     </string-array>
+    
+    
     <string-array name="drawer_menu_title_array">
         <item>검색하기</item>
         <item>둘러보기</item>

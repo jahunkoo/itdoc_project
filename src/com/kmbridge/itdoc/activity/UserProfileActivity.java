@@ -57,7 +57,6 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	private String myEmail;
 
 	// 하드 코딩
-
 	private TextView seeAllReview;
 
 	public ImageView getUserProfileImgView() {

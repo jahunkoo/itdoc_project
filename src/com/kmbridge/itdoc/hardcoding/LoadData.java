@@ -155,7 +155,7 @@ public class LoadData {
 				UserSimpleInfo user = new UserSimpleInfo();
 				user.setEmail(jsonObj.getString("email"));
 				user.setName(jsonObj.getString("name"));
-				user.setPicturePath("picturePath");
+				user.setPicturePath(jsonObj.getString("picturePath"));
 				userList.add(user);
 			}
 			
@@ -244,6 +244,7 @@ public class LoadData {
 					JSONObject innerObj = innerArr.getJSONObject(j);
 					UserSimpleInfo info = new UserSimpleInfo();
 					info.setEmail(innerObj.getString("email"));
+					Log.d("koo", "||"+innerObj.getString("picturePath"));
 					info.setPicturePath(innerObj.getString("picturePath"));
 					info.setName(innerObj.getString("name"));
 					simpleList.add(info);

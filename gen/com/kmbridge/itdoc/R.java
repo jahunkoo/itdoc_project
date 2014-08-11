@@ -17,14 +17,15 @@ public final class R {
         public static final int abc_slide_out_top=0x7f040005;
     }
     public static final class array {
-        public static final int drawer_menu_title_array=0x7f0c0003;
-        public static final int drawer_menu_title_item_array_plus=0x7f0c0002;
-        public static final int drawer_menu_title_item_array_search=0x7f0c0001;
+        public static final int drawer_menu_title_array=0x7f0c0004;
+        public static final int drawer_menu_title_item_array_honikok=0x7f0c0001;
+        public static final int drawer_menu_title_item_array_plus=0x7f0c0003;
+        public static final int drawer_menu_title_item_array_search=0x7f0c0002;
         public static final int drawer_menu_title_section_array=0x7f0c0000;
-        public static final int screenslide_comment_array=0x7f0c0005;
+        public static final int screenslide_comment_array=0x7f0c0006;
         /**  activity_screen_slide_page related 
          */
-        public static final int screenslide_imagename_array=0x7f0c0004;
+        public static final int screenslide_imagename_array=0x7f0c0005;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1021,10 +1022,11 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f090002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f05000f;
+        public static final int abc_search_url_text_holo=0x7f050010;
         public static final int abc_search_url_text_normal=0x7f05000a;
         public static final int abc_search_url_text_pressed=0x7f05000c;
         public static final int abc_search_url_text_selected=0x7f05000b;
+        public static final int background_holo_light=0x7f05000f;
         public static final int common_action_bar_splitter=0x7f050009;
         /**  Sign-in Button Colors 
          */
@@ -1037,8 +1039,8 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f050006;
         public static final int common_signin_btn_light_text_focused=0x7f050007;
         public static final int common_signin_btn_light_text_pressed=0x7f050005;
-        public static final int common_signin_btn_text_dark=0x7f050010;
-        public static final int common_signin_btn_text_light=0x7f050011;
+        public static final int common_signin_btn_text_dark=0x7f050011;
+        public static final int common_signin_btn_text_light=0x7f050012;
         public static final int translucent_black=0x7f05000d;
         public static final int user_profile_label_separator=0x7f05000e;
     }
@@ -1430,11 +1432,11 @@ containing a value of this type.
     
          */
         public static final int action_next=0x7f06001d;
-        public static final int action_previous=0x7f0600ef;
-        public static final int action_search=0x7f0600ee;
+        public static final int action_previous=0x7f0600f1;
+        public static final int action_search=0x7f0600f0;
         public static final int activity_chooser_view_content=0x7f06002a;
         public static final int always=0x7f06000f;
-        public static final int autocomplete_textview_fragment_search=0x7f0600d3;
+        public static final int autocomplete_textview_fragment_search=0x7f0600d5;
         public static final int beginning=0x7f060014;
         public static final int btn_activity_km_clilic_detail_visited=0x7f06005c;
         public static final int btn_activity_km_clinic_detail_call=0x7f06005d;
@@ -1462,16 +1464,18 @@ containing a value of this type.
         public static final int button_activity_profile_picture_upload=0x7f060063;
         public static final int button_activity_user_profile_follow=0x7f060085;
         public static final int button_activity_user_profile_go_certification=0x7f06008d;
-        public static final int button_fragment_screen_slide_login=0x7f0600d2;
-        public static final int button_fragment_screen_slide_register=0x7f0600d1;
-        public static final int button_fragment_search=0x7f0600d4;
-        public static final int button_left_drawer_bottom_login_or_register=0x7f0600eb;
+        public static final int button_fragment_screen_slide_login=0x7f0600d4;
+        public static final int button_fragment_screen_slide_register=0x7f0600d3;
+        public static final int button_fragment_search=0x7f0600d6;
+        public static final int button_left_drawer_bottom_login_or_register=0x7f0600ed;
         public static final int button_see_all_review_list_setting=0x7f060072;
+        public static final int center_img=0x7f0600c9;
+        public static final int center_textview=0x7f0600ca;
         public static final int check_alarm=0x7f060047;
         public static final int check_push=0x7f060045;
         public static final int checkbox=0x7f060032;
         public static final int collapseActionView=0x7f060011;
-        public static final int content_frame=0x7f0600e2;
+        public static final int content_frame=0x7f0600e4;
         public static final int default_activity_button=0x7f06002d;
         public static final int dialog=0x7f060012;
         public static final int dialog_item0=0x7f060099;
@@ -1485,7 +1489,7 @@ containing a value of this type.
         public static final int dialogi_item3=0x7f0600bf;
         public static final int dialogi_item4=0x7f0600c0;
         public static final int disableHome=0x7f06000c;
-        public static final int drawer_layout=0x7f0600e1;
+        public static final int drawer_layout=0x7f0600e3;
         public static final int dropdown=0x7f060013;
         public static final int edit_query=0x7f060035;
         public static final int email_join=0x7f06007a;
@@ -1494,10 +1498,10 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f06002b;
         public static final int expanded_menu=0x7f060031;
         public static final int facebook=0x7f060079;
-        public static final int hard_list_clinic_pager1=0x7f0600d6;
-        public static final int hard_list_clinic_pager2=0x7f0600d7;
-        public static final int hard_list_clinic_pager3=0x7f0600d8;
-        public static final int hard_list_clinic_pager4=0x7f0600d9;
+        public static final int hard_list_clinic_pager1=0x7f0600d8;
+        public static final int hard_list_clinic_pager2=0x7f0600d9;
+        public static final int hard_list_clinic_pager3=0x7f0600da;
+        public static final int hard_list_clinic_pager4=0x7f0600db;
         public static final int home=0x7f060017;
         public static final int homeAsUp=0x7f060009;
         public static final int hybrid=0x7f060004;
@@ -1512,19 +1516,19 @@ containing a value of this type.
         public static final int imagebutton_activity_user_profile_certification_email=0x7f060089;
         public static final int imagebutton_activity_user_profile_certification_facebook=0x7f06008b;
         public static final int imagebutton_activity_user_profile_certification_phone=0x7f06008a;
-        public static final int imagebutton_left_drawer_bottom_setting=0x7f0600e9;
+        public static final int imagebutton_left_drawer_bottom_setting=0x7f0600eb;
         public static final int imageview_activity_profile_picture_background_top=0x7f06005f;
         public static final int imageview_activity_profile_picture_user_profile=0x7f060060;
         public static final int imageview_activity_user_manager_itdoc_logo=0x7f060075;
         public static final int imageview_activity_user_profile_user_profile=0x7f06007d;
         public static final int imageview_clinic_list_item_clinicimage=0x7f0600a4;
         public static final int imageview_clinic_list_item_follow_img=0x7f0600a7;
-        public static final int imageview_fragment_screen_slide_logo=0x7f0600cf;
-        public static final int imageview_fragment_screen_slide_page=0x7f0600cd;
+        public static final int imageview_fragment_screen_slide_logo=0x7f0600d1;
+        public static final int imageview_fragment_screen_slide_page=0x7f0600cf;
         public static final int imageview_intro_activity_background=0x7f06004f;
-        public static final int imageview_layout_review_emotion=0x7f0600df;
-        public static final int imageview_layout_review_profile=0x7f0600da;
-        public static final int imageview_left_drawer_bottom_profile=0x7f0600e7;
+        public static final int imageview_layout_review_emotion=0x7f0600e1;
+        public static final int imageview_layout_review_profile=0x7f0600dc;
+        public static final int imageview_left_drawer_bottom_profile=0x7f0600e9;
         public static final int imageview_visited=0x7f060096;
         public static final int join_email=0x7f0600c4;
         public static final int join_firstname=0x7f0600c6;
@@ -1542,7 +1546,7 @@ containing a value of this type.
         public static final int kmclinic_detail_relatives=0x7f060054;
         public static final int kmclinic_detail_review=0x7f060057;
         public static final int kmclinic_visited_choice=0x7f060090;
-        public static final int left_drawer=0x7f0600e4;
+        public static final int left_drawer=0x7f0600e6;
         public static final int linearLayout1=0x7f0600ae;
         public static final int linearLayout_config=0x7f060043;
         public static final int linearLayout_pager=0x7f06006f;
@@ -1556,8 +1560,8 @@ containing a value of this type.
         public static final int linearlayout_activity_user_profile_contain_review=0x7f06008e;
         public static final int linearlayout_clinic_list_item=0x7f06009f;
         public static final int linearlayout_connection_loading=0x7f0600ac;
-        public static final int linearlayout_left_drawer_bottom=0x7f0600e5;
-        public static final int linearlayout_left_drawer_bottom_go_profile=0x7f0600e6;
+        public static final int linearlayout_left_drawer_bottom=0x7f0600e7;
+        public static final int linearlayout_left_drawer_bottom_go_profile=0x7f0600e8;
         public static final int linearlayout_login_in_out_bottom=0x7f06004b;
         public static final int linearlayout_review_recommend_bad=0x7f0600b7;
         public static final int linearlayout_review_recommend_good=0x7f0600af;
@@ -1565,11 +1569,11 @@ containing a value of this type.
         public static final int listMode=0x7f060005;
         public static final int list_item=0x7f06002e;
         public static final int listview_clinic_list=0x7f0600c1;
-        public static final int listview_fragment_search_recent_search=0x7f0600d5;
+        public static final int listview_fragment_search_recent_search=0x7f0600d7;
         public static final int listview_see_all_review_list=0x7f060071;
-        public static final int login_email=0x7f0600ca;
-        public static final int login_password=0x7f0600cb;
-        public static final int login_submit=0x7f0600cc;
+        public static final int login_email=0x7f0600cc;
+        public static final int login_password=0x7f0600cd;
+        public static final int login_submit=0x7f0600ce;
         public static final int map=0x7f060059;
         public static final int map_container=0x7f06005e;
         public static final int middle=0x7f060015;
@@ -1586,7 +1590,7 @@ containing a value of this type.
         public static final int relativeLayout_user_manager=0x7f060073;
         public static final int relativelayout_fragment_intro=0x7f0600c2;
         public static final int relativelayout_intro=0x7f06004e;
-        public static final int relativelayout_left_drawer=0x7f0600e3;
+        public static final int relativelayout_left_drawer=0x7f0600e5;
         public static final int satellite=0x7f060002;
         public static final int scrollview_activity_user_profile=0x7f06007c;
         public static final int search_badge=0x7f060037;
@@ -1629,17 +1633,17 @@ containing a value of this type.
         public static final int textview_clinic_list_item_likenum=0x7f0600a1;
         public static final int textview_clinic_list_item_name=0x7f0600a0;
         public static final int textview_clinic_list_item_region=0x7f0600a3;
-        public static final int textview_layout_review_comment=0x7f0600e0;
-        public static final int textview_layout_review_date=0x7f0600dd;
-        public static final int textview_layout_review_keywords=0x7f0600de;
-        public static final int textview_layout_review_kmclinic_location=0x7f0600dc;
-        public static final int textview_layout_review_kmclinic_name=0x7f0600db;
-        public static final int textview_left_drawer_bottom_comment=0x7f0600ea;
-        public static final int textview_left_drawer_bottom_name=0x7f0600e8;
-        public static final int textview_main_drawer_item=0x7f0600ec;
-        public static final int textview_search_list_item=0x7f0600ed;
-        public static final int textview_slide_screen_comment=0x7f0600d0;
-        public static final int textview_slide_screen_divide_line=0x7f0600ce;
+        public static final int textview_layout_review_comment=0x7f0600e2;
+        public static final int textview_layout_review_date=0x7f0600df;
+        public static final int textview_layout_review_keywords=0x7f0600e0;
+        public static final int textview_layout_review_kmclinic_location=0x7f0600de;
+        public static final int textview_layout_review_kmclinic_name=0x7f0600dd;
+        public static final int textview_left_drawer_bottom_comment=0x7f0600ec;
+        public static final int textview_left_drawer_bottom_name=0x7f0600ea;
+        public static final int textview_main_drawer_item=0x7f0600ee;
+        public static final int textview_search_list_item=0x7f0600ef;
+        public static final int textview_slide_screen_comment=0x7f0600d2;
+        public static final int textview_slide_screen_divide_line=0x7f0600d0;
         public static final int textview_userManager_center_line=0x7f060074;
         public static final int textview_user_profile_see_all_review=0x7f060087;
         public static final int title=0x7f060030;
@@ -1653,7 +1657,7 @@ containing a value of this type.
         public static final int useLogo=0x7f060007;
         public static final int user_insert_layout=0x7f0600c3;
         public static final int user_layout=0x7f060062;
-        public static final int user_login_layout=0x7f0600c9;
+        public static final int user_login_layout=0x7f0600cb;
         public static final int withText=0x7f060010;
     }
     public static final class integer {
@@ -1744,22 +1748,24 @@ containing a value of this type.
         public static final int fragment_clinic_list=0x7f030038;
         public static final int fragment_intro=0x7f030039;
         public static final int fragment_join=0x7f03003a;
-        public static final int fragment_login=0x7f03003b;
-        public static final int fragment_planet=0x7f03003c;
-        public static final int fragment_screen_slide_page=0x7f03003d;
-        public static final int fragment_search=0x7f03003e;
-        public static final int hard_fragment_clinic_list=0x7f03003f;
-        public static final int hard_search_clinic_list_item=0x7f030040;
-        public static final int layout_review=0x7f030041;
-        public static final int main_drawer=0x7f030042;
-        public static final int main_drawer_item_bottom_after_login=0x7f030043;
-        public static final int main_drawer_item_bottom_before_login=0x7f030044;
-        public static final int main_drawer_layout=0x7f030045;
-        public static final int main_drawer_list_item=0x7f030046;
-        public static final int review_list_item_1=0x7f030047;
-        public static final int search_list_item=0x7f030048;
-        public static final int support_simple_spinner_dropdown_item=0x7f030049;
-        public static final int user_follower_item=0x7f03004a;
+        public static final int fragment_koklist=0x7f03003b;
+        public static final int fragment_login=0x7f03003c;
+        public static final int fragment_planet=0x7f03003d;
+        public static final int fragment_screen_slide_page=0x7f03003e;
+        public static final int fragment_search=0x7f03003f;
+        public static final int hard_fragment_clinic_list=0x7f030040;
+        public static final int hard_search_clinic_list_item=0x7f030041;
+        public static final int layout_review=0x7f030042;
+        public static final int main_drawer=0x7f030043;
+        public static final int main_drawer_item_bottom_after_login=0x7f030044;
+        public static final int main_drawer_item_bottom_before_login=0x7f030045;
+        public static final int main_drawer_layout=0x7f030046;
+        public static final int main_drawer_list_item=0x7f030047;
+        public static final int main_drawer_list_section=0x7f030048;
+        public static final int review_list_item_1=0x7f030049;
+        public static final int search_list_item=0x7f03004a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03004b;
+        public static final int user_follower_item=0x7f03004c;
     }
     public static final class menu {
         public static final int activity_basic_actions=0x7f0d0000;
