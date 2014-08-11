@@ -42,6 +42,7 @@ public class LoadData {
 		keywordMap = new HashMap<Integer, String>();
 		keywordMap.put(1, "M자탈모,열성,원형,지루성 탈모");
 		keywordMap.put(2, "비만 다이어트,피부,교통사고,전신관절통증,한약,보약,침,물리치료,봉약침");
+		//keywordMap.put(2, "비만다이어트피부교통사고전신관절통증한약보약침물리치료봉약침");
 		keywordMap.put(3, "여드름,흉터,편평사마귀,모공각화증,탈모치료,피부질환");
 		keywordMap.put(4, "경락,한방피부성형,비만,여성,전통기공침,보약클리닉");
 		keywordMap.put(5, "체중비만,하체비만,스트레스,직장인 증후군,과민성장증후군");
@@ -71,12 +72,12 @@ public class LoadData {
 		keywordMap.put(29, "난치성 여드름,화농성,좁쌀 여드름");
 		keywordMap.put(30, "비수술 척추,체형,골반교정,턱관절,일자목,산후관리,교통사고후유증,추나요법");
 	}
+	
 	/*
 	 * 병원 아이디랑 키워드랑 묶자 
 	 *  
 	 *
 	 */
-	
 	public String getJsonFromFile(Context context,String fileName) throws IOException{
 		String assetPath = "tables/"+fileName;
 		InputStream fin = context.getAssets().open(assetPath);
@@ -89,9 +90,9 @@ public class LoadData {
 		}
 		fin.close();
 		
-		
 		return buffer.toString();
 	}
+	
 	public ArrayList<ReviewView> getAllReviewView(){
 		String json = null;
 		JSONObject jsonObj = null;
@@ -137,7 +138,6 @@ public class LoadData {
 			
 		}
 		
-		
 		return reviewList;
 	}
 	
@@ -167,27 +167,31 @@ public class LoadData {
 					e.printStackTrace();
 				}
 				
-			
 		return userList;
 	}
 	
 	public ArrayList<KmClinicView> searchClinicListByKeyword(String keyword){
+		
 		Map<Integer,KmClinicView> allMap = getKmClinicViewMap();
-		Log.d("koo", "test"+allMap.size());
+		
 		ArrayList<KmClinicView> clinicList = new ArrayList<KmClinicView>();
 		for(int i=0;i<keywordMap.size();i++){
 			Integer integer = new Integer(i+1);
 			String keywords = keywordMap.get(integer);
+			Log.d("koo", "========================");
+			Log.d("koo", "keywords:"+keywords);
+			Log.d("koo", "keyword:"+keyword);
 			if(keywords.contains(keyword)){
 				clinicList.add(allMap.get(integer));
 				Log.d("koo", String.valueOf(i+1));
 			}
 		}
-		
+		Log.d("koo", "========================");
+		/*
 		for(KmClinicView tmpView : clinicList){
 			Log.d("koo", tmpView.toString());
 		}
-		
+		*/
 		return clinicList;
 	}
 	
@@ -195,9 +199,8 @@ public class LoadData {
 		ArrayList<KmClinicView> viewList = getAllKmClinicView();
 		Map<Integer,KmClinicView> viewMap = new HashMap<Integer,KmClinicView>();
 		for(int i=0;i<viewList.size();i++){
-			Log.d("koo", "test getKmClinicViewMap "+i);
+			//Log.d("koo", "test getKmClinicViewMap "+i);
 			viewMap.put(i+1, viewList.get(i));
-			
 		}
 		return viewMap;
 	}
@@ -214,7 +217,7 @@ public class LoadData {
 			jsonArr = jsonObj.getJSONArray("KmClinicView");
 			for(int i=0;i<jsonArr.length();i++){
 				jsonObj = jsonArr.getJSONObject(i);
-				Log.d("koo", "test getAllKmClinicView "+jsonObj.toString());
+				//Log.d("koo", "test getAllKmClinicView "+jsonObj.toString());
 				KmClinicView view = new KmClinicView();
 				view.setId(jsonObj.getInt("id"));
 				view.setFollowNum(jsonObj.getInt("followNum"));

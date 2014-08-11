@@ -102,27 +102,29 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
 	@Override
 	public void onBackPressed() {
 		
-		ActionBar actionbar = this.getActionBar();
-    	actionbar.hide();
-    	
+		//ActionBar actionbar = this.getActionBar();
+    	//actionbar.hide();
+    	//
     	//처음 설치 여부를 확인
     	//SharedPreferenceUtil userInfo = new SharedPreferenceUtil();
-    	isNotFirst=SharedPreferenceUtil.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
-		
-		Log.d("check_kim","join_check = "+isNotFirst);
-    	//처음 설치가 처음 설치가 아닌경우 메인으로 이동
-    	if(isNotFirst==true)
-    	{
-    		Intent intent = new Intent(this,MainDrawerActivity.class);
-    		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
-    	}
-    	else
-    	{
-    		Intent intent = new Intent(this,ScreenSlideActivity.class);
-    		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    		startActivity(intent);
-    	}
+    	//isNotFirst=SharedPreferenceUtil.isExist(this, ItDocConstants.SHARED_KEY_FIRST_CHECK);
+		//
+		//Log.d("check_kim","join_check = "+isNotFirst);
+    	////처음 설치가 처음 설치가 아닌경우 메인으로 이동
+    	//
+		//if(isNotFirst==true)
+    	//{
+    	//	Intent intent = new Intent(this,MainDrawerActivity.class);
+    	//	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		//	startActivity(intent);
+    	//}
+    	//else
+    	//{
+    	//	Intent intent = new Intent(this,ScreenSlideActivity.class);
+    	//	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    	//	startActivity(intent);
+    	//}
+		//
 		/*findViewById(R.id.linearLayout_pager).setVisibility(View.VISIBLE);
 		findViewById(R.id.linearLayout_screen_slide_for_join).setVisibility(View.GONE);
 		findViewById(R.id.linearLayout_screen_slide_for_login).setVisibility(View.GONE);

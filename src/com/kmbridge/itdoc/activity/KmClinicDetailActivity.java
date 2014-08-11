@@ -98,7 +98,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 				.build();
 		// MarkerOptions marker = new MarkerOptions().position(loc);
 
-		HaniMap = ((SupportMapFragment) getSupportFragmentManager()
+		/*HaniMap = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map)).getMap();
 		HaniMap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
 
@@ -107,7 +107,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		// Double.parseDouble(longitude)));
 		hani_1.position(new LatLng(37.49927, 127.03748));
 		hani_1.title("OO한의원");
-		HaniMap.addMarker(hani_1).showInfoWindow();
+		HaniMap.addMarker(hani_1).showInfoWindow();*/
 
 		int clinicId = getIntent().getIntExtra("clinicId", -1);
 		ClinicDetailThread mThread = new ClinicDetailThread(

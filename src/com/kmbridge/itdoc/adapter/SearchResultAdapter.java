@@ -40,9 +40,8 @@ public class SearchResultAdapter extends BaseAdapter {
 		inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		imageLoader = new ImageLoader(context);
 
-		Log.d("kim", "SearchResultAdapter(37) " + kmClinicViewList.toString());
 
-		email = "eggk@gmail.com";
+		email = "test@gmail.com";
 
 		for (int i = 0; i < kmClinicViewList.size(); i++) {
 
@@ -99,11 +98,11 @@ public class SearchResultAdapter extends BaseAdapter {
 		TextView regionName;
 		TextView likeNum;
 		TextView followNum;
-		TextView keyword;
+		//TextView keyword;
 		final int clinicId;
 
 		if (view == null) {
-			view = inflator.inflate(R.layout.clinic_list_item, parent, false);
+			view = inflator.inflate(R.layout.hard_search_clinic_list_item, parent, false);
 			view.setTag((Integer) position);
 		}
 
@@ -112,22 +111,21 @@ public class SearchResultAdapter extends BaseAdapter {
 		regionName = (TextView) view.findViewById(R.id.textview_clinic_list_item_region);
 		likeNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_likenum);
 		followNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_follower);
-		keyword = (TextView) view.findViewById(R.id.textview_clinic_list_item_keyword);
+		//keyword = (TextView) view.findViewById(R.id.textview_clinic_list_item_keyword);
 		followImg = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
 
 		final ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
-
+/*
 		String url = "http://yss159.cafe24.com:8080/ItDocImgServer/getPicture?picturePath=" + clinicListItem.picturepath + "&objectType=2";
-
 		try {
 			imageLoader.DisplayImage(url, img);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+*/
 		name.setText(clinicListItem.name);
 		regionName.setText(clinicListItem.regionName);
-		keyword.setText(clinicListItem.keyword);
+		//keyword.setText(clinicListItem.keyword);
 
 		likeNum.setText(toString().valueOf(clinicListItem.likeNum));
 		followNum.setText(toString().valueOf(clinicListItem.followNum));
