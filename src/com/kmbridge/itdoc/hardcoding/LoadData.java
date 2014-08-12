@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,22 +32,21 @@ import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.dto.Week;
 
 public class LoadData {
-	
-	private Context context;
-	private Map<Integer,String> keywordMap; 
-	public LoadData(Context context) {
-		this.context= context;
-		
-		createKeywordMap();	
-	}
 
-	
+	private Context context;
+	private Map<Integer, String> keywordMap;
+
+	public LoadData(Context context) {
+		this.context = context;
+
+		createKeywordMap();
+	}
 	
 	private void createKeywordMap(){
 		keywordMap = new HashMap<Integer, String>();
 		keywordMap.put(1, "M자탈모,열성,원형,지루성 탈모");
 		keywordMap.put(2, "비만 다이어트,피부,교통사고,전신관절통증,한약,보약,침,물리치료,봉약침");
-		//keywordMap.put(2, "비만다이어트피부교통사고전신관절통증한약보약침물리치료봉약침");
+		// keywordMap.put(2, "비만다이어트피부교통사고전신관절통증한약보약침물리치료봉약침");
 		keywordMap.put(3, "여드름,흉터,편평사마귀,모공각화증,탈모치료,피부질환");
 		keywordMap.put(4, "경락,한방피부성형,비만,여성,전통기공침,보약클리닉");
 		keywordMap.put(5, "체중비만,하체비만,스트레스,직장인 증후군,과민성장증후군");
@@ -76,38 +76,36 @@ public class LoadData {
 		keywordMap.put(29, "난치성 여드름,화농성,좁쌀 여드름");
 		keywordMap.put(30, "비수술 척추,체형,골반교정,턱관절,일자목,산후관리,교통사고후유증,추나요법");
 	}
-	
+
 	/*
-	 * 병원 아이디랑 키워드랑 묶자 
-	 *  
-	 *
+	 * 병원 아이디랑 키워드랑 묶자
 	 */
-	public String getJsonFromFile(Context context,String fileName) throws IOException{
-		String assetPath = "tables/"+fileName;
+	public String getJsonFromFile(Context context, String fileName) throws IOException {
+		String assetPath = "tables/" + fileName;
 		InputStream fin = context.getAssets().open(assetPath);
 		BufferedReader br = new BufferedReader(new InputStreamReader(fin));
 
 		StringBuilder buffer = new StringBuilder();
 		String line;
-		while ((line=br.readLine())!=null) {
+		while ((line = br.readLine()) != null) {
 			buffer.append(line);
 		}
 		fin.close();
-		
+
 		return buffer.toString();
 	}
-	
-	public ArrayList<ReviewView> getAllReviewView(){
+
+	public ArrayList<ReviewView> getAllReviewView() {
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
 		ArrayList<ReviewView> reviewList = new ArrayList<ReviewView>();
-		
-		try{
-			json = getJsonFromFile(context,"review_view.json");
+
+		try {
+			json = getJsonFromFile(context, "review_view.json");
 			jsonObj = new JSONObject(json);
 			jsonArr = jsonObj.getJSONArray("ReviewView");
-			for(int i=0;i<jsonArr.length();i++){
+			for (int i = 0; i < jsonArr.length(); i++) {
 				ReviewView review = new ReviewView();
 				jsonObj = jsonArr.getJSONObject(i);
 				review.setReviewTime(jsonObj.getString("reviewTime"));
@@ -123,38 +121,38 @@ public class LoadData {
 				review.setUserName(jsonObj.getString("userName"));
 				review.setKmClinicMiddleRegionName(jsonObj.getString("kmClinicMiddleRegionName"));
 				review.setComment(jsonObj.getString("comment"));
-				
+
 				JSONArray innerArr = jsonObj.getJSONArray("reviewKeywordList");
 				List<ReviewKeyword> reviewKeywordList = new ArrayList<ReviewKeyword>();
-				for(int j=0;j<innerArr.length();j++){
+				for (int j = 0; j < innerArr.length(); j++) {
 					JSONObject innerObj = innerArr.getJSONObject(j);
 					ReviewKeyword rk = new ReviewKeyword();
 					rk.setId(innerObj.getInt("id"));
 					rk.setKeyword(innerObj.getString("keyword"));
 					reviewKeywordList.add(rk);
 				}
-				
+
 				reviewList.add(review);
-				
+
 			}
-			
-		}catch(Exception e){
-			
+
+		} catch (Exception e) {
+
 		}
-		
+
 		return reviewList;
 	}
-	
-	public List<UserSimpleInfo> getAllUserSimpleInfo(){
+
+	public List<UserSimpleInfo> getAllUserSimpleInfo() {
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
 		List<UserSimpleInfo> userList = new ArrayList<UserSimpleInfo>();
 		try {
-			json = getJsonFromFile(context,"user_simple.json");
+			json = getJsonFromFile(context, "user_simple.json");
 			jsonObj = new JSONObject(json);
 			jsonArr = jsonObj.getJSONArray("UserLikeKmClinic");
-			for(int i=0;i<jsonArr.length();i++){
+			for (int i = 0; i < jsonArr.length(); i++) {
 				jsonObj = jsonArr.getJSONObject(i);
 				UserSimpleInfo user = new UserSimpleInfo();
 				user.setEmail(jsonObj.getString("email"));
@@ -162,66 +160,65 @@ public class LoadData {
 				user.setPicturePath(jsonObj.getString("picturePath"));
 				userList.add(user);
 			}
-			
-		}catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return userList;
 	}
-	
-	public ArrayList<KmClinicView> searchClinicListByKeyword(String keyword){
-		
-		Map<Integer,KmClinicView> allMap = getKmClinicViewMap();
-		
+
+	public ArrayList<KmClinicView> searchClinicListByKeyword(String keyword) {
+
+		Map<Integer, KmClinicView> allMap = getKmClinicViewMap();
+
 		ArrayList<KmClinicView> clinicList = new ArrayList<KmClinicView>();
-		for(int i=0;i<keywordMap.size();i++){
-			Integer integer = new Integer(i+1);
+		for (int i = 0; i < keywordMap.size(); i++) {
+			Integer integer = new Integer(i + 1);
 			String keywords = keywordMap.get(integer);
 			Log.d("koo", "========================");
-			Log.d("koo", "keywords:"+keywords);
-			Log.d("koo", "keyword:"+keyword);
-			if(keywords.contains(keyword)){
+			Log.d("koo", "keywords:" + keywords);
+			Log.d("koo", "keyword:" + keyword);
+			if (keywords.contains(keyword)) {
 				clinicList.add(allMap.get(integer));
-				Log.d("koo", String.valueOf(i+1));
+				Log.d("koo", String.valueOf(i + 1));
 			}
 		}
 		Log.d("koo", "========================");
 		/*
-		for(KmClinicView tmpView : clinicList){
-			Log.d("koo", tmpView.toString());
-		}
-		*/
+		 * for(KmClinicView tmpView : clinicList){ Log.d("koo",
+		 * tmpView.toString()); }
+		 */
 		return clinicList;
 	}
-	
-	public Map<Integer,KmClinicView> getKmClinicViewMap(){
+
+	public Map<Integer, KmClinicView> getKmClinicViewMap() {
 		ArrayList<KmClinicView> viewList = getAllKmClinicView();
-		Map<Integer,KmClinicView> viewMap = new HashMap<Integer,KmClinicView>();
-		for(int i=0;i<viewList.size();i++){
-			//Log.d("koo", "test getKmClinicViewMap "+i);
-			viewMap.put(i+1, viewList.get(i));
+		Map<Integer, KmClinicView> viewMap = new HashMap<Integer, KmClinicView>();
+		for (int i = 0; i < viewList.size(); i++) {
+			// Log.d("koo", "test getKmClinicViewMap "+i);
+			viewMap.put(i + 1, viewList.get(i));
 		}
 		return viewMap;
 	}
-	
-	public ArrayList<KmClinicView> getAllKmClinicView(){
+
+	public ArrayList<KmClinicView> getAllKmClinicView() {
 		ArrayList<KmClinicView> clinicList = new ArrayList<KmClinicView>();
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
 		try {
-			json = getJsonFromFile(context,"kmclinic_all_list.json");
+			json = getJsonFromFile(context, "kmclinic_all_list.json");
 			// ok
 			jsonObj = new JSONObject(json);
 			jsonArr = jsonObj.getJSONArray("KmClinicView");
-			for(int i=0;i<jsonArr.length();i++){
+			for (int i = 0; i < jsonArr.length(); i++) {
 				jsonObj = jsonArr.getJSONObject(i);
-				//Log.d("koo", "test getAllKmClinicView "+jsonObj.toString());
+				// Log.d("koo", "test getAllKmClinicView "+jsonObj.toString());
 				KmClinicView view = new KmClinicView();
 				view.setId(jsonObj.getInt("id"));
 				view.setFollowNum(jsonObj.getInt("followNum"));
@@ -232,96 +229,144 @@ public class LoadData {
 				view.setRemainRegion(jsonObj.getString("remainRegion"));
 				view.setPicturePath(jsonObj.getString("picturePath"));
 				view.setName(jsonObj.getString("name"));
-				
+
 				JSONArray innerArr = new JSONArray();
 				List<String> keywordList = new ArrayList<String>();
 				innerArr = jsonObj.getJSONArray("keywordList");
-				for(int j=0;j<innerArr.length();j++){
+				for (int j = 0; j < innerArr.length(); j++) {
 					String keyword = (String) innerArr.get(j);
 					keywordList.add(keyword);
 				}
 				view.setKeywordList(keywordList);
-				
+
 				List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 				innerArr = jsonObj.getJSONArray("userSimpleInfoList");
-				for(int j=0;j<innerArr.length();j++){
+				for (int j = 0; j < innerArr.length(); j++) {
 					JSONObject innerObj = innerArr.getJSONObject(j);
 					UserSimpleInfo info = new UserSimpleInfo();
 					info.setEmail(innerObj.getString("email"));
-					Log.d("koo", "||"+innerObj.getString("picturePath"));
+					Log.d("koo", "||" + innerObj.getString("picturePath"));
 					info.setPicturePath(innerObj.getString("picturePath"));
 					info.setName(innerObj.getString("name"));
 					simpleList.add(info);
 				}
 				view.setUserSimpleInfoList(simpleList);
-				
+
 				clinicList.add(view);
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return clinicList;
 	}
-	
-	private int getIdFromUserEmail(String email){
-		int id =0;
-		if(email.equals("test@gmail.com")) id =0; 
-		else if(email.equals("user1@gmail.com")) id =1;
-		else if(email.equals("user2@gmail.com")) id =2;
-		else if(email.equals("user3@gmail.com")) id =3;
-		else if(email.equals("user4@gmail.com")) id =4;
-		else if(email.equals("user5@gmail.com")) id =5;
-		else if(email.equals("user6@gmail.com")) id =6;
-		else if(email.equals("user7@gmail.com")) id =7;
-		else if(email.equals("user8@gmail.com")) id =8;
-		else if(email.equals("user9@gmail.com")) id =9;
-		else if(email.equals("user10@gmail.com")) id =10;
-		else if(email.equals("user11@gmail.com")) id =11;
-		else if(email.equals("user12@gmail.com")) id =12;
-		else if(email.equals("user13@gmail.com")) id =13;
-		else if(email.equals("user14@gmail.com")) id =14;
-		else if(email.equals("user15@gmail.com")) id =15;
-		
+
+	private int getIdFromUserEmail(String email) {
+		int id = 0;
+		if (email.equals("test@gmail.com"))
+			id = 0;
+		else if (email.equals("user1@gmail.com"))
+			id = 1;
+		else if (email.equals("user2@gmail.com"))
+			id = 2;
+		else if (email.equals("user3@gmail.com"))
+			id = 3;
+		else if (email.equals("user4@gmail.com"))
+			id = 4;
+		else if (email.equals("user5@gmail.com"))
+			id = 5;
+		else if (email.equals("user6@gmail.com"))
+			id = 6;
+		else if (email.equals("user7@gmail.com"))
+			id = 7;
+		else if (email.equals("user8@gmail.com"))
+			id = 8;
+		else if (email.equals("user9@gmail.com"))
+			id = 9;
+		else if (email.equals("user10@gmail.com"))
+			id = 10;
+		else if (email.equals("user11@gmail.com"))
+			id = 11;
+		else if (email.equals("user12@gmail.com"))
+			id = 12;
+		else if (email.equals("user13@gmail.com"))
+			id = 13;
+		else if (email.equals("user14@gmail.com"))
+			id = 14;
+		else if (email.equals("user15@gmail.com"))
+			id = 15;
+
 		return id;
 	}
-	
+
 	/**
 	 * 
 	 * @param userNum
 	 * @return
 	 */
-	public UserView getUserView(String userEmail){
+	public UserView getUserView(String userEmail) {
 		UserView userView = new UserView();
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
-		
+
 		int userNum = getIdFromUserEmail(userEmail);
 		try {
-			
-			switch(userNum){
-			case 0: json = getJsonFromFile(context,"profile_user0.json");break;
-			case 1: json = getJsonFromFile(context,"profile_user1.json");break;
-			case 2: json = getJsonFromFile(context,"profile_user2.json");break;
-			case 3: json = getJsonFromFile(context,"profile_user3.json");break;
-			case 4: json = getJsonFromFile(context,"profile_user4.json");break;
-			case 5: json = getJsonFromFile(context,"profile_user5.json");break;
-			case 6: json = getJsonFromFile(context,"profile_user6.json");break;
-			case 7: json = getJsonFromFile(context,"profile_user7.json");break;
-			case 8: json = getJsonFromFile(context,"profile_user8.json");break;
-			case 9: json = getJsonFromFile(context,"profile_user9.json");break;
-			case 10: json = getJsonFromFile(context,"profile_user10.json");break;
-			case 11: json = getJsonFromFile(context,"profile_user11.json");break;
-			case 12: json = getJsonFromFile(context,"profile_user12.json");break;
-			case 13: json = getJsonFromFile(context,"profile_user13.json");break;
-			case 14: json = getJsonFromFile(context,"profile_user14.json");break;
-			case 15: json = getJsonFromFile(context,"profile_user15.json");break;
+
+			switch (userNum) {
+			case 0:
+				json = getJsonFromFile(context, "profile_user0.json");
+				break;
+			case 1:
+				json = getJsonFromFile(context, "profile_user1.json");
+				break;
+			case 2:
+				json = getJsonFromFile(context, "profile_user2.json");
+				break;
+			case 3:
+				json = getJsonFromFile(context, "profile_user3.json");
+				break;
+			case 4:
+				json = getJsonFromFile(context, "profile_user4.json");
+				break;
+			case 5:
+				json = getJsonFromFile(context, "profile_user5.json");
+				break;
+			case 6:
+				json = getJsonFromFile(context, "profile_user6.json");
+				break;
+			case 7:
+				json = getJsonFromFile(context, "profile_user7.json");
+				break;
+			case 8:
+				json = getJsonFromFile(context, "profile_user8.json");
+				break;
+			case 9:
+				json = getJsonFromFile(context, "profile_user9.json");
+				break;
+			case 10:
+				json = getJsonFromFile(context, "profile_user10.json");
+				break;
+			case 11:
+				json = getJsonFromFile(context, "profile_user11.json");
+				break;
+			case 12:
+				json = getJsonFromFile(context, "profile_user12.json");
+				break;
+			case 13:
+				json = getJsonFromFile(context, "profile_user13.json");
+				break;
+			case 14:
+				json = getJsonFromFile(context, "profile_user14.json");
+				break;
+			case 15:
+				json = getJsonFromFile(context, "profile_user15.json");
+				break;
 			}
-			
+
 			jsonObj = new JSONObject(json);
 			jsonArr = jsonObj.getJSONArray("UserView");
 			jsonObj = jsonArr.getJSONObject(0);
-			
+
 			userView.setFollowNum(jsonObj.getInt("followNum"));
 			userView.setBirthday(jsonObj.getInt("birthday"));
 			userView.setBigRegionCode(jsonObj.getInt("bigRegionCode"));
@@ -337,37 +382,37 @@ public class LoadData {
 			userView.setGender(jsonObj.getInt("gender"));
 			userView.setFollow(jsonObj.getBoolean("follow"));
 			userView.setGradeCode(jsonObj.getInt("gradeCode"));
-			
+
 			jsonArr = jsonObj.getJSONArray("followList");
 			List<UserSimpleFollow> usfList = new ArrayList<UserSimpleFollow>();
-			for(int i=0;i<jsonArr.length();i++){
+			for (int i = 0; i < jsonArr.length(); i++) {
 				JSONObject innerObj = jsonArr.getJSONObject(i);
 				UserSimpleFollow uf = new UserSimpleFollow();
 				uf.setEmail(innerObj.getString("email"));
 				uf.setName(innerObj.getString("name"));
 				uf.setPicturePath(innerObj.getString("picturePath"));
 				uf.setFollowNum(innerObj.getInt("followNum"));
-				Log.d("koo", "LoadData 328:"+uf.toString());
+				Log.d("koo", "LoadData 328:" + uf.toString());
 				usfList.add(uf);
 			}
 			userView.setFollowList(usfList);
-			
+
 			jsonArr = jsonObj.getJSONArray("followingList");
 			List<UserSimpleFollow> followingList = new ArrayList<UserSimpleFollow>();
-			for(int i=0;i<jsonArr.length();i++){
+			for (int i = 0; i < jsonArr.length(); i++) {
 				JSONObject innerObj = jsonArr.getJSONObject(i);
 				UserSimpleFollow uf = new UserSimpleFollow();
 				uf.setEmail(innerObj.getString("email"));
 				uf.setName(innerObj.getString("name"));
 				uf.setPicturePath(innerObj.getString("picturePath"));
 				uf.setFollowNum(innerObj.getInt("followNum"));
-				Log.d("koo", "LoadData 342:"+uf.toString());
+				Log.d("koo", "LoadData 342:" + uf.toString());
 				followingList.add(uf);
 			}
-			
+
 			List<ReviewView> reviewList = new ArrayList<ReviewView>();
 			jsonArr = jsonObj.getJSONArray("reviewViewList");
-			for(int i=0;i<jsonArr.length();i++){
+			for (int i = 0; i < jsonArr.length(); i++) {
 				JSONObject innerObj = jsonArr.getJSONObject(i);
 				ReviewView review = new ReviewView();
 				review.setReviewTime(innerObj.getString("reviewTime"));
@@ -383,21 +428,21 @@ public class LoadData {
 				review.setUserName(innerObj.getString("userName"));
 				review.setKmClinicMiddleRegionName(innerObj.getString("kmClinicMiddleRegionName"));
 				review.setComment(innerObj.getString("comment"));
-					
+
 				JSONArray innerArr = innerObj.getJSONArray("reviewKeywordList");
 				List<ReviewKeyword> reviewKeywordList = new ArrayList<ReviewKeyword>();
-				for(int j=0;j<innerArr.length();j++){
+				for (int j = 0; j < innerArr.length(); j++) {
 					JSONObject inner2Obj = innerArr.getJSONObject(j);
 					ReviewKeyword rk = new ReviewKeyword();
 					rk.setId(inner2Obj.getInt("id"));
 					rk.setKeyword(inner2Obj.getString("keyword"));
 					reviewKeywordList.add(rk);
 				}
-				reviewList.add(review);		
-				Log.d("koo", "LoadData 375:"+review.toString());
+				reviewList.add(review);
+				Log.d("koo", "LoadData 375:" + review.toString());
 			}
 			userView.setReviewViewList(reviewList);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -405,61 +450,117 @@ public class LoadData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return userView;
 	}
-	
+
 	/**
 	 * 
-	 * 한의원 아이디를 넣으면 해당 한의원의 상세정보 객체를 가져옴
-	 * 보성한의원id 	:2
-	 * 고당비한의원id	:7 
-	 * 동방한의원id	:11 
-	 * 미아체한의원id :14 
-	 * 청구경희한의원id:30 
+	 * 한의원 아이디를 넣으면 해당 한의원의 상세정보 객체를 가져옴 보성한의원id :2 고당비한의원id :7 동방한의원id :11
+	 * 미아체한의원id :14 청구경희한의원id:30
+	 * 
 	 * @param kmClinicId
 	 * @return
 	 */
-	public KmClinicDetailView getKmClinicDetailView(int kmClinicId){
+	public KmClinicDetailView getKmClinicDetailView(int kmClinicId) {
 		KmClinicDetailView view = new KmClinicDetailView();
 		String json = null;
 		JSONObject jsonObj = null;
 		JSONArray jsonArr = null;
 		try {
-			switch(kmClinicId){
-			case 1: json = getJsonFromFile(context,"kmclinic_detail_1.json");break;
-			case 2: json = getJsonFromFile(context,"kmclinic_detail_2.json");break;
-			case 3: json = getJsonFromFile(context,"kmclinic_detail_3.json");break;
-			case 4: json = getJsonFromFile(context,"kmclinic_detail_4.json");break;
-			case 5: json = getJsonFromFile(context,"kmclinic_detail_5.json");break;
-			case 6: json = getJsonFromFile(context,"kmclinic_detail_6.json");break;
-			case 7: json = getJsonFromFile(context,"kmclinic_detail_7.json");break;
-			case 8: json = getJsonFromFile(context,"kmclinic_detail_8.json");break;
-			case 9: json = getJsonFromFile(context,"kmclinic_detail_9.json");break;
-			case 10: json = getJsonFromFile(context,"kmclinic_detail_10.json");break;
-			case 11: json = getJsonFromFile(context,"kmclinic_detail_11.json");break;
-			case 12: json = getJsonFromFile(context,"kmclinic_detail_12.json");break;
-			case 13: json = getJsonFromFile(context,"kmclinic_detail_13.json");break;
-			case 14: json = getJsonFromFile(context,"kmclinic_detail_14.json");break;
-			case 15: json = getJsonFromFile(context,"kmclinic_detail_15.json");break;
-			case 16: json = getJsonFromFile(context,"kmclinic_detail_16.json");break;
-			case 17: json = getJsonFromFile(context,"kmclinic_detail_17.json");break;
-			case 18: json = getJsonFromFile(context,"kmclinic_detail_18.json");break;
-			case 19: json = getJsonFromFile(context,"kmclinic_detail_19.json");break;
-			case 20: json = getJsonFromFile(context,"kmclinic_detail_20.json");break;
-			case 21: json = getJsonFromFile(context,"kmclinic_detail_21.json");break;
-			case 22: json = getJsonFromFile(context,"kmclinic_detail_22.json");break;
-			case 23: json = getJsonFromFile(context,"kmclinic_detail_23.json");break;
-			case 24: json = getJsonFromFile(context,"kmclinic_detail_24.json");break;
-			case 25: json = getJsonFromFile(context,"kmclinic_detail_25.json");break;
-			case 26: json = getJsonFromFile(context,"kmclinic_detail_26.json");break;
-			case 27: json = getJsonFromFile(context,"kmclinic_detail_27.json");break;
-			case 28: json = getJsonFromFile(context,"kmclinic_detail_28.json");break;
-			case 29: json = getJsonFromFile(context,"kmclinic_detail_29.json");break;
-			case 30: json = getJsonFromFile(context,"kmclinic_detail_30.json");break;
+			switch (kmClinicId) {
+			case 1:
+				json = getJsonFromFile(context, "kmclinic_detail_1.json");
+				break;
+			case 2:
+				json = getJsonFromFile(context, "kmclinic_detail_2.json");
+				break;
+			case 3:
+				json = getJsonFromFile(context, "kmclinic_detail_3.json");
+				break;
+			case 4:
+				json = getJsonFromFile(context, "kmclinic_detail_4.json");
+				break;
+			case 5:
+				json = getJsonFromFile(context, "kmclinic_detail_5.json");
+				break;
+			case 6:
+				json = getJsonFromFile(context, "kmclinic_detail_6.json");
+				break;
+			case 7:
+				json = getJsonFromFile(context, "kmclinic_detail_7.json");
+				break;
+			case 8:
+				json = getJsonFromFile(context, "kmclinic_detail_8.json");
+				break;
+			case 9:
+				json = getJsonFromFile(context, "kmclinic_detail_9.json");
+				break;
+			case 10:
+				json = getJsonFromFile(context, "kmclinic_detail_10.json");
+				break;
+			case 11:
+				json = getJsonFromFile(context, "kmclinic_detail_11.json");
+				break;
+			case 12:
+				json = getJsonFromFile(context, "kmclinic_detail_12.json");
+				break;
+			case 13:
+				json = getJsonFromFile(context, "kmclinic_detail_13.json");
+				break;
+			case 14:
+				json = getJsonFromFile(context, "kmclinic_detail_14.json");
+				break;
+			case 15:
+				json = getJsonFromFile(context, "kmclinic_detail_15.json");
+				break;
+			case 16:
+				json = getJsonFromFile(context, "kmclinic_detail_16.json");
+				break;
+			case 17:
+				json = getJsonFromFile(context, "kmclinic_detail_17.json");
+				break;
+			case 18:
+				json = getJsonFromFile(context, "kmclinic_detail_18.json");
+				break;
+			case 19:
+				json = getJsonFromFile(context, "kmclinic_detail_19.json");
+				break;
+			case 20:
+				json = getJsonFromFile(context, "kmclinic_detail_20.json");
+				break;
+			case 21:
+				json = getJsonFromFile(context, "kmclinic_detail_21.json");
+				break;
+			case 22:
+				json = getJsonFromFile(context, "kmclinic_detail_22.json");
+				break;
+			case 23:
+				json = getJsonFromFile(context, "kmclinic_detail_23.json");
+				break;
+			case 24:
+				json = getJsonFromFile(context, "kmclinic_detail_24.json");
+				break;
+			case 25:
+				json = getJsonFromFile(context, "kmclinic_detail_25.json");
+				break;
+			case 26:
+				json = getJsonFromFile(context, "kmclinic_detail_26.json");
+				break;
+			case 27:
+				json = getJsonFromFile(context, "kmclinic_detail_27.json");
+				break;
+			case 28:
+				json = getJsonFromFile(context, "kmclinic_detail_28.json");
+				break;
+			case 29:
+				json = getJsonFromFile(context, "kmclinic_detail_29.json");
+				break;
+			case 30:
+				json = getJsonFromFile(context, "kmclinic_detail_30.json");
+				break;
 			}
-			
-			
+
 			jsonObj = new JSONObject(json);
 			jsonArr = jsonObj.getJSONArray("KmClinicDetailView");
 			jsonObj = jsonArr.getJSONObject(0);
@@ -484,15 +585,17 @@ public class LoadData {
 			case 14: view.setPicturePath("body_miache.png");break;		//미아체한의원 : 14
 			case 30: view.setPicturePath("body_kyunghee.png");break;	//청구경희한의원: 30
 			}
-			
+
 			jsonArr = jsonObj.getJSONArray("keywordList");
 			List<String> keywords = new ArrayList<String>();
-			for(int i=0;i<jsonArr.length();i++){
+			for (int i = 0; i < jsonArr.length(); i++) {
 				String keyword = (String) jsonArr.get(i);
 				keywords.add(keyword);
 			}
 			List<UserSimpleInfo> userList = getAllUserSimpleInfo();
 			view.setUserSimpleInfoList(userList);
+
+
 			
 			Map<Integer, ArrayList<TimeTable>> timeTableMap = getKmClinicTimeTable();
 			ArrayList<TimeTable> timeList = timeTableMap.get(kmClinicId);
@@ -528,13 +631,10 @@ public class LoadData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		return view;
 	}
-	
-	
-	public ArrayList<Time> getTimeList(){
+
+	public ArrayList<Time> getTimeList() {
 		ArrayList<Time> timeList = new ArrayList<Time>();
 		Time time1 = new Time(1, "00:00");
 		Time time2 = new Time(2, "00:30");
@@ -546,7 +646,7 @@ public class LoadData {
 		Time time8 = new Time(8, "03:30");
 		Time time9 = new Time(9, "04:00");
 		Time time10 = new Time(10, "04:30");
-		
+
 		Time time11 = new Time(11, "05:00");
 		Time time12 = new Time(12, "05:30");
 		Time time13 = new Time(13, "06:00");
@@ -557,7 +657,7 @@ public class LoadData {
 		Time time18 = new Time(18, "08:30");
 		Time time19 = new Time(19, "09:00");
 		Time time20 = new Time(20, "09:30");
-		
+
 		Time time21 = new Time(21, "10:00");
 		Time time22 = new Time(22, "10:30");
 		Time time23 = new Time(23, "11:00");
@@ -567,7 +667,7 @@ public class LoadData {
 		Time time27 = new Time(27, "13:00");
 		Time time28 = new Time(28, "13:30");
 		Time time29 = new Time(29, "14:00");
-		
+
 		Time time30 = new Time(30, "14:30");
 		Time time31 = new Time(31, "15:00");
 		Time time32 = new Time(32, "15:30");
@@ -578,7 +678,7 @@ public class LoadData {
 		Time time37 = new Time(37, "18:00");
 		Time time38 = new Time(38, "18:30");
 		Time time39 = new Time(39, "19:00");
-		
+
 		Time time40 = new Time(40, "19:30");
 		Time time41 = new Time(41, "20:00");
 		Time time42 = new Time(42, "20:30");
@@ -589,7 +689,7 @@ public class LoadData {
 		Time time47 = new Time(47, "23:00");
 		Time time48 = new Time(48, "23:30");
 		Time time49 = new Time(49, "24:00");
-		
+
 		timeList.add(time1);
 		timeList.add(time2);
 		timeList.add(time3);
@@ -639,11 +739,11 @@ public class LoadData {
 		timeList.add(time47);
 		timeList.add(time48);
 		timeList.add(time49);
-		
+
 		return timeList;
 	}
 
-	public ArrayList<Week> getWeekList(){
+	public ArrayList<Week> getWeekList() {
 		Week week1 = new Week(1, "월요일");
 		Week week2 = new Week(1, "화요일");
 		Week week3 = new Week(1, "수요일");
@@ -651,7 +751,7 @@ public class LoadData {
 		Week week5 = new Week(1, "금요일");
 		Week week6 = new Week(1, "토요일");
 		Week week7 = new Week(1, "일요일");
-		
+
 		ArrayList<Week> weekList = new ArrayList<Week>();
 		weekList.add(week1);
 		weekList.add(week2);
@@ -660,19 +760,19 @@ public class LoadData {
 		weekList.add(week5);
 		weekList.add(week6);
 		weekList.add(week7);
-		
+
 		return weekList;
 	}
-	
-	public ArrayList<BigRegion> getBigRegionList(){
+
+	public ArrayList<BigRegion> getBigRegionList() {
 		BigRegion bigRegion1 = new BigRegion(1, "서울");
 		ArrayList<BigRegion> list = new ArrayList<BigRegion>();
 		list.add(bigRegion1);
-		
-		return list; 
+
+		return list;
 	}
-		
-	public ArrayList<MiddleRegion> getMiddleRegionList(){
+
+	public ArrayList<MiddleRegion> getMiddleRegionList() {
 		MiddleRegion middle1 = new MiddleRegion(1, "종로구", 1);
 		MiddleRegion middle2 = new MiddleRegion(1, "중구", 1);
 		MiddleRegion middle3 = new MiddleRegion(1, "용산구", 1);
@@ -698,7 +798,7 @@ public class LoadData {
 		MiddleRegion middle23 = new MiddleRegion(1, "강남구", 1);
 		MiddleRegion middle24 = new MiddleRegion(1, "송파구", 1);
 		MiddleRegion middle25 = new MiddleRegion(1, "강동구", 1);
-		
+
 		ArrayList<MiddleRegion> middleRegion = new ArrayList<MiddleRegion>();
 		middleRegion.add(middle1);
 		middleRegion.add(middle2);
@@ -725,10 +825,49 @@ public class LoadData {
 		middleRegion.add(middle23);
 		middleRegion.add(middle24);
 		middleRegion.add(middle25);
-		
+
 		return middleRegion;
 	}
-	
+
+	public ArrayList<UserSimpleInfo> getRandomUserSimpleInfoList(int seed) {
+
+		ArrayList<UserSimpleInfo> randomList = new ArrayList<UserSimpleInfo>();
+
+		Random rand = new Random(seed);
+
+		LoadData loadData = new LoadData(context);
+
+		List<UserSimpleInfo> AllUserSimpleInfoList = loadData.getAllUserSimpleInfo();
+
+		int listSize = (int) rand.nextInt(3) % 3 + 3;
+
+		int[] randomNumberList = new int[listSize];
+
+		for (int i = 0; i < randomNumberList.length; i++) {
+			int test = 0;
+			int randomNumber = (int) rand.nextInt(AllUserSimpleInfoList.size()) % AllUserSimpleInfoList.size();
+
+			for (int j = 0; j < randomNumberList.length; j++) {
+
+				if (randomNumber == randomNumberList[j])
+					test++;
+
+			}
+
+			if (test != 0) {
+				i--;
+				continue;
+			}
+			randomNumberList[i] = randomNumber;
+		}
+
+		for(int i = 0; i<randomNumberList.length; i++) {
+			randomList.add(AllUserSimpleInfoList.get(randomNumberList[i]));
+		}
+		
+		return randomList;
+
+	}
 
 	public Map<Integer,ArrayList<TimeTable>> getKmClinicTimeTable(){
 		
@@ -923,6 +1062,5 @@ public class LoadData {
 
 		return timeMap;
 	}
-	
 	
 }

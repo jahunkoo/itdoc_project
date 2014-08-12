@@ -1,4 +1,4 @@
-package com.kmbridge.itdoc.activity;
+package com.kmbridge.itdoc.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.SeeAllReviewListActivity;
 import com.kmbridge.itdoc.thread.ReviewDialogHandler;
 
 public class ReviewRecommendDialog extends Dialog implements android.view.View.OnClickListener {

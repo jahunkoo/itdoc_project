@@ -155,10 +155,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		
 		LoadData load = new LoadData(this);
 		//load.getUserView("test@gmail.com");
-		Log.d("koo", load.getKmClinicDetailView(12).toString());
 	}
 
-	
 	private String userEmail;	//없으면 null로 명시함
 	private boolean isLogin;
 	private LinearLayout leftBottomLayout;

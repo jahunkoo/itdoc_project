@@ -78,6 +78,6 @@
         android:layout_below="@+id/textView4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:src="@drawable/emoticon_soso_red" />
+        android:src="@drawable/emoticon_good_red" />
 
 </RelativeLayout>
