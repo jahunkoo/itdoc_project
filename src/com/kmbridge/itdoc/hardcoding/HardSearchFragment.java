@@ -3,6 +3,7 @@ package com.kmbridge.itdoc.hardcoding;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.location.Address;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -24,6 +26,7 @@ import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.fragment.SearchResultClinicListFragment;
+import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class HardSearchFragment extends Fragment implements OnClickListener, OnItemClickListener {
@@ -125,10 +128,11 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		case R.id.button_fragment_search:
 
 			String text = search.getText().toString();
-
+			text = text.trim();
+			Log.d("koo", "|"+text+"|");
 			LoadData load = new LoadData(context);
 			ArrayList<KmClinicView> kmClinicViewList = load.searchClinicListByKeyword(text);
-			kmClinicViewList.toString();
+			Log.d("koo", "HardSearchFragment kmClinicViewList size:"+kmClinicViewList.size());
 
 			if (share.isExist(context, RECENT_KEYWORD)) {
 				try {
@@ -150,11 +154,14 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 			} catch (RecordNotFoundException e) {
 				e.printStackTrace();
 			}
-			
+
 			Fragment fragment = SearchResultClinicListFragment.create(context, kmClinicViewList);
 			FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
+			fragmentManager.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
+			
+			
+			InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
 			// 검색 버튼을 누르면 바로 추가가 되도록 하는 코드 이지만
 			// 나중에는 어차피 검색 버튼을 누르면 화면이 바로 넘어가서 검색 결과를 보여 줄 예정이므로, 상관 없음.
 			// searchAdapter = new SearchAdapter(context, keywords1);

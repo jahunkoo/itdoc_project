@@ -22,20 +22,23 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/review_user1_Image"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="100dp"
                     android:background="@drawable/user7" />
 
                 <TextView
+                    android:id="@+id/review_user1_name"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:text="사용자 이름" />
 
                 <TextView
+                    android:id="@+id/review_user1_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -53,21 +56,23 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/review_user1_keyword"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
-                    android:text="진료 과목 들어 갈 곳" 
-                    android:textColor="#ff0000"/>
-                
-                <ImageView 
+                    android:text="진료 과목 들어 갈 곳"
+                    android:textColor="#ff0000" />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/face_nice_on"/>
-                
-                 <TextView
+                    android:background="@drawable/face_nice_on" />
+
+                <TextView
+                    android:id="@+id/review_user1_review"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -75,8 +80,8 @@
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="리뷰 들어 갈 곳" />
-                 
-                  <View
+
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="10dp"
@@ -84,9 +89,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
-                
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -95,20 +99,23 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/review_user2_Image"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="100dp"
                     android:background="@drawable/user7" />
 
                 <TextView
+                    android:id="@+id/review_user2_name"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:text="사용자 이름" />
 
                 <TextView
+                    android:id="@+id/review_user2_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -126,21 +133,23 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/review_user2_keyword"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
-                    android:text="진료 과목 들어 갈 곳" 
-                    android:textColor="#ff0000"/>
-                
-                <ImageView 
+                    android:text="진료 과목 들어 갈 곳"
+                    android:textColor="#ff0000" />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/face_nice_on"/>
-                
-                 <TextView
+                    android:background="@drawable/face_nice_on" />
+
+                <TextView
+                    android:id="@+id/review_user2_review"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -148,8 +157,8 @@
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="리뷰 들어 갈 곳" />
-                 
-                  <View
+
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="10dp"
@@ -157,9 +166,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
-                
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -168,20 +176,23 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/review_user3_Image"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="100dp"
                     android:background="@drawable/user7" />
 
                 <TextView
+                    android:id="@+id/review_user3_name"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:text="사용자 이름" />
 
                 <TextView
+                    android:id="@+id/review_user3_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -199,21 +210,23 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/review_user3_keyword"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
-                    android:text="진료 과목 들어 갈 곳" 
-                    android:textColor="#ff0000"/>
-                
-                <ImageView 
+                    android:text="진료 과목 들어 갈 곳"
+                    android:textColor="#ff0000" />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/face_nice_on"/>
-                
-                 <TextView
+                    android:background="@drawable/face_nice_on" />
+
+                <TextView
+                    android:id="@+id/review_user3_review"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -221,8 +234,8 @@
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="리뷰 들어 갈 곳" />
-                 
-                  <View
+
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="10dp"
@@ -230,9 +243,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
-                
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -241,20 +253,23 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/review_user4_Image"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="100dp"
                     android:background="@drawable/user7" />
 
                 <TextView
+                    android:id="@+id/review_user4_name"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:text="사용자 이름" />
 
                 <TextView
+                    android:id="@+id/review_user4_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -272,21 +287,23 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/review_user4_keyword"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
-                    android:text="진료 과목 들어 갈 곳" 
-                    android:textColor="#ff0000"/>
-                
-                <ImageView 
+                    android:text="진료 과목 들어 갈 곳"
+                    android:textColor="#ff0000" />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/face_nice_on"/>
-                
-                 <TextView
+                    android:background="@drawable/face_nice_on" />
+
+                <TextView
+                    android:id="@+id/review_user4_review"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -294,8 +311,8 @@
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="리뷰 들어 갈 곳" />
-                 
-                  <View
+
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="10dp"
@@ -303,9 +320,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
-                
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -314,20 +330,23 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/review_user5_Image"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="100dp"
                     android:background="@drawable/user7" />
 
                 <TextView
+                    android:id="@+id/review_user5_name"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="50dp"
                     android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
                     android:text="사용자 이름" />
 
                 <TextView
+                    android:id="@+id/review_user5_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -345,21 +364,23 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/review_user5_keyword"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
-                    android:text="진료 과목 들어 갈 곳" 
-                    android:textColor="#ff0000"/>
-                
-                <ImageView 
+                    android:text="진료 과목 들어 갈 곳"
+                    android:textColor="#ff0000" />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/face_nice_on"/>
-                
-                 <TextView
+                    android:background="@drawable/face_nice_on" />
+
+                <TextView
+                    android:id="@+id/review_user5_review"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -367,8 +388,8 @@
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="리뷰 들어 갈 곳" />
-                 
-                  <View
+
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="10dp"
@@ -376,11 +397,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
-                
             </LinearLayout>
         </LinearLayout>
-        
-        
     </ScrollView>
 
 </RelativeLayout>

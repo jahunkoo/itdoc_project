@@ -152,7 +152,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		
 		LoadData load = new LoadData(this);
 		//load.getUserView("test@gmail.com");
-		
 	}
 
 	
@@ -161,7 +160,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private LinearLayout leftBottomLayout;
 	
 	public void setDrawerLeft() {
-	
+		
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				try {
 					userEmail = "test@gmail.com";
@@ -494,6 +493,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				*/
 			}else if(tag.equals("CLINIC_LIST")){
 				
+			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)){
+				fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				fragment.getView().setVisibility(View.VISIBLE);
 			}
 		}
 		super.onBackPressed();

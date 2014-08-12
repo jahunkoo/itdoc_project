@@ -22,6 +22,7 @@
             android:weightSum="1" >
 
             <TextView
+                android:id="@+id/txtLikedUsers"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginLeft="20dp"
@@ -55,6 +56,7 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user1"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -70,6 +72,7 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user1_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
@@ -121,6 +124,7 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user2"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -136,6 +140,7 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user2_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
@@ -188,6 +193,7 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user3"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -203,6 +209,7 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user3_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
@@ -254,6 +261,7 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user4"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -269,6 +277,7 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user4_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
@@ -320,6 +329,7 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user5"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -335,6 +345,7 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user5_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
@@ -386,6 +397,7 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user6"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -401,6 +413,7 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user6_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
@@ -452,6 +465,7 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user7"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -467,6 +481,7 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user7_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
