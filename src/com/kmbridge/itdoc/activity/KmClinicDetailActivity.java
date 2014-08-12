@@ -24,11 +24,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.dto.KmDoctor;
 import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.hardcoding.LoadData;
-import com.kmbridge.itdoc.thread.ClinicDetailThread;
 public class KmClinicDetailActivity extends FragmentActivity implements	OnClickListener {
 	ActionBar actionBar = null; // 액션바 세팅 시작
 	int clinicNumber;
@@ -50,6 +50,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	TextView txtUserReview;
 	TextView txtDoctorName;
 	TextView txtDoctorCommnet;
+	TextView txtDoctorAcademy;
 	ImageView kmUserImage;
 	ImageView kmClinicImage;
 	
@@ -83,6 +84,14 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
 		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 		simpleList = KmClinicview.getUserSimpleInfoList();
+		
+		List<KmDoctor> doctorList = new ArrayList<KmDoctor>();
+		doctorList = KmClinicview.getDoctorList();
+		/*for(int i=0; i< doctorList.size(); i++)
+		{
+			doctorList.get(i).getAcademy();
+		}*/
+		
 		//String pictureName = simpleList.get(j).getPicturePath();
 		//load.getAllUserSimpleInfo()
 		//KmClinicview.setUserSimpleInfoList(userSimpleInfoList);
@@ -131,7 +140,6 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 			//Log.d("kim4","Resource :"+pictureId);
 			likeUser[j].setImageResource(pictureId);
 		}*/
-		
 		//리뷰 갯수 지정
 		
 		//사용자 사진 지정
@@ -162,40 +170,49 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//KmClinicview.get
 		
 		//맵 좌표 들어갈 곳
-		//String kmClinicMap = list.get(clinicNumber).get
+		String kmClinicMap = KmClinicview.getMapPoint();
+		String []Mappoint = kmClinicMap.split(",");
+		String latitude = Mappoint[0];
+		String longitude = Mappoint[1];
+		Double latitudeD = Double.parseDouble(latitude);
+		Double longitudeD = Double.parseDouble(longitude);
 		
-		
+		//맵 한글 위치 들어갈 곳
+		txtKmclinicMap.setText(KmClinicview.getName()+"\n"+KmClinicview.getBigRegionName()+KmClinicview.getMiddleRegionName()+KmClinicview.getRemainRegion());
 		
 		// LatLng loc = new LatLng(Double.parseDouble(latitude),
 		// Double.parseDouble(longitude));
-		LatLng loc = new LatLng(37.49927, 127.03748);
-		CameraPosition cp = new CameraPosition.Builder().target((loc)).zoom(16)
-				.build();
+		LatLng loc = new LatLng(latitudeD, longitudeD);
+		CameraPosition cp = new CameraPosition.Builder().target((loc)).zoom(16)	.build();
 		// MarkerOptions marker = new MarkerOptions().position(loc);
 
-		HaniMap = ((SupportMapFragment) getSupportFragmentManager()
-				.findFragmentById(R.id.map)).getMap();
+		HaniMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		HaniMap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
 
 		MarkerOptions hani_1 = new MarkerOptions();
 		// hani_1.position(new LatLng(Double.parseDouble(latitude),
 		// Double.parseDouble(longitude)));
-		hani_1.position(new LatLng(37.49927, 127.03748));
+		hani_1.position(new LatLng(latitudeD, longitudeD));
 		hani_1.title(KmClinicview.getName());
 		HaniMap.addMarker(hani_1).showInfoWindow();
 
 		
 		//의료진 이름
-		txtDoctorName.setText(KmClinicview.getName());
+		txtDoctorName.setText(doctorList.get(0).getName());
 		
 		//의료진 설명
 		txtDoctorCommnet.setText(KmClinicview.getDetails());
 		
+		//Log.d("kim5",doctorList.get(1).getAcademy());
+		//학력정보
+		//txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
+		txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
 		/*int clinicId = getIntent().getIntExtra("clinicId", -1);
 		ClinicDetailThread mThread = new ClinicDetailThread("getDetailKmClinic", this, clinicId);
 		mThread.start();*/
 
 	}
+
 
 	public void setLayout() {
 	//	detailRelatives = (ImageView) findViewById(R.id.kmclinic_detail_relatives);
@@ -211,6 +228,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		txtUserReview =(TextView) findViewById(R.id.txt_user_review);
 		txtDoctorName =(TextView) findViewById(R.id.txt_doctor_name);
 		txtDoctorCommnet =(TextView) findViewById(R.id.txt_doctor_comment);
+		txtDoctorAcademy = (TextView) findViewById(R.id.txt_doctor_academy);
 		
 		
 		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
@@ -269,6 +287,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		case R.id.txt_kmclinic_map:
 			Intent intentMap = new Intent(this, MapActivity.class);
 			intentMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intentMap.putExtra("clinicNumber", clinicNumber);
 			startActivity(intentMap);
 			break;
 			

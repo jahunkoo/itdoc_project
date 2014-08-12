@@ -338,6 +338,7 @@
                     android:text="의료진 설명 코멘트 들어갈 곳" />
 
                 <TextView
+                    android:id="@+id/txt_doctor_academy"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"

@@ -1,8 +1,12 @@
 package com.kmbridge.itdoc.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.R.layout;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.dto.KmDoctor;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 
 import android.app.ActionBar;
@@ -18,6 +22,10 @@ public class KmClinicMoreDoctorActivity extends Activity {
 
 	TextView txtMoreDocterName; // 의료진 이름
 	TextView txtMoreDocterComment; // 의료진 설명
+	private String doctorName;
+	private String doctorAcademy;
+	private String doctorMajor;
+	private String doctorCareer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,14 @@ public class KmClinicMoreDoctorActivity extends Activity {
 		LoadData load = new LoadData(this);
 		// 한의원 객체를 가져옴
 		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
-
+		
+		//한의원 한의사 리스트를 가져옴
+		List<KmDoctor> doctorList = new ArrayList<KmDoctor>();
+		doctorList = KmClinicview.getDoctorList();
+		for(int i=0; i< doctorList.size(); i++)
+		{
+			doctorList.get(i).getAcademy();
+		}
 		// 병원 이름 지정
 		getActionBar().setTitle(KmClinicview.getName());
 		

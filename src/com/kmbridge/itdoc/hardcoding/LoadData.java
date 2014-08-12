@@ -19,10 +19,12 @@ import android.util.Log;
 import com.kmbridge.itdoc.dto.BigRegion;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmClinicView;
+import com.kmbridge.itdoc.dto.KmDoctor;
 import com.kmbridge.itdoc.dto.MiddleRegion;
 import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.Time;
+import com.kmbridge.itdoc.dto.TimeTable;
 import com.kmbridge.itdoc.dto.UserSimpleFollow;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.dto.UserView;
@@ -38,6 +40,8 @@ public class LoadData {
 		createKeywordMap();	
 	}
 
+	
+	
 	private void createKeywordMap(){
 		keywordMap = new HashMap<Integer, String>();
 		keywordMap.put(1, "M자탈모,열성,원형,지루성 탈모");
@@ -469,14 +473,16 @@ public class LoadData {
 			view.setLinePhone(jsonObj.getString("linePhone"));
 			view.setDetails(jsonObj.getString("details"));
 			view.setType(jsonObj.getInt("type"));
+			view.setPicturePath(jsonObj.getString("picturePath"));
+			view.setMapPoint(jsonObj.getString("mapPoint"));
 			
 			switch(kmClinicId){
-			case 1: view.setPicturePath("biman_bosung");break;
-			case 2: view.setPicturePath("biman_bosung");break;
-			case 7: view.setPicturePath("biman_godangbi");break;	//고당비한의원id: 7
-			case 11: view.setPicturePath("biman_dongbang");break;	//동방한의원id: 11
-			case 14: view.setPicturePath("body_miache");break;		//미아체한의원 : 14
-			case 30: view.setPicturePath("body_kyunghee");break;	//청구경희한의원: 30
+			case 1: view.setPicturePath("biman_bosung.png");break;
+			case 2: view.setPicturePath("biman_bosung.png");break;
+			case 7: view.setPicturePath("biman_godangbi.png");break;	//고당비한의원id: 7
+			case 11: view.setPicturePath("biman_dongbang.png");break;	//동방한의원id: 11
+			case 14: view.setPicturePath("body_miache.png");break;		//미아체한의원 : 14
+			case 30: view.setPicturePath("body_kyunghee.png");break;	//청구경희한의원: 30
 			}
 			
 			jsonArr = jsonObj.getJSONArray("keywordList");
@@ -488,7 +494,32 @@ public class LoadData {
 			List<UserSimpleInfo> userList = getAllUserSimpleInfo();
 			view.setUserSimpleInfoList(userList);
 			
+			Map<Integer, ArrayList<TimeTable>> timeTableMap = getKmClinicTimeTable();
+			ArrayList<TimeTable> timeList = timeTableMap.get(kmClinicId);
+			view.setTimeTableList(timeList);
+			
 			view.setReviewList(getAllReviewView());
+			
+			List<KmDoctor> doctorList = new ArrayList<KmDoctor>();
+			if(jsonObj.has("doctorList")){
+				jsonArr = jsonObj.getJSONArray("doctorList");
+				for(int j=0;j<jsonArr.length();j++){
+					KmDoctor doctor = new KmDoctor();
+					JSONObject innerJson = jsonArr.getJSONObject(j);
+					if(innerJson.has("id"))				doctor.setId(innerJson.getInt("id"));
+					if(innerJson.has("kmClinicId"))		doctor.setKmClinicId(innerJson.getInt("kmClinicId"));
+					if(innerJson.has("name"))			doctor.setName(innerJson.getString("name"));
+					if(innerJson.has("career"))			doctor.setCareer(innerJson.getString("career"));
+					if(innerJson.has("major"))			doctor.setMajor(innerJson.getString("major"));
+					if(innerJson.has("academy"))			doctor.setAcademy(innerJson.getString("academy"));
+					
+					doctorList.add(doctor);
+				}
+			}
+			
+			view.setDoctorList(doctorList);
+			
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -498,7 +529,6 @@ public class LoadData {
 			e.printStackTrace();
 		}
 		
-		Log.d("koo", "start||"+view.toString());
 		
 		return view;
 	}
@@ -700,5 +730,199 @@ public class LoadData {
 	}
 	
 
+	public Map<Integer,ArrayList<TimeTable>> getKmClinicTimeTable(){
+		
+		Map<Integer,ArrayList<TimeTable>> timeMap = new HashMap<Integer, ArrayList<TimeTable>>();
+		//1
+		ArrayList<TimeTable> timeList1 = new ArrayList<TimeTable>();
+		timeList1.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList1.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(1, timeList1);
+		
+		//2
+		ArrayList<TimeTable> timeList2 = new ArrayList<TimeTable>();
+		timeList2.add(new TimeTable("평일", "10:00", "20:00", "13:00", "14:00"));
+		timeList2.add(new TimeTable("휴일", "10:00", "17:00", "13:00", "14:00"));
+		timeMap.put(2, timeList2);
+		
+		//3
+		ArrayList<TimeTable> timeList3 = new ArrayList<TimeTable>();
+		timeList3.add(new TimeTable("평일", "11:00", "21:00", " 14:00", "15:00"));
+		timeList3.add(new TimeTable("휴일", "10:00", "17:00", "12:00", "13:00"));
+		timeMap.put(3, timeList3);
+		
+		//4
+		ArrayList<TimeTable> timeList4 = new ArrayList<TimeTable>();
+		timeList4.add(new TimeTable("평일", "10:00", "19:00", " 14:00", "15:00"));
+		timeList4.add(new TimeTable("휴일", "10:00", "15:00", "12:00", "13:00"));
+		timeMap.put(4, timeList4);
+		
+		//5
+		ArrayList<TimeTable> timeList5 = new ArrayList<TimeTable>();
+		timeList5.add(new TimeTable("평일", "10:00", "18:00", "12:00", "13:00"));
+		timeList5.add(new TimeTable("휴일", "10:00", "17:00", "12:00", "13:00"));
+		timeMap.put(5, timeList5);
+		
+		//6
+		ArrayList<TimeTable> timeList6 = new ArrayList<TimeTable>();
+		timeList6.add(new TimeTable("평일", "09:30", "21:00", "12:00", "13:00"));
+		timeList6.add(new TimeTable("휴일", "09:30", "15:00", "12:00", "13:00"));
+		timeMap.put(6, timeList6);
+		
+		//7
+		ArrayList<TimeTable> timeList7 = new ArrayList<TimeTable>();
+		timeList7.add(new TimeTable("평일", "09:30", "21:00", "12:00", "13:00"));
+		timeList7.add(new TimeTable("휴일", "09:30", "15:00", "12:00", "13:00"));
+		timeMap.put(7, timeList7);
+	
+		//8
+		ArrayList<TimeTable> timeList8 = new ArrayList<TimeTable>();
+		timeList8.add(new TimeTable("평일", "11:00", "20:00", "14:00", "15:00"));
+		timeList8.add(new TimeTable("휴일", "11:00", "16:00", "12:00", "13:00"));
+		timeMap.put(8, timeList8);
+	
+		//9
+		ArrayList<TimeTable> timeList9 = new ArrayList<TimeTable>();
+		timeList9.add(new TimeTable("평일", "09:00", "17:00", "12:00", "13:00"));
+		timeList9.add(new TimeTable("휴일", "09:30", "16:00", "12:00", "13:00"));
+		timeMap.put(9, timeList9);
+
+		//10
+		ArrayList<TimeTable> timeList10 = new ArrayList<TimeTable>();
+		timeList10.add(new TimeTable("평일", "10:00", "18:00", "32:00", "14:00"));
+		timeList10.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(10, timeList10);
+
+		//11
+		ArrayList<TimeTable> timeList11 = new ArrayList<TimeTable>();
+		timeList11.add(new TimeTable("평일", "11:00", "20:00", "14:00", "15:00"));
+		timeList11.add(new TimeTable("휴일", "11:00", "16:00", "12:00", "13:00"));
+		timeMap.put(11, timeList11);
+
+		//12
+		ArrayList<TimeTable> timeList12 = new ArrayList<TimeTable>();
+		timeList12.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList12.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(12, timeList12);
+
+		//13
+		ArrayList<TimeTable> timeList13 = new ArrayList<TimeTable>();
+		timeList13.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList13.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(13, timeList13);
+
+		//14
+		ArrayList<TimeTable> timeList14 = new ArrayList<TimeTable>();
+		timeList14.add(new TimeTable("평일", "10:00", "19:00", " 14:00", "15:00"));
+		timeList14.add(new TimeTable("휴일", "10:00", "15:00", "12:00", "13:00"));
+		timeMap.put(14, timeList14);
+
+		//15
+		ArrayList<TimeTable> timeList15 = new ArrayList<TimeTable>();
+		timeList15.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList15.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(15, timeList15);
+
+		//16
+		ArrayList<TimeTable> timeList16 = new ArrayList<TimeTable>();
+		timeList16.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList16.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(16, timeList16);
+
+		//17
+		ArrayList<TimeTable> timeList17 = new ArrayList<TimeTable>();
+		timeList17.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList17.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(17, timeList17);
+
+		//18
+		ArrayList<TimeTable> timeList18 = new ArrayList<TimeTable>();
+		timeList18.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList18.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(18, timeList18);
+	
+		//19
+		ArrayList<TimeTable> timeList19 = new ArrayList<TimeTable>();
+		timeList19.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList19.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(19, timeList19);
+
+		//20
+		ArrayList<TimeTable> timeList20 = new ArrayList<TimeTable>();
+		timeList20.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList20.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(20, timeList20);
+
+		//21
+		ArrayList<TimeTable> timeList21 = new ArrayList<TimeTable>();
+		timeList21.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList21.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(21, timeList21);
+	
+		//22
+		ArrayList<TimeTable> timeList22 = new ArrayList<TimeTable>();
+		timeList22.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList22.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(22, timeList22);
+
+		//23
+		ArrayList<TimeTable> timeList23 = new ArrayList<TimeTable>();
+		timeList23.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList23.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(23, timeList23);
+
+		//24
+		ArrayList<TimeTable> timeList24 = new ArrayList<TimeTable>();
+		timeList24.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList24.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(24, timeList24);
+
+		//25
+		ArrayList<TimeTable> timeList25 = new ArrayList<TimeTable>();
+		timeList25.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList25.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(25, timeList25);
+
+		
+		//26
+		ArrayList<TimeTable> timeList26 = new ArrayList<TimeTable>();
+		timeList26.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList26.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(26, timeList26);
+
+		//27
+		ArrayList<TimeTable> timeList27 = new ArrayList<TimeTable>();
+		timeList27.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList27.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(27, timeList27);//월 11:00~22:00
+
+		//토 10:00~16:00
+
+		
+		
+		//28
+		ArrayList<TimeTable> timeList28 = new ArrayList<TimeTable>();
+		timeList28.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList28.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(28, timeList28);
+
+		//29
+		ArrayList<TimeTable> timeList29 = new ArrayList<TimeTable>();
+		timeList29.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList29.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(29, timeList29);
+
+		//30
+		ArrayList<TimeTable> timeList30 = new ArrayList<TimeTable>();
+		timeList30.add(new TimeTable("평일", "09:00", "18:00", "12:00", "13:00"));
+		timeList30.add(new TimeTable("휴일", "09:00", "17:00", "12:00", "13:00"));
+		timeMap.put(30, timeList30);
+		//월 09:00~21:00
+
+		//토 10:00~16:00
+
+		return timeMap;
+	}
+	
 	
 }
