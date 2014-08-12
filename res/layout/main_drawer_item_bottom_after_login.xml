@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="5" >
+    android:weightSum="5" 
+    android:background="@drawable/setting_section_bg2">
     <LinearLayout 
         android:id="@+id/linearlayout_left_drawer_bottom_go_profile"
         android:layout_width="wrap_content"

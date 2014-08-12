@@ -27,6 +27,9 @@ public class KmClinicAllreviewActivity extends Activity {
 
 	// 리뷰쓴 사람의 이름을 저장할 배열
 	TextView reViewUserName[] = new TextView[5];
+	
+	// 리뷰쓴 사람의 작성 시간을 저장할 배열
+	//TextView reViewUserName[] = new TextView[5];
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +57,22 @@ public class KmClinicAllreviewActivity extends Activity {
 		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 		simpleList = KmClinicview.getUserSimpleInfoList();
 		for (int j = 0; j < 5; j++) {
-			//String userName = simpleList.get(j).getName();
+
+			//사진 부분
 			String pictureName = simpleList.get(j).getPicturePath();
 			String[] arr = pictureName.split(".png");
 			String resName = arr[0];
 			int pictureId = getResources().getIdentifier(resName, "drawable",this.getPackageName());
 			
+			//이름 부분
 			String strUserName = simpleList.get(j).getName();
 			reViewUserName[j].setText(strUserName);
+			
+			//작성 날짜 부분
+			String strRevieTime = list.get(j).getReviewTime();
+			
+			
 			//reViewUserImage[j].setImageResource(pictureId);
-			//reViewUserName[j].setText(userName);
 			//String reViews = list.get(j).getComment();
 			//reViewUserReview[j].setText(reViews);
 		}

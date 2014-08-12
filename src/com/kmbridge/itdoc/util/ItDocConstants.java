@@ -30,6 +30,7 @@ public class ItDocConstants extends BasicConstants{
 	public static final String TAG_FRAGMENT_JOIN = "joinFragment";
 	public static final String TAG_FRAGMENT_LOGIN = "loginFragment";
 	public static final String TAG_FRAGMENT_CLINIC_LIST = "clinicListFragment";
+	public static final String TAG_FRAGMENT_SUPPORT = "SUPPORTERS";
 	
 	//UserProfileActivity related 
 	public static final String EMAIL = "email";

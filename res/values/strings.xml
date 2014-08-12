@@ -21,6 +21,7 @@
     <string name="title_activity_km_clinic_more_info">OO한의원</string>
     <string name="title_activity_km_clinic_more_doctor">OO한의원</string>
     <string name="title_activity_visited">리뷰남기기</string>
+	<string name="title_activity_support">색다른 한의사를 소개합니다</string>
 
     <!-- activity -->
     <!-- main_drawer_activity related -->
@@ -28,19 +29,26 @@
     <string name="action_settings">action_setting</string>
 
     <string-array name="drawer_menu_title_section_array">
-        <item>한의원 찾기</item>
-        <item>Itdoc 플러스</item>
+        <item>한의콕</item>
+        <item>한의원 정보</item>
+        <item>한방 정보</item>
     </string-array>
+    
+     <string-array name="drawer_menu_title_item_array_honikok">
+          <item>둘러보기</item>
+          <item>나의 콕!리스트</item>
+     </string-array>
     <string-array name="drawer_menu_title_item_array_search">
-        <item>검색하기</item>
-        <item>둘러보기</item>
-        <item>한방정보</item>
-        <item>찜한 한의원</item>
+        <item>한의원 검색하기</item>
+        <item>한의콕 서포터즈</item>
+        <item>셀럽 추천 한의원</item>
     </string-array>
     <string-array name="drawer_menu_title_item_array_plus">
-        <item>It+ 살펴보기</item>
-        <item>내 친구 관리</item>
+        <item>한의콕s 한방정보</item>
+        <item>궁금해요 Q<![CDATA[&]]>A</item>
     </string-array>
+    
+    
     <string-array name="drawer_menu_title_array">
         <item>검색하기</item>
         <item>둘러보기</item>
@@ -158,4 +166,32 @@
     <string name="layout_review_message_no_review">작성한 리뷰가 없습니다.</string>
     <string name="title_activity_visited_dialog">VisitedDialogActivity</string>
 
+    
+    <!-- hard coding supporters fragment-->
+    <string name="suppoters_main_up_introduce">색다른 한의사를 소개합니다.</string>
+    <string name="suppoters_main_up_title">남 북한 통합 한의사?\n김지은 한의사!</string>
+    
+    <string name="suppoters_main_down_introduce">착한 한의사를 소개합니다.</string>
+    <string name="suppoters_main_down_title">목요일에는 봉사를, 진서아빠\n 이상재한의사 </string>
+    
+    <!-- hard coding supporters activity-->
+    <string name="suppoters_up_title">남북한 통합 한의사?\n김지은 한의사!</string>
+    <string name="suppoters_up_title_time">2014.08.11</string>
+    <string name="suppoters_up_pre">북한에도 한의사가 있다?? 여러분 알고 계셨나요? 한의콕이 만나본 세 번째 한의사!  오늘은 남∙북한 통합 한의사 1호, 김지운 한의사님을 만나고 왔습니다!</string>
+    <string name="suppoters_up_main1_title">한의콕 식구분들에게 인사 한마디</string>
+	<string name="suppoters_up_main1_sentence">안녕하세요 콕친님들^^ 저는 평양에서 왔고, 남북한 통합 한의사로 알려진 김지운이라고 합니다. 현재는 진 한의원을 운영하고 있습니다.</string>
+	<string name="suppoters_up_main2_title">탈북을 결심하게된 계기</string>
+	<string name="suppoters_up_main2_sentence">저는 북한 청진 의과대학을 나와 한의사로 9년 간 아픈 사람들을 치료하였습니다. 그러나 영양실조로 죽어가는 어린 아이들을 보면서 진료의 한계를 느껴 탈북을 하게 되었습니다.</string>
+	<string name="suppoters_up_main3_title">한국에서 한의사가 되기까지 어려움</string>
+	<string name="suppoters_up_main3_sentence">그럼요. 처음부터 한의사를 할 수는 없었습니다. 허드렛일을 하면서 노력했고, 한의대에 편입할 수 있었습니다. 저는 북한에서 제가 헀던 경험을 살려서 남과 북의 한의학을 접목해 좀더 좋은 치료법으로 환자들에게 다가가고 싶어서 노력하고 있습니다.</string>
+	<string name="suppoters_up_end_title">다음 편에 계속 됩니다.</string>
+	<string name="suppoters_up_end_next_list_1">연관 글 목록</string>
+	<string name="suppoters_up_end_next_list_2">남∙북한 통합 한의사? 김지은 한의사! 2편</string>
+	<string name="suppoters_up_end_next_list_3">남∙북한 통합 한의사? 김지은 한의사! 3편</string>
+	<string name="suppoters_up_end_show_haniwon">김지은 원장님이 계신 한의원은</string>
+	
+	<!-- hard coding hanbang info activity-->
+	<string name="info_fragment_title">우리아이 훌륭하게 키우기 1탄</string>
+	<string name="info_fragment_name">화 잘 내는 아이\n어떻게 키워야 할까?</string>
+	
 </resources>

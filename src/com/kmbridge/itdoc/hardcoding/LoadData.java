@@ -244,6 +244,7 @@ public class LoadData {
 					JSONObject innerObj = innerArr.getJSONObject(j);
 					UserSimpleInfo info = new UserSimpleInfo();
 					info.setEmail(innerObj.getString("email"));
+					Log.d("koo", "||"+innerObj.getString("picturePath"));
 					info.setPicturePath(innerObj.getString("picturePath"));
 					info.setName(innerObj.getString("name"));
 					simpleList.add(info);

@@ -16,9 +16,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.ReviewKeyword;
@@ -26,7 +29,6 @@ import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.thread.ClinicDetailThread;
-import com.kmbridge.itdoc.util.RandomPath;
 public class KmClinicDetailActivity extends FragmentActivity implements	OnClickListener {
 	ActionBar actionBar = null; // 액션바 세팅 시작
 	int clinicNumber;
@@ -46,6 +48,8 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	TextView txtReviewKeyword;
 	TextView txtKmclinicComment;
 	TextView txtUserReview;
+	TextView txtDoctorName;
+	TextView txtDoctorCommnet;
 	ImageView kmUserImage;
 	ImageView kmClinicImage;
 	
@@ -82,6 +86,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//String pictureName = simpleList.get(j).getPicturePath();
 		//load.getAllUserSimpleInfo()
 		//KmClinicview.setUserSimpleInfoList(userSimpleInfoList);
+		
 		//리뷰 객체를 가져옴
 		List<ReviewView> list = load.getAllReviewView();
 		
@@ -114,7 +119,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		likeUser[4] = (ImageView) findViewById(R.id.like_user4);
 		
 		//List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
-		simpleList = KmClinicview.getUserSimpleInfoList();
+		//simpleList = KmClinicview.getUserSimpleInfoList();
 		
 		/*for(int j=0;j<5;j++)
 		{
@@ -130,31 +135,36 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//리뷰 갯수 지정
 		
 		//사용자 사진 지정
-		list.get(clinicNumber).getReviewPicturePath();
-		Log.d("kim5","review Picter : "+list.get(clinicNumber).getReviewPicturePath());
-		
+		//list.get(clinicNumber).getReviewPicturePath();
+		//Log.d("kim5","review Picter : "+list.get(clinicNumber).getReviewPicturePath());
+		//kmUserImage.setImageResource(resId)
 		
 		//리뷰 사용자 이름 지정
-		kmUserName = (TextView) findViewById(R.id.km_detail_user_name);
-		kmUserName.setText(list.get(clinicNumber).getUserName());
+		//kmUserName = (TextView) findViewById(R.id.km_detail_user_name);
+		//kmUserName.setText(list.get(clinicNumber).getUserName());
 		
 		//리뷰 사용자 진료과목
 		//list.get(clinicNumber).getReviewKeywordList();
 		List<ReviewKeyword> keywordList = new ArrayList<ReviewKeyword>();
-		keywordList = list.get(clinicNumber).getReviewKeywordList();
+		//keywordList = list.get(clinicNumber).getReviewKeywordList();
 		//String reviewKeyword = keywordList.get(clinicNumber).getKeyword();
-		Log.d("kim5","keyword= "+keywordList);
+		//Log.d("kim5","keyword= "+keywordList);
 		//txtReviewKeyword.setText(reviewKeyword);
 		
 		//리뷰 들어갈 곳
-		String userReview = list.get(clinicNumber).getComment();
-		txtUserReview.setText(userReview);
+		//String userReview = list.get(clinicNumber).getComment();
+		//txtUserReview.setText(userReview);
 		
 		//한의원 설명
 		txtKmclinicComment.setText(KmClinicview.getDetails());
 		
 		//진료시간 들어갈 곳
 		//KmClinicview.get
+		
+		//맵 좌표 들어갈 곳
+		//String kmClinicMap = list.get(clinicNumber).get
+		
+		
 		
 		// LatLng loc = new LatLng(Double.parseDouble(latitude),
 		// Double.parseDouble(longitude));
@@ -163,7 +173,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 				.build();
 		// MarkerOptions marker = new MarkerOptions().position(loc);
 
-		/*HaniMap = ((SupportMapFragment) getSupportFragmentManager()
+		HaniMap = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map)).getMap();
 		HaniMap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
 
@@ -171,12 +181,19 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		// hani_1.position(new LatLng(Double.parseDouble(latitude),
 		// Double.parseDouble(longitude)));
 		hani_1.position(new LatLng(37.49927, 127.03748));
-		hani_1.title("OO한의원");
-		HaniMap.addMarker(hani_1).showInfoWindow();*/
+		hani_1.title(KmClinicview.getName());
+		HaniMap.addMarker(hani_1).showInfoWindow();
 
-		int clinicId = getIntent().getIntExtra("clinicId", -1);
+		
+		//의료진 이름
+		txtDoctorName.setText(KmClinicview.getName());
+		
+		//의료진 설명
+		txtDoctorCommnet.setText(KmClinicview.getDetails());
+		
+		/*int clinicId = getIntent().getIntExtra("clinicId", -1);
 		ClinicDetailThread mThread = new ClinicDetailThread("getDetailKmClinic", this, clinicId);
-		mThread.start();
+		mThread.start();*/
 
 	}
 
@@ -192,6 +209,8 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		txtKmclinicComment = (TextView) findViewById(R.id.txtKmclinicComment);
 		liniearLikeUsers = (LinearLayout) findViewById(R.id.like_users);
 		txtUserReview =(TextView) findViewById(R.id.txt_user_review);
+		txtDoctorName =(TextView) findViewById(R.id.txt_doctor_name);
+		txtDoctorCommnet =(TextView) findViewById(R.id.txt_doctor_comment);
 		
 		
 		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
@@ -237,6 +256,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		case R.id.kmclinic_detail_moredoctor:
 			Intent intentMoredoctor = new Intent(this, KmClinicMoreDoctorActivity.class);
 			intentMoredoctor.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intentMoredoctor.putExtra("clinicNumber", clinicNumber);
 			startActivity(intentMoredoctor);
 			break;
 		

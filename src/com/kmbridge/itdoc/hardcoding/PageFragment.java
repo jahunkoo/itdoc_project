@@ -16,7 +16,6 @@ import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
 public class PageFragment extends Fragment implements OnClickListener{
 
 	private int mPageNumber;
-	
 	ImageView kmClinicDetail;
 
 	public static PageFragment create(int pageNumber) {

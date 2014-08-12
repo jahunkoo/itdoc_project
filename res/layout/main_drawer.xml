@@ -16,9 +16,8 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start" 
-        android:background="@android:color/background_light"
-        >
-
+        android:background="@color/background_holo_light">
+<!--android:background="@android:color/background_light"  -->
         <ListView
             android:id="@+id/left_drawer"
             android:layout_width="match_parent"

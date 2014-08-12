@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/imageview_hard_support_up"
+            style="@style/black_tracendent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/suppoters_up" />
+
+        <TextView
+            android:id="@+id/textview_hard_support_title_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/suppoters_main_up_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/textview_hard_support_introduce_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textview_hard_support_title_up"
+            android:layout_marginBottom="23dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/suppoters_main_up_introduce"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+            
+            android:background="#70FFBB33" />
+
+        <ImageView
+            android:id="@+id/imageview_clinic_list_item_follow_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="17dp"
+            android:src="@drawable/follow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/imageview_hard_support_down"
+            style="@style/black_tracendent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/suppoters_down" />
+
+        <TextView
+            android:id="@+id/textview_hard_support_title_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/suppoters_main_down_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+             />
+        
+        <ImageView
+            android:id="@+id/imageview_clinic_list_item_follow_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="17dp"
+            android:src="@drawable/not_follow" 
+            />
+
+        <TextView
+            android:id="@+id/textview_hard_support_introduce_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textview_hard_support_title_down"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="23dp"
+            android:background="#7099CC00"
+            android:gravity="center_horizontal"
+            android:text="@string/suppoters_main_down_introduce"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+        
+    </RelativeLayout>
+
+</LinearLayout>

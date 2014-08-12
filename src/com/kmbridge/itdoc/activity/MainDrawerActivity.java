@@ -45,6 +45,8 @@ import com.kmbridge.itdoc.dto.ItemTitle;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
+import com.kmbridge.itdoc.fragment.HanbangInfoFragment;
+import com.kmbridge.itdoc.fragment.SuppotersFragment;
 import com.kmbridge.itdoc.hardcoding.ClinicListFragment;
 import com.kmbridge.itdoc.hardcoding.HardSearchFragment;
 import com.kmbridge.itdoc.hardcoding.LoadData;
@@ -70,12 +72,13 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private List<Title> mDrawerMenuTitleList;
 
 	// For make fragment
-	Fragment fragment;
-	FragmentManager fragmentManager = getSupportFragmentManager();
+	public Fragment fragment;
+	public FragmentManager fragmentManager = getSupportFragmentManager();
 
-	private final int POSITION_SEARCH_FRAGMENT = 1;
-	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 2;
-	
+	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 1;
+	private final int POSITION_SEARCH_FRAGMENT = 4;	
+	private final int POSITION_HANIKOK_SUPPOTERS = 5;
+	private final int POSITION_HANIKOK_HANBANG_INFO = 8;
 	// action view 좀 돼라
 
 	int position = -1;
@@ -86,22 +89,21 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		setContentView(R.layout.main_drawer);
 		
 		imageLoader = new ImageLoader(this);
-
+		
 		mTitle = mDrawerTitle = getTitle();
 		// ********** stringarray 받기 시작
-		// mDrawerMenuTitles =
-		// getResources().getStringArray(R.array.drawer_menu_title_array);
 		setDrawerTitleList();
 		// ********** end
 
 		//************************************ koo *********************************************************
-				DisplayMetrics displayMetrics = new DisplayMetrics(); 
-				getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
+		DisplayMetrics displayMetrics = new DisplayMetrics(); 
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
 				    
-				ImageManager.screenWidth = displayMetrics.widthPixels; 
-				ImageManager.screenHeight = displayMetrics.heightPixels;
-				Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
-				//************************************ koo *********************************************************
+		ImageManager.screenWidth = displayMetrics.widthPixels; 
+		ImageManager.screenHeight = displayMetrics.heightPixels;
+		Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
+		//************************************ koo *********************************************************
+		
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerRelativeLayout = (RelativeLayout) findViewById(R.id.relativelayout_left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -118,8 +120,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		mDrawerList.setAdapter(new DrawerTitleAdapter(this,R.layout.main_drawer_list_item, mDrawerMenuTitleList));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
 		setDrawerLeft();
+		
+		
 		
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -147,11 +150,12 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		if (savedInstanceState == null) {
 			selectItem(POSITION_KMCLINIC_LIST_FRAGMENT);
+			//DselectItem(POSITION_HANIKOK_SUPPOTERS);
 		}
-
 		
 		LoadData load = new LoadData(this);
 		//load.getUserView("test@gmail.com");
+		Log.d("koo", load.getKmClinicDetailView(1).toString());
 	}
 
 	
@@ -160,7 +164,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private LinearLayout leftBottomLayout;
 	
 	public void setDrawerLeft() {
-		
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				try {
 					userEmail = "test@gmail.com";
@@ -189,7 +192,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 						
 						ImageView img = null;//사용자 사진 저장 객체
 						img = (ImageView) leftBottomLayout.findViewById (R.id.imageview_left_drawer_bottom_profile);
-						Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user5);
+						Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face3);
 						bitmap = RoundedImageView.getRoundedBitmap(bitmap, 80);
 						img.setImageBitmap(bitmap);
 						
@@ -219,6 +222,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private void setDrawerTitleList(){
 		String[] mDrawerSectionTitles = getResources().getStringArray(
 				R.array.drawer_menu_title_section_array);
+		
+		String[] mDrawerHonikokItemTitles = getResources().getStringArray(
+				R.array.drawer_menu_title_item_array_honikok);
 		String[] mDrawerSearchItemTitles = getResources().getStringArray(
 				R.array.drawer_menu_title_item_array_search);
 		String[] mDrawerPlusItemTitles = getResources().getStringArray(
@@ -231,17 +237,26 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			titleList.add(sectionTitle);
 
 			if (i == 0) {
+				for (int j = 0; j < mDrawerHonikokItemTitles.length; j++) {
+					ItemTitle itemTitle = new ItemTitle();
+					itemTitle.setItemTitle(mDrawerHonikokItemTitles[j]);
+					titleList.add(itemTitle);
+				}
+				
+			} else if (i == 1) {
 				for (int j = 0; j < mDrawerSearchItemTitles.length; j++) {
 					ItemTitle itemTitle = new ItemTitle();
 					itemTitle.setItemTitle(mDrawerSearchItemTitles[j]);
 					titleList.add(itemTitle);
 				}
-			} else if (i == 1) {
+				
+			} else if (i == 2) {
 				for (int j = 0; j < mDrawerPlusItemTitles.length; j++) {
 					ItemTitle itemTitle = new ItemTitle();
 					itemTitle.setItemTitle(mDrawerPlusItemTitles[j]);
 					titleList.add(itemTitle);
 				}
+				
 			}
 		}
 
@@ -310,6 +325,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		menu.findItem(R.id.action_search).setVisible(!drawerOpen); // drawer가
 																	// 닫혀있으면
 																	// 안보이지
+		if(FRAGMENT_TAG.equals("SEARCH"))searchItem.setVisible(false);	//만약 혀
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -327,8 +343,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		case R.id.action_search:
 			MenuInflater inflater = getMenuInflater();
 			searchItem.setVisible(false); 
-			selectItem(POSITION_SEARCH_FRAGMENT);
-			
+			selectItem(POSITION_SEARCH_FRAGMENT);			
 			// create intent to perform web search for this planet
 			/*
 			 * Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
@@ -365,77 +380,72 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	}
 
 	private void selectItem(int position) {
-
 		this.position = position;
-
 		switch (position) {
-
 		case POSITION_SEARCH_FRAGMENT:
-
 			createSearchFragment(fragmentManager, position);
 			break;
 
 		case POSITION_KMCLINIC_LIST_FRAGMENT:
 			createKmClinicListFragment(fragmentManager, position);
 			break;
-
-		/*
-		 * default:
-		 * 
-		 * // update the main content by replacing fragments fragment = new
-		 * PlanetFragment();
-		 * 
-		 * args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-		 * fragment.setArguments(args);
-		 * 
-		 * fragmentManager = getSupportFragmentManager();
-		 * fragmentManager.beginTransaction() .replace(R.id.content_frame,
-		 * fragment).commit();
-		 * 
-		 * // update selected item and title, then close the drawer
-		 * mDrawerList.setItemChecked(position, true);
-		 * setTitle(mDrawerMenuTitles[position]);
-		 * 
-		 * mDrawerLayout.closeDrawer(mDrawerList);
-		 */
+		case POSITION_HANIKOK_SUPPOTERS:
+			createSupportersFragment(fragmentManager, position);
+			break;
+		case POSITION_HANIKOK_HANBANG_INFO:
+			createHanbangInfoFragment(fragmentManager, position);
 		}
 	}
-
 	// *********************************************end***************************************************
+	
+	// create fragment ******************************************************************
+	private String FRAGMENT_TAG;
+	private void createHanbangInfoFragment(FragmentManager fragmentManager, int position) {
+		Fragment fragment = HanbangInfoFragment.create(this);
+		FRAGMENT_TAG = "HANBANG_INFO";
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.GONE);
+		
+		afterFragmentCreate(position);
+	}
+	
+	private void createSupportersFragment(FragmentManager fragmentManager,int position) {
+		Fragment fragment = SuppotersFragment.create(this);
+		FRAGMENT_TAG = "SUPPORTERS";
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.GONE);
+		
+		afterFragmentCreate(position);
+	}
+
 	private void createKmClinicListFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = ClinicListFragment.create(this);
 		FRAGMENT_TAG = "CLINIC_LIST";
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
 		
-		mDrawerList.setItemChecked(position, true);
-		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
-		setTitle(title.getItemTitle());
-		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
-		/*
-		Fragment fragment = KmClinicListFragment.create(this);
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-		mDrawerList.setItemChecked(position, true);
-		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
-		setTitle(title.getItemTitle());
-		// mDrawerLayout.closeDrawer(mDrawerList);
-		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
-		*/
+		afterFragmentCreate(position);	
 	}
-	private String FRAGMENT_TAG; 
+
 	private void createSearchFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = HardSearchFragment.create(this);
 		FRAGMENT_TAG = "SEARCH";
 		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
 		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
 		fragment.getView().setVisibility(View.GONE);
+		searchItem.setVisible(false); 
 		
+		afterFragmentCreate(position);	
+	}
+
+	private void afterFragmentCreate(int position){
 		mDrawerList.setItemChecked(position, true);
 		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
 		setTitle(title.getItemTitle());
-		// mDrawerLayout.closeDrawer(mDrawerList);
 		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
 	}
-	
+	// end **********************************************************
 	
 	@Override
 	public void onClick(View v) {
@@ -473,7 +483,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		
 	}
 
-	
 
 	@Override
 	public void onBackPressed() {
@@ -494,8 +503,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			}else if(tag.equals("CLINIC_LIST")){
 				
 			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)){
-				fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
 				fragment.getView().setVisibility(View.VISIBLE);
+			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_SUPPORT)){
+				fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				fragment.getView().setVisibility(View.VISIBLE);
+				//*****************************actionbar title setting ***********************
+				getActionBar().setTitle(R.string.title_activity_main_drawer);
+				searchItem.setVisible(true);
+				//****************************************************************************
 			}
 		}
 		super.onBackPressed();
