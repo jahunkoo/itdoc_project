@@ -56,6 +56,15 @@
                     android:textSize="6pt" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.2"
+                android:gravity="center_horizontal"
+                android:text="추천한 이웃들"
+                android:textSize="6pt" />
+
             <LinearLayout
                 android:id="@+id/like_users"
                 android:layout_width="match_parent"
@@ -68,31 +77,31 @@
                     android:id="@+id/like_user0"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="0.2" />
 
                 <ImageView
                     android:id="@+id/like_user1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="0.2" />
 
                 <ImageView
                     android:id="@+id/like_user2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="0.2" />
 
                 <ImageView
                     android:id="@+id/like_user3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="0.2" />
 
                 <ImageView
                     android:id="@+id/like_user4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="0.2" />
             </LinearLayout>
 
             <LinearLayout
@@ -130,7 +139,7 @@
                     <ImageView
                         android:id="@+id/km_detail_user_picture"
                         android:layout_width="35dp"
-                        android:layout_height="35dp"/>
+                        android:layout_height="35dp" />
 
                     <TextView
                         android:id="@+id/km_detail_user_name"
@@ -218,7 +227,7 @@
                     android:background="@drawable/kmclinic_detail_01" />
 
                 <TextView
-                     android:id="@+id/txtKmclinicComment"
+                    android:id="@+id/txtKmclinicComment"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -227,15 +236,15 @@
                     android:gravity="center_horizontal"
                     android:text="한의원 설명 들어갈 곳" />
 
-                 <TextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
                     android:text="진료 시간" />
-                
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

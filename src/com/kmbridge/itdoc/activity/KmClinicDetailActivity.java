@@ -82,8 +82,9 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		
 		//한의원 객체를 가져옴
 		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
-		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
-		simpleList = KmClinicview.getUserSimpleInfoList();
+		
+		//List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
+		//simpleList = KmClinicview.getUserSimpleInfoList();
 		
 		List<KmDoctor> doctorList = new ArrayList<KmDoctor>();
 		doctorList = KmClinicview.getDoctorList();
@@ -127,10 +128,10 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		likeUser[3] = (ImageView) findViewById(R.id.like_user3);
 		likeUser[4] = (ImageView) findViewById(R.id.like_user4);
 		
-		//List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
-		//simpleList = KmClinicview.getUserSimpleInfoList();
+		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
+		simpleList = load.getRandomUserSimpleInfoList(clinicNumber);
 		
-		/*for(int j=0;j<5;j++)
+		for(int j=0;j<simpleList.size();j++)
 		{
 			String pictureName = simpleList.get(j).getPicturePath();
 			String []arr = pictureName.split(".png");
@@ -139,13 +140,17 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 			int pictureId = getResources().getIdentifier(resName, "drawable", this.getPackageName());
 			//Log.d("kim4","Resource :"+pictureId);
 			likeUser[j].setImageResource(pictureId);
-		}*/
+		}
 		//리뷰 갯수 지정
 		
 		//사용자 사진 지정
 		//list.get(clinicNumber).getReviewPicturePath();
 		//Log.d("kim5","review Picter : "+list.get(clinicNumber).getReviewPicturePath());
-		//kmUserImage.setImageResource(resId)
+		String pictureName = simpleList.get(0).getPicturePath();
+		String []arr = pictureName.split(".png");
+		String resName = arr[0];
+		int pictureId = getResources().getIdentifier(resName, "drawable", this.getPackageName());
+		kmUserImage.setImageResource(pictureId);
 		
 		//리뷰 사용자 이름 지정
 		//kmUserName = (TextView) findViewById(R.id.km_detail_user_name);
@@ -229,6 +234,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		txtDoctorName =(TextView) findViewById(R.id.txt_doctor_name);
 		txtDoctorCommnet =(TextView) findViewById(R.id.txt_doctor_comment);
 		txtDoctorAcademy = (TextView) findViewById(R.id.txt_doctor_academy);
+		kmUserImage = (ImageView) findViewById(R.id.km_detail_user_picture);
 		
 		
 		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
