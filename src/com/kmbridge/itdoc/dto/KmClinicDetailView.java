@@ -24,32 +24,30 @@ public class KmClinicDetailView {
 	private String details;			//한의원 소개글 
 	private int type;				//0:default, 1:한방병원, 2:한의원
 	private String picturePath;
-	public String getPicturePath() {
-		return picturePath;
-	}
-
-	public void setPicturePath(String picturePath) {
-		this.picturePath = picturePath;
-	}
 
 	//private int userLikeNum;		//용해요 - 사용자가 한의원을 추천한 것 - 가본사람이 추천 누른 횟수    -> userSimpleList의 size()로 얻을 수 있다. 
 	private List<String> keywordList;	//한의원의 키워드 배열
 	private List<UserSimpleInfo> userSimpleInfoList;	//추천한 사람들의 간단한 정보들 (이메일, 사진, 이름)  
 	private List<ReviewView> reviewList;
 	private List<KmClinicPicture> kmClinicPictureList;
+	private List<KmDoctor> doctorList;
+	private List<TimeTable> timeTableList;
 	
 	public KmClinicDetailView() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public KmClinicDetailView(int id, String name, String mapPoint,
-			int bigRegionCode, String bigRegionName,
-			String middleRegionCode, String middleRegionName,
-			String remainRegion, int followNum, String homepage,
-			String linePhone, String details, int type,
-			List<String> keywordList, List<UserSimpleInfo> userSimpleInfoList,
-			List<ReviewView> reviewList, List<KmClinicPicture> kmClinicPictureList) {
+			int bigRegionCode, String bigRegionName, String middleRegionCode,
+			String middleRegionName, String remainRegion, int followNum,
+			String homepage, String linePhone, String details, int type,
+			String picturePath, List<String> keywordList,
+			List<UserSimpleInfo> userSimpleInfoList,
+			List<ReviewView> reviewList,
+			List<KmClinicPicture> kmClinicPictureList,
+			List<KmDoctor> doctorList, List<TimeTable> timeTableList) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -64,11 +62,15 @@ public class KmClinicDetailView {
 		this.linePhone = linePhone;
 		this.details = details;
 		this.type = type;
+		this.picturePath = picturePath;
 		this.keywordList = keywordList;
 		this.userSimpleInfoList = userSimpleInfoList;
 		this.reviewList = reviewList;
 		this.kmClinicPictureList = kmClinicPictureList;
+		this.doctorList = doctorList;
+		this.timeTableList = timeTableList;
 	}
+
 
 	public int getId() {
 		return id;
@@ -174,6 +176,14 @@ public class KmClinicDetailView {
 		this.type = type;
 	}
 
+	public String getPicturePath() {
+		return picturePath;
+	}
+
+	public void setPicturePath(String picturePath) {
+		this.picturePath = picturePath;
+	}
+
 	public List<String> getKeywordList() {
 		return keywordList;
 	}
@@ -206,6 +216,27 @@ public class KmClinicDetailView {
 		this.kmClinicPictureList = kmClinicPictureList;
 	}
 
+	
+
+	public List<KmDoctor> getDoctorList() {
+		return doctorList;
+	}
+
+
+	public void setDoctorList(List<KmDoctor> doctorList) {
+		this.doctorList = doctorList;
+	}
+
+
+	public List<TimeTable> getTimeTableList() {
+		return timeTableList;
+	}
+
+	public void setTimeTableList(List<TimeTable> timeTableList) {
+		this.timeTableList = timeTableList;
+	}
+
+
 	@Override
 	public String toString() {
 		return "KmClinicDetailView [id=" + id + ", name=" + name
@@ -218,9 +249,9 @@ public class KmClinicDetailView {
 				+ picturePath + ", keywordList=" + keywordList
 				+ ", userSimpleInfoList=" + userSimpleInfoList
 				+ ", reviewList=" + reviewList + ", kmClinicPictureList="
-				+ kmClinicPictureList + "]";
+				+ kmClinicPictureList + ", doctorList=" + doctorList
+				+ ", timeTableList=" + timeTableList + "]";
 	}
-
 
 
 	
