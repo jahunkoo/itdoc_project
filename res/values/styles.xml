@@ -17,6 +17,38 @@
         <!-- <item name="background">@drawable/actionbar_background</item> -->
     </style>
  
-    
+    <style name="black_tracendent">
+        <item name="android:background">@android:color/black</item>
+        <item name="android:alpha">0.7</item>
+    </style>
 
+    <style name="black_tracendent">
+        <item name="android:background">@android:color/black</item>
+        <item name="android:alpha">0.7</item>
+    </style>
+    
+    <style name="suppoters_line_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1.5dip</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:background">@color/user_profile_label_separator</item>
+    </style>
+    <style name="suppoters_sentence">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+    <style name="suppoters_sentence_bold">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

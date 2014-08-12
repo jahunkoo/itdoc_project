@@ -45,6 +45,8 @@ import com.kmbridge.itdoc.dto.ItemTitle;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
+import com.kmbridge.itdoc.fragment.HanbangInfoFragment;
+import com.kmbridge.itdoc.fragment.SuppotersFragment;
 import com.kmbridge.itdoc.hardcoding.ClinicListFragment;
 import com.kmbridge.itdoc.hardcoding.HardSearchFragment;
 import com.kmbridge.itdoc.hardcoding.LoadData;
@@ -75,6 +77,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 1;
 	private final int POSITION_SEARCH_FRAGMENT = 4;	
+	private final int POSITION_HANIKOK_SUPPOTERS = 5;
+	private final int POSITION_HANIKOK_HANBANG_INFO = 8;
 	// action view 좀 돼라
 
 	int position = -1;
@@ -99,6 +103,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		ImageManager.screenHeight = displayMetrics.heightPixels;
 		Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
 		//************************************ koo *********************************************************
+		
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerRelativeLayout = (RelativeLayout) findViewById(R.id.relativelayout_left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -115,8 +120,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		mDrawerList.setAdapter(new DrawerTitleAdapter(this,R.layout.main_drawer_list_item, mDrawerMenuTitleList));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
 		setDrawerLeft();
+		
+		
 		
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -144,6 +150,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		if (savedInstanceState == null) {
 			selectItem(POSITION_KMCLINIC_LIST_FRAGMENT);
+			//DselectItem(POSITION_HANIKOK_SUPPOTERS);
 		}
 		
 		LoadData load = new LoadData(this);
@@ -185,7 +192,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 						
 						ImageView img = null;//사용자 사진 저장 객체
 						img = (ImageView) leftBottomLayout.findViewById (R.id.imageview_left_drawer_bottom_profile);
-						Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user5);
+						Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face3);
 						bitmap = RoundedImageView.getRoundedBitmap(bitmap, 80);
 						img.setImageBitmap(bitmap);
 						
@@ -336,8 +343,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		case R.id.action_search:
 			MenuInflater inflater = getMenuInflater();
 			searchItem.setVisible(false); 
-			selectItem(POSITION_SEARCH_FRAGMENT);
-			
+			selectItem(POSITION_SEARCH_FRAGMENT);			
 			// create intent to perform web search for this planet
 			/*
 			 * Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
@@ -374,63 +380,54 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	}
 
 	private void selectItem(int position) {
-
 		this.position = position;
-
 		switch (position) {
-
 		case POSITION_SEARCH_FRAGMENT:
-			//searchItem.setVisible(false); 
 			createSearchFragment(fragmentManager, position);
 			break;
 
 		case POSITION_KMCLINIC_LIST_FRAGMENT:
 			createKmClinicListFragment(fragmentManager, position);
 			break;
-
-		/*
-		 * default:
-		 * 
-		 * // update the main content by replacing fragments fragment = new
-		 * PlanetFragment();
-		 * 
-		 * args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-		 * fragment.setArguments(args);
-		 * 
-		 * fragmentManager = getSupportFragmentManager();
-		 * fragmentManager.beginTransaction() .replace(R.id.content_frame,
-		 * fragment).commit();
-		 * 
-		 * // update selected item and title, then close the drawer
-		 * mDrawerList.setItemChecked(position, true);
-		 * setTitle(mDrawerMenuTitles[position]);
-		 * 
-		 * mDrawerLayout.closeDrawer(mDrawerList);
-		 */
+		case POSITION_HANIKOK_SUPPOTERS:
+			createSupportersFragment(fragmentManager, position);
+			break;
+		case POSITION_HANIKOK_HANBANG_INFO:
+			createHanbangInfoFragment(fragmentManager, position);
 		}
 	}
-
 	// *********************************************end***************************************************
-	private String FRAGMENT_TAG; 
+	
+	// create fragment ******************************************************************
+	private String FRAGMENT_TAG;
+	private void createHanbangInfoFragment(FragmentManager fragmentManager, int position) {
+		Fragment fragment = HanbangInfoFragment.create(this);
+		FRAGMENT_TAG = "HANBANG_INFO";
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.GONE);
+		
+		afterFragmentCreate(position);
+	}
+	
+	private void createSupportersFragment(FragmentManager fragmentManager,int position) {
+		Fragment fragment = SuppotersFragment.create(this);
+		FRAGMENT_TAG = "SUPPORTERS";
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.GONE);
+		
+		afterFragmentCreate(position);
+	}
+
 	private void createKmClinicListFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = ClinicListFragment.create(this);
 		FRAGMENT_TAG = "CLINIC_LIST";
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
 		
-		mDrawerList.setItemChecked(position, true);
-		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
-		setTitle(title.getItemTitle());
-		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
-		/*
-		Fragment fragment = KmClinicListFragment.create(this);
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-		mDrawerList.setItemChecked(position, true);
-		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
-		setTitle(title.getItemTitle());
-		// mDrawerLayout.closeDrawer(mDrawerList);
-		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
-		*/
+		afterFragmentCreate(position);	
 	}
+
 	private void createSearchFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = HardSearchFragment.create(this);
 		FRAGMENT_TAG = "SEARCH";
@@ -438,13 +435,17 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
 		fragment.getView().setVisibility(View.GONE);
 		searchItem.setVisible(false); 
+		
+		afterFragmentCreate(position);	
+	}
+
+	private void afterFragmentCreate(int position){
 		mDrawerList.setItemChecked(position, true);
 		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
 		setTitle(title.getItemTitle());
-		// mDrawerLayout.closeDrawer(mDrawerList);
 		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
 	}
-	
+	// end **********************************************************
 	
 	@Override
 	public void onClick(View v) {
@@ -482,7 +483,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		
 	}
 
-	
 
 	@Override
 	public void onBackPressed() {
@@ -503,8 +503,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			}else if(tag.equals("CLINIC_LIST")){
 				
 			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)){
-				fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
 				fragment.getView().setVisibility(View.VISIBLE);
+			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_SUPPORT)){
+				fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				fragment.getView().setVisibility(View.VISIBLE);
+				//*****************************actionbar title setting ***********************
+				getActionBar().setTitle(R.string.title_activity_main_drawer);
+				searchItem.setVisible(true);
+				//****************************************************************************
 			}
 		}
 		super.onBackPressed();
