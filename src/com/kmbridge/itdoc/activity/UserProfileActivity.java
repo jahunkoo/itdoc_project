@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
+import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
@@ -57,9 +58,10 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	private String myEmail;
 
 	// 하드 코딩
-
 	private TextView seeAllReview;
 
+	private LoadData loadData;
+	
 	public ImageView getUserProfileImgView() {
 		return userProfileImgView;
 	}
@@ -77,11 +79,13 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 
 			if (bundle.containsKey(ItDocConstants.EMAIL)) {
 				userEmail = bundle.getString(ItDocConstants.EMAIL);
+				Log.d("kim","UserProfileActivity(79) userEmail is " + userEmail);
 			} else {
 				Log.d("koo", "Intent에 ItDocConstants.EMAIL를 담아서 email값을 보내야 됨 ");
 				finish();
 			}
 			myEmail = new SharedPreferenceUtil().getData(this, ItDocConstants.SHARED_KEY_EMAIL);
+			myEmail = "test@gmail.com";
 			isLogin = true;
 
 			if (myEmail.equals(userEmail))
@@ -102,6 +106,12 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		// ItDocConstants.METHOD_URL_GET_USERVIEW_BY_EMAIL, myEmail, userEmail);
 		// thread.start();
 		// *********************************************************************
+		
+		//하드코딩
+		loadData = new LoadData(this);
+		
+		setDownloadData(loadData.getUserView(userEmail));
+		
 	}
 
 	private void setListner() {

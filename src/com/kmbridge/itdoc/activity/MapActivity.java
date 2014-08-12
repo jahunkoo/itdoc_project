@@ -33,7 +33,25 @@ public class MapActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
-		int clinic_location=1;
+		
+		LatLng loc = new LatLng(37.49927, 127.03748);
+		CameraPosition cp = new CameraPosition.Builder().target((loc)).zoom(16)
+				.build();
+		// MarkerOptions marker = new MarkerOptions().position(loc);
+
+		HaniMap = ((SupportMapFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.map)).getMap();
+		HaniMap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
+
+		MarkerOptions hani_1 = new MarkerOptions();
+		// hani_1.position(new LatLng(Double.parseDouble(latitude),
+		// Double.parseDouble(longitude)));
+		hani_1.position(new LatLng(37.49927, 127.03748));
+		hani_1.title("OO한의원");
+		HaniMap.addMarker(hani_1).showInfoWindow();
+		
+		//서버 연결시 맵 처리 부분
+		/*int clinic_location=1;
 		ArrayList<KmClinicDetailView> kmClinicDetailView = bridge.getKmClinicDetailViewList(methodUrl, this, clinic_location);
 		mapLocation = kmClinicDetailView.get(0).getMapPoint();
 		clinicName = kmClinicDetailView.get(0).getName();
@@ -56,7 +74,7 @@ public class MapActivity extends FragmentActivity {
 		MarkerOptions hani_1 = new MarkerOptions();
 		hani_1.position(new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude))); 
 		hani_1.title(clinicName); 
-		HaniMap.addMarker(hani_1).showInfoWindow();
+		HaniMap.addMarker(hani_1).showInfoWindow();*/
 		
 	}
 }

@@ -244,13 +244,13 @@
                     class="com.google.android.gms.maps.SupportMapFragment" />
                 
                 <TextView 
+                    android:id="@+id/txt_kmclinic_map"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:background="#ffffff"
                     android:textColor="#ff0000"
-                    android:layout_marginBottom="100dp"
+                    android:layout_marginTop="230dp"
                     android:text="    정지행 한의원\n    서울특별시 강남구 신사동 586-6    "/>
                 
              

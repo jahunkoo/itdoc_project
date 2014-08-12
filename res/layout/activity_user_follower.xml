@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="윤보미 짱"
-        />
+   <ListView 
+       android:id="@+id/listview_user_follower"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       ></ListView>
     
 
 </LinearLayout>

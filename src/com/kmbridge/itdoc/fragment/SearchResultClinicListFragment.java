@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,15 +37,16 @@ public class SearchResultClinicListFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		String email;
-
+		String email = "test@gmail.com";
+/*
 		try {
 			email = new SharedPreferenceUtil().getData(context, ItDocConstants.SHARED_KEY_EMAIL);
+			
 		} catch (RecordNotFoundException e) {
 			email = null;
 			e.printStackTrace();
 		}
-
+*/
 		View rootView = inflater.inflate(R.layout.fragment_clinic_list, container, false);
 
 		SearchResultAdapter searchResultAdapter = new SearchResultAdapter(email, context, kmClinicViewList);
@@ -58,10 +60,8 @@ public class SearchResultClinicListFragment extends Fragment {
 
 	public static SearchResultClinicListFragment create(Context context, ArrayList<KmClinicView> kmClinicViewList) {
 		SearchResultClinicListFragment searchResultClinicListFragment = new SearchResultClinicListFragment();
-
 		searchResultClinicListFragment.setContext(context);
 		searchResultClinicListFragment.setClinicList(kmClinicViewList);
-		
 		return searchResultClinicListFragment;
 	}
 

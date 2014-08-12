@@ -39,7 +39,7 @@ public class ReviewAdapter extends BaseAdapter {
 		loadReviewViewList = (ArrayList<ReviewView>) loadData.getAllReviewView();
 
 		reviewViewList = new ArrayList<ReviewView>();
-		
+
 		for (int i = 0; i < loadReviewViewList.size(); i++) {
 
 			switch (loadReviewViewList.get(i).getFavoriteType()) {
@@ -111,6 +111,24 @@ public class ReviewAdapter extends BaseAdapter {
 		clinicName.setText(reviewView.getKmClinicName());
 		reviewDetail.setText(reviewView.getComment());
 		location.setText(reviewView.getKmClinicBigRegionName() + " " + reviewView.getKmClinicMiddleRegionName());
+
+		switch (reviewView.getFavoriteType()) {
+		case 1:
+			recommendImg.setImageResource(R.drawable.emoticon_good_red);
+			recommendText.setText("추천");
+			break;
+		case 2:
+			recommendImg.setImageResource(R.drawable.emoticon_soso_red);
+			recommendText.setText("괜찮다");
+			break;
+		case 3:
+			recommendImg.setImageResource(R.drawable.emoticon_bad_red);
+			recommendText.setText("비추천");
+			break;
+		default:
+			recommendImg.setImageResource(R.drawable.emoticon_soso_red);
+			break;
+		}
 
 		Log.d("kim", "ReviewAdapter favorate type is " + reviewView.getFavoriteType());
 

@@ -23,6 +23,7 @@ import com.kmbridge.itdoc.adapter.SearchAdapter;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
+import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class SearchFragment extends Fragment implements OnClickListener, OnItemClickListener {
@@ -97,7 +98,8 @@ public class SearchFragment extends Fragment implements OnClickListener, OnItemC
 		case R.id.button_fragment_search:
 
 			String text = search.getText().toString();
-
+			
+			LoadData load = new LoadData(getActivity());
 			ConnectionBridge conn = new ConnectionBridge();
 			ArrayList<KmClinicView> kmClinicViewList = conn.getAllKmClinicListKeyword("getKmClinicListByKeyword", context, text);
 			kmClinicViewList.toString();

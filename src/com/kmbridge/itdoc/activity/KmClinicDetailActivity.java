@@ -1,6 +1,7 @@
 package com.kmbridge.itdoc.activity;
 
 import java.util.List;
+import java.util.Map;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -37,6 +38,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	TextView kmLoacation;
 	TextView kmLoacationRemain;
 	TextView kmUserName;
+	TextView txtKmclinicMap;
 	ImageView kmUserImage;
 	ImageView kmClinicImage;
 
@@ -96,7 +98,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 				.build();
 		// MarkerOptions marker = new MarkerOptions().position(loc);
 
-		HaniMap = ((SupportMapFragment) getSupportFragmentManager()
+		/*HaniMap = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map)).getMap();
 		HaniMap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
 
@@ -105,7 +107,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		// Double.parseDouble(longitude)));
 		hani_1.position(new LatLng(37.49927, 127.03748));
 		hani_1.title("OO한의원");
-		HaniMap.addMarker(hani_1).showInfoWindow();
+		HaniMap.addMarker(hani_1).showInfoWindow();*/
 
 		int clinicId = getIntent().getIntExtra("clinicId", -1);
 		ClinicDetailThread mThread = new ClinicDetailThread(
@@ -121,6 +123,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		detailClinicMoreDoctor = (Button) findViewById(R.id.kmclinic_detail_moredoctor);
 		detailClinicVisited = (Button) findViewById(R.id.btn_activity_km_clilic_detail_visited);
 		detailClinicCall = (Button) findViewById(R.id.btn_activity_km_clinic_detail_call);
+		txtKmclinicMap = (TextView) findViewById(R.id.txt_kmclinic_map);
 		
 		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
 		alphaVisited.setAlpha(99);
@@ -135,6 +138,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		detailClinicMoreDoctor.setOnClickListener(this);
 		detailClinicVisited.setOnClickListener(this);
 		detailClinicCall.setOnClickListener(this);
+		txtKmclinicMap.setOnClickListener(this);
 	}
 
 	@Override
@@ -142,7 +146,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		switch (v.getId()) {
 		case R.id.kmclinic_detail_relatives:
 			Intent intentRelatives = new Intent(this, RelativesActivity.class);
-			intentRelatives.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+   			intentRelatives.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intentRelatives);
 			break;
 
@@ -169,6 +173,13 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 			intentVisited.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intentVisited);
 			break;
+			
+		case R.id.txt_kmclinic_map:
+			Intent intentMap = new Intent(this, MapActivity.class);
+			intentMap.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intentMap);
+			break;
+			
 		}
 	}
 }

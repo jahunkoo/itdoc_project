@@ -2,6 +2,6 @@
 <resources>
 <color name="translucent_black">#80000000</color>
 <color name="user_profile_label_separator">#80000000</color>
-
+<color name="background_holo_light">#fff3f3f3</color>
 
 </resources>
