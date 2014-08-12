@@ -34,13 +34,11 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-        
         <activity
             android:name=".activity.MainDrawerActivity"
-            android:label="@string/title_activity_main_drawer" 
-            android:screenOrientation="portrait">
-           <intent-filter>
-
+            android:label="@string/title_activity_main_drawer"
+            android:screenOrientation="portrait" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -96,8 +94,9 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name=".activity.UserLikeClinicActivity"></activity>
 
+        <activity android:name=".activity.UserLikeClinicActivity" >
+        </activity>
         <activity
             android:name=".activity.RelativesActivity"
             android:label="@string/title_activity_relatives" >
@@ -122,8 +121,18 @@
             android:name="com.kmbridge.itdoc.dialog.VisitedDialogActivity"
             android:label="@string/title_activity_visited_dialog" >
         </activity>
-        <activity android:name=".activity.UserFollowerActivity"></activity>
-        <activity android:name=".activity.SeeAllReviewListActivity"></activity>
+        <activity android:name=".activity.UserFollowerActivity" >
+        </activity>
+        <activity android:name=".activity.SeeAllReviewListActivity" >
+        </activity>
+        <activity
+            android:name="com.kmbridge.itdoc.activity.SupporterActivity"
+            android:label="@string/title_activity_support"
+            android:parentActivityName=".activity.MainDrawerActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainDrawerActivity" />
+        </activity>
     </application>
 
     <uses-feature

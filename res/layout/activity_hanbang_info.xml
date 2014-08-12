@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+        <LinearLayout
+            android:layout_marginTop="20dp" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5">
+            
+            <ImageView 
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/darker_gray"
+                 />
+            <TextView 
+                android:id="@+id/textview_hanbang_info_main_title"
+                android:layout_width="0dp" 
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:text="@string/suppoters_up_title"
+                android:textAppearance="?android:attr/textAppearance"
+                android:gravity="center"/>
+            <TextView 
+                android:id="@+id/textview_hanbang_info_main_time"
+                android:layout_width="0dp" 
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/suppoters_up_title_time"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="10sp"
+				android:layout_gravity="bottom|left"
+                android:gravity="center"/>
+            
+        </LinearLayout>
+       <TextView 	style="@style/suppoters_line_text" />
+       
+       <TextView 	style="@style/suppoters_sentence"
+                 	android:text="@string/suppoters_up_pre"/>
+       
+       <ImageView 	android:layout_width="match_parent"
+            		android:layout_height="wrap_content"
+            		android:src="@drawable/kmclinic_detail_01"/>
+       
+       <TextView 	style="@style/suppoters_sentence_bold"
+                 	android:text="@string/suppoters_up_main1_title"/>
+        	
+       <TextView 	style="@style/suppoters_sentence"
+                 	android:text="@string/suppoters_up_main1_sentence"/>
+       
+       <TextView 	style="@style/suppoters_sentence_bold"
+                 	android:text="@string/suppoters_up_main2_title"/>
+        	
+       <TextView 	style="@style/suppoters_sentence"
+                 	android:text="@string/suppoters_up_main2_sentence"/>
+       
+       <TextView 	style="@style/suppoters_sentence_bold"
+                 	android:text="@string/suppoters_up_main3_title"/>
+        	
+       <TextView 	style="@style/suppoters_sentence"
+                 	android:text="@string/suppoters_up_main3_sentence"/>
+       
+       <TextView 	style="@style/suppoters_sentence_bold"
+                 	android:text="@string/suppoters_up_end_title"/>
+        	
+       <TextView 	style="@style/suppoters_sentence"
+                 	android:text="@string/suppoters_up_end_next_list_1"/>
+       <TextView 	style="@style/suppoters_sentence"
+                 	android:text="@string/suppoters_up_end_next_list_2"/>
+       <TextView 	style="@style/suppoters_sentence"
+                 	android:text="@string/suppoters_up_end_next_list_3"/>
+       
+       
+       <TextView 	style="@style/suppoters_line_text" />
+       <TextView 	style="@style/suppoters_sentence_bold"
+                 	android:text="@string/suppoters_up_end_show_haniwon"
+                 	android:layout_marginTop="-20dp"/>
+       <ImageView 	android:layout_width="match_parent"
+            		android:layout_height="wrap_content"
+            		android:src="@drawable/intro_logo"/>
+       
+    </LinearLayout>
+</ScrollView>
