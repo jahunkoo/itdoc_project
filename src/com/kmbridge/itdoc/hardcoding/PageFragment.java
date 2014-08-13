@@ -16,7 +16,6 @@ import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
 public class PageFragment extends Fragment implements OnClickListener{
 
 	private int mPageNumber;
-	
 	ImageView kmClinicDetail;
 
 	public static PageFragment create(int pageNumber) {
@@ -61,10 +60,19 @@ public class PageFragment extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.imageview_clinic_list_item_clinicimage:
-				Intent intent = new Intent(getActivity(), KmClinicDetailActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
+				if(mPageNumber==0)	callActivity(2);
+				else if(mPageNumber==1) callActivity(11);
+				else if(mPageNumber==2) callActivity(7);
 				break;
 		}
 	}	
+	
+	public void callActivity(int clinicNumber)
+	{
+		Intent intent = new Intent(getActivity(), KmClinicDetailActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.putExtra("clinicNumber", clinicNumber);
+		Log.d("kim3","flagment : "+clinicNumber);
+		startActivity(intent);
+	}
 }

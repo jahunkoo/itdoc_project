@@ -1,4 +1,4 @@
-package com.kmbridge.itdoc.activity;
+package com.kmbridge.itdoc.dialog;
 
 import junit.framework.Test;
 import android.app.Dialog;

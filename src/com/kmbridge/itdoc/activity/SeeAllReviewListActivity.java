@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.ReviewAdapter;
+import com.kmbridge.itdoc.dialog.ReviewRecommendDialog;
 
 public class SeeAllReviewListActivity extends Activity implements OnClickListener {
 

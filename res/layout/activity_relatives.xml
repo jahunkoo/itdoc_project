@@ -22,6 +22,7 @@
             android:weightSum="1" >
 
             <TextView
+                android:id="@+id/txtLikedUsers"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginLeft="20dp"
@@ -55,10 +56,10 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user1"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/user1" />
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -70,21 +71,21 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user1_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="사용자 이름"
                     android:textColor="#000000" />
 
                 <TextView
+                    android:id="@+id/user1_follow"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="팔로워 숫자"
                     android:textColor="#BDBDBD" />
             </LinearLayout>
 
@@ -100,6 +101,7 @@
                     android:id="@+id/btn_follow0"
                     android:layout_width="75dp"
                     android:layout_height="25dp"
+                    android:visibility="invisible"
                     android:background="@drawable/follow_off" />
             </LinearLayout>
         </LinearLayout>
@@ -121,10 +123,10 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user2"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/user2" />
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -136,21 +138,21 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user2_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="사용자 이름"
                     android:textColor="#000000" />
 
                 <TextView
+                    android:id="@+id/user2_follow"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="팔로워 숫자"
                     android:textColor="#BDBDBD" />
             </LinearLayout>
 
@@ -166,6 +168,7 @@
                     android:id="@+id/btn_follow1"
                     android:layout_width="75dp"
                     android:layout_height="25dp"
+                    android:visibility="invisible"
                     android:background="@drawable/follow_off" />
             </LinearLayout>
         </LinearLayout>
@@ -188,10 +191,10 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user3"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/user3" />
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -203,21 +206,21 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user3_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="사용자 이름"
                     android:textColor="#000000" />
 
                 <TextView
+                    android:id="@+id/user3_follow"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="팔로워 숫자"
                     android:textColor="#BDBDBD" />
             </LinearLayout>
 
@@ -233,6 +236,7 @@
                     android:id="@+id/btn_follow2"
                     android:layout_width="75dp"
                     android:layout_height="25dp"
+                    android:visibility="invisible"
                     android:background="@drawable/follow_off" />
             </LinearLayout>
         </LinearLayout>
@@ -254,10 +258,10 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user4"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/user4" />
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -269,21 +273,21 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user4_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="사용자 이름"
                     android:textColor="#000000" />
 
                 <TextView
+                    android:id="@+id/user4_follow"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="팔로워 숫자"
                     android:textColor="#BDBDBD" />
             </LinearLayout>
 
@@ -299,6 +303,7 @@
                     android:id="@+id/btn_follow3"
                     android:layout_width="75dp"
                     android:layout_height="25dp"
+                    android:visibility="invisible"
                     android:background="@drawable/follow_off" />
             </LinearLayout>
         </LinearLayout>
@@ -320,10 +325,10 @@
                 android:weightSum="1" >
 
                 <ImageView
+                    android:id="@+id/user5"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/user5" />
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -335,21 +340,21 @@
                 android:weightSum="1" >
 
                 <TextView
+                    android:id="@+id/user5_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="사용자 이름"
                     android:textColor="#000000" />
 
                 <TextView
+                    android:id="@+id/user5_follow"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="20dp"
                     android:layout_weight="0.5"
                     android:gravity="center_vertical"
-                    android:text="팔로워 숫자"
                     android:textColor="#BDBDBD" />
             </LinearLayout>
 
@@ -365,138 +370,7 @@
                     android:id="@+id/btn_follow4"
                     android:layout_width="75dp"
                     android:layout_height="25dp"
-                    android:background="@drawable/follow_off" />
-            </LinearLayout>
-        </LinearLayout>
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:weightSum="1" >
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:weightSum="1" >
-
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/user6" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.4"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center_vertical"
-                    android:text="사용자 이름"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center_vertical"
-                    android:text="팔로워 숫자"
-                    android:textColor="#BDBDBD" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.4"
-                android:gravity="center_vertical|center_horizontal"
-                android:orientation="horizontal"
-                android:weightSum="1" >
-
-                <Button
-                    android:id="@+id/btn_follow5"
-                    android:layout_width="75dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/follow_off" />
-            </LinearLayout>
-        </LinearLayout>
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:weightSum="1" >
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:weightSum="1" >
-
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/user7" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.4"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:weightSum="1" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center_vertical"
-                    android:text="사용자 이름"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="0.5"
-                    android:gravity="center_vertical"
-                    android:text="팔로워 숫자"
-                    android:textColor="#BDBDBD" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.4"
-                android:gravity="center_vertical|center_horizontal"
-                android:orientation="horizontal"
-                android:weightSum="1" >
-
-                <Button
-                    android:id="@+id/btn_follow6"
-                    android:layout_width="75dp"
-                    android:layout_height="25dp"
+                    android:visibility="invisible"
                     android:background="@drawable/follow_off" />
             </LinearLayout>
         </LinearLayout>

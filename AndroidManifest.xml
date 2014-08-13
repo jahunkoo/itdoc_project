@@ -118,7 +118,7 @@
             android:label="@string/title_activity_visited" >
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.activity.VisitedDialogActivity"
+            android:name="com.kmbridge.itdoc.dialog.VisitedDialogActivity"
             android:label="@string/title_activity_visited_dialog" >
         </activity>
         <activity android:name=".activity.UserFollowerActivity" >
@@ -133,6 +133,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
+
         <activity
             android:name="com.kmbridge.itdoc.activity.HanbangInfoActivity"
             android:label="@string/title_activity_hanbang_info"
@@ -141,6 +142,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
+
+        <activity android:name=".activity.UserProfileEditActivity"></activity>
+
     </application>
 
     <uses-feature

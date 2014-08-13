@@ -164,7 +164,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	
 	
-	
 	private void firstItem() {
 		createFirstKmClinicListFragment(fragmentManager, POSITION_KMCLINIC_LIST_FRAGMENT);
 	}

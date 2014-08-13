@@ -23,16 +23,15 @@
                 <ImageView
                     android:id="@+id/kmclinic_detail_picture"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/kmclinic_detail_01" />
+                    android:layout_height="200dp"/>
+                    
 
                 <TextView
                     android:id="@+id/kmclinic_detail_kmname"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.3"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="0.3"
                     android:gravity="center_horizontal"
                     android:text="병원 이름 들어갈 곳"
                     android:textSize="10pt" />
@@ -45,7 +44,7 @@
                     android:gravity="center_horizontal"
                     android:text="병원 주소 들어 갈 곳"
                     android:textSize="6pt" />
-                
+
                 <TextView
                     android:id="@+id/kmclinic_detail_kmlocation_remain"
                     android:layout_width="match_parent"
@@ -56,19 +55,52 @@
                     android:textSize="6pt" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.2"
+                android:gravity="center_horizontal"
+                android:text="추천한 이웃들"
+                android:textSize="6pt" />
+
             <LinearLayout
+                android:id="@+id/like_users"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:weightSum="1" >
 
                 <ImageView
-                    android:id="@+id/kmclinic_detail_relatives"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.3"
-                    android:background="@drawable/kmclinic_detail_relatives" />
+                    android:id="@+id/like_user0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <ImageView
+                    android:id="@+id/like_user1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <ImageView
+                    android:id="@+id/like_user2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <ImageView
+                    android:id="@+id/like_user3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <ImageView
+                    android:id="@+id/like_user4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
             </LinearLayout>
 
             <LinearLayout
@@ -106,8 +138,7 @@
                     <ImageView
                         android:id="@+id/km_detail_user_picture"
                         android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/user7" />
+                        android:layout_height="35dp" />
 
                     <TextView
                         android:id="@+id/km_detail_user_name"
@@ -119,6 +150,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/txtReviewKeyword"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -141,6 +173,7 @@
                     android:text="추천" />
 
                 <TextView
+                    android:id="@+id/txt_user_review"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -187,12 +220,12 @@
                     android:text="한의원 설명" />
 
                 <ImageView
+                    android:id="@+id/kmclinic_detail_picture2"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.7"
-                    android:background="@drawable/kmclinic_detail_01" />
+                    android:layout_height="200dp"/>
 
                 <TextView
+                    android:id="@+id/txtKmclinicComment"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
@@ -200,6 +233,15 @@
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="한의원 설명 들어갈 곳" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.1"
+                    android:gravity="left"
+                    android:text="진료 시간" />
 
                 <View
                     android:layout_width="match_parent"
@@ -221,9 +263,9 @@
                     android:id="@+id/kmclinic_detail_moreinfo"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="100dp"
                     android:layout_marginRight="100dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_weight="0.3"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/more_clinic_info"
@@ -242,18 +284,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     class="com.google.android.gms.maps.SupportMapFragment" />
-                
-                <TextView 
+
+                <TextView
                     android:id="@+id/txt_kmclinic_map"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:background="#ffffff"
-                    android:textColor="#ff0000"
                     android:layout_marginTop="230dp"
-                    android:text="    정지행 한의원\n    서울특별시 강남구 신사동 586-6    "/>
-                
-             
+                    android:background="#ffffff"
+                    android:text="    정지행 한의원\n    서울특별시 강남구 신사동 586-6    "
+                    android:textColor="#ff0000" />
             </RelativeLayout>
 
             <LinearLayout
@@ -280,34 +320,37 @@
                     android:text="의료진 설명" />
 
                 <ImageView
+                    android:id="@+id/kmDetailDoctorImg"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:background="@drawable/user7" />
 
                 <TextView
+                    android:id="@+id/txt_doctor_name"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="의료진 이름" />
 
                 <TextView
+                    android:id="@+id/txt_doctor_comment"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="의료진 설명 코멘트 들어갈 곳" />
-                
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
-                    android:layout_marginLeft="20dp"
                     android:text="학력정보" />
 
                 <View
@@ -318,29 +361,27 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
-                
-                 <TextView
+
+                <TextView
+                    android:id="@+id/txt_doctor_academy"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
                     android:text="학력정보 들어갈곳" />
-                
 
                 <Button
                     android:id="@+id/kmclinic_detail_moredoctor"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="100dp"
                     android:layout_marginLeft="100dp"
                     android:layout_marginRight="100dp"
-                    android:layout_marginBottom="100dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.3"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/more_doctor_info"
                     android:textSize="5pt" />
-
-                
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -356,15 +397,15 @@
             android:id="@+id/btn_activity_km_clilic_detail_visited"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/btn_visited_click"/>
+            android:text="가봤다"
+            android:layout_weight="0.5"/>
 
         <Button
             android:id="@+id/btn_activity_km_clinic_detail_call"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="0.5"
-            android:background="@drawable/btn_call_click"/>
+            android:text="전화하기"/>
     </LinearLayout>
 
 </RelativeLayout>

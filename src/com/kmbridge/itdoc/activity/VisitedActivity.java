@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.dialog.VisitedDialogActivity;
 
 public class VisitedActivity extends ImageSelectHelperActivity implements OnClickListener {
 	//MainDialog mMainDialog;

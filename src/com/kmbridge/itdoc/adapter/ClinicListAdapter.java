@@ -176,10 +176,10 @@ public class ClinicListAdapter extends BaseAdapter {
 
 				case R.id.imageview_clinic_list_item_clinicimage:
 
-					Intent intent = new Intent(context, KmClinicDetailActivity.class);
+					//Intent intent = new Intent(context, KmClinicDetailActivity.class);
 
-					intent.putExtra("clinicId", clinicId);
-					context.startActivity(intent);
+					//intent.putExtra("clinicId", clinicId);
+					//context.startActivity(intent);
 					break;
 				}
 			}
