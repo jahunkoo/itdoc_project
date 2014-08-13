@@ -15,14 +15,27 @@ public class UserFollowerActivity extends Activity{
 	FollowerAdapter followerAdapter;
 	ListView mListView;
 	String email;
+	int type;
+	
+	// type이 0이면 팔로잉	
+	// type이 1이면 팔로워
+
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_follower);
-	
-		getActionBar().setTitle("윤성수님 팔로워");
-	
+		
+		
+		type = getIntent().getExtras().getInt("followType");
+		
+		if(type == 1) {
+			getActionBar().setTitle("윤성수님 팔로워");
+		} else if( type == 0) {
+			getActionBar().setTitle("윤성수님 팔로잉");
+		}
+		
 		setElements();
 		
 	}
@@ -31,7 +44,7 @@ public class UserFollowerActivity extends Activity{
 		
 		email = "test@gmail.com";
 		
-		followerAdapter = new FollowerAdapter(this, email, 1);
+		followerAdapter = new FollowerAdapter(this, email, type);
 		
 		mListView = (ListView) findViewById(R.id.listview_user_follower);
 		

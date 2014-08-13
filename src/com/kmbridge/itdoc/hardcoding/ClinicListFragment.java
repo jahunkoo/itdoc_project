@@ -138,7 +138,8 @@ public class ClinicListFragment extends Fragment {
 		@Override
 		public Fragment getItem(int position) {
                         // 해당하는 page의 Fragment를 생성합니다.
-			Log.d("koo", "PagerAdapter getItem 1");		
+			Log.d("koo", "PagerAdapter getItem 1");	
+			
 			return Theme2PageFragment.create(position);
 		}
 

@@ -622,8 +622,6 @@ public class LoadData {
 			
 			view.setDoctorList(doctorList);
 			
-			
-			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

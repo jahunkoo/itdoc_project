@@ -133,6 +133,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
+
+        <activity
+            android:name="com.kmbridge.itdoc.activity.HanbangInfoActivity"
+            android:label="@string/title_activity_hanbang_info"
+            android:parentActivityName=".activity.MainDrawerActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainDrawerActivity" />
+        </activity>
+
+        <activity android:name=".activity.UserProfileEditActivity"></activity>
+
     </application>
 
     <uses-feature

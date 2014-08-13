@@ -51,6 +51,10 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	private ImageButton certiFacebookImgButton;
 	private LinearLayout actionCertiLayout;
 	public ImageLoader imageLoader;
+
+	private LinearLayout lyt_follower;
+	private LinearLayout lyt_following;
+
 	// 기능을 위해 만든 맴버변수들
 	private boolean isMyPage;
 	private boolean isLogin;
@@ -61,7 +65,7 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 	private TextView seeAllReview;
 
 	private LoadData loadData;
-	
+
 	public ImageView getUserProfileImgView() {
 		return userProfileImgView;
 	}
@@ -72,30 +76,29 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		setContentView(R.layout.activity_user_profile);
 		setElements();
 		setListner();
-		try {
-			// **************현재 들어온 사람이 본인인지 아니면 다른 사람인지 판별
-			// **************************
-			Bundle bundle = getIntent().getExtras();
+		// **************현재 들어온 사람이 본인인지 아니면 다른 사람인지 판별
+		// **************************
+		Bundle bundle = getIntent().getExtras();
 
-			if (bundle.containsKey(ItDocConstants.EMAIL)) {
-				userEmail = bundle.getString(ItDocConstants.EMAIL);
-				Log.d("kim","UserProfileActivity(79) userEmail is " + userEmail);
-			} else {
-				Log.d("koo", "Intent에 ItDocConstants.EMAIL를 담아서 email값을 보내야 됨 ");
-				finish();
-			}
-			myEmail = new SharedPreferenceUtil().getData(this, ItDocConstants.SHARED_KEY_EMAIL);
-			myEmail = "test@gmail.com";
-			isLogin = true;
+		if (bundle.containsKey(ItDocConstants.EMAIL)) {
+			userEmail = bundle.getString(ItDocConstants.EMAIL);
 
-			if (myEmail.equals(userEmail))
-				isMyPage = true;
-			else
-				isMyPage = false;
-
-		} catch (RecordNotFoundException e2) {
-			isLogin = false;
+		} else {
+			Log.d("koo", "Intent에 ItDocConstants.EMAIL를 담아서 email값을 보내야 됨 ");
+			finish();
 		}
+		// 하드코딩 위해 임시로 주석처리. 어차피 받아 올 필요 없음. 내 이메일은 무조건 test@gmail.com
+		// myEmail = new SharedPreferenceUtil().getData(this,
+		// ItDocConstants.SHARED_KEY_EMAIL);
+
+		myEmail = "test@gmail.com";
+		isLogin = true;
+
+		if (myEmail.equalsIgnoreCase(userEmail))
+			isMyPage = true;
+		else
+			isMyPage = false;
+
 		// if(myEmail.equals(userEmail)) isMyPage = true;
 		// else isMyPage = false;
 		// *********************************************************************
@@ -106,17 +109,20 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		// ItDocConstants.METHOD_URL_GET_USERVIEW_BY_EMAIL, myEmail, userEmail);
 		// thread.start();
 		// *********************************************************************
-		
-		//하드코딩
+
+		// 하드코딩
 		loadData = new LoadData(this);
-		
+
 		setDownloadData(loadData.getUserView(userEmail));
-		
+
 	}
 
 	private void setListner() {
 		followButton.setOnClickListener(this);
 		seeAllReview.setOnClickListener(this);
+
+		lyt_follower.setOnClickListener(this);
+		lyt_following.setOnClickListener(this);
 	}
 
 	private void setElements() {
@@ -136,6 +142,8 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		certiPhoneImgButton = (ImageButton) findViewById(R.id.imagebutton_activity_user_profile_certification_phone);
 		certiFacebookImgButton = (ImageButton) findViewById(R.id.imagebutton_activity_user_profile_certification_facebook);
 		actionCertiLayout = (LinearLayout) findViewById(R.id.linearlayout_activity_user_profile_action_my_certi);
+		lyt_follower = (LinearLayout) findViewById(R.id.linearlayout_user_profile_follower);
+		lyt_following = (LinearLayout) findViewById(R.id.linearlayout_user_profile_following);
 
 		seeAllReview = (TextView) findViewById(R.id.textview_user_profile_see_all_review);
 	}
@@ -187,7 +195,23 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 
 		case R.id.button_activity_user_profile_follow:
 
+			if (this.isMyPage) {
+				intent = new Intent(this, UserProfileEditActivity.class);
+				startActivity(intent);
+			}
+
+			break;
+
+		case R.id.linearlayout_user_profile_follower:
 			intent = new Intent(this, UserFollowerActivity.class);
+			intent.putExtra("followType", 1);
+			startActivity(intent);
+
+			break;
+
+		case R.id.linearlayout_user_profile_following:
+			intent = new Intent(this, UserFollowerActivity.class);
+			intent.putExtra("followType", 0);
 			startActivity(intent);
 
 			break;

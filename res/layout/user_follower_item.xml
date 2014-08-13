@@ -35,7 +35,7 @@
             android:layout_alignTop="@+id/imageView1"
             android:layout_marginRight="15dp"
             android:paddingTop="10dp"
-            android:src="@drawable/btn_follow" />
+            android:src="@drawable/btn_follow_on" />
 
         <TextView
             android:id="@+id/textView1"

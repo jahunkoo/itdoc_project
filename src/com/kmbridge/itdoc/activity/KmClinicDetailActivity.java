@@ -244,9 +244,10 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		hani_1.title(KmClinicview.getName());
 		HaniMap.addMarker(hani_1).showInfoWindow();
 
-		
+		Log.d("kim4",""+doctorList.get(0).getName());
 		//의료진 이름
 		txtDoctorName.setText(doctorList.get(0).getName());
+		//txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
 		
 		//의료진 설명
 		txtDoctorCommnet.setText(KmClinicview.getDetails());
@@ -259,8 +260,9 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		
 		//Log.d("kim5",doctorList.get(1).getAcademy());
 		//학력정보
-		//txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
 		txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
+		
+		
 		/*int clinicId = getIntent().getIntExtra("clinicId", -1);
 		ClinicDetailThread mThread = new ClinicDetailThread("getDetailKmClinic", this, clinicId);
 		mThread.start();*/

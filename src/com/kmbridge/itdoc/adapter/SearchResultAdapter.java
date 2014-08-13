@@ -155,12 +155,12 @@ public class SearchResultAdapter extends BaseAdapter {
 				case R.id.imageview_clinic_list_item_follow_img:
 
 					if (type == 0) {
-						ArrayList<String> result = conn.insertKmClinicFollow("insertKmClinicFollow", context, email, clinicId);
+						//ArrayList<String> result = conn.insertKmClinicFollow("insertKmClinicFollow", context, email, clinicId);
 						clinicListItem.type = 1;
 						img.setImageResource(R.drawable.follow);
 
 					} else {
-						ArrayList<String> result = conn.deleteKmClinicFollow("deleteKmClinicFollow", context, email, clinicId);
+						//ArrayList<String> result = conn.deleteKmClinicFollow("deleteKmClinicFollow", context, email, clinicId);
 						clinicListItem.type = 0;
 						img.setImageResource(R.drawable.not_follow);
 
@@ -171,7 +171,8 @@ public class SearchResultAdapter extends BaseAdapter {
 
 					Intent intent = new Intent(context, KmClinicDetailActivity.class);
 
-					intent.putExtra("clinicId", clinicId);
+					intent.putExtra("clinicNumber", clinicId);
+					Log.d("kim2",""+clinicId);
 					context.startActivity(intent);
 					break;
 				}

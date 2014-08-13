@@ -15,6 +15,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentManager.BackStackEntry;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -38,6 +39,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
@@ -55,7 +57,7 @@ import com.kmbridge.itdoc.image.RoundedImageView;
 import com.kmbridge.itdoc.util.ItDocConstants;
 
 
-public class MainDrawerActivity extends FragmentActivity implements OnClickListener{
+public class MainDrawerActivity extends FragmentActivity implements OnClickListener,FragmentManager.OnBackStackChangedListener{
 
 	public ImageLoader imageLoader;
 	public boolean closeApplication;
@@ -149,13 +151,23 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		if (savedInstanceState == null) {
-			selectItem(POSITION_KMCLINIC_LIST_FRAGMENT);
+			firstItem();
+			//selectItem(POSITION_KMCLINIC_LIST_FRAGMENT);
 			//DselectItem(POSITION_HANIKOK_SUPPOTERS);
 		}
 		
 		LoadData load = new LoadData(this);
-		//load.getUserView("test@gmail.com");
+		
+		
+		fragmentManager.addOnBackStackChangedListener(this);
 	}
+
+	
+	
+	private void firstItem() {
+		createFirstKmClinicListFragment(fragmentManager, POSITION_KMCLINIC_LIST_FRAGMENT);
+	}
+
 
 	private String userEmail;	//없으면 null로 명시함
 	private boolean isLogin;
@@ -417,15 +429,28 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		
 		afterFragmentCreate(position);
 	}
-
+	
 	private void createKmClinicListFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = ClinicListFragment.create(this);
 		FRAGMENT_TAG = "CLINIC_LIST";
-		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.VISIBLE);
+		//fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		
 		
 		afterFragmentCreate(position);	
 	}
 
+	private void createFirstKmClinicListFragment(FragmentManager fragmentManager, int position) {
+		Fragment fragment = ClinicListFragment.create(this);
+		FRAGMENT_TAG = "CLINIC_LIST";
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).disallowAddToBackStack().commit();
+		
+		afterFragmentCreate(position);	
+	}
+	
 	private void createSearchFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = HardSearchFragment.create(this);
 		FRAGMENT_TAG = "SEARCH";
@@ -465,7 +490,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				
 			case R.id.textview_left_drawer_bottom_name:
 				Intent intentUserProfile = new Intent(this,UserProfileActivity.class);
-				intentUserProfile.putExtra(ItDocConstants.EMAIL, ItDocConstants.SHARED_KEY_EMAIL);
+				intentUserProfile.putExtra(ItDocConstants.EMAIL, "test@gmail.com");
 				startActivity(intentUserProfile);
 				break;
 				
@@ -476,20 +501,19 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				//startActivityForResult(intent_setting,0);
 				startActivity(intent_setting);
 				break;
-				
 		}
-		
 	}
 
-
+	
 	@Override
 	public void onBackPressed() {
 		Fragment fragment =  getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+		//FragmentManager manager = getSupportFragmentManager();
 		if(fragment !=null){
 			String tag = fragment.getTag();
 			if(tag.equals("SEARCH")){
-				fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-				fragment.getView().setVisibility(View.VISIBLE);
+				//fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				//fragment.getView().setVisibility(View.VISIBLE);
 				//*****************************actionbar title setting ***********************
 				getActionBar().setTitle(R.string.title_activity_main_drawer);
 				searchItem.setVisible(true);
@@ -501,11 +525,18 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			}else if(tag.equals("CLINIC_LIST")){
 				
 			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)){
-				fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-				fragment.getView().setVisibility(View.VISIBLE);
+				//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				//fragment.getView().setVisibility(View.VISIBLE);
 			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_SUPPORT)){
-				fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-				fragment.getView().setVisibility(View.VISIBLE);
+				//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				//fragment.getView().setVisibility(View.VISIBLE);
+				//*****************************actionbar title setting ***********************
+				getActionBar().setTitle(R.string.title_activity_main_drawer);
+				searchItem.setVisible(true);
+				//****************************************************************************
+			}else if(tag.equals("HANBANG_INFO")){
+				//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+				//fragment.getView().setVisibility(View.VISIBLE);
 				//*****************************actionbar title setting ***********************
 				getActionBar().setTitle(R.string.title_activity_main_drawer);
 				searchItem.setVisible(true);
@@ -532,6 +563,40 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		}
 	}
 
+	private boolean isLastFragment;
+	@Override
+	public void onBackStackChanged() {
+		isLastFragment = false;
+		int fragmentCount = fragmentManager.getBackStackEntryCount();
+		Log.d("koo", "fragment backstack count:"+fragmentCount);
+		if(fragmentCount == 0){
+			isLastFragment = true;
+			Toast.makeText(this, "last fragment", Toast.LENGTH_LONG).show();
+			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+			listFragment.getView().setVisibility(View.VISIBLE);
+			
+		}else{
+			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+			listFragment.getView().setVisibility(View.VISIBLE);
+		}
+		
+		List<Fragment> fragmentList = fragmentManager.getFragments();
+		for(int i=0;i<fragmentList.size() ;i++){
+			Fragment f = fragmentList.get(i);
+			if(f != null){
+				if(f == null){
+					Log.d("koo", "fragment null");
+				}else{
+					Log.d("koo", "fragment tag:"+f.getTag());
+				}
+				
+			}
+				
+		}
+	}
+
+	
+	
 	
 	
 }

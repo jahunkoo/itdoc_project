@@ -46,7 +46,7 @@
        
        <ImageView 	android:layout_width="match_parent"
             		android:layout_height="wrap_content"
-            		android:src="@drawable/kmclinic_detail_01"/>
+            		android:src="@drawable/supporters_main_up"/>
        
        <TextView 	style="@style/suppoters_sentence_bold"
                  	android:text="@string/suppoters_up_main1_title"/>
