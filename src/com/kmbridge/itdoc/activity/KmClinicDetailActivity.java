@@ -90,6 +90,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//한의원 객체를 가져옴
 		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
 		
+		
 		//List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 		//simpleList = KmClinicview.getUserSimpleInfoList();
 		
