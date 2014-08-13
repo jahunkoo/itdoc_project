@@ -22,7 +22,8 @@
     <string name="title_activity_km_clinic_more_doctor">OO한의원</string>
     <string name="title_activity_visited">리뷰남기기</string>
 	<string name="title_activity_support">색다른 한의사를 소개합니다</string>
-
+	<string name="title_activity_hanbang_info">한방정보</string>
+	
     <!-- activity -->
     <!-- main_drawer_activity related -->
     <string name="action_search">search</string>
@@ -194,4 +195,24 @@
 	<string name="info_fragment_title">우리아이 훌륭하게 키우기 1탄</string>
 	<string name="info_fragment_name">화 잘 내는 아이\n어떻게 키워야 할까?</string>
 	
+	
+	 <!-- hard coding hanbang_info activity-->
+	 <string name="textview_hanbang_info_up_main_title">화 잘 내는 아이\n어떻게 키워야 할까?</string>
+	 <string name="textview_hanbang_info_up_main_time">2014.08.11</string>
+	 <string name="textview_hanbang_info_up_main1">사람이 느끼는 여러 감정 중,분노는 가장 해로운 감정에 속합니다. 왜냐하면 분노는 화산 폭발과도 같기 때문이죠. 화산이 한번 폭발하면 그 주위는 일순간에 초토화! 화를 낼때마다 사람의 몸에서도 이와 비슷한 일이 생기게 되는거죠</string>
+	 
+	 <string name="textview_hanbang_info_up_main2_title">동의보감에서 말하는 분노</string>
+	 <string name="textview_hanbang_info_up_main2">동의보감에서는 분노라는 감정에 대해 특히 당부한 바가 있습니다. “일곱가지 감정이 모두 사람을 상하게 하는데 그중 분노가 가장 심하다.”라고 말이죠.</string>
+	 
+	 <string name="textview_hanbang_info_up_main3_title">분노의 조절이 변화의 원동력</string>
+	 <string name="textview_hanbang_info_up_main3">화를 잘 내는 성격의 아이를 둔 엄마라면 걱정이 안될 수가 없죠. 그렇다면 화를 잘 내는 아이들은 어떻게 다듬어주면서 키워야 할까요?</string>
+	 <string name="textview_hanbang_info_up_main3_2">툭하면 화를 잘 내는 경우에 동의보감에서는 이런 해법을 제시했습니다. “슬픔은 분노를 이긴다.” 여기서 슬픔이란 상대의 아픔을 가엾이 여기고 안타깝게 여기는 슬픔이죠</string>
+	 <string name="textview_hanbang_info_up_main3_3">예를 들어 강아지를 키우는 데 아이가 무척이나 이 강아지를 아끼는 모습이 보인다면 이렇게 말해 볼 수 있어요.</string>
+	 <string name="textview_hanbang_info_up_main3_4">“강아지가 아직 오줌을 제대로 못 가리네. 이럴때 짜증 난다고 강아지에게 막 화를 내면 어떻게 될까? 비록 말은 못하지만 강아지의 마음이 무척 아프겠지?”</string>
+	 <string name="textview_hanbang_info_up_main3_5">이런 대화로 화를 내면 당하는 사람의 마음이 무척 아프다는 것을 느끼게 해 주는 것입니다. 특히 아이가 아끼는 대상을 예로 들어 설명해주면 더 쉽게 이해할거예요.</string>
+	 
+	  <string name="textview_hanbang_info_up_main4_title">동화책을 읽어주는 것도 방법</string>
+	  <string name="textview_hanbang_info_up_main4">막무가내로 떼를 쓰는 아이의 모습이 그려진 동화책이 있다면 읽어주어도 좋습니다. 자신의 모습을 투영시켜 볼 수 있으니까요. 혹은 머리에 쏙쏙 들어가게 하기에 노래 만큼 좋은것이 없다죠. 노래가사를 이용하셔도 좋아요.</string>
+	  <string name="textview_hanbang_info_up_main4_2">어떤 형태이든 아이가 측은 지심의 마음을 쌓아가도록 만들어준다면 좀 더 생산적인 형태로 분노가 다스려질 수 있을 거라는게 포인트입니다.</string>
+	  
 </resources>

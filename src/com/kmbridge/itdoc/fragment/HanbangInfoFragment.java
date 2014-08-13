@@ -1,6 +1,7 @@
 package com.kmbridge.itdoc.fragment;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.HanbangInfoActivity;
 import com.kmbridge.itdoc.activity.SupporterActivity;
 import com.kmbridge.itdoc.hardcoding.PageFragment;
 
@@ -40,7 +41,7 @@ public class HanbangInfoFragment extends Fragment implements OnClickListener{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.hard_fragment_hanbang_info, container, false);
-		upView = (ImageView) rootView.findViewById(R.id.imageview_hard_support_up);
+		upView = (ImageView) rootView.findViewById(R.id.imageview_hard_hanbang_info_up);
 		upView.setOnClickListener(this);
 		//downView = (ImageView) rootView.findViewById(R.id.imageview_hard_support_down);
 		//downView.setOnClickListener(this); 
@@ -55,11 +56,11 @@ public class HanbangInfoFragment extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 		int id = v.getId();
 		if(id == upView.getId()){
-			Intent intent = new Intent(getActivity(), SupporterActivity.class);
+			Intent intent = new Intent(getActivity(), HanbangInfoActivity.class);
 			intent.putExtra("position", "up");
 			getActivity().startActivity(intent);
 		}else if(id == downView.getId()){
-			Intent intent = new Intent(getActivity(), SupporterActivity.class);
+			Intent intent = new Intent(getActivity(), HanbangInfoActivity.class);
 			intent.putExtra("position", "down");
 			getActivity().startActivity(intent);
 		}

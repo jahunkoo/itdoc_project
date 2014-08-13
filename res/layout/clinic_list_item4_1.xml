@@ -25,7 +25,7 @@
 	    android:gravity="center_horizontal"
 	    android:textColor="@android:color/white"
 	    android:textAppearance="?android:attr/textAppearanceLarge"
-	    android:text="정안침? 제대로 알고 막자" />
+	    android:text="정안침? 제대로 알고 맞자" />
 
     <TextView
         android:layout_width="match_parent"

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="2"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@android:color/background_light" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,24 +18,10 @@
             style="@style/black_tracendent"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/suppoters_up"
+            android:src="@drawable/hanbang_info_up_baby"
             android:alpha="0.7"/>
 
          <TextView
-            android:id="@+id/textview_hard_hanbang_info_introduce_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/textview_hard_support_title_up"
-            android:layout_marginBottom="23dp"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:text="@string/info_fragment_title"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white"
-            
-            android:background="#7099CC00"/>
-         
-        <TextView
             android:id="@+id/textview_hard_hanbang_info_title_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,8 +30,20 @@
             android:text="@string/info_fragment_name"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
-
-
+         
+         <TextView
+            android:id="@+id/textview_hard_hanbang_info_introduce_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textview_hard_hanbang_info_title_up"
+            android:layout_marginBottom="23dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="@string/info_fragment_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+            android:background="#7099CC00"/>
+ 
         <ImageView
             android:id="@+id/imageview_clinic_list_item_follow_img"
             android:layout_width="25dp"

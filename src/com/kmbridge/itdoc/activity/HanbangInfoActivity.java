@@ -14,7 +14,6 @@ public class HanbangInfoActivity extends ActionBarActivity{
 		setContentView(R.layout.activity_hanbang_info);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
-		
 		Bundle bundle = getIntent().getExtras();
 		String position = bundle.getString("position");
 		if(position.equals("up")){
