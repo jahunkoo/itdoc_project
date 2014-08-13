@@ -24,30 +24,117 @@
                 android:text="의료진 설명" />
 
             <ImageView
+                android:id="@+id/moreDoctorFace1"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/user7" />
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
-                android:id="@+id/txt_moredoctor_name"
+                android:id="@+id/txt_moredoctor1_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.1"
-                android:gravity="center_horizontal"
-                android:text="의료진 이름" />
+                android:gravity="center_horizontal"/>
+
+          
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:text="학력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
 
             <TextView
-                android:id="@+id/txt_moredoctor_comment"
+                android:id="@+id/txt_moredoctor1_academy"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:text="경력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor1_carrer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="기타정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor1_major"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal"
+                android:text="의료진 설명" />
+
+            <ImageView
+                android:id="@+id/moreDoctorFace2"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/txt_moredoctor2_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0.1"
-                android:gravity="center_horizontal"
-                android:text="의료진 설명 들어갈 곳" />
+                android:gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -67,17 +154,215 @@
                 android:background="#BDBDBD" />
 
             <TextView
+                android:id="@+id/txt_moredoctor2_academy"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:gravity="center_horizontal"
-                android:text="학력정보 들어갈곳01" />
+                android:gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="0.5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:text="경력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor2_carrer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:text="기타정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor2_major"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal"
+                android:text="의료진 설명" />
+
+            <ImageView
+                android:id="@+id/moreDoctorFace3"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/txt_moredoctor3_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal"/>
+
+        
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:text="학력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor3_academy"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:text="경력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor3_carrer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:text="기타정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor3_major"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal"
+                android:text="의료진 설명" />
+
+            <ImageView
+                android:id="@+id/moreDoctorFace4"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/txt_moredoctor4_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:text="학력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor4_academy"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:layout_marginTop="10dp"
                 android:gravity="left"
                 android:text="경력정보" />
 
@@ -91,11 +376,11 @@
                 android:background="#BDBDBD" />
 
             <TextView
+                android:id="@+id/txt_moredoctor4_carrer"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:gravity="center_horizontal"
-                android:text="경력정보 들어갈곳01" />
+                android:gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -103,6 +388,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="0.5"
                 android:gravity="left"
+                android:layout_marginTop="10dp"
                 android:text="기타정보" />
 
             <View
@@ -115,11 +401,110 @@
                 android:background="#BDBDBD" />
 
             <TextView
+                android:id="@+id/txt_moredoctor4_major"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0.1"
                 android:gravity="center_horizontal"
-                android:text="기타정보 들어갈곳01" />
+                android:text="의료진 설명" />
+
+            <ImageView
+                android:id="@+id/moreDoctorFace5"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/txt_moredoctor5_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.1"
+                android:gravity="center_horizontal"/>
+
+         
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:text="학력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor5_academy"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="경력정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor5_carrer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:layout_marginTop="10dp"
+                android:text="기타정보" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:id="@+id/txt_moredoctor5_major"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"/>
         </LinearLayout>
     </ScrollView>
 
