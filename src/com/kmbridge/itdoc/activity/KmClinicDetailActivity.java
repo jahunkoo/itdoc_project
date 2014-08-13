@@ -150,6 +150,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 		simpleList = load.getRandomUserSimpleInfoList(clinicNumber);
 		
+		//추천한 이웃들 사진 뿌리기
 		for(int j=0;j<simpleList.size();j++)
 		{
 			String pictureName = simpleList.get(j).getPicturePath();
@@ -244,15 +245,33 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		hani_1.title(KmClinicview.getName());
 		HaniMap.addMarker(hani_1).showInfoWindow();
 
-		Log.d("kim4",""+doctorList.get(0).getName());
+		//Log.d("kim4",""+doctorList.get(0).getName());
 		//의료진 이름
-		txtDoctorName.setText(doctorList.get(0).getName());
+		for(int i=0; i< doctorList.size(); i++)
+		{
+			//의료진 이름
+			txtDoctorName.setText(doctorList.get(0).getName());
+			
+			//의료진 대표사진
+			int doctorNum = (doctorList.get(0).getId())%10;
+			int doctorFaceId = getResources().getIdentifier(doctorFace[doctorNum], "drawable", this.getPackageName());
+			kmClinicDoctorFace.setImageResource(doctorFaceId); //사진지정
+			//clinicNumber
+			
+			//Log.d("kim5",doctorList.get(1).getAcademy());
+			//학력정보
+			txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
+			if(i==0) break;
+		}
+		
+		//의료진 이름
+		//txtDoctorName.setText(doctorList.get(0).getName());
 		//txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
 		
 		//의료진 설명
 		txtDoctorCommnet.setText(KmClinicview.getDetails());
 		
-		//의료진 대표사진
+		/*//의료진 대표사진
 		int doctorNum = (doctorList.get(0).getId())%10;
 		int doctorFaceId = getResources().getIdentifier(doctorFace[doctorNum], "drawable", this.getPackageName());
 		kmClinicDoctorFace.setImageResource(doctorFaceId); //사진지정
@@ -260,7 +279,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		
 		//Log.d("kim5",doctorList.get(1).getAcademy());
 		//학력정보
-		txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
+		txtDoctorAcademy.setText(doctorList.get(0).getAcademy());*/
 		
 		
 		/*int clinicId = getIntent().getIntExtra("clinicId", -1);

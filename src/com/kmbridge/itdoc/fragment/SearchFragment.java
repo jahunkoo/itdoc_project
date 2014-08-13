@@ -96,7 +96,6 @@ public class SearchFragment extends Fragment implements OnClickListener, OnItemC
 
 		switch (v.getId()) {
 		case R.id.button_fragment_search:
-
 			String text = search.getText().toString();
 			
 			LoadData load = new LoadData(getActivity());

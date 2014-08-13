@@ -18,12 +18,17 @@ import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
-import com.kmbridge.itdoc.adapter.ClinicListAdapter.ClinicListItem;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
+import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmClinicView;
+import com.kmbridge.itdoc.dto.UserSimpleInfo;
+import com.kmbridge.itdoc.hardcoding.LoadData;
 
 public class SearchResultAdapter extends BaseAdapter {
 
+	//추천한 이웃들 저장할 이미지뷰 배열
+	ImageView likeUser[] = new ImageView[4];
+		
 	private LayoutInflater inflator;
 	public ImageLoader imageLoader;
 	public ArrayAdapter<ClinicListItem> adapter;
@@ -106,12 +111,23 @@ public class SearchResultAdapter extends BaseAdapter {
 			view.setTag((Integer) position);
 		}
 
+		//병원이미지
 		img = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_clinicimage);
+		
+		//병원 이름
 		name = (TextView) view.findViewById(R.id.textview_clinic_list_item_name);
+		
+		//병원 주소
 		regionName = (TextView) view.findViewById(R.id.textview_clinic_list_item_region);
+		
+		//추천 수
 		likeNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_likenum);
+		
+		//팔로워 수
 		followNum = (TextView) view.findViewById(R.id.textview_clinic_list_item_follower);
 		//keyword = (TextView) view.findViewById(R.id.textview_clinic_list_item_keyword);
+		
+		//하트이미지 
 		followImg = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
 
 		final ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
@@ -123,6 +139,43 @@ public class SearchResultAdapter extends BaseAdapter {
 			e.printStackTrace();
 		}
 */
+		
+		//추천한 이웃들 사진 지정
+		likeUser[0] = (ImageView) view.findViewById(R.id.imageView1);
+		likeUser[1] = (ImageView) view.findViewById(R.id.imageView2);
+		likeUser[2] = (ImageView) view.findViewById(R.id.ImageView01);
+		likeUser[3] = (ImageView) view.findViewById(R.id.ImageView02);
+		//likeUser[4] = (ImageView) view.findViewById(R.id.ImageView03);	
+		clinicId = clinicListItem.id;
+		final int type = clinicListItem.type;
+		
+		//json파서 로드
+		LoadData load = new LoadData(context);
+		//한의원 객체를 가져옴
+		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicId);
+		
+		//병원사진 뿌리기
+		String ClinicPictureName = KmClinicview.getPicturePath();
+		String []ClinicArr = ClinicPictureName.split(".png");
+		String resClinName = ClinicArr[0];
+		Log.d("kim5",resClinName);
+		int clinicPictureId = context.getResources().getIdentifier(resClinName, "drawable", context.getPackageName());
+		img.setImageResource(clinicPictureId);
+		
+		//추천한 사람 뿌리기
+		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
+		simpleList = load.getRandomUserSimpleInfoList(clinicId);
+		for(int j=0;j<simpleList.size()-1;j++)
+		{
+			String pictureName = simpleList.get(j).getPicturePath();
+			String []arr = pictureName.split(".png");
+			String resName = arr[0];
+			//Log.d("kim4","Path : "+resName);
+			int pictureId = context.getResources().getIdentifier(resName, "drawable", this.context.getPackageName());
+			//Log.d("kim4","Resource :"+pictureId);
+			likeUser[j].setImageResource(pictureId);
+		}
+		
 		name.setText(clinicListItem.name);
 		regionName.setText(clinicListItem.regionName);
 		//keyword.setText(clinicListItem.keyword);
@@ -130,8 +183,7 @@ public class SearchResultAdapter extends BaseAdapter {
 		likeNum.setText(toString().valueOf(clinicListItem.likeNum));
 		followNum.setText(toString().valueOf(clinicListItem.followNum));
 
-		clinicId = clinicListItem.id;
-		final int type = clinicListItem.type;
+		
 
 		if (clinicListItem.type == 1) {
 			followImg.setImageResource(R.drawable.follow);
