@@ -183,6 +183,7 @@
         android:background="@color/user_profile_label_separator" />
 
     <LinearLayout
+        android:id="@+id/linearlayout_user_profile_edit_favorate_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 

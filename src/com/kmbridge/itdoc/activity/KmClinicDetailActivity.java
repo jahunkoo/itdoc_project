@@ -79,7 +79,6 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//인텐트로 넘겨준 값을 받아온다.
 		Intent intent = getIntent();
 		clinicNumber = intent.getExtras().getInt("clinicNumber");
-		Log.d("kim3","KmclinicDetail Activity : "+clinicNumber);
 		
 		setLayout();
 		setListener();

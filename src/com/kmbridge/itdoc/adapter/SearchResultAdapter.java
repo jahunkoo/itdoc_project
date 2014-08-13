@@ -171,7 +171,10 @@ public class SearchResultAdapter extends BaseAdapter {
 
 					Intent intent = new Intent(context, KmClinicDetailActivity.class);
 
-					intent.putExtra("clinicId", clinicId);
+					intent.putExtra("clinicNumber", clinicId);
+					
+					Log.d("kim","clinicId is " + clinicId);
+					
 					context.startActivity(intent);
 					break;
 				}
