@@ -86,12 +86,14 @@ public class ReviewAdapter extends BaseAdapter {
 		View view = convertView;
 
 		ImageView face;
-		ImageView recommendImg;
+		ImageView recommendImgGood;
+		ImageView recommendImgSoso;
+		ImageView recommendImgBad;
 		TextView clinicName;
-		TextView location;
 		TextView date;
 		TextView recommendText;
 		TextView reviewDetail;
+		TextView keyword;
 
 		if (view == null) {
 			view = inflator.inflate(R.layout.review_list_item_1, parent, false);
@@ -99,38 +101,57 @@ public class ReviewAdapter extends BaseAdapter {
 		}
 
 		face = (ImageView) view.findViewById(R.id.imageView1);
-		recommendImg = (ImageView) view.findViewById(R.id.imageView2);
+		recommendImgGood = (ImageView) view.findViewById(R.id.ImageView02);
+		recommendImgSoso = (ImageView) view.findViewById(R.id.ImageView01);
+		recommendImgBad = (ImageView) view.findViewById(R.id.imageView2);
+
 		clinicName = (TextView) view.findViewById(R.id.textView1);
-		location = (TextView) view.findViewById(R.id.textView2);
 		date = (TextView) view.findViewById(R.id.textView3);
 		recommendText = (TextView) view.findViewById(R.id.textView5);
 		reviewDetail = (TextView) view.findViewById(R.id.textView6);
+		keyword = (TextView) view.findViewById(R.id.textView4);
 
 		ReviewView reviewView = reviewViewList.get(position);
 
 		clinicName.setText(reviewView.getKmClinicName());
 		reviewDetail.setText(reviewView.getComment());
-		location.setText(reviewView.getKmClinicBigRegionName() + " " + reviewView.getKmClinicMiddleRegionName());
+
+		// 아직 리뷰 키워드가 없음
+		// keyword.setText(reviewView.getReviewKeywordList().get(0).getKeyword());
+
+		recommendImgGood.setImageResource(R.drawable.emoticon_good_grey);
+		recommendImgSoso.setImageResource(R.drawable.emoticon_soso_grey);
+		recommendImgBad.setImageResource(R.drawable.emoticon_bad_grey);
+
+		String pictureName;
+
+		if (reviewView.getKmClinicId() <= 10) {
+			pictureName = "doctor" + toString().valueOf(reviewView.getKmClinicId());
+		} else {
+			pictureName = "doctor" + toString().valueOf(reviewView.getKmClinicId() - 10);
+		}
+
+		int pictureId = context.getResources().getIdentifier(pictureName, "drawable", context.getPackageName());
+
+		face.setImageResource(pictureId);
 
 		switch (reviewView.getFavoriteType()) {
 		case 1:
-			recommendImg.setImageResource(R.drawable.emoticon_good_red);
+			recommendImgGood.setImageResource(R.drawable.emoticon_good_red);
 			recommendText.setText("추천");
 			break;
 		case 2:
-			recommendImg.setImageResource(R.drawable.emoticon_soso_red);
+			recommendImgSoso.setImageResource(R.drawable.emoticon_soso_red);
 			recommendText.setText("괜찮다");
 			break;
 		case 3:
-			recommendImg.setImageResource(R.drawable.emoticon_bad_red);
+			recommendImgBad.setImageResource(R.drawable.emoticon_bad_red);
 			recommendText.setText("비추천");
 			break;
 		default:
-			recommendImg.setImageResource(R.drawable.emoticon_soso_red);
+			recommendImgSoso.setImageResource(R.drawable.emoticon_soso_red);
 			break;
 		}
-
-		Log.d("kim", "ReviewAdapter favorate type is " + reviewView.getFavoriteType());
 
 		return view;
 	}

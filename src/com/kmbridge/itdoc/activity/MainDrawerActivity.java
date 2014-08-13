@@ -465,7 +465,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				
 			case R.id.textview_left_drawer_bottom_name:
 				Intent intentUserProfile = new Intent(this,UserProfileActivity.class);
-				intentUserProfile.putExtra(ItDocConstants.EMAIL, ItDocConstants.SHARED_KEY_EMAIL);
+				intentUserProfile.putExtra(ItDocConstants.EMAIL, "test@gmail.com");
 				startActivity(intentUserProfile);
 				break;
 				

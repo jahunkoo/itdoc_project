@@ -133,6 +133,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
+        <activity android:name=".activity.UserProfileEditActivity"></activity>
     </application>
 
     <uses-feature
