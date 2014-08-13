@@ -53,8 +53,15 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	TextView txtDoctorAcademy;
 	ImageView kmUserImage;
 	ImageView kmClinicImage;
+	ImageView kmClinicImage2;
+	ImageView kmClinicDoctorFace;
 	
 	LinearLayout liniearLikeUsers;
+	
+	//의사 사진
+	String doctorFace[] = {"doctor1","doctor2","doctor3","doctor4","doctor5","doctor6","doctor7","doctor8","doctor9","doctor10"};
+	
+	//키워드
 	
 	//추천한 이웃들 저장할 이미지뷰 배열
 	ImageView likeUser[] = new ImageView[5];
@@ -97,14 +104,25 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//load.getAllUserSimpleInfo()
 		//KmClinicview.setUserSimpleInfoList(userSimpleInfoList);
 		
-		//리뷰 객체를 가져옴
-		List<ReviewView> list = load.getAllReviewView();
 		
 //		List<ReviewKeyword> listKeyword = load.getAllReviewView().get(2).getReviewKeywordList();
 		
 		
 		//병원 사진 지정
 		kmClinicImage = (ImageView) findViewById(R.id.kmclinic_detail_picture);
+		kmClinicImage2 = (ImageView) findViewById(R.id.kmclinic_detail_picture2);
+		//Log.d("kim2",""+KmClinicview.getPicturePath());
+		
+		
+		String ClinicPictureName = KmClinicview.getPicturePath();
+		String []ClinicArr = ClinicPictureName.split(".png");
+		String resClinName = ClinicArr[0];
+		//Log.d("kim4","Path : "+resName);
+		int clinicPictureId = getResources().getIdentifier(resClinName, "drawable", this.getPackageName());
+		//Log.d("kim4","Resource :"+pictureId);
+		kmClinicImage.setImageResource(clinicPictureId);
+		kmClinicImage2.setImageResource(clinicPictureId);
+		
 		//String kmclinicImagePath = list.get(2).getKmClinicPicturePath();
 		//Log.d("kim",kmclinicImagePath);
 		//kmClinicImage.setImageResource(list.get(2).getKmClinicPicturePath());
@@ -143,22 +161,46 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		}
 		//리뷰 갯수 지정
 		
-		//사용자 사진 지정
-		//list.get(clinicNumber).getReviewPicturePath();
-		//Log.d("kim5","review Picter : "+list.get(clinicNumber).getReviewPicturePath());
+		// 대표유저 사진 지정
 		String pictureName = simpleList.get(0).getPicturePath();
 		String []arr = pictureName.split(".png");
 		String resName = arr[0];
 		int pictureId = getResources().getIdentifier(resName, "drawable", this.getPackageName());
 		kmUserImage.setImageResource(pictureId);
 		
-		//리뷰 사용자 이름 지정
-		//kmUserName = (TextView) findViewById(R.id.km_detail_user_name);
-		//kmUserName.setText(list.get(clinicNumber).getUserName());
+		// 대표유저 이름 지정
+		String userName = simpleList.get(0).getName();
+		kmUserName = (TextView) findViewById(R.id.km_detail_user_name);
+		kmUserName.setText(userName);
+		
+		// 대표유저 리뷰 지정
+		List<ReviewView> reviewList = new ArrayList<ReviewView>();
+		reviewList = load.getRandomReviewViewList(clinicNumber);
+		String userReview = reviewList.get(0).getComment();
+		txtUserReview.setText(userReview);
+		//List<ReviewView> reviewList = new ArrayList<ReviewView>();
+		//reviewList = load.getRandomReviewViewList(clinicNumber);
+		
+		//List<ReviewKeyword> listKeyword = load.getAllReviewView().get(2).getReviewKeywordList();
+		/*List<ReviewView> reViewListTest = new ArrayList<ReviewView>();
+		reViewListTest = load.getAllReviewView();
+		List<String>  listKeyword = new ArrayList<String>();
+		listKeyword = load.getAllKmClinicView().get(0).getKeywordList();*/
+		//List<ReviewView> reviewListTest = new ArrayList<ReviewView>();
+		//reviewListTest = load.getRandomReviewViewList(5);
+		//List<ReviewKeyword> testListTest = reviewListTest.get(0).getReviewKeywordList();
+		//String keywordTest = listKeyword.get(0).getKeyword();
+		//Log.d("kim5",""+testListTest);
+		//List<ReviewKeyword> listKeyword = load.getRandomReviewViewList(clinicNumber).get(0).getReviewKeywordList();
+		
+		// 대표유저 리뷰(진료과목 지정)
+		//List<ReviewKeyword> userKeywordList = reviewList.get(0).getReviewKeywordList();
+		//String userKeyword = listKeyword.get(0).getKeyword();
+		//txtReviewKeyword.setText(userKeyword);
 		
 		//리뷰 사용자 진료과목
 		//list.get(clinicNumber).getReviewKeywordList();
-		List<ReviewKeyword> keywordList = new ArrayList<ReviewKeyword>();
+		//List<ReviewKeyword> keywordList = new ArrayList<ReviewKeyword>();
 		//keywordList = list.get(clinicNumber).getReviewKeywordList();
 		//String reviewKeyword = keywordList.get(clinicNumber).getKeyword();
 		//Log.d("kim5","keyword= "+keywordList);
@@ -208,6 +250,12 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//의료진 설명
 		txtDoctorCommnet.setText(KmClinicview.getDetails());
 		
+		//의료진 대표사진
+		int doctorNum = (doctorList.get(0).getId())%10;
+		int doctorFaceId = getResources().getIdentifier(doctorFace[doctorNum], "drawable", this.getPackageName());
+		kmClinicDoctorFace.setImageResource(doctorFaceId); //사진지정
+		//clinicNumber
+		
 		//Log.d("kim5",doctorList.get(1).getAcademy());
 		//학력정보
 		//txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
@@ -235,6 +283,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		txtDoctorCommnet =(TextView) findViewById(R.id.txt_doctor_comment);
 		txtDoctorAcademy = (TextView) findViewById(R.id.txt_doctor_academy);
 		kmUserImage = (ImageView) findViewById(R.id.km_detail_user_picture);
+		kmClinicDoctorFace = (ImageView) findViewById(R.id.kmDetailDoctorImg);
 		
 		
 		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
@@ -274,6 +323,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		case R.id.kmclinic_detail_moreinfo:
 			Intent intentMoreinfo = new Intent(this, KmClinicMoreInfoActivity.class);
 			intentMoreinfo.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intentMoreinfo.putExtra("clinicNumber", clinicNumber);
 			startActivity(intentMoreinfo);
 			break;
 			

@@ -576,7 +576,7 @@ public class LoadData {
 			view.setType(jsonObj.getInt("type"));
 			view.setPicturePath(jsonObj.getString("picturePath"));
 			view.setMapPoint(jsonObj.getString("mapPoint"));
-			
+			/*
 			switch(kmClinicId){
 			case 1: view.setPicturePath("biman_bosung.png");break;
 			case 2: view.setPicturePath("biman_bosung.png");break;
@@ -585,7 +585,7 @@ public class LoadData {
 			case 14: view.setPicturePath("body_miache.png");break;		//미아체한의원 : 14
 			case 30: view.setPicturePath("body_kyunghee.png");break;	//청구경희한의원: 30
 			}
-
+*/
 			jsonArr = jsonObj.getJSONArray("keywordList");
 			List<String> keywords = new ArrayList<String>();
 			for (int i = 0; i < jsonArr.length(); i++) {
@@ -863,6 +863,46 @@ public class LoadData {
 
 		for(int i = 0; i<randomNumberList.length; i++) {
 			randomList.add(AllUserSimpleInfoList.get(randomNumberList[i]));
+		}
+		
+		return randomList;
+
+	}
+	
+	public ArrayList<ReviewView> getRandomReviewViewList(int seed) {
+
+		ArrayList<ReviewView> randomList = new ArrayList<ReviewView>();
+
+		Random rand = new Random(seed);
+
+		LoadData loadData = new LoadData(context);
+
+		List<ReviewView> AllReviewViewList = loadData.getAllReviewView();
+
+		int listSize = (int) rand.nextInt(3) % 3 + 3;
+
+		int[] randomNumberList = new int[listSize];
+
+		for (int i = 0; i < randomNumberList.length; i++) {
+			int test = 0;
+			int randomNumber = (int) rand.nextInt(AllReviewViewList.size()) % AllReviewViewList.size();
+
+			for (int j = 0; j < randomNumberList.length; j++) {
+
+				if (randomNumber == randomNumberList[j])
+					test++;
+
+			}
+
+			if (test != 0) {
+				i--;
+				continue;
+			}
+			randomNumberList[i] = randomNumber;
+		}
+
+		for(int i = 0; i<randomNumberList.length; i++) {
+			randomList.add(AllReviewViewList.get(randomNumberList[i]));
 		}
 		
 		return randomList;
