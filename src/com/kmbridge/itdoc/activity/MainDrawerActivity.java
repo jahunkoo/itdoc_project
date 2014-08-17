@@ -84,7 +84,11 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private final int POSITION_HANIKOK_SUPPOTERS = 5;
 	private final int POSITION_HANIKOK_HANBANG_INFO = 8;
 	// action view 좀 돼라
-
+	
+	private final int POSITION_KOK_LIST_FRAGMENT = 2;
+	private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
+	private final int POSITION_Q_AND_A_FRAGMENT = 9;
+	
 	int position = -1;
 
 	@Override
@@ -391,13 +395,27 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		}
 	}
 
+	/**
+	 * private final int POSITION_KOK_LIST_FRAGMENT = 2;
+	private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
+	private final int POSITION_Q_AND_A_FRAGMENT = 9;
+	 * @param position
+	 */
 	private void selectItem(int position) {
 		this.position = position;
 		switch (position) {
+		case POSITION_KOK_LIST_FRAGMENT:
+			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
+			break;
+		case POSITION_SELLUP_CHOICE_FRAGMENT:
+			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
+			break;
+		case POSITION_Q_AND_A_FRAGMENT:
+			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
+			break;
 		case POSITION_SEARCH_FRAGMENT:
 			createSearchFragment(fragmentManager, position);
 			break;
-
 		case POSITION_KMCLINIC_LIST_FRAGMENT:
 			createKmClinicListFragment(fragmentManager, position);
 			break;
@@ -406,6 +424,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			break;
 		case POSITION_HANIKOK_HANBANG_INFO:
 			createHanbangInfoFragment(fragmentManager, position);
+			break;
 		}
 	}
 	// *********************************************end***************************************************
