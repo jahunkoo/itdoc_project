@@ -74,14 +74,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public FragmentManager fragmentManager = getSupportFragmentManager();
 
 	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 1;
+	private final int POSITION_KOK_LIST_FRAGMENT = 2;
+	
 	private final int POSITION_SEARCH_FRAGMENT = 4;	
 	private final int POSITION_HANIKOK_SUPPOTERS = 5;
-	private final int POSITION_HANIKOK_HANBANG_INFO = 8;
-	// action view 좀 돼라
+	//private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
 	
-	private final int POSITION_KOK_LIST_FRAGMENT = 2;
-	private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
-	private final int POSITION_Q_AND_A_FRAGMENT = 9;
+	private final int POSITION_HANIKOK_HANBANG_INFO = 7;
+	// action view 좀 돼라
+	private final int POSITION_Q_AND_A_FRAGMENT = 8;
 	
 	int position = -1;
 
@@ -100,7 +101,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		//************************************ koo *********************************************************
 		DisplayMetrics displayMetrics = new DisplayMetrics(); 
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
-				    
+		Log.d("koo", "dpi:"+displayMetrics.densityDpi);
+		
 		ImageManager.screenWidth = displayMetrics.widthPixels; 
 		ImageManager.screenHeight = displayMetrics.heightPixels;
 		Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
@@ -159,6 +161,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		LoadData load = new LoadData(this);
 		
 		fragmentManager.addOnBackStackChangedListener(this);
+		
+		
+		
 	}
 
 	
@@ -398,9 +403,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		this.position = position;
 		switch (position) {
 		case POSITION_KOK_LIST_FRAGMENT:
-			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
-			break;
-		case POSITION_SELLUP_CHOICE_FRAGMENT:
 			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
 			break;
 		case POSITION_Q_AND_A_FRAGMENT:
