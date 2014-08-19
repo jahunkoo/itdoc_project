@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -88,7 +89,6 @@ public class KmClinicDetailActivity extends ActionBarActivity implements	OnClick
 		//인텐트로 넘겨준 값을 받아온다.
 		Intent intent = getIntent();
 		clinicNumber = intent.getExtras().getInt("clinicNumber");
-		Log.d("kim3","KmclinicDetail Activity : "+clinicNumber);
 		
 		setLayout();
 		setListener();
@@ -130,8 +130,18 @@ public class KmClinicDetailActivity extends ActionBarActivity implements	OnClick
 		//Log.d("kim4","Path : "+resName);
 		int clinicPictureId = getResources().getIdentifier(resClinName, "drawable", this.getPackageName());
 		//Log.d("kim4","Resource :"+pictureId);
+		
+		// 원래 있던 코드
 		kmClinicImage.setImageResource(clinicPictureId);
+		
 		kmClinicImage2.setImageResource(clinicPictureId);
+		
+		// 검색했을 때 result에서 한의원 사진을 들어가면 out of memory error 가 뜨는 형태가 뜨는 것 때문에 bitmap factory를 사용해서 사진의 크기를 조절하는 코드 
+		// Bitmap bitmap = com.kmbridge.itdoc.image.ImageManager.decodeSampledBitmapFromResource(this.getResources(), clinicPictureId, 128, 64);
+		// kmClinicImage.setImageBitmap(bitmap);
+		
+		
+		
 		
 		//String kmclinicImagePath = list.get(2).getKmClinicPicturePath();
 		//Log.d("kim",kmclinicImagePath);

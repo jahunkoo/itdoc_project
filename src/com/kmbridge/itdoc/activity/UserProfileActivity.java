@@ -2,6 +2,8 @@ package com.kmbridge.itdoc.activity;
 
 import lazyList.ImageLoader;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -66,6 +68,8 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 
 	private LoadData loadData;
 
+	Boolean followToggle;
+	
 	public ImageView getUserProfileImgView() {
 		return userProfileImgView;
 	}
@@ -115,6 +119,8 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 
 		setDownloadData(loadData.getUserView(userEmail));
 
+		followToggle = true;
+		
 	}
 
 	private void setListner() {
@@ -198,6 +204,18 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 			if (this.isMyPage) {
 				intent = new Intent(this, UserProfileEditActivity.class);
 				startActivity(intent);
+			} else {
+				if(followToggle) {
+					followButton.setText(R.string.button_user_profile_let_follow);
+					followButton.setTextColor(Color.parseColor("#FF0000"));
+					followButton.setBackgroundColor(Color.parseColor("#DCDCDC"));
+					followToggle = false;
+				} else {
+					followButton.setText(R.string.button_user_profile_followed);
+					followButton.setTextColor(Color.parseColor("#FFFFFF"));
+					followButton.setBackgroundColor(Color.parseColor("#FF0000"));
+					followToggle = true;
+				}
 			}
 
 			break;

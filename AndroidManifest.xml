@@ -152,12 +152,16 @@
         <activity
             android:name="com.kmbridge.itdoc.activity.HaniKokActivity"
             android:label="@string/title_activity_hani_kok" >
-             
+        </activity>
+         <activity
+            android:name="com.kmbridge.itdoc.activity.KeywordSelectActivity"
+            android:label="@string/title_activity_keywords_select" >
         </activity>
     </application>
 
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
+
 
 </manifest>

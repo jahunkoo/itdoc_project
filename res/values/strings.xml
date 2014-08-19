@@ -23,7 +23,8 @@
     <string name="title_activity_visited">리뷰남기기</string>
     <string name="title_activity_support">색다른 한의사를 소개합니다</string>
     <string name="title_activity_hanbang_info">한방정보</string>
-     <string name="title_activity_hani_kok">HaniKok</string>
+    <string name="title_activity_hani_kok">HaniKok</string>
+    <string name="title_activity_keywords_select">관심 분야 설정</string>
 
     <!-- activity -->
     <!-- main_drawer_activity related -->

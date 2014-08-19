@@ -27,6 +27,7 @@ import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.fragment.SearchResultClinicListFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.RecycleUtil;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class HardSearchFragment extends Fragment implements OnClickListener, OnItemClickListener {
@@ -56,6 +57,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 	String[] keywords1 = null;
 	SearchAdapter searchAdapter;
 
+	LoadData load;
+	
 	SharedPreferenceUtil share = new SharedPreferenceUtil();
 
 	public static final String RECENT_KEYWORD = "recentKeyword";
@@ -64,6 +67,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+		
+		load = new LoadData(context);
 		
 		share.setData(context, RECENT_KEYWORD, "한의콕" + ",");
 		
@@ -151,8 +156,6 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		return rootView;
 	}
 
-	
-
 	public static HardSearchFragment create(Context context) {
 		HardSearchFragment searchFragment = new HardSearchFragment();
 
@@ -165,7 +168,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		this.context = context;
 	}
 
-	LoadData load = new LoadData(context);
+	
 	
 	@Override
 	public void onClick(View v) {
@@ -221,7 +224,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 
 			break;
 			
-		/*case R.id.search_item1:
+		case R.id.search_item1:
 			ArrayList<KmClinicView> item1 = load.searchClinicListByKeyword("피부");
 			serachResult(item1);
 			break;
@@ -290,7 +293,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 			ArrayList<KmClinicView> item14 = load.searchClinicListByKeyword("탈모");
 			serachResult(item14);
 			break;
-*/
+
 		default:
 			break;
 		}

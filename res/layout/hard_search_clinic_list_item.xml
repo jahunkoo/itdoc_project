@@ -70,8 +70,8 @@
     </LinearLayout>
     <ImageView
         android:id="@+id/imageview_clinic_list_item_clinicimage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="asdf"
         android:src="@drawable/biman_bosung"
         android:layout_above="@id/linearlayout_clinic_list_item"/>
