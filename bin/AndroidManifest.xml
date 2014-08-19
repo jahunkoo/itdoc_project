@@ -73,10 +73,9 @@
         <activity
             android:name=".activity.ConfigActivity"
             android:label="@string/title_activity_config" >
-               <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
-            
         </activity>
         <activity
             android:name=".activity.KmClinicDetailActivity"
@@ -89,7 +88,7 @@
         <activity
             android:name=".activity.UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
-             <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
@@ -106,12 +105,9 @@
         <activity
             android:name=".activity.RelativesActivity"
             android:label="@string/title_activity_relatives" >
-             
-             <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.KmClinicDetailActivity" />
-            
-            
         </activity>
         <activity
             android:name=".activity.KmClinicAllreviewActivity"
@@ -151,7 +147,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.UserProfileActivity" />
-
         </activity>
         <activity android:name=".activity.SeeAllReviewListActivity" >
             <meta-data
@@ -177,8 +172,7 @@
         <activity android:name=".activity.UserProfileEditActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.UserProfileActivity"
-                 />
+                android:value=".activity.UserProfileActivity" />
         </activity>
         <activity android:name=".activity.KeywordSelectActivity" >
             <meta-data

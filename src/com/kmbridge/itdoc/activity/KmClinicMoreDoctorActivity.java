@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
@@ -20,6 +22,9 @@ import com.kmbridge.itdoc.hardcoding.LoadData;
 public class KmClinicMoreDoctorActivity extends Activity {
 	ActionBar actionBar = null; // 액션바 세팅 시작
 
+	//레이아웃 
+	LinearLayout layoutDoctor[] = new LinearLayout[5];
+	
 	TextView txtMoreDocterName[] = new TextView[5]; // 의료진 이름
 	TextView txtDoctorAcademy[] = new TextView[5];
 	TextView txtDoctorMajor[] = new TextView[5];
@@ -57,6 +62,8 @@ public class KmClinicMoreDoctorActivity extends Activity {
 		doctorList = KmClinicview.getDoctorList();
 		for(int i=0; i< doctorList.size(); i++)
 		{
+			layoutDoctor[i].setVisibility(View.VISIBLE);
+			
 			//한의사 이름
 			String doctorName = doctorList.get(i).getName();
 			txtMoreDocterName[i].setText(doctorName);
@@ -114,5 +121,11 @@ public class KmClinicMoreDoctorActivity extends Activity {
 		moreDoctorFace[2] = (ImageView) findViewById(R.id.moreDoctorFace3);
 		moreDoctorFace[3] = (ImageView) findViewById(R.id.moreDoctorFace4);
 		moreDoctorFace[4] = (ImageView) findViewById(R.id.moreDoctorFace5);
+		
+		layoutDoctor[0] = (LinearLayout) findViewById(R.id.layout_doctor1);
+		layoutDoctor[1] = (LinearLayout) findViewById(R.id.layout_doctor2);
+		layoutDoctor[2] = (LinearLayout) findViewById(R.id.layout_doctor3);
+		layoutDoctor[3] = (LinearLayout) findViewById(R.id.layout_doctor4);
+		layoutDoctor[4] = (LinearLayout) findViewById(R.id.layout_doctor5);
 	}
 }

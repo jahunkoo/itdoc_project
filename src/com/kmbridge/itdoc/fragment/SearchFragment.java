@@ -48,7 +48,7 @@ public class SearchFragment extends Fragment implements OnClickListener, OnItemC
 
 		View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 		
-		share.setData(context, RECENT_KEYWORD, "한의콕" + ",");
+		SharedPreferenceUtil.setData(context, RECENT_KEYWORD, "한의콕" + ",");
 		
 		ConnectionBridge keywordConnection = new ConnectionBridge();
 

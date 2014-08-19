@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.kmbridge.itdoc.R;
 
 public class VisitedDialogActivity extends Dialog implements OnClickListener {
+	
+	
 
 	private Context mContext = null;
 	private View.OnClickListener mClickListener;
