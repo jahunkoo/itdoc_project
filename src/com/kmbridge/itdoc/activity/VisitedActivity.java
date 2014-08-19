@@ -1,13 +1,18 @@
 package com.kmbridge.itdoc.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dialog.VisitedDialogActivity;
+import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.hardcoding.LoadData;
 
 public class VisitedActivity extends ImageSelectHelperActivity implements OnClickListener {
 	//MainDialog mMainDialog;
@@ -17,19 +22,46 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 	Button btnFaceNotbad;
 	Button btnFaceBad;
 	Button btnCamera;
+	Button btnComplate;
 	TextView txtFaceSelectResult;
 	public TextView txtVisitedChoice;
 	//TextView txtKeywordDisplay;
+	public int clinicNumber;
+	
+	ScrollView scrollView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_visited);
+		
+		// 인텐트로 넘겨준 값을 받아온다.
+		Intent intent = getIntent();
+		clinicNumber = intent.getExtras().getInt("clinicNumber");
+		
+		// json파서 로드
+		LoadData load = new LoadData(this);
+		// 한의원 객체를 가져옴
+		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
+		// 병원 이름 지정
+		getActionBar().setTitle(KmClinicview.getName());
 
 		setLayout();
 		setListener();
 		
 		getSelectedImageFile(); // extract selected & saved image file.
+		/*
+		ScrollView scroll = (ScrollView)findViewById(R.id.visited_scroll);
+		scroll.post(new Runnable()
+		{
+		@Override
+		public void run()
+		{
+		ScrollView scroll = (ScrollView)findViewById(R.id.visited_scroll);
+		scroll.fullScroll(ScrollView.FOCUS_UP);
+
+		}
+		}); */
 		
 	}
 	
@@ -70,6 +102,7 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 		txtFaceSelectResult = (TextView) findViewById(R.id.txt_face_select_result);
 		btnCamera = (Button) findViewById(R.id.btn_camara);
 		txtVisitedChoice = (TextView) findViewById(R.id.kmclinic_visited_choice);
+		btnComplate = (Button) findViewById(R.id.btn_complate);
 	}
 
 	private void setListener() {
@@ -78,6 +111,7 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 		btnFaceBad.setOnClickListener(this);
 		btnCamera.setOnClickListener(this);
 		txtVisitedChoice.setOnClickListener(this);
+		btnComplate.setOnClickListener(this);
 	}
 
 	private void callImageActivity(){
@@ -86,6 +120,8 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 		setCropOption(1, 1);
 		startSelectImage();
 	}
+	
+	
 	
 	@Override
 	public void onClick(View v) {
@@ -117,7 +153,15 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 			//dialogactivity.showDialog();
 			//mMainDialog = new MainDialog();
 			//mMainDialog.show(getFragmentManager(), "");
+		case R.id.btn_complate:
+			/*Intent intent = new Intent(this, KmClinicDetailActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("clinicNumber", clinicNumber);
+			startActivity(intent);*/
 		}
 	}
+
+	
+	
 
 }

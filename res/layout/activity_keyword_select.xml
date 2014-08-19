@@ -27,7 +27,7 @@
                     android:id="@+id/search_item1"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/skin" />
+                    android:background="@drawable/skin_off" />
 
                 <ImageButton
                     android:id="@+id/search_item2"
@@ -35,13 +35,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/nose" />
+                    android:background="@drawable/nose_off" />
 
                 <ImageButton
                     android:id="@+id/search_item3"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/diet" />
+                    android:background="@drawable/diet_off" />
             </LinearLayout>
 
             <LinearLayout
@@ -57,7 +57,7 @@
                     android:id="@+id/search_item4"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/disk" />
+                    android:background="@drawable/disk_off" />
 
                 <ImageButton
                     android:id="@+id/search_item5"
@@ -65,13 +65,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/beauty" />
+                    android:background="@drawable/beauty_off" />
 
                 <ImageButton
                     android:id="@+id/search_item6"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/child" />
+                    android:background="@drawable/child_off" />
             </LinearLayout>
 
             <LinearLayout
@@ -87,7 +87,7 @@
                     android:id="@+id/search_item7"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/orientalmedicine" />
+                    android:background="@drawable/oriental_medicine_off" />
 
                 <ImageButton
                     android:id="@+id/search_item8"
@@ -95,13 +95,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/stomach" />
+                    android:background="@drawable/stomach_off" />
 
                 <ImageButton
                     android:id="@+id/search_item9"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/woman" />
+                    android:background="@drawable/mother_off" />
             </LinearLayout>
 
             <LinearLayout
@@ -117,7 +117,7 @@
                     android:id="@+id/search_item10"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/man" />
+                    android:background="@drawable/man_off" />
 
                 <ImageButton
                     android:id="@+id/search_item11"
@@ -125,13 +125,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/niddle" />
+                    android:background="@drawable/needle_off" />
 
                 <ImageButton
                     android:id="@+id/search_item12"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/oldman" />
+                    android:background="@drawable/oldman_off" />
             </LinearLayout>
 
             <LinearLayout
@@ -148,7 +148,7 @@
                     android:id="@+id/search_item13"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/stress" />
+                    android:background="@drawable/stomach_off" />
 
                 <ImageButton
                     android:id="@+id/search_item14"
@@ -156,7 +156,7 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/bald" />
+                    android:background="@drawable/bald_off" />
                 
                 <ImageButton
                     android:visibility="invisible"

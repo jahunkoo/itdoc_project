@@ -22,7 +22,6 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
-        android:largeHeap="true"
         android:name=".util.Font"
         android:allowBackup="true"
         android:icon="@drawable/app_icon_itdoc"
@@ -32,18 +31,19 @@
         android:theme="@style/ItDocActionBarTheme" >
         <activity
             android:name=".activity.IntroActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_intro"
             android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-        <activity
-            android:name=".activity.MainDrawerActivity"
-            android:label="@string/title_activity_main_drawer"
-            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainDrawerActivity"
+            android:label="@string/title_activity_main_drawer"
+            android:screenOrientation="portrait" >
+           
         </activity>
 
         <!-- 지워도 됨 -->
@@ -56,12 +56,7 @@
         <activity
             android:name=".activity.UserManagerActivity"
             android:label="@string/title_activity_user_manager" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+</activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>
         <activity android:name=".activity.ScreenSlideActivity" >
@@ -78,7 +73,12 @@
         </activity>
         <activity
             android:name=".activity.KmClinicDetailActivity"
-            android:label="@string/title_activity_km_clinic_detail" >
+            android:label="@string/title_activity_km_clinic_detail"
+            android:parentActivityName=".activity.MainDrawerActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainDrawerActivity" />
+
         </activity>
         <activity
             android:name=".activity.MapActivity"
@@ -119,7 +119,7 @@
             android:label="@string/title_activity_visited" >
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.dialog.VisitedDialogActivity"
+            android:name=".dialog.VisitedDialogActivity"
             android:label="@string/title_activity_visited_dialog" >
         </activity>
         <activity android:name=".activity.UserFollowerActivity" >
@@ -127,30 +127,36 @@
         <activity android:name=".activity.SeeAllReviewListActivity" >
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.activity.SupporterActivity"
+            android:name=".activity.SupporterActivity"
             android:label="@string/title_activity_support"
             android:parentActivityName=".activity.MainDrawerActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
-
         <activity
-            android:name="com.kmbridge.itdoc.activity.HanbangInfoActivity"
+            android:name=".activity.HanbangInfoActivity"
             android:label="@string/title_activity_hanbang_info"
             android:parentActivityName=".activity.MainDrawerActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
-
-        <activity android:name=".activity.UserProfileEditActivity"></activity>
-        <activity android:name=".activity.KeywordSelectActivity"></activity>
-
+        <activity android:name=".activity.UserProfileEditActivity" >
+        </activity>
+        <activity
+            android:name="com.kmbridge.itdoc.activity.HaniKokActivity"
+            android:label="@string/title_activity_hani_kok" >
+        </activity>
+         <activity
+            android:name="com.kmbridge.itdoc.activity.KeywordSelectActivity"
+            android:label="@string/title_activity_keywords_select" >
+        </activity>
     </application>
 
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
+
 
 </manifest>

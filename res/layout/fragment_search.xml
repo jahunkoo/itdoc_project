@@ -70,7 +70,7 @@
                     android:id="@+id/search_item1"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/skin" />
+                    android:background="@drawable/search_item1"/>
 
                 <ImageView
                     android:id="@+id/search_item2"
@@ -78,13 +78,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/nose" />
+                    android:background="@drawable/search_item2"/>
 
                 <ImageView
                     android:id="@+id/search_item3"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/diet" />
+                    android:background="@drawable/search_item3"/>
             </LinearLayout>
 
             <LinearLayout
@@ -100,7 +100,7 @@
                     android:id="@+id/search_item4"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/disk" />
+                    android:background="@drawable/search_item4"/>
 
                 <ImageView
                     android:id="@+id/search_item5"
@@ -108,13 +108,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/beauty" />
+                    android:background="@drawable/search_item5"/>
 
                 <ImageView
                     android:id="@+id/search_item6"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/child" />
+                    android:background="@drawable/search_item6"/>
             </LinearLayout>
 
             <LinearLayout
@@ -130,7 +130,7 @@
                     android:id="@+id/search_item7"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/orientalmedicine" />
+                    android:background="@drawable/search_item7"/>
 
                 <ImageView
                     android:id="@+id/search_item8"
@@ -138,13 +138,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/stomach" />
+                    android:background="@drawable/search_item8"/>
 
                 <ImageView
                     android:id="@+id/search_item9"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/woman" />
+                    android:background="@drawable/search_item9"/>
             </LinearLayout>
 
             <LinearLayout
@@ -160,7 +160,7 @@
                     android:id="@+id/search_item10"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/man" />
+                    android:background="@drawable/search_item10"/>
 
                 <ImageView
                     android:id="@+id/search_item11"
@@ -168,13 +168,13 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/niddle" />
+                    android:background="@drawable/search_item11"/>
 
                 <ImageView
                     android:id="@+id/search_item12"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/oldman" />
+                    android:background="@drawable/search_item12"/>
             </LinearLayout>
 
             <LinearLayout
@@ -191,7 +191,7 @@
                     android:id="@+id/search_item13"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
-                    android:background="@drawable/stress" />
+                    android:background="@drawable/search_item13"/>
 
                 <ImageView
                     android:id="@+id/search_item14"
@@ -199,7 +199,7 @@
                     android:layout_height="85dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
-                    android:background="@drawable/bald" />
+                    android:background="@drawable/search_item14"/>
                 
                 <ImageView
                     android:visibility="invisible"

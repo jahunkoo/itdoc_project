@@ -111,36 +111,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="5" >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1"
                     android:text="한방 다이어트" />
 
                 <ImageView
+                    android:id="@+id/more_info_user1"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user7" />
+                    android:layout_weight="1"/>
 
                 <ImageView
+                    android:id="@+id/more_info_user2"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user6" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user5" />
+                    android:layout_weight="1"/>
+             
             </LinearLayout>
 
             <LinearLayout
@@ -165,36 +159,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="5" >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1"
                     android:text="불임" />
 
                 <ImageView
+                    android:id="@+id/more_info_user3"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user7" />
+                    android:layout_weight="1"/>
 
                 <ImageView
+                    android:id="@+id/more_info_user4"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user6" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user3" />
+                    android:layout_weight="1"/>
+             
             </LinearLayout>
 
             <LinearLayout
@@ -219,35 +207,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="5" >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1"
                     android:text="변비" />
 
                 <ImageView
+                    android:id="@+id/more_info_user5"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user4" />
+                    android:layout_weight="1"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -272,14 +248,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="5" >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1"
                     android:text="피부" />
 
@@ -287,8 +262,7 @@
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/user3" />
+                    android:layout_weight="1"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -325,14 +299,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="5" >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1"
                     android:text="탈모" />
 
@@ -377,14 +350,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:weightSum="5" >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1"
                     android:text="해독 클리닉" />
 
