@@ -1,10 +1,13 @@
 package com.kmbridge.itdoc.activity;
 
-import com.kmbridge.itdoc.R;
-
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.ImageView;
+
+import com.kmbridge.itdoc.R;
 
 public class SupporterActivity extends ActionBarActivity{
 

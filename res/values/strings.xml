@@ -41,9 +41,9 @@
      </string-array>
     <string-array name="drawer_menu_title_item_array_search">
         <item>한의원 검색하기</item>
-        <item>한의콕 서포터즈</item>
-        <item>셀럽 추천 한의원</item>
+        <item>추천 한의원</item>
     </string-array>
+    
     <string-array name="drawer_menu_title_item_array_plus">
         <item>한의콕s 한방정보</item>
         <item>궁금해요 Q<![CDATA[&]]>A</item>
