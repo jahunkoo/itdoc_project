@@ -7,7 +7,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,11 +25,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmDoctor;
-import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.hardcoding.LoadData;
-public class KmClinicDetailActivity extends FragmentActivity implements	OnClickListener {
+public class KmClinicDetailActivity extends ActionBarActivity implements	OnClickListener {
 	ActionBar actionBar = null; // 액션바 세팅 시작
 	int clinicNumber;
 	
@@ -82,6 +81,10 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_km_clinic_detail);
+		
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		
 		//인텐트로 넘겨준 값을 받아온다.
 		Intent intent = getIntent();
 		clinicNumber = intent.getExtras().getInt("clinicNumber");
@@ -375,6 +378,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		
 		case R.id.btn_activity_km_clilic_detail_visited:
 			Intent intentVisited = new Intent(this, VisitedActivity.class);
+			intentVisited.putExtra("clinicNumber", clinicNumber);
 			intentVisited.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intentVisited);
 			break;

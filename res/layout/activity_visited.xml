@@ -1,9 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCDCDC" >
+    android:background="@drawable/setting_section_bg3">
 
     <ScrollView
+        android:id="@+id/visited_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
@@ -112,18 +113,18 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:orientation="vertical"
-                    android:weightSum="2" >
+                    android:weightSum="5" >
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
+                        android:textSize="15sp"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="한의원에 대한 코멘트를 작성해주세요." />
 
@@ -150,6 +151,7 @@
         android:orientation="vertical" >
 
         <Button
+            android:id="@+id/btn_complate"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@drawable/btn_complete_click" />

@@ -16,6 +16,8 @@
             android:weightSum="6" >
 
             <LinearLayout
+                android:id="@+id/layout_user1_review1"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -84,6 +86,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_user1_review2"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -187,6 +191,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_user2_review1"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -255,6 +261,8 @@
             </LinearLayout>
             
             <LinearLayout
+                android:id="@+id/layout_user2_review2"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -354,6 +362,8 @@
             </LinearLayout>
             
             <LinearLayout
+                android:id="@+id/layout_user3_review1"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -417,12 +427,13 @@
                         android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
                         android:textColor="#0000ff"
-                        android:text="시간"
                         android:textSize="7sp" />
                 </LinearLayout>
             </LinearLayout>
             
             <LinearLayout
+                android:id="@+id/layout_user3_review2"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -522,6 +533,8 @@
             </LinearLayout>
             
             <LinearLayout
+                android:id="@+id/layout_user4_review1"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -591,6 +604,8 @@
             </LinearLayout>
             
             <LinearLayout
+                android:id="@+id/layout_user4_review2"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -691,6 +706,8 @@
             
             
             <LinearLayout
+                android:id="@+id/layout_user5_review1"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -759,6 +776,8 @@
             </LinearLayout>
             
             <LinearLayout
+                android:id="@+id/layout_user5_review2"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
