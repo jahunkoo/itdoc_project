@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.dto.KmDoctor;
+import com.kmbridge.itdoc.dto.ReviewKeyword;
 import com.kmbridge.itdoc.dto.ReviewView;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.dto.UserView;
@@ -34,8 +36,16 @@ public class KmClinicAllreviewActivity extends Activity {
 	// 리뷰쓴 사람의 작성 시간을 저장할 배열
 	TextView reViewUserDate[] = new TextView[5];
 	
+	// 리뷰쓴 사람의 키워드를 저장할 배열
+	TextView reViewUserKeyword[] = new TextView[5];
+	
 	// 리뷰 이미지 저장할 배열
-	ImageView reViewTypeImage[] = new ImageView[5];
+	ImageView reViewTypeImage1[] = new ImageView[5];
+	ImageView reViewTypeImage2[] = new ImageView[5];
+	ImageView reViewTypeImage3[] = new ImageView[5];
+	
+	//의사 사진
+	String reviewKeyword[] = {"피부","비염","다이어트","디스크","한방","아이","보약","위장","여성","남성","침","당뇨","스트레스","탈모"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +77,10 @@ public class KmClinicAllreviewActivity extends Activity {
 		List<ReviewView> reviewList = new ArrayList<ReviewView>();
 		reviewList = load.getRandomReviewViewList(clinicNumber);
 		
+		//의사 객체
+		List<KmDoctor> doctorList = new ArrayList<KmDoctor>();
+		doctorList = KmClinicview.getDoctorList();
+		
 		for(int j=0;j<simpleList.size();j++)
 		{
 			String UserName = simpleList.get(j).getName(); //유저이름
@@ -79,36 +93,56 @@ public class KmClinicAllreviewActivity extends Activity {
 			String userReviewData = reviewList.get(j).getReviewTime();
 			
 			int userReviewFavorType = reviewList.get(j).getFavoriteType(); //추천이미지에 따른 번호를 가져옴.
-			int favorPictureId = setFavorImage(userReviewFavorType);
+			//int favorPictureId = setFavorImage(userReviewFavorType);
+			
+			
 			
 			reViewUserName[j].setText(UserName); //이름지정
 			reViewUserImage[j].setImageResource(pictureId); //사진지정
 			reViewUserDate[j].setText(userReviewData); //리뷰 작성 시간 지정
 			reViewUserReview[j].setText(userReview); //리뷰지정 
-			reViewTypeImage[j].setImageResource(favorPictureId); //리뷰 평가 이미지 지정
+			//reViewTypeImage[j].setImageResource(favorPictureId); //리뷰 평가 이미지 지정
 			
+			int favorId1 = getResources().getIdentifier("emoticon_good_grey", "drawable", this.getPackageName());
+			reViewTypeImage1[j].setImageResource(favorId1);
+			int favorId2 = getResources().getIdentifier("emoticon_soso_grey", "drawable", this.getPackageName());
+			reViewTypeImage2[j].setImageResource(favorId2);
+			int favorId3 = getResources().getIdentifier("emoticon_bad_grey", "drawable", this.getPackageName());
+			reViewTypeImage3[j].setImageResource(favorId3);
+			
+			setFavorImage(userReviewFavorType, j); //리뷰 평가 이미지 지정
+			
+		}
+		for(int i=0; i< doctorList.size(); i++)
+		{
+			//키워드 대표사진
+			int keywordNum = (doctorList.get(i).getId())%10;
+			Log.d("kim4","test"+keywordNum);
+			reViewUserKeyword[i].setText(reviewKeyword[keywordNum]);
 		}
 
 		
 	}
 
-	private int setFavorImage(int type) {
-		int favorId=0;
-		
+	private void setFavorImage(int type, int number) {
+		int favorId;
+		Log.d("kim2","type:"+type);
 		if(type==1)
 		{
-			favorId = getResources().getIdentifier("face_nice_on", "drawable", this.getPackageName());
+			favorId = getResources().getIdentifier("emoticon_good_red", "drawable", this.getPackageName());
+			Log.d("kim2",""+favorId);
+			reViewTypeImage1[number].setImageResource(favorId);//리뷰 평가 이미지 지정
 		}
 		else if(type==2)
 		{
-			favorId = getResources().getIdentifier("face_notbad_on", "drawable", this.getPackageName());
+			favorId = getResources().getIdentifier("emoticon_soso_red", "drawable", this.getPackageName());
+			reViewTypeImage2[number].setImageResource(favorId); //리뷰 평가 이미지 지정
 		}
 		else if(type==3)
 		{
-			favorId = getResources().getIdentifier("face_bad_on", "drawable", this.getPackageName());
+			favorId = getResources().getIdentifier("emoticon_bad_red", "drawable", this.getPackageName());
+			reViewTypeImage3[number].setImageResource(favorId);//리뷰 평가 이미지 지정
 		}
-		
-		return favorId;
 	}
 
 	private void setLayout() {
@@ -142,11 +176,29 @@ public class KmClinicAllreviewActivity extends Activity {
 		reViewUserDate[4] = (TextView) findViewById(R.id.review_user5_date);
 		
 		//리뷰 타입 이미지 지정
-		reViewTypeImage[0] = (ImageView) findViewById(R.id.review_user1_favorImg);
-		reViewTypeImage[1] = (ImageView) findViewById(R.id.review_user2_favorImg);
-		reViewTypeImage[2] = (ImageView) findViewById(R.id.review_user3_favorImg);
-		reViewTypeImage[3] = (ImageView) findViewById(R.id.review_user4_favorImg);
-		reViewTypeImage[4] = (ImageView) findViewById(R.id.review_user5_favorImg);
+		reViewTypeImage1[0] = (ImageView) findViewById(R.id.review_user1_favorImg1);
+		reViewTypeImage1[1] = (ImageView) findViewById(R.id.review_user2_favorImg1);
+		reViewTypeImage1[2] = (ImageView) findViewById(R.id.review_user3_favorImg1);
+		reViewTypeImage1[3] = (ImageView) findViewById(R.id.review_user4_favorImg1);
+		reViewTypeImage1[4] = (ImageView) findViewById(R.id.review_user5_favorImg1);
+		
+		reViewTypeImage2[0] = (ImageView) findViewById(R.id.review_user1_favorImg2);
+		reViewTypeImage2[1] = (ImageView) findViewById(R.id.review_user2_favorImg2);
+		reViewTypeImage2[2] = (ImageView) findViewById(R.id.review_user3_favorImg2);
+		reViewTypeImage2[3] = (ImageView) findViewById(R.id.review_user4_favorImg2);
+		reViewTypeImage2[4] = (ImageView) findViewById(R.id.review_user5_favorImg2);
+		
+		reViewTypeImage3[0] = (ImageView) findViewById(R.id.review_user1_favorImg3);
+		reViewTypeImage3[1] = (ImageView) findViewById(R.id.review_user2_favorImg3);
+		reViewTypeImage3[2] = (ImageView) findViewById(R.id.review_user3_favorImg3);
+		reViewTypeImage3[3] = (ImageView) findViewById(R.id.review_user4_favorImg3);
+		reViewTypeImage3[4] = (ImageView) findViewById(R.id.review_user5_favorImg3);
+		
+		reViewUserKeyword[0] = (TextView) findViewById(R.id.review_user1_keyword);
+		reViewUserKeyword[1] = (TextView) findViewById(R.id.review_user2_keyword);
+		reViewUserKeyword[2] = (TextView) findViewById(R.id.review_user3_keyword);
+		reViewUserKeyword[3] = (TextView) findViewById(R.id.review_user4_keyword);
+		reViewUserKeyword[4] = (TextView) findViewById(R.id.review_user5_keyword);
 
 	}
 

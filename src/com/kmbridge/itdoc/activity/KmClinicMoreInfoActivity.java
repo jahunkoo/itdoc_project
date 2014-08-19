@@ -1,16 +1,20 @@
 package com.kmbridge.itdoc.activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.TimeTable;
+import com.kmbridge.itdoc.dto.UserSimpleInfo;
+import com.kmbridge.itdoc.dto.UserView;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 
 public class KmClinicMoreInfoActivity extends Activity {
@@ -19,6 +23,9 @@ public class KmClinicMoreInfoActivity extends Activity {
 	TextView txtMoreInfoWeekend;
 	ImageView kmClinicPicture;
 
+	// 추천한 이웃의 사진을 저장할 배열
+	ImageView likeUser[] = new ImageView[5];
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,23 +82,34 @@ public class KmClinicMoreInfoActivity extends Activity {
 			}
 		}
 		
-		/*Log.d("kim4" ,"startTime = "+startTime);
-		Log.d("kim4" ,"endTime = "+endTime);
-		Log.d("kim4" ,"lunchStartTime = "+lunchStartTime);
-		Log.d("kim4" ,"lunchEndTime = "+lucnhEndtime);
-		Log.d("kim4" ,"weekendDay = "+weekendDay);*/
-		
-		
-		//txtMoreInfoWeekDay.setText(weekDay);
-		
-		
+		//키워드 별 추천 사용자 사진지정
+		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
+		simpleList = load.getRandomUserSimpleInfoList(clinicNumber);
+
+		for(int j=0;j<simpleList.size();j++)
+		{
+			String pictureName = simpleList.get(j).getPicturePath();
+			String []arr = pictureName.split(".png");
+			String resName = arr[0];
+			int pictureId = getResources().getIdentifier(resName, "drawable", this.getPackageName());
+			
+			likeUser[j].setImageResource(pictureId); //사진지정
+		}
 	}
+		
 
 	private void setLayout() {
 		txtMoreInfoDetail = (TextView) findViewById(R.id.txt_moreinfo_clinicment);
 		txtMoreInfoWeekDay = (TextView) findViewById(R.id.txt_moreinfo_week_day);
 		txtMoreInfoWeekend = (TextView) findViewById(R.id.txt_moreinfo_weeked);
 		kmClinicPicture = (ImageView) findViewById(R.id.kmclinic_detail_picture);
+		
+		// 추천한 이웃의 사진을 저장할 배열
+		likeUser[0] = (ImageView) findViewById(R.id.more_info_user1);
+		likeUser[1] = (ImageView) findViewById(R.id.more_info_user2);
+		likeUser[2] = (ImageView) findViewById(R.id.more_info_user3);
+		likeUser[3] = (ImageView) findViewById(R.id.more_info_user4);
+		likeUser[4] = (ImageView) findViewById(R.id.more_info_user5);
 	}
 	
 	private void setListener() {

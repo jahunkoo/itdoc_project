@@ -55,6 +55,10 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	ImageView kmClinicImage;
 	ImageView kmClinicImage2;
 	ImageView kmClinicDoctorFace;
+	TextView txtUserReviewDate;
+	ImageView kmClinicEmotionImg1;
+	ImageView kmClinicEmotionImg2;
+	ImageView kmClinicEmotionImg3;
 	
 	LinearLayout liniearLikeUsers;
 	
@@ -62,7 +66,9 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 	String doctorFace[] = {"doctor1","doctor2","doctor3","doctor4","doctor5","doctor6","doctor7","doctor8","doctor9","doctor10"};
 	
 	//키워드
-	
+	//의사 사진
+	String reviewKeyword[] = {"피부","비염","다이어트","디스크","한방","아이","보약","위장","여성","남성","침","당뇨","스트레스","탈모"};
+		
 	//추천한 이웃들 저장할 이미지뷰 배열
 	ImageView likeUser[] = new ImageView[5];
 	GoogleMap HaniMap;
@@ -175,42 +181,26 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		kmUserName = (TextView) findViewById(R.id.km_detail_user_name);
 		kmUserName.setText(userName);
 		
+		
 		// 대표유저 리뷰 지정
 		List<ReviewView> reviewList = new ArrayList<ReviewView>();
 		reviewList = load.getRandomReviewViewList(clinicNumber);
 		String userReview = reviewList.get(0).getComment();
 		txtUserReview.setText(userReview);
-		//List<ReviewView> reviewList = new ArrayList<ReviewView>();
-		//reviewList = load.getRandomReviewViewList(clinicNumber);
 		
-		//List<ReviewKeyword> listKeyword = load.getAllReviewView().get(2).getReviewKeywordList();
-		/*List<ReviewView> reViewListTest = new ArrayList<ReviewView>();
-		reViewListTest = load.getAllReviewView();
-		List<String>  listKeyword = new ArrayList<String>();
-		listKeyword = load.getAllKmClinicView().get(0).getKeywordList();*/
-		//List<ReviewView> reviewListTest = new ArrayList<ReviewView>();
-		//reviewListTest = load.getRandomReviewViewList(5);
-		//List<ReviewKeyword> testListTest = reviewListTest.get(0).getReviewKeywordList();
-		//String keywordTest = listKeyword.get(0).getKeyword();
-		//Log.d("kim5",""+testListTest);
-		//List<ReviewKeyword> listKeyword = load.getRandomReviewViewList(clinicNumber).get(0).getReviewKeywordList();
+		// 대표유저 리뷰 작성 시간 지정
+		String userReviewData = reviewList.get(0).getReviewTime();
+		txtUserReviewDate.setText(userReviewData); //리뷰 작성 시간 지정
 		
-		// 대표유저 리뷰(진료과목 지정)
-		//List<ReviewKeyword> userKeywordList = reviewList.get(0).getReviewKeywordList();
-		//String userKeyword = listKeyword.get(0).getKeyword();
-		//txtReviewKeyword.setText(userKeyword);
-		
-		//리뷰 사용자 진료과목
-		//list.get(clinicNumber).getReviewKeywordList();
-		//List<ReviewKeyword> keywordList = new ArrayList<ReviewKeyword>();
-		//keywordList = list.get(clinicNumber).getReviewKeywordList();
-		//String reviewKeyword = keywordList.get(clinicNumber).getKeyword();
-		//Log.d("kim5","keyword= "+keywordList);
-		//txtReviewKeyword.setText(reviewKeyword);
-		
-		//리뷰 들어갈 곳
-		//String userReview = list.get(clinicNumber).getComment();
-		//txtUserReview.setText(userReview);
+		// //추천이미지에 따른 번호를 가져옴.
+		int userReviewFavorType = reviewList.get(0).getFavoriteType(); 
+		/*int favorPictureId = setFavorImage(userReviewFavorType);
+		kmClinicEmotionImg1.setImageResource(favorPictureId); //리뷰 평가 이미지 지정
+		kmClinicEmotionImg2.setImageResource(favorPictureId); //리뷰 평가 이미지 지정
+		kmClinicEmotionImg3.setImageResource(favorPictureId); //리뷰 평가 이미지 지정
+*/	
+		Log.d("kim2",""+userReviewFavorType);
+		setFavorImage(userReviewFavorType);
 		
 		//한의원 설명
 		txtKmclinicComment.setText(KmClinicview.getDetails());
@@ -258,6 +248,9 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 			kmClinicDoctorFace.setImageResource(doctorFaceId); //사진지정
 			//clinicNumber
 			
+			// 대표유저 리뷰 키워드 지정
+			txtReviewKeyword.setText(reviewKeyword[doctorNum]);
+			
 			//Log.d("kim5",doctorList.get(1).getAcademy());
 			//학력정보
 			txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
@@ -287,7 +280,28 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		mThread.start();*/
 
 	}
-
+	
+	private void setFavorImage(int type) {
+		int favorId;
+		Log.d("kim2","type:"+type);
+		if(type==1)
+		{
+			favorId = getResources().getIdentifier("emoticon_good_red", "drawable", this.getPackageName());
+			Log.d("kim2",""+favorId);
+			kmClinicEmotionImg1.setImageResource(favorId); //리뷰 평가 이미지 지정
+		}
+		else if(type==2)
+		{
+			favorId = getResources().getIdentifier("emoticon_soso_red", "drawable", this.getPackageName());
+			kmClinicEmotionImg2.setImageResource(favorId); //리뷰 평가 이미지 지정
+		}
+		else if(type==3)
+		{
+			favorId = getResources().getIdentifier("emoticon_bad_red", "drawable", this.getPackageName());
+			kmClinicEmotionImg3.setImageResource(favorId); //리뷰 평가 이미지 지정
+		}
+		
+	}
 
 	public void setLayout() {
 	//	detailRelatives = (ImageView) findViewById(R.id.kmclinic_detail_relatives);
@@ -306,7 +320,10 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		txtDoctorAcademy = (TextView) findViewById(R.id.txt_doctor_academy);
 		kmUserImage = (ImageView) findViewById(R.id.km_detail_user_picture);
 		kmClinicDoctorFace = (ImageView) findViewById(R.id.kmDetailDoctorImg);
-		
+		txtUserReviewDate = (TextView) findViewById(R.id.txtReviewDate);
+		kmClinicEmotionImg1 = (ImageView) findViewById(R.id.review_user_favorImg1);
+		kmClinicEmotionImg2 = (ImageView) findViewById(R.id.review_user_favorImg2);
+		kmClinicEmotionImg3 = (ImageView) findViewById(R.id.review_user_favorImg3);
 		
 		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
 		alphaVisited.setAlpha(99);
