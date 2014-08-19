@@ -30,19 +30,188 @@
             android:layout_weight="1"
             android:src="@drawable/ic_action_search" />
     </LinearLayout>
-    <!--
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:text="최근 검색어" />
-    -->
 
     <ListView
         android:id="@+id/listview_fragment_search_recent_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#BDBDBD" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="6" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="50dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <ImageView
+                    android:id="@+id/search_item1"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/skin" />
+
+                <ImageView
+                    android:id="@+id/search_item2"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/nose" />
+
+                <ImageView
+                    android:id="@+id/search_item3"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/diet" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <ImageView
+                    android:id="@+id/search_item4"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/disk" />
+
+                <ImageView
+                    android:id="@+id/search_item5"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/beauty" />
+
+                <ImageView
+                    android:id="@+id/search_item6"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/child" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <ImageView
+                    android:id="@+id/search_item7"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/orientalmedicine" />
+
+                <ImageView
+                    android:id="@+id/search_item8"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/stomach" />
+
+                <ImageView
+                    android:id="@+id/search_item9"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/woman" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <ImageView
+                    android:id="@+id/search_item10"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/man" />
+
+                <ImageView
+                    android:id="@+id/search_item11"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/niddle" />
+
+                <ImageView
+                    android:id="@+id/search_item12"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/oldman" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <ImageView
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/search_item13"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/stress" />
+
+                <ImageView
+                    android:id="@+id/search_item14"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/bald" />
+                
+                <ImageView
+                    android:visibility="invisible"
+                    android:id="@+id/search_item15"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"/>
+                
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

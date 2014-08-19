@@ -272,17 +272,17 @@ public class ImageSelectHelperActivity extends Activity {
 		
 		//ConnectionBridge bridge = new ConnectionBridge();
 		//bridge.insertImage("insertPicture", getTempImageFile(), this, email);
-		ProfilePictureConnectThread thread = new ProfilePictureConnectThread("insertPicture", getTempImageFile(), this, email);
-		thread.start();
+		//ProfilePictureConnectThread thread = new ProfilePictureConnectThread("insertPicture", getTempImageFile(), this, email);
+		//thread.start();
 		
 		// sample size 를 적용하여 bitmap load.popo
-		//Bitmap bitmap = loadImageWithSampleSize(getTempImageFile());
+		Bitmap bitmap = loadImageWithSampleSize(getTempImageFile());
 		// image boundary size 에 맞도록 이미지 축소.
-		//bitmap = resizeImageWithinBoundary(bitmap);
+		bitmap = resizeImageWithinBoundary(bitmap);
 		// 결과 file 을 얻어갈 수 있는 메서드 제공.
-		//saveBitmapToFile(bitmap);
-		//Bitmap bm = BitmapFactory.decodeFile(getTempImageFile().getAbsolutePath());
-		//((ImageView) findViewById(R.id.ivImageSelected)).setImageBitmap(bm);
+		saveBitmapToFile(bitmap);
+		Bitmap bm = BitmapFactory.decodeFile(getTempImageFile().getAbsolutePath());
+		//(ImageView) findViewById(R.id.ivImageSelected)).setImageBitmap(bm);
 		
 		//Toast.makeText(this, Sentence.successProfileImage,Toast.LENGTH_SHORT).show();
 		

@@ -12,6 +12,10 @@ public class SupporterActivity extends ActionBarActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_supporters);
+		
+		//1번 메니페스트
+		//2번 ActionBarActivity달기
+		//3번째 이거 추가
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		Bundle bundle = getIntent().getExtras();

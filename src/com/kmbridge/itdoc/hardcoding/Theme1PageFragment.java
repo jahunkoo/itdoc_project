@@ -54,17 +54,17 @@ public class Theme1PageFragment extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.imageview_clinic_list_item_clinicimage:
-				if(mPageNumber==0)	callActivity(15);
-				else if(mPageNumber==1) callActivity(22);
+				if(mPageNumber==0)	callActivity("피부");
+				else if(mPageNumber==1) callActivity("아이");
 				break;
 		}
 	}	
 	
-	public void callActivity(int clinicNumber) {
+	public void callActivity(String keyword) {
 		//Log.d("kim5", "flagment : " + clinicNumber);
-		Intent intent = new Intent(getActivity(), KmClinicDetailActivity.class);
+		Intent intent = new Intent(getActivity(), HardSearchFragment.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		intent.putExtra("clinicNumber", clinicNumber);
+		intent.putExtra("keyword", keyword);
 		//Log.d("kim5", "flagment : " + clinicNumber);
 		startActivity(intent);
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -89,6 +90,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//한의원 객체를 가져옴
 		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
 		
+		
 		//List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 		//simpleList = KmClinicview.getUserSimpleInfoList();
 		
@@ -119,8 +121,18 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		//Log.d("kim4","Path : "+resName);
 		int clinicPictureId = getResources().getIdentifier(resClinName, "drawable", this.getPackageName());
 		//Log.d("kim4","Resource :"+pictureId);
+		
+		// 원래 있던 코드
 		kmClinicImage.setImageResource(clinicPictureId);
+		
 		kmClinicImage2.setImageResource(clinicPictureId);
+		
+		// 검색했을 때 result에서 한의원 사진을 들어가면 out of memory error 가 뜨는 형태가 뜨는 것 때문에 bitmap factory를 사용해서 사진의 크기를 조절하는 코드 
+		// Bitmap bitmap = com.kmbridge.itdoc.image.ImageManager.decodeSampledBitmapFromResource(this.getResources(), clinicPictureId, 128, 64);
+		// kmClinicImage.setImageBitmap(bitmap);
+		
+		
+		
 		
 		//String kmclinicImagePath = list.get(2).getKmClinicPicturePath();
 		//Log.d("kim",kmclinicImagePath);
@@ -148,6 +160,7 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 		simpleList = load.getRandomUserSimpleInfoList(clinicNumber);
 		
+		//추천한 이웃들 사진 뿌리기
 		for(int j=0;j<simpleList.size();j++)
 		{
 			String pictureName = simpleList.get(j).getPicturePath();
@@ -242,14 +255,33 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		hani_1.title(KmClinicview.getName());
 		HaniMap.addMarker(hani_1).showInfoWindow();
 
+		//Log.d("kim4",""+doctorList.get(0).getName());
+		//의료진 이름
+		for(int i=0; i< doctorList.size(); i++)
+		{
+			//의료진 이름
+			txtDoctorName.setText(doctorList.get(0).getName());
+			
+			//의료진 대표사진
+			int doctorNum = (doctorList.get(0).getId())%10;
+			int doctorFaceId = getResources().getIdentifier(doctorFace[doctorNum], "drawable", this.getPackageName());
+			kmClinicDoctorFace.setImageResource(doctorFaceId); //사진지정
+			//clinicNumber
+			
+			//Log.d("kim5",doctorList.get(1).getAcademy());
+			//학력정보
+			txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
+			if(i==0) break;
+		}
 		
 		//의료진 이름
-		txtDoctorName.setText(doctorList.get(0).getName());
+		//txtDoctorName.setText(doctorList.get(0).getName());
+		//txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
 		
 		//의료진 설명
 		txtDoctorCommnet.setText(KmClinicview.getDetails());
 		
-		//의료진 대표사진
+		/*//의료진 대표사진
 		int doctorNum = (doctorList.get(0).getId())%10;
 		int doctorFaceId = getResources().getIdentifier(doctorFace[doctorNum], "drawable", this.getPackageName());
 		kmClinicDoctorFace.setImageResource(doctorFaceId); //사진지정
@@ -257,8 +289,9 @@ public class KmClinicDetailActivity extends FragmentActivity implements	OnClickL
 		
 		//Log.d("kim5",doctorList.get(1).getAcademy());
 		//학력정보
-		//txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
-		txtDoctorAcademy.setText(doctorList.get(0).getAcademy());
+		txtDoctorAcademy.setText(doctorList.get(0).getAcademy());*/
+		
+		
 		/*int clinicId = getIntent().getIntExtra("clinicId", -1);
 		ClinicDetailThread mThread = new ClinicDetailThread("getDetailKmClinic", this, clinicId);
 		mThread.start();*/

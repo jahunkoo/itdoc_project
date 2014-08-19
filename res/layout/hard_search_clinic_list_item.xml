@@ -70,8 +70,8 @@
     </LinearLayout>
     <ImageView
         android:id="@+id/imageview_clinic_list_item_clinicimage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="asdf"
         android:src="@drawable/biman_bosung"
         android:layout_above="@id/linearlayout_clinic_list_item"/>
@@ -83,8 +83,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/imageview_clinic_list_item_follow_img"
         android:layout_marginTop="16dp"
-        android:layout_toRightOf="@+id/textview_clinic_list_item_keyword"
-        android:src="@drawable/user6" />
+        android:layout_toRightOf="@+id/textview_clinic_list_item_keyword"/>
 
     <ImageView
         android:id="@+id/imageview_clinic_list_item_follow_img"
@@ -102,8 +101,7 @@
          android:layout_height="35dp"
          android:layout_alignTop="@+id/imageView1"
          android:layout_marginLeft="10dp"
-         android:layout_toRightOf="@+id/imageView1"
-         android:src="@drawable/user_profile_default" />
+         android:layout_toRightOf="@+id/imageView1"/>
 
      <ImageView
          android:id="@+id/ImageView01"
@@ -111,8 +109,7 @@
          android:layout_height="35dp"
          android:layout_alignTop="@+id/imageView2"
          android:layout_marginLeft="10dp"
-         android:layout_toRightOf="@+id/imageView2"
-         android:src="@drawable/user_profile_default" />
+         android:layout_toRightOf="@+id/imageView2"/>
 
      <ImageView
          android:id="@+id/ImageView02"
@@ -120,7 +117,6 @@
          android:layout_height="35dp"
          android:layout_alignTop="@+id/ImageView01"
          android:layout_toRightOf="@+id/ImageView01"
-          android:layout_marginLeft="10dp"
-         android:src="@drawable/user_profile_default" />
-
+         android:layout_marginLeft="10dp"/>
+     
 </RelativeLayout>

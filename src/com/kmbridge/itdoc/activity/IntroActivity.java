@@ -61,14 +61,7 @@ public class IntroActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intro);
 		
-		//************************************ koo *********************************************************
-		DisplayMetrics displayMetrics = new DisplayMetrics(); 
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
-		    
-		ImageManager.screenWidth = displayMetrics.widthPixels; 
-		ImageManager.screenHeight = displayMetrics.heightPixels;
-		Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
-		//************************************ koo *********************************************************
+		
 		setLayoutElement();
 		
 		new Thread(new Runnable() {

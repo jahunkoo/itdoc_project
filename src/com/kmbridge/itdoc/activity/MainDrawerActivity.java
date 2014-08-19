@@ -11,16 +11,15 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentManager.BackStackEntry;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,8 +28,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -44,7 +41,6 @@ import android.widget.Toast;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
 import com.kmbridge.itdoc.dto.ItemTitle;
-import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
 import com.kmbridge.itdoc.fragment.HanbangInfoFragment;
@@ -157,7 +153,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		}
 		
 		LoadData load = new LoadData(this);
-		
 		
 		fragmentManager.addOnBackStackChangedListener(this);
 	}
@@ -509,43 +504,69 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public void onBackPressed() {
 		Fragment fragment =  getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
 		//FragmentManager manager = getSupportFragmentManager();
-		if(fragment !=null){
-			String tag = fragment.getTag();
-			if(tag.equals("SEARCH")){
-				//fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-				//fragment.getView().setVisibility(View.VISIBLE);
-				//*****************************actionbar title setting ***********************
-				getActionBar().setTitle(R.string.title_activity_main_drawer);
-				searchItem.setVisible(true);
-				//****************************************************************************
-				/*fragment = ClinicListFragment.create(this);
-				FRAGMENT_TAG = "CLINIC_LIST";
-				fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
-				*/
-			}else if(tag.equals("CLINIC_LIST")){
-				
-			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)){
-				//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-				//fragment.getView().setVisibility(View.VISIBLE);
-			}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_SUPPORT)){
-				//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-				//fragment.getView().setVisibility(View.VISIBLE);
-				//*****************************actionbar title setting ***********************
-				getActionBar().setTitle(R.string.title_activity_main_drawer);
-				searchItem.setVisible(true);
-				//****************************************************************************
-			}else if(tag.equals("HANBANG_INFO")){
-				//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-				//fragment.getView().setVisibility(View.VISIBLE);
-				//*****************************actionbar title setting ***********************
-				getActionBar().setTitle(R.string.title_activity_main_drawer);
-				searchItem.setVisible(true);
-				//****************************************************************************
+		if(isLastFragment){
+			if (!isPressed) {
+	            Toast.makeText(this, "'뒤로'버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+	            isPressed = true;
+	            mHandler.sendEmptyMessageDelayed(0, 2000);
+	         } else {
+	            super.onBackPressed();
+	         }
+		}else{
+			if(fragment !=null){
+				String tag = fragment.getTag();
+				if(tag.equals("SEARCH")){
+					//fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					//fragment.getView().setVisibility(View.VISIBLE);
+					//*****************************actionbar title setting ***********************
+					getActionBar().setTitle(R.string.title_activity_main_drawer);
+					searchItem.setVisible(true);
+					//****************************************************************************
+					/*fragment = ClinicListFragment.create(this);
+					FRAGMENT_TAG = "CLINIC_LIST";
+					fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
+					*/
+				}else if(tag.equals("CLINIC_LIST")){
+					
+				}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)){
+					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					//fragment.getView().setVisibility(View.VISIBLE);
+				}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_SUPPORT)){
+					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					//fragment.getView().setVisibility(View.VISIBLE);
+					//*****************************actionbar title setting ***********************
+					getActionBar().setTitle(R.string.title_activity_main_drawer);
+					searchItem.setVisible(true);
+					//****************************************************************************
+				}else if(tag.equals("HANBANG_INFO")){
+					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					//fragment.getView().setVisibility(View.VISIBLE);
+					//*****************************actionbar title setting ***********************
+					getActionBar().setTitle(R.string.title_activity_main_drawer);
+					searchItem.setVisible(true);
+					//****************************************************************************
+				}
 			}
+		
+			super.onBackPressed();
 		}
-		super.onBackPressed();
+		
+		
+		
 	}
+	private boolean isPressed;
+    private Handler mHandler = new Handler() {
 
+        @Override
+        public void handleMessage(Message msg) {
+
+           if (msg.what == 0) {
+              isPressed = false;
+           }
+        }
+     };
+     
+	      
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode ,data);
@@ -563,7 +584,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		}
 	}
 
-	private boolean isLastFragment;
+	private boolean isLastFragment = true;
 	@Override
 	public void onBackStackChanged() {
 		isLastFragment = false;
@@ -571,7 +592,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		Log.d("koo", "fragment backstack count:"+fragmentCount);
 		if(fragmentCount == 0){
 			isLastFragment = true;
-			Toast.makeText(this, "last fragment", Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, "last fragment", Toast.LENGTH_LONG).show();
 			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
 			listFragment.getView().setVisibility(View.VISIBLE);
 			

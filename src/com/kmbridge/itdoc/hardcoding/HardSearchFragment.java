@@ -3,7 +3,6 @@ package com.kmbridge.itdoc.hardcoding;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.location.Address;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.kmbridge.itdoc.R;
@@ -27,6 +27,7 @@ import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.fragment.SearchResultClinicListFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.RecycleUtil;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class HardSearchFragment extends Fragment implements OnClickListener, OnItemClickListener {
@@ -36,12 +37,28 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 
 	AutoCompleteTextView search;
 	ImageButton searchButton;
-
+	
+	ImageView item1;
+	ImageView item2;
+	ImageView item3;
+	ImageView item4;
+	ImageView item5;
+	ImageView item6;
+	ImageView item7;
+	ImageView item8;
+	ImageView item9;
+	ImageView item10;
+	ImageView item11;
+	ImageView item12;
+	ImageView item13;
+	ImageView item14;
 	ListView recentListView;
 
 	String[] keywords1 = null;
 	SearchAdapter searchAdapter;
 
+	LoadData load;
+	
 	SharedPreferenceUtil share = new SharedPreferenceUtil();
 
 	public static final String RECENT_KEYWORD = "recentKeyword";
@@ -51,6 +68,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 
 		View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 		
+		load = new LoadData(context);
+		
 		share.setData(context, RECENT_KEYWORD, "한의콕" + ",");
 		
 		ConnectionBridge keywordConnection = new ConnectionBridge();
@@ -58,6 +77,36 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		search = (AutoCompleteTextView) rootView.findViewById(R.id.autocomplete_textview_fragment_search);
 		searchButton = (ImageButton) rootView.findViewById(R.id.button_fragment_search);
 		recentListView = (ListView) rootView.findViewById(R.id.listview_fragment_search_recent_search);
+		
+		item1 = (ImageView) rootView.findViewById(R.id.search_item1);
+		item2 = (ImageView) rootView.findViewById(R.id.search_item2);
+		item3 = (ImageView) rootView.findViewById(R.id.search_item3);
+		item4 = (ImageView) rootView.findViewById(R.id.search_item4);
+		item5 = (ImageView) rootView.findViewById(R.id.search_item5);
+		item6 = (ImageView) rootView.findViewById(R.id.search_item6);
+		item7 = (ImageView) rootView.findViewById(R.id.search_item7);
+		item8 = (ImageView) rootView.findViewById(R.id.search_item8);
+		item9 = (ImageView) rootView.findViewById(R.id.search_item9);
+		item10 = (ImageView) rootView.findViewById(R.id.search_item10);
+		item11 = (ImageView) rootView.findViewById(R.id.search_item11);
+		item12 = (ImageView) rootView.findViewById(R.id.search_item12);
+		item13 = (ImageView) rootView.findViewById(R.id.search_item13);
+		item14 = (ImageView) rootView.findViewById(R.id.search_item14);
+		
+		item1.setOnClickListener(this);
+		item2.setOnClickListener(this);
+		item3.setOnClickListener(this);
+		item4.setOnClickListener(this);
+		item5.setOnClickListener(this);
+		item6.setOnClickListener(this);
+		item7.setOnClickListener(this);
+		item8.setOnClickListener(this);
+		item9.setOnClickListener(this);
+		item10.setOnClickListener(this);
+		item11.setOnClickListener(this);
+		item12.setOnClickListener(this);
+		item13.setOnClickListener(this);
+		item14.setOnClickListener(this);
 
 		searchButton.setOnClickListener(this);
 		StringBuffer keywordBuffer = new StringBuffer();
@@ -119,6 +168,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		this.context = context;
 	}
 
+	
+	
 	@Override
 	public void onClick(View v) {
 
@@ -126,14 +177,17 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 
 		switch (v.getId()) {
 		case R.id.button_fragment_search:
-
+			Log.d("kim4","click");
+			
 			String text = search.getText().toString();
 			text = text.trim();
 			Log.d("koo", "|"+text+"|");
-			LoadData load = new LoadData(context);
+			//LoadData load = new LoadData(context);
 			ArrayList<KmClinicView> kmClinicViewList = load.searchClinicListByKeyword(text);
 			Log.d("koo", "HardSearchFragment kmClinicViewList size:"+kmClinicViewList.size());
-
+			
+			Log.d("kim4","result"+kmClinicViewList);
+			
 			if (share.isExist(context, RECENT_KEYWORD)) {
 				try {
 					keywords = share.getData(context, RECENT_KEYWORD);
@@ -155,18 +209,89 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 				e.printStackTrace();
 			}
 
-			Fragment fragment = SearchResultClinicListFragment.create(context, kmClinicViewList);
+			serachResult(kmClinicViewList);
+			/*Fragment fragment = SearchResultClinicListFragment.create(context, kmClinicViewList);
 			FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 			fragmentManager.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
 			
 			
 			InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-			imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
+			imm.hideSoftInputFromWindow(search.getWindowToken(), 0);*/
 			// 검색 버튼을 누르면 바로 추가가 되도록 하는 코드 이지만
 			// 나중에는 어차피 검색 버튼을 누르면 화면이 바로 넘어가서 검색 결과를 보여 줄 예정이므로, 상관 없음.
 			// searchAdapter = new SearchAdapter(context, keywords1);
 			// recentListView.setAdapter(searchAdapter);
 
+			break;
+			
+		case R.id.search_item1:
+			ArrayList<KmClinicView> item1 = load.searchClinicListByKeyword("피부");
+			serachResult(item1);
+			break;
+			
+		case R.id.search_item2:
+			ArrayList<KmClinicView> item2 = load.searchClinicListByKeyword("비염");
+			serachResult(item2);
+			break;
+			
+		case R.id.search_item3:
+			ArrayList<KmClinicView> item3 = load.searchClinicListByKeyword("다이어트");
+			serachResult(item3);
+			break;
+			
+		case R.id.search_item4:
+			ArrayList<KmClinicView> item4 = load.searchClinicListByKeyword("디스크");
+			serachResult(item4);
+			break;
+			
+		case R.id.search_item5:
+			ArrayList<KmClinicView> item5 = load.searchClinicListByKeyword("한방");
+			serachResult(item5);
+			break;
+			
+		case R.id.search_item6:
+			ArrayList<KmClinicView> item6 = load.searchClinicListByKeyword("아이");
+			serachResult(item6);
+			break;
+			
+		case R.id.search_item7:
+			ArrayList<KmClinicView> item7 = load.searchClinicListByKeyword("보약");
+			serachResult(item7);
+			break;
+			
+		case R.id.search_item8:
+			ArrayList<KmClinicView> item8 = load.searchClinicListByKeyword("위장");
+			serachResult(item8);
+			break;
+			
+		case R.id.search_item9:
+			ArrayList<KmClinicView> item9 = load.searchClinicListByKeyword("여성");
+			serachResult(item9);
+			break;
+			
+		case R.id.search_item10:
+			ArrayList<KmClinicView> item10 = load.searchClinicListByKeyword("남성");
+			serachResult(item10);
+			break;
+			
+		case R.id.search_item11:
+			ArrayList<KmClinicView> item11 = load.searchClinicListByKeyword("침");
+			serachResult(item11);
+			break;
+			
+		case R.id.search_item12:
+			ArrayList<KmClinicView> item12 = load.searchClinicListByKeyword("당뇨");
+			serachResult(item12);
+			break;
+			
+		case R.id.search_item13:
+			ArrayList<KmClinicView> item13 = load.searchClinicListByKeyword("스트레스");
+			serachResult(item13);
+			break;
+			
+		case R.id.search_item14:
+			ArrayList<KmClinicView> item14 = load.searchClinicListByKeyword("탈모");
+			serachResult(item14);
 			break;
 
 		default:
@@ -174,7 +299,16 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		}
 
 	}
-
+	public void serachResult(ArrayList<KmClinicView> kmClinicViewList)
+	{
+		Fragment fragment = SearchResultClinicListFragment.create(context, kmClinicViewList);
+		FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
+		
+		
+		InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
+	}
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Log.d("kim", "itemClick item is " + searchAdapter.getItem(position));
