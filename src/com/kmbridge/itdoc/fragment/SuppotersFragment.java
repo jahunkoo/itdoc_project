@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class SuppotersFragment extends Fragment implements OnClickListener{
 	
@@ -65,9 +66,11 @@ public class SuppotersFragment extends Fragment implements OnClickListener{
 			intent.putExtra("position", "up");
 			getActivity().startActivity(intent);
 		}else if(id == downView.getId()){
-			Intent intent = new Intent(getActivity(), SupporterActivity.class);
-			intent.putExtra("position", "down");
-			getActivity().startActivity(intent);
+			Toast.makeText(getActivity(),"준비중입니다 :)", Toast.LENGTH_SHORT).show();
+			
+			//Intent intent = new Intent(getActivity(), SupporterActivity.class);
+			//intent.putExtra("position", "down");
+			//getActivity().startActivity(intent);
 		}
 
 	}
