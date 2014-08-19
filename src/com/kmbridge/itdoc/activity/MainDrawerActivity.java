@@ -608,17 +608,19 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public void onBackStackChanged() {
 		isLastFragment = false;
 		int fragmentCount = fragmentManager.getBackStackEntryCount();
+		
 		Log.d("koo", "fragment backstack count:"+fragmentCount);
 		if(fragmentCount == 0){
 			isLastFragment = true;
 			//Toast.makeText(this, "last fragment", Toast.LENGTH_LONG).show();
 			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
 			listFragment.getView().setVisibility(View.VISIBLE);
-			
 		}else{
 			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
 			listFragment.getView().setVisibility(View.VISIBLE);
 		}
+		
+		
 		
 		List<Fragment> fragmentList = fragmentManager.getFragments();
 		for(int i=0;i<fragmentList.size() ;i++){

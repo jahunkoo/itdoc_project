@@ -25,7 +25,7 @@ public class ImageManager {
 	    options.inJustDecodeBounds = false;
 	    Bitmap bitmap = BitmapFactory.decodeResource(res, resId, options);
 	   try{
-		   bitmap = Bitmap.createScaledBitmap(bitmap, ImageManager.screenWidth, ImageManager.screenHeight, true);
+		   bitmap = Bitmap.createScaledBitmap(bitmap, reqWidth, reqHeight, true);
 	   }catch(IllegalArgumentException e){
 		   return bitmap;
 	   }

@@ -3,6 +3,7 @@ package com.kmbridge.itdoc.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
@@ -21,7 +22,7 @@ public class UserProfileEditActivity extends Activity implements OnClickListener
 		setContentView(R.layout.activity_user_profile_edit);
 
 		getActionBar().setTitle("프로필 수정하기");
-
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		setContents();
 
 	}

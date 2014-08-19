@@ -1,6 +1,7 @@
 package com.kmbridge.itdoc.activity;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -28,6 +29,9 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 
 		setLayout();
 		setListener();
+		
+//		ActionBarActivity actionBarActivity = new ActionBarActivity();
+//		actionBarActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		getSelectedImageFile(); // extract selected & saved image file.
 		

@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +25,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class RelativesActivity extends FragmentActivity implements	OnClickListener {
+public class RelativesActivity extends ActionBarActivity implements	OnClickListener {
 	ActionBar actionBar = null; // 액션바 세팅 시작
 
 	TextView txtLikedUsers;
@@ -57,6 +58,8 @@ public class RelativesActivity extends FragmentActivity implements	OnClickListen
 		Intent intent = getIntent();
 		int clinicNumber = intent.getExtras().getInt("clinicNumber");
 
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		// json파서 로드
 		LoadData load = new LoadData(this);
 		// 한의원 객체를 가져옴

@@ -1,26 +1,36 @@
 package com.kmbridge.itdoc.hardcoding;
 
-import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
+import java.util.ArrayList;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.dto.KmClinicView;
+import com.kmbridge.itdoc.fragment.SearchResultClinicListFragment;
+import com.kmbridge.itdoc.util.ItDocConstants;
 
 public class Theme1PageFragment extends Fragment implements OnClickListener{
 
+	Context context;
+	
 	private int mPageNumber;
 	ImageView kmClinicTheme;
+	FragmentManager fragmentManager;
 	
-	public static Theme1PageFragment create(int pageNumber) {
+	public static Theme1PageFragment create(Context context, int pageNumber) {
 		Theme1PageFragment fragment = new Theme1PageFragment();
 		Bundle args = new Bundle();
+		fragment.setContext(context);
 		args.putInt("page", pageNumber);
 		fragment.setArguments(args);
 		Log.d("koo", "PageFragment create 1");	
@@ -32,6 +42,9 @@ public class Theme1PageFragment extends Fragment implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mPageNumber = getArguments().getInt("page");
+		
+		fragmentManager = getActivity().getSupportFragmentManager();
+		
 	}
 
 	@Override
@@ -61,12 +74,23 @@ public class Theme1PageFragment extends Fragment implements OnClickListener{
 	}	
 	
 	public void callActivity(String keyword) {
-		//Log.d("kim5", "flagment : " + clinicNumber);
-		Intent intent = new Intent(getActivity(), HardSearchFragment.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		intent.putExtra("keyword", keyword);
-		//Log.d("kim5", "flagment : " + clinicNumber);
-		startActivity(intent);
+		LoadData loadData = new LoadData(context);
+		
+		ArrayList<KmClinicView> kmClinicViewList = loadData.searchClinicListByKeyword(keyword);
+		
+		Fragment fragment = SearchResultClinicListFragment.create(context, kmClinicViewList,true);
+		FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
+		getActivity().getActionBar().setTitle(keyword + " 검색 결과");
+		
+		// InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		// imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
 	}
+	
+
+	private void setContext (Context context) {
+		this.context = context;
+	}
+	
 	
 }

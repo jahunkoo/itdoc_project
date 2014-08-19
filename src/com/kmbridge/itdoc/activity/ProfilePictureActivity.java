@@ -3,6 +3,7 @@ package com.kmbridge.itdoc.activity;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +41,9 @@ public class ProfilePictureActivity extends ImageSelectHelperActivity implements
 		getActionBar().setTitle(R.string.title_activity_profile_picture);
 		//****************************************************************************
 		setContentView(R.layout.activity_profile_picture);
+		
+//		ActionBarActivity actionBarActivity = new ActionBarActivity();
+//		actionBarActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		setElements();
 		setLisner();

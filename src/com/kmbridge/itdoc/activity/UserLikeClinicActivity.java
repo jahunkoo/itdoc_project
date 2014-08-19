@@ -15,9 +15,4 @@ public class UserLikeClinicActivity extends Activity{
 		setContentView(R.layout.activity_user_like_clinic);
 		
 	}
-
-	
-	
-	
-	
 }

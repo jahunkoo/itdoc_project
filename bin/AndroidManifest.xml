@@ -22,11 +22,11 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
-        android:largeHeap="true"
         android:name=".util.Font"
         android:allowBackup="true"
         android:icon="@drawable/app_icon_itdoc"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:logo="@drawable/action_itdoc_logo"
         android:screenOrientation="portrait"
         android:theme="@style/ItDocActionBarTheme" >
@@ -56,17 +56,15 @@
         <activity
             android:name=".activity.UserManagerActivity"
             android:label="@string/title_activity_user_manager" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.TestUserActivity" >
         </activity>
         <activity android:name=".activity.ScreenSlideActivity" >
         </activity>
         <activity android:name=".activity.ProfilePictureActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainDrawerActivity" />
         </activity>
         <activity
             android:name=".activity.LoginActivity"
@@ -75,6 +73,10 @@
         <activity
             android:name=".activity.ConfigActivity"
             android:label="@string/title_activity_config" >
+               <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainDrawerActivity" />
+            
         </activity>
         <activity
             android:name=".activity.KmClinicDetailActivity"
@@ -87,6 +89,9 @@
         <activity
             android:name=".activity.UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
+             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainDrawerActivity" />
         </activity>
 
         <meta-data
@@ -101,30 +106,57 @@
         <activity
             android:name=".activity.RelativesActivity"
             android:label="@string/title_activity_relatives" >
+             
+             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.KmClinicDetailActivity" />
+            
+            
         </activity>
         <activity
             android:name=".activity.KmClinicAllreviewActivity"
             android:label="@string/title_activity_allreview" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.KmClinicDetailActivity" />
         </activity>
         <activity
             android:name=".activity.KmClinicMoreInfoActivity"
             android:label="@string/title_activity_km_clinic_more_info" >
+
+            <!-- 한의원 상세 정보 -->
+
         </activity>
         <activity
             android:name=".activity.KmClinicMoreDoctorActivity"
             android:label="@string/title_activity_km_clinic_more_doctor" >
+
+            <!-- 한의원 의료진 상세 정보 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.KmClinicMoreInfoActivity" />
         </activity>
         <activity
             android:name=".activity.VisitedActivity"
             android:label="@string/title_activity_visited" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.KmClinicMoreInfoActivity" />
         </activity>
         <activity
             android:name="com.kmbridge.itdoc.dialog.VisitedDialogActivity"
             android:label="@string/title_activity_visited_dialog" >
         </activity>
         <activity android:name=".activity.UserFollowerActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.UserProfileActivity" />
+
         </activity>
         <activity android:name=".activity.SeeAllReviewListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.UserProfileActivity" />
         </activity>
         <activity
             android:name="com.kmbridge.itdoc.activity.SupporterActivity"
@@ -134,7 +166,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
-
         <activity
             android:name="com.kmbridge.itdoc.activity.HanbangInfoActivity"
             android:label="@string/title_activity_hanbang_info"
@@ -143,10 +174,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainDrawerActivity" />
         </activity>
-
-        <activity android:name=".activity.UserProfileEditActivity"></activity>
-        <activity android:name=".activity.KeywordSelectActivity"></activity>
-
+        <activity android:name=".activity.UserProfileEditActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.UserProfileActivity"
+                 />
+        </activity>
+        <activity android:name=".activity.KeywordSelectActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.UserProfileEditActivity" />
+        </activity>
     </application>
 
     <uses-feature

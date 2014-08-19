@@ -25,6 +25,8 @@ public class SearchResultClinicListFragment extends Fragment {
 	ClinicListAdapter clinicListAdapter;
 	private ArrayList<KmClinicView> kmClinicViewList;
 
+	private boolean calledType = false;
+	
 	public void setContext(Context context) {
 		this.context = context;
 	}
@@ -54,11 +56,16 @@ public class SearchResultClinicListFragment extends Fragment {
 		return rootView;
 
 	}
-
+	
 	@Override
 	public void onDestroy() {
 		RecycleUtil.recursiveRecycle(mListView);
 		Log.d("kim","removeAllViews");
+		
+		if(calledType) {
+			getActivity().getActionBar().setTitle("둘러보기");
+		}
+		
 		super.onDestroy();
 	}
 
@@ -69,5 +76,24 @@ public class SearchResultClinicListFragment extends Fragment {
 		return searchResultClinicListFragment;
 	}
 
+	/**
+	 * 
+	 * @param context
+	 * @param kmClinicViewList
+	 * @param calledType true면 둘러보기에서 온것, false면 검색화면에서 온것
+	 * @return
+	 */
+	public static SearchResultClinicListFragment create(Context context, ArrayList<KmClinicView> kmClinicViewList,boolean calledType) {
+		SearchResultClinicListFragment searchResultClinicListFragment = new SearchResultClinicListFragment();
+		searchResultClinicListFragment.setContext(context);
+		searchResultClinicListFragment.setClinicList(kmClinicViewList);
+		searchResultClinicListFragment.setCalledType(calledType);
+		return searchResultClinicListFragment;
+	}
+	
+	public void setCalledType(boolean calledType) {
+		this.calledType = calledType;
+	}
+	
 }
 
