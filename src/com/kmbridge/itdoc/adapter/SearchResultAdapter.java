@@ -210,13 +210,13 @@ public class SearchResultAdapter extends BaseAdapter {
 			followImg.setImageResource(R.drawable.not_follow);
 		}
 		
-		Log.d("kim5","result_before : "+SharedPreferenceUtil.isExist(context, "follow"));
-		if(SharedPreferenceUtil.isExist(context, "follow")==true)
+		if(SharedPreferenceUtil.isExist(context, "follow")==true && (clinicId==2 || clinicId==3 || clinicId==4 || clinicId==11))
 		{
-			Log.d("kim5","result_after : "+SharedPreferenceUtil.isExist(context, "follow"));
 			followImg.setImageResource(R.drawable.follow);
 		}
 
+		Log.d("kim3","Id : "+clinicId);
+		
 		followImg.setTag("followImg");
 		img.setTag("clinicImg");
 		OnClickListener onClickListener = new OnClickListener() {

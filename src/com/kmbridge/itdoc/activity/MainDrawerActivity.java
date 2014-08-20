@@ -479,19 +479,16 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		SharedPreferenceUtil.setData(this, "follow", "check");
 		LoadData load;
 		load = new LoadData(this);
-		
 		ArrayList<KmClinicView> item1 = load.searchClinicListByKeyword("피부");
 		
 		Fragment fragment = SearchResultClinicListFragment.create(this, item1);
-		FragmentManager fragmentManager1 = this.getSupportFragmentManager();
-		fragmentManager1.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
-		
-		
-		
-		//Fragment fragment = MyKokListFragment.create(this);
 		FRAGMENT_TAG = "MYKOK_LIST";
+		//FragmentManager fragmentManager1 = this.getSupportFragmentManager();
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		//Fragment fragment = MyKokListFragment.create(this);
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		
 		//fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
-		fragment = fragmentManager1.findFragmentByTag("CLINIC_LIST");
 		fragment.getView().setVisibility(View.GONE);
 		
 		afterFragmentCreate(position);
