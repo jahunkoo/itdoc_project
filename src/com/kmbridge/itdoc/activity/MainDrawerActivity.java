@@ -41,9 +41,12 @@ import android.widget.Toast;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.DrawerTitleAdapter;
 import com.kmbridge.itdoc.dto.ItemTitle;
+import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.SectionTitle;
 import com.kmbridge.itdoc.dto.Title;
 import com.kmbridge.itdoc.fragment.HanbangInfoFragment;
+import com.kmbridge.itdoc.fragment.MyKokListFragment;
+import com.kmbridge.itdoc.fragment.SearchResultClinicListFragment;
 import com.kmbridge.itdoc.fragment.SuppotersFragment;
 import com.kmbridge.itdoc.hardcoding.ClinicListFragment;
 import com.kmbridge.itdoc.hardcoding.HardSearchFragment;
@@ -51,6 +54,7 @@ import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.image.ImageManager;
 import com.kmbridge.itdoc.image.RoundedImageView;
 import com.kmbridge.itdoc.util.ItDocConstants;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 
 public class MainDrawerActivity extends FragmentActivity implements OnClickListener,FragmentManager.OnBackStackChangedListener{
@@ -74,14 +78,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public FragmentManager fragmentManager = getSupportFragmentManager();
 
 	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 1;
+	private final int POSITION_KOK_LIST_FRAGMENT = 2;
+	
 	private final int POSITION_SEARCH_FRAGMENT = 4;	
 	private final int POSITION_HANIKOK_SUPPOTERS = 5;
-	private final int POSITION_HANIKOK_HANBANG_INFO = 8;
-	// action view 좀 돼라
+	//private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
 	
-	private final int POSITION_KOK_LIST_FRAGMENT = 2;
-	private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
-	private final int POSITION_Q_AND_A_FRAGMENT = 9;
+	private final int POSITION_HANIKOK_HANBANG_INFO = 7;
+	// action view 좀 돼라
+	private final int POSITION_Q_AND_A_FRAGMENT = 8;
 	
 	int position = -1;
 
@@ -100,7 +105,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		//************************************ koo *********************************************************
 		DisplayMetrics displayMetrics = new DisplayMetrics(); 
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
-				    
+		Log.d("koo", "dpi:"+displayMetrics.densityDpi);
+		
 		ImageManager.screenWidth = displayMetrics.widthPixels; 
 		ImageManager.screenHeight = displayMetrics.heightPixels;
 		Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
@@ -159,6 +165,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		LoadData load = new LoadData(this);
 		
 		fragmentManager.addOnBackStackChangedListener(this);
+		
+		
+		
 	}
 
 	
@@ -398,10 +407,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		this.position = position;
 		switch (position) {
 		case POSITION_KOK_LIST_FRAGMENT:
-			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
-			break;
-		case POSITION_SELLUP_CHOICE_FRAGMENT:
-			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
+			createMyKokListFragment(fragmentManager, position);
 			break;
 		case POSITION_Q_AND_A_FRAGMENT:
 			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
@@ -455,6 +462,39 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		
 		
 		afterFragmentCreate(position);	
+	}
+	
+	
+	//추가
+	private void createMyKokListFragment(FragmentManager fragmentManager, int position) {
+		/*Fragment fragment = MyKokListFragment.create(this);
+		FRAGMENT_TAG = "CLINIC_LIST";
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.VISIBLE);
+		searchItem.setVisible(false); 
+		
+		afterFragmentCreate(position);	*/
+		
+		SharedPreferenceUtil.setData(this, "follow", "check");
+		LoadData load;
+		load = new LoadData(this);
+		
+		ArrayList<KmClinicView> item1 = load.searchClinicListByKeyword("피부");
+		
+		Fragment fragment = SearchResultClinicListFragment.create(this, item1);
+		FragmentManager fragmentManager1 = this.getSupportFragmentManager();
+		fragmentManager1.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
+		
+		
+		
+		//Fragment fragment = MyKokListFragment.create(this);
+		FRAGMENT_TAG = "MYKOK_LIST";
+		//fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		fragment = fragmentManager1.findFragmentByTag("CLINIC_LIST");
+		fragment.getView().setVisibility(View.GONE);
+		
+		afterFragmentCreate(position);
 	}
 
 	private void createFirstKmClinicListFragment(FragmentManager fragmentManager, int position) {
@@ -564,6 +604,13 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 					getActionBar().setTitle(R.string.title_activity_main_drawer);
 					searchItem.setVisible(true);
 					//****************************************************************************
+				}else if(tag.equals("MYKOK_LIST")){
+					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					//fragment.getView().setVisibility(View.VISIBLE);
+					//*****************************actionbar title setting ***********************
+					getActionBar().setTitle(R.string.title_activity_main_drawer);
+					searchItem.setVisible(true);
+					//****************************************************************************
 				}
 			}
 		
@@ -608,17 +655,19 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public void onBackStackChanged() {
 		isLastFragment = false;
 		int fragmentCount = fragmentManager.getBackStackEntryCount();
+		
 		Log.d("koo", "fragment backstack count:"+fragmentCount);
 		if(fragmentCount == 0){
 			isLastFragment = true;
 			//Toast.makeText(this, "last fragment", Toast.LENGTH_LONG).show();
 			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
 			listFragment.getView().setVisibility(View.VISIBLE);
-			
 		}else{
 			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
 			listFragment.getView().setVisibility(View.VISIBLE);
 		}
+		
+		
 		
 		List<Fragment> fragmentList = fragmentManager.getFragments();
 		for(int i=0;i<fragmentList.size() ;i++){

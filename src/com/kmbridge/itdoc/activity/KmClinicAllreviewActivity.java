@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -62,6 +63,8 @@ public class KmClinicAllreviewActivity extends Activity {
 		Intent intent = getIntent();
 		int clinicNumber = intent.getExtras().getInt("clinicNumber");
 
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		// json파서 로드
 		LoadData load = new LoadData(this);
 		// 한의원 객체를 가져옴

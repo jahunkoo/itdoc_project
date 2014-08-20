@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,7 +39,9 @@ public class KmClinicMoreDoctorActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_km_clinic_more_doctor);
-
+		
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		// 인텐트로 넘겨준 값을 받아온다.
 		Intent intent = getIntent();
 		int clinicNumber = intent.getExtras().getInt("clinicNumber");

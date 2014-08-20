@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +17,7 @@ import com.kmbridge.itdoc.fragment.LoginFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
-public class ConfigActivity extends FragmentActivity implements OnClickListener {
+public class ConfigActivity extends ActionBarActivity implements OnClickListener {
 	private Button btn_activity_config_push;
 	private Button btn_activity_config_alarm;
 	private Button btn_activity_config_helpcomment;
@@ -37,6 +38,8 @@ public class ConfigActivity extends FragmentActivity implements OnClickListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_config);
 
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		if(!user_info.isExist(this, ItDocConstants.SHARED_KEY_EMAIL))
 		{
 			TAG_FRAGMENT=ItDocConstants.TAG_FRAGMENT_JOIN;

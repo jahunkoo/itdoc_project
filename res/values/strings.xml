@@ -42,8 +42,7 @@
     </string-array>
     <string-array name="drawer_menu_title_item_array_search">
         <item>한의원 검색하기</item>
-        <item>한의콕 서포터즈</item>
-        <item>셀럽 추천 한의원</item>
+        <item>추천 한의원</item>
     </string-array>
     <string-array name="drawer_menu_title_item_array_plus">
         <item>한의콕s 한방정보</item>
@@ -207,6 +206,6 @@
     <string name="textview_hanbang_info_up_main4_title">동화책을 읽어주는 것도 방법</string>
     <string name="textview_hanbang_info_up_main4">막무가내로 떼를 쓰는 아이의 모습이 그려진 동화책이 있다면 읽어주어도 좋습니다. 자신의 모습을 투영시켜 볼 수 있으니까요. 혹은 머리에 쏙쏙 들어가게 하기에 노래 만큼 좋은것이 없다죠. 노래가사를 이용하셔도 좋아요.</string>
     <string name="textview_hanbang_info_up_main4_2">어떤 형태이든 아이가 측은 지심의 마음을 쌓아가도록 만들어준다면 좀 더 생산적인 형태로 분노가 다스려질 수 있을 거라는게 포인트입니다.</string>
-   
+    <string name="title_activity_my_kok_list">MyKokListActivity</string>
 
 </resources>

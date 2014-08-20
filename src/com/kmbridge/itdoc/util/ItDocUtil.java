@@ -11,13 +11,16 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+
 public class ItDocUtil {
 	
 	private final String REGEX_AT = "@"; 
 	private final String REGEX_SHARP = "#";
 	private final String REGEX_DOT = ".";
 	
-	
+
 	
 	public List<String> parseStringToList(String data){
 		List<String> dataList = new ArrayList<String>();

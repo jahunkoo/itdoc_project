@@ -38,6 +38,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 	AutoCompleteTextView search;
 	ImageButton searchButton;
 	
+	String keyword;
+	int searchCase;
 	ImageView item1;
 	ImageView item2;
 	ImageView item3;
@@ -153,21 +155,40 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		recentListView.setAdapter(searchAdapter);
 		recentListView.setOnItemClickListener(this);
 
+
 		return rootView;
 	}
 
 	public static HardSearchFragment create(Context context) {
 		HardSearchFragment searchFragment = new HardSearchFragment();
-
+		
 		searchFragment.setContext(context);
 
+		return searchFragment;
+	}
+	
+	public static HardSearchFragment create(Context context,String keyword) {
+		HardSearchFragment searchFragment = new HardSearchFragment();
+
+		searchFragment.setContext(context);
+		searchFragment.setKeyword(keyword);
+		searchFragment.setSearchCase(1);
 		return searchFragment;
 	}
 
 	private void setContext(Context context) {
 		this.context = context;
 	}
-
+	private void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	/**
+	 * 
+	 * @param searchCase 0이면 그냥 검색, 1이면 둘러보기에서 키워드 검색으로 바로 전환하기
+	 */
+	private void setSearchCase(int searchCase) {
+		this.searchCase = searchCase;
+	}
 	
 	
 	@Override

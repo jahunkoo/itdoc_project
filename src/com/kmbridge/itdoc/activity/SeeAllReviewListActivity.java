@@ -3,6 +3,7 @@ package com.kmbridge.itdoc.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,6 +31,8 @@ public class SeeAllReviewListActivity extends Activity implements OnClickListene
 
 		getActionBar().setTitle("윤성수");
 
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		setElements();
 
 		reviewAdapter = new ReviewAdapter(this, isbGood(), isbSoso(), isbBad());

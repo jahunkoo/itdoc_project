@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ import com.kmbridge.itdoc.util.SharedPreferenceUtil;
  * @date : 2014. 8. 4.
  * @desc :
  */
-public class UserProfileActivity extends FragmentActivity implements OnClickListener {
+public class UserProfileActivity extends ActionBarActivity implements OnClickListener {
 
 	public static String testJSONString;
 
@@ -80,6 +81,7 @@ public class UserProfileActivity extends FragmentActivity implements OnClickList
 		setContentView(R.layout.activity_user_profile);
 		setElements();
 		setListner();
+		
 		// **************현재 들어온 사람이 본인인지 아니면 다른 사람인지 판별
 		// **************************
 		Bundle bundle = getIntent().getExtras();
