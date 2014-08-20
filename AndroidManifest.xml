@@ -140,7 +140,7 @@
                 android:value=".activity.KmClinicMoreInfoActivity" />
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.dialog.VisitedDialogActivity"
+            android:name=".dialog.VisitedDialogActivity"
             android:label="@string/title_activity_visited_dialog" >
         </activity>
         <activity android:name=".activity.UserFollowerActivity" >
@@ -154,7 +154,7 @@
                 android:value=".activity.UserProfileActivity" />
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.activity.SupporterActivity"
+            android:name=".activity.SupporterActivity"
             android:label="@string/title_activity_support"
             android:parentActivityName=".activity.MainDrawerActivity" >
             <meta-data
@@ -162,7 +162,7 @@
                 android:value=".activity.MainDrawerActivity" />
         </activity>
         <activity
-            android:name="com.kmbridge.itdoc.activity.HanbangInfoActivity"
+            android:name=".activity.HanbangInfoActivity"
             android:label="@string/title_activity_hanbang_info"
             android:parentActivityName=".activity.MainDrawerActivity" >
             <meta-data
@@ -178,6 +178,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.UserProfileEditActivity" />
+        </activity>
+        <activity
+            android:name="com.kmbridge.itdoc.fragment.MyKokListFragment"
+            android:label="@string/title_activity_my_kok_list" >
         </activity>
     </application>
 

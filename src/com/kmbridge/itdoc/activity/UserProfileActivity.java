@@ -54,7 +54,8 @@ public class UserProfileActivity extends ActionBarActivity implements OnClickLis
 	private ImageButton certiFacebookImgButton;
 	private LinearLayout actionCertiLayout;
 	public ImageLoader imageLoader;
-
+	private ImageView userFace;
+	
 	private LinearLayout lyt_follower;
 	private LinearLayout lyt_following;
 
@@ -152,7 +153,8 @@ public class UserProfileActivity extends ActionBarActivity implements OnClickLis
 		actionCertiLayout = (LinearLayout) findViewById(R.id.linearlayout_activity_user_profile_action_my_certi);
 		lyt_follower = (LinearLayout) findViewById(R.id.linearlayout_user_profile_follower);
 		lyt_following = (LinearLayout) findViewById(R.id.linearlayout_user_profile_following);
-
+		userFace = (ImageView) findViewById(R.id.imageview_activity_user_profile_user_profile);
+		
 		seeAllReview = (TextView) findViewById(R.id.textview_user_profile_see_all_review);
 	}
 
@@ -162,6 +164,9 @@ public class UserProfileActivity extends ActionBarActivity implements OnClickLis
 		reviewNumTextView.setText("" + reviewSize);
 		followNumTextView.setText("" + downloadedUserView.getFollowNum());
 		followingNumTextView.setText("" + downloadedUserView.getFollowingNum());
+		
+		
+		
 		if (isMyPage) {
 			followButton.setText(R.string.button_user_profile_update_my_profile);
 			followButton.setTag(ItDocConstants.UPDATE_PROFILE);
@@ -171,6 +176,11 @@ public class UserProfileActivity extends ActionBarActivity implements OnClickLis
 		} else {
 			actionCertiLayout.setVisibility(View.GONE);
 
+			int pictureId = getResources().getIdentifier(downloadedUserView.getPicturePath(), "drawable", getPackageName());
+
+			userFace.setImageResource(pictureId);
+
+			
 			if (downloadedUserView.isFollow()) {
 				followButton.setText(R.string.button_user_profile_followed);
 				followButton.setTag(ItDocConstants.FOLLOWED);

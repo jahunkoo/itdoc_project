@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-     <ScrollView
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
@@ -23,25 +24,61 @@
                 android:orientation="horizontal"
                 android:weightSum="3" >
 
-                <ImageButton
-                    android:id="@+id/search_item1"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/skin_off" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-                <ImageButton
-                    android:id="@+id/search_item2"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/nose_off" />
+                    <ImageButton
+                        android:id="@+id/search_item1"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/skin_off" />
 
-                <ImageButton
-                    android:id="@+id/search_item3"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/diet_off" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="피부" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item2"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/nose_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="비염/축농증" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item3"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/diet_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="다이어트" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -53,25 +90,61 @@
                 android:orientation="horizontal"
                 android:weightSum="3" >
 
-                <ImageButton
-                    android:id="@+id/search_item4"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/disk_off" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-                <ImageButton
-                    android:id="@+id/search_item5"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/beauty_off" />
+                    <ImageButton
+                        android:id="@+id/search_item4"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/disk_off" />
 
-                <ImageButton
-                    android:id="@+id/search_item6"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/child_off" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="디스크/관절" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item5"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/beauty_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="한방성형" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item6"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/child_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="아이" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -83,25 +156,61 @@
                 android:orientation="horizontal"
                 android:weightSum="3" >
 
-                <ImageButton
-                    android:id="@+id/search_item7"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/oriental_medicine_off" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-                <ImageButton
-                    android:id="@+id/search_item8"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/stomach_off" />
+                    <ImageButton
+                        android:id="@+id/search_item7"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/oriental_medicine_off" />
 
-                <ImageButton
-                    android:id="@+id/search_item9"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/mother_off" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="보약" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item8"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/stomach_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="위장" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item9"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/mother_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="여성/부인" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -113,25 +222,61 @@
                 android:orientation="horizontal"
                 android:weightSum="3" >
 
-                <ImageButton
-                    android:id="@+id/search_item10"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/man_off" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-                <ImageButton
-                    android:id="@+id/search_item11"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/needle_off" />
+                    <ImageButton
+                        android:id="@+id/search_item10"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/needle_off" />
 
-                <ImageButton
-                    android:id="@+id/search_item12"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/oldman_off" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="침" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item11"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/man_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="남성" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item12"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/oldman_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="당뇨/고혈압" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -143,33 +288,67 @@
                 android:orientation="horizontal"
                 android:weightSum="3" >
 
-                <ImageButton
-                    android:layout_marginLeft="40dp"
-                    android:id="@+id/search_item13"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:background="@drawable/stomach_off" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-                <ImageButton
-                    android:id="@+id/search_item14"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/bald_off" />
-                
-                <ImageButton
-                    android:visibility="invisible"
-                    android:id="@+id/search_item15"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"/>
-                
+                    <ImageButton
+                        android:id="@+id/search_item13"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="40dp"
+                        android:background="@drawable/stress_off" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_marginLeft="40dp"
+                        android:text="스트레스" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item14"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/bald_off" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="탈모" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item15"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    
 
 </LinearLayout>
