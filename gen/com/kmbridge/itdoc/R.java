@@ -20,7 +20,6 @@ public final class R {
     public static final class array {
         public static final int choose_clinic_contents_0_array=0x7f0c0008;
         /**  hard coding choose_clinic_main 
- <string name="textview_choose_clinic_main_1_title"></string> 
          */
         public static final int choose_clinic_main_introduce_array=0x7f0c0007;
         public static final int drawer_menu_title_array=0x7f0c0004;
@@ -28,6 +27,9 @@ public final class R {
         public static final int drawer_menu_title_item_array_plus=0x7f0c0003;
         public static final int drawer_menu_title_item_array_search=0x7f0c0002;
         public static final int drawer_menu_title_section_array=0x7f0c0000;
+        /**  hard coding hanbang_info 
+         */
+        public static final int hanbang_info_main_introduce_array=0x7f0c0009;
         public static final int screenslide_comment_array=0x7f0c0006;
         /**  activity_screen_slide_page related 
          */
@@ -2061,30 +2063,32 @@ containing a value of this type.
         public static final int fragment_join=0x7f030042;
         public static final int fragment_koklist=0x7f030043;
         public static final int fragment_login=0x7f030044;
-        public static final int fragment_planet=0x7f030045;
-        public static final int fragment_screen_slide_page=0x7f030046;
-        public static final int fragment_search=0x7f030047;
-        public static final int fragment_search2=0x7f030048;
-        public static final int hard_fragment_clinic_list=0x7f030049;
-        public static final int hard_fragment_hanbang_info=0x7f03004a;
-        public static final int hard_fragment_supporters=0x7f03004b;
-        public static final int hard_fragment_supporters_kookoo=0x7f03004c;
-        public static final int hard_search_clinic_list_item=0x7f03004d;
-        public static final int intro=0x7f03004e;
-        public static final int layout_choice_clinic_item=0x7f03004f;
-        public static final int layout_choose_clinic_doctor_itm=0x7f030050;
-        public static final int layout_review=0x7f030051;
-        public static final int main_drawer=0x7f030052;
-        public static final int main_drawer_item_bottom_after_login=0x7f030053;
-        public static final int main_drawer_item_bottom_before_login=0x7f030054;
-        public static final int main_drawer_layout=0x7f030055;
-        public static final int main_drawer_list_item=0x7f030056;
-        public static final int main_drawer_list_section=0x7f030057;
-        public static final int review_list_item_1=0x7f030058;
-        public static final int search_list_item=0x7f030059;
-        public static final int support_simple_spinner_dropdown_item=0x7f03005a;
-        public static final int test=0x7f03005b;
-        public static final int user_follower_item=0x7f03005c;
+        public static final int fragment_my_kok_list=0x7f030045;
+        public static final int fragment_planet=0x7f030046;
+        public static final int fragment_screen_slide_page=0x7f030047;
+        public static final int fragment_search=0x7f030048;
+        public static final int fragment_search2=0x7f030049;
+        public static final int hard_fragment_clinic_list=0x7f03004a;
+        public static final int hard_fragment_hanbang_info=0x7f03004b;
+        public static final int hard_fragment_supporters=0x7f03004c;
+        public static final int hard_fragment_supporters_kookoo=0x7f03004d;
+        public static final int hard_search_clinic_list_item=0x7f03004e;
+        public static final int intro=0x7f03004f;
+        public static final int layout_choice_clinic_item=0x7f030050;
+        public static final int layout_choose_clinic_doctor_itm=0x7f030051;
+        public static final int layout_item_hanbang_info_main=0x7f030052;
+        public static final int layout_review=0x7f030053;
+        public static final int main_drawer=0x7f030054;
+        public static final int main_drawer_item_bottom_after_login=0x7f030055;
+        public static final int main_drawer_item_bottom_before_login=0x7f030056;
+        public static final int main_drawer_layout=0x7f030057;
+        public static final int main_drawer_list_item=0x7f030058;
+        public static final int main_drawer_list_section=0x7f030059;
+        public static final int review_list_item_1=0x7f03005a;
+        public static final int search_list_item=0x7f03005b;
+        public static final int support_simple_spinner_dropdown_item=0x7f03005c;
+        public static final int test=0x7f03005d;
+        public static final int user_follower_item=0x7f03005e;
     }
     public static final class menu {
         public static final int activity_basic_actions=0x7f0d0000;
@@ -2367,6 +2371,7 @@ containing a value of this type.
         public static final int title_activity_login=0x7f070029;
         public static final int title_activity_main_drawer=0x7f07002c;
         public static final int title_activity_map=0x7f070030;
+        public static final int title_activity_my_kok_list=0x7f0700a7;
         public static final int title_activity_profile_picture=0x7f07002b;
         public static final int title_activity_relatives=0x7f070034;
         public static final int title_activity_support=0x7f070039;

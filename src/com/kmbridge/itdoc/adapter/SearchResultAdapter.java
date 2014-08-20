@@ -7,18 +7,15 @@ import java.util.List;
 import lazyList.ImageLoader;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.common.images.ImageManager;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
@@ -26,8 +23,8 @@ import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.hardcoding.LoadData;
-import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.RecycleUtil;
+import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class SearchResultAdapter extends BaseAdapter {
 
@@ -148,7 +145,7 @@ public class SearchResultAdapter extends BaseAdapter {
 
 		// 하트이미지
 		followImg = (ImageView) view.findViewById(R.id.imageview_clinic_list_item_follow_img);
-
+		
 		final ClinicListItem clinicListItem = (ClinicListItem) getItem(position);
 		/*
 		 * String url =
@@ -212,7 +209,14 @@ public class SearchResultAdapter extends BaseAdapter {
 		} else {
 			followImg.setImageResource(R.drawable.not_follow);
 		}
+		
+		if(SharedPreferenceUtil.isExist(context, "follow")==true && (clinicId==2 || clinicId==3 || clinicId==4 || clinicId==11))
+		{
+			followImg.setImageResource(R.drawable.follow);
+		}
 
+		Log.d("kim3","Id : "+clinicId);
+		
 		followImg.setTag("followImg");
 		img.setTag("clinicImg");
 		OnClickListener onClickListener = new OnClickListener() {

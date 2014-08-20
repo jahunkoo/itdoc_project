@@ -50,8 +50,7 @@ public class SuppotersFragment extends Fragment implements OnClickListener{
 		super.onCreate(savedInstanceState);
 	}
 
-	private ImageView upView;
-	private ImageView downView;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.hard_fragment_supporters_kookoo, container, false);

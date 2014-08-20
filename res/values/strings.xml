@@ -44,7 +44,6 @@
         <item>한의원 검색하기</item>
         <item>추천 한의원</item>
     </string-array>
-    
     <string-array name="drawer_menu_title_item_array_plus">
         <item>한의콕s 한방정보</item>
         <item>궁금해요 Q<![CDATA[&]]>A</item>
@@ -207,14 +206,15 @@
     <string name="textview_hanbang_info_up_main4_title">동화책을 읽어주는 것도 방법</string>
     <string name="textview_hanbang_info_up_main4">막무가내로 떼를 쓰는 아이의 모습이 그려진 동화책이 있다면 읽어주어도 좋습니다. 자신의 모습을 투영시켜 볼 수 있으니까요. 혹은 머리에 쏙쏙 들어가게 하기에 노래 만큼 좋은것이 없다죠. 노래가사를 이용하셔도 좋아요.</string>
     <string name="textview_hanbang_info_up_main4_2">어떤 형태이든 아이가 측은 지심의 마음을 쌓아가도록 만들어준다면 좀 더 생산적인 형태로 분노가 다스려질 수 있을 거라는게 포인트입니다.</string>
-   
+
+    <string name="title_activity_my_kok_list">MyKokListActivity</string>
+
+    
     <!-- hard coding choose_clinic_main -->
-    <!-- <string name="textview_choose_clinic_main_1_title"></string> -->
     <string-array name="choose_clinic_main_introduce_array">
         <item>[지루성 탈모]\n모락 한의원\n이성환 한의사님</item>
         <item>[만성 비염]\n오월애 한의원\n조성호 한의사님</item>
     </string-array>
-
      <string-array name="choose_clinic_contents_0_array">
          <item >[만성 비염]\n오월애 한의원\n조성호 한의사님</item>
          <item >만성 비염 치료의 명의로 오월해 한의원이 선정되었습니다.</item>
@@ -223,8 +223,12 @@
          <item >2. 경력 : 오월애 한의원의 조성호 한의사님은 국내 유명 가수들(이선희, 이승기, 구자명 등)의 비염 주치의로 인정받고 있으며 그 외에도 수많은 환자를 치료해온 경력이 있습니다.</item>
          <item >3. 추천 한의사</item>
      </string-array>
+    
      
-     
+     <!-- hard coding hanbang_info -->
+     <string-array name="hanbang_info_main_introduce_array">
+        <item>우리아이 훌륭하게 키우기 1탄</item>
+    </string-array>
      
      
      
