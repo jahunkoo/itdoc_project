@@ -103,8 +103,6 @@ public class SearchResultAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		Log.d("kim","SearchResultAdapter(114) position " + position + " get view");
-		
 		View view = convertView;
 
 		ImageView img = null;

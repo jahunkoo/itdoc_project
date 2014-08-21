@@ -339,9 +339,9 @@ public class KmClinicDetailActivity extends ActionBarActivity implements	OnClick
 		kmClinicEmotionImg3 = (ImageView) findViewById(R.id.review_user_favorImg3);
 		
 		Drawable alphaVisited = ((Button)findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
-		alphaVisited.setAlpha(99);
+		//alphaVisited.setAlpha(99);
 		Drawable alphaCall = ((Button)findViewById(R.id.btn_activity_km_clinic_detail_call)).getBackground();
-		alphaCall.setAlpha(99);
+		//alphaCall.setAlpha(99);
 	}
 
 	public void setListener() {

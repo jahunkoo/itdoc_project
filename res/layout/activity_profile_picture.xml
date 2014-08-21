@@ -30,7 +30,7 @@
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/user_profile_default" />
+            android:src="@drawable/face3" />
 
         <TextView
             android:id="@+id/textview_activity_profile_picture_welcome"

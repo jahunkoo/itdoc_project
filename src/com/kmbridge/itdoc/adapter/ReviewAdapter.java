@@ -138,15 +138,15 @@ public class ReviewAdapter extends BaseAdapter {
 		switch (reviewView.getFavoriteType()) {
 		case 1:
 			recommendImgGood.setImageResource(R.drawable.emoticon_good_red);
-			recommendText.setText("추천");
+//			recommendText.setText("추천");
 			break;
 		case 2:
 			recommendImgSoso.setImageResource(R.drawable.emoticon_soso_red);
-			recommendText.setText("괜찮다");
+//			recommendText.setText("괜찮다");
 			break;
 		case 3:
 			recommendImgBad.setImageResource(R.drawable.emoticon_bad_red);
-			recommendText.setText("비추천");
+//			recommendText.setText("비추천");
 			break;
 		default:
 			recommendImgSoso.setImageResource(R.drawable.emoticon_soso_red);
