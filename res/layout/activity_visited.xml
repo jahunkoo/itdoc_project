@@ -78,7 +78,7 @@
 
                 <Button
                     android:id="@+id/btn_face_nice"
-                    android:layout_width="0dp"
+                    android:layout_width="25dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
@@ -88,7 +88,7 @@
 
                 <Button
                     android:id="@+id/btn_face_notbad"
-                    android:layout_width="0dp"
+                    android:layout_width="25dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
@@ -98,7 +98,7 @@
 
                 <Button
                     android:id="@+id/btn_face_bad"
-                    android:layout_width="0dp"
+                    android:layout_width="25dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
@@ -140,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="한의원에 대한 코멘트를 작성해주세요."
+                    android:hint="한의원에 대한 코멘트를 작성해주세요."
                     android:textSize="15sp" />
 
                 <Button
