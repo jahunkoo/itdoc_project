@@ -3,13 +3,14 @@ package com.kmbridge.itdoc.image;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
 public class ImageManager {
 
 	public static int screenWidth;
 	public static int screenHeight;
-
 	
 	// 가로길이에 맞춰서 세로길이를 자동으로 얻는 메서드
 	public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth) {
@@ -91,4 +92,31 @@ public class ImageManager {
 		return inSampleSize;
 	}
 
+/*	public static Bitmap getBitmapPart(Bitmap bitmap){
+		int width = bitmap.getWidth();
+		int height = bitmap.getHeight();
+		int newWidth = width;
+		int newHeight = 560;
+
+		// calculate the scale - in this case = 0.4f
+		float scaleWidth = ((float) newWidth) / width;
+		float scaleHeight = ((float) newHeight) / height;
+
+		// createa matrix for the manipulation
+		Matrix matrix = new Matrix();
+		matrix.
+		// resize the bit map
+		matrix.postScale(scaleWidth, scaleHeight);
+
+		// recreate the new Bitmap
+		Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, 
+		                  width, height, matrix, true); 
+
+		// make a Drawable from Bitmap to allow to set the BitMap 
+		// to the ImageView, ImageButton or what ever
+		//BitmapDrawable bmd = new BitmapDrawable(resizedBitmap);
+		
+		return resizedBitmap;
+	}*/
+	
 }

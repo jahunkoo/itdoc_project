@@ -2,28 +2,29 @@ package com.kmbridge.itdoc.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.dialog.VisitedDialogActivity;
+import com.kmbridge.itdoc.dialog.VisitedDialog;
 import com.kmbridge.itdoc.dto.KmClinicDetailView;
+import com.kmbridge.itdoc.hardcoding.HardImageSelectHelperActivity;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 
-public class VisitedActivity extends ImageSelectHelperActivity implements OnClickListener {
+public class VisitedActivity extends HardImageSelectHelperActivity implements OnClickListener {
 	//MainDialog mMainDialog;
-	private VisitedDialogActivity visitedDlg;
+	private VisitedDialog visitedDlg;
 	private View.OnClickListener mClickListener;
 	Button btnFaceNice;
 	Button btnFaceNotbad;
 	Button btnFaceBad;
 	Button btnCamera;
 	Button btnComplate;
+	ImageView imgDisplayImage;
 	TextView txtFaceSelectResult;
 	public TextView txtVisitedChoice;
 	//TextView txtKeywordDisplay;
@@ -107,6 +108,7 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 		btnCamera = (Button) findViewById(R.id.btn_camara);
 		txtVisitedChoice = (TextView) findViewById(R.id.kmclinic_visited_choice);
 		btnComplate = (Button) findViewById(R.id.btn_complate);
+		imgDisplayImage = (ImageView) findViewById(R.id.imageview_visited);
 	}
 
 	private void setListener() {
@@ -150,9 +152,10 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 			break;
 		case R.id.btn_camara:
 			callImageActivity();
+			imgDisplayImage.setVisibility(View.VISIBLE);
 			break;
 		case R.id.kmclinic_visited_choice:
-			visitedDlg = new VisitedDialogActivity(this, mClickListener);
+			visitedDlg = new VisitedDialog(this, mClickListener);
 			visitedDlg.show();
 			//dialogactivity.showDialog();
 			//mMainDialog = new MainDialog();
@@ -162,6 +165,7 @@ public class VisitedActivity extends ImageSelectHelperActivity implements OnClic
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			intent.putExtra("clinicNumber", clinicNumber);
 			startActivity(intent);*/
+			//finish();
 		}
 	}
 

@@ -65,7 +65,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/hanbang_info_up_baby" />
+            android:src="@drawable/theme3" />
 
         <TextView
             style="@style/suppoters_sentence_bold"
@@ -109,10 +109,13 @@
             style="@style/suppoters_sentence"
             android:text="@string/textview_hanbang_info_up_main4_2" />
         
-        <ImageView
+        <LinearLayout 
+            android:id="@+id/content_frame"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/intro_logo" />
+            android:layout_height="match_parent">
+            
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
