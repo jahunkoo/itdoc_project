@@ -406,10 +406,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	private void selectItem(int position) {
 		this.position = position;
 
-		if (position == lastPosition) {
-			Log.d("kim", "MainDrawerActivity(410) 현재 위치 입니다.");
-		} else {
-
 			switch (position) {
 
 			case POSITION_KOK_LIST_FRAGMENT:
@@ -435,7 +431,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			}
 			lastPosition = position;
 			Log.d("kim", "FragmentList is " + FragmentTagList.toString());
-		}
+		
 
 	}
 
@@ -445,7 +441,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	// ******************************************************************
 	private String FRAGMENT_TAG;
 
-	protected ArrayList<String> FragmentTagList = new ArrayList<String>();
+	public static ArrayList<String> FragmentTagList = new ArrayList<String>();
 
 	private void createHanbangInfoFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = HanbangInfoFragment.create(this);
@@ -678,6 +674,9 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 					FRAGMENT_TAG = "FIRST_CLINIC_LIST";
 					fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, FRAGMENT_TAG).disallowAddToBackStack().commit();
 					
+				} else if (tag.equals("SEARCH_RESULT")) {
+					getActionBar().setTitle("검색결과");
+					searchItem.setVisible(false);
 				}
 			}
 
@@ -694,7 +693,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 			if (msg.what == 0) {
 				isPressed = false;
-			}
+			} 
 		}
 	};
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -21,13 +22,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.MainDrawerActivity;
 import com.kmbridge.itdoc.adapter.SearchAdapter;
 import com.kmbridge.itdoc.connect.ConnectionBridge;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 import com.kmbridge.itdoc.fragment.SearchResultClinicListFragment;
 import com.kmbridge.itdoc.util.ItDocConstants;
-import com.kmbridge.itdoc.util.RecycleUtil;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class HardSearchFragment extends Fragment implements OnClickListener, OnItemClickListener {
@@ -335,6 +336,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
 		
+		MainDrawerActivity.FragmentTagList.add("SEARCH_RESULT");
 		
 		InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(search.getWindowToken(), 0);
