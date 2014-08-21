@@ -319,7 +319,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="당뇨/고혈압" />
+                        android:text="당뇨-고혈압" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -328,7 +328,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3" >
 
@@ -341,15 +341,13 @@
                         android:id="@+id/search_item13"
                         android:layout_width="70dp"
                         android:layout_height="85dp"
-                        android:layout_marginLeft="40dp"
                         android:background="@drawable/search_item13" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical|center_horizontal"
-                        android:layout_marginLeft="40dp"
-                        android:text="스트레스" />
+                        android:text="스트레스/정신" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -372,13 +370,23 @@
                         android:text="탈모" />
                 </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/search_item15"
-                    android:layout_width="70dp"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:visibility="invisible" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/search_item15"
+                        android:layout_width="70dp"
+                        android:layout_height="85dp"
+                        android:background="@drawable/search_item15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="내과" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
