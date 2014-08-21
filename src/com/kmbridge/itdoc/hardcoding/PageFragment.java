@@ -31,10 +31,6 @@ public class PageFragment extends Fragment implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mPageNumber = getArguments().getInt("page");
-		
-		
-		
-		
 	}
 
 	@Override
