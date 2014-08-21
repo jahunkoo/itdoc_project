@@ -48,7 +48,6 @@
            android:layout_gravity="center_horizontal"
            android:gravity="center"
            android:orientation="vertical">
-            
            
            
        </LinearLayout>

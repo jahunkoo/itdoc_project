@@ -610,8 +610,8 @@ int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050038
 int id action_next 0x7f05002c
-int id action_previous 0x7f0501b5
-int id action_search 0x7f0501b4
+int id action_previous 0x7f0501b6
+int id action_search 0x7f0501b5
 int id activity_chooser_view_content 0x7f050039
 int id always 0x7f05000b
 int id autocomplete_textview_fragment_search 0x7f050188
@@ -831,6 +831,7 @@ int id relativeLayout_fragment_screen_slide_content 0x7f050050
 int id relativeLayout_user_manager 0x7f05011a
 int id relative_layout_hanbang_info 0x7f05018b
 int id relative_layout_morock_info 0x7f050195
+int id relative_layout_ohworae_info 0x7f0501b3
 int id relativelayout_fragment_intro 0x7f050175
 int id relativelayout_intro 0x7f050098
 int id relativelayout_left_drawer 0x7f0501a9
@@ -960,7 +961,7 @@ int id textview_layout_review_kmclinic_name 0x7f0501a2
 int id textview_left_drawer_bottom_comment 0x7f0501b0
 int id textview_left_drawer_bottom_name 0x7f0501ae
 int id textview_main_drawer_item 0x7f0501b2
-int id textview_search_list_item 0x7f0501b3
+int id textview_search_list_item 0x7f0501b4
 int id textview_slide_screen_comment 0x7f050185
 int id textview_slide_screen_divide_line 0x7f050183
 int id textview_userManager_center_line 0x7f05011b
@@ -1120,11 +1121,12 @@ int layout main_drawer_item_bottom_before_login 0x7f030057
 int layout main_drawer_layout 0x7f030058
 int layout main_drawer_list_item 0x7f030059
 int layout main_drawer_list_section 0x7f03005a
-int layout review_list_item_1 0x7f03005b
-int layout search_list_item 0x7f03005c
-int layout support_simple_spinner_dropdown_item 0x7f03005d
-int layout test 0x7f03005e
-int layout user_follower_item 0x7f03005f
+int layout ohworae_info_item 0x7f03005b
+int layout review_list_item_1 0x7f03005c
+int layout search_list_item 0x7f03005d
+int layout support_simple_spinner_dropdown_item 0x7f03005e
+int layout test 0x7f03005f
+int layout user_follower_item 0x7f030060
 int menu activity_basic_actions 0x7f0d0000
 int menu activity_basic_drawer_actions 0x7f0d0001
 int menu activity_screen_slide 0x7f0d0002

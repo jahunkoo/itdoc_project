@@ -341,8 +341,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		menu.findItem(R.id.action_search).setVisible(!drawerOpen); // drawer가
 																	// 닫혀있으면
 																	// 안보이지
-		//if (FRAGMENT_TAG.equals("SEARCH"))
-		//	searchItem.setVisible(false); // 만약 혀
+		if (FRAGMENT_TAG.equals("SEARCH"))
+			searchItem.setVisible(false); // 만약 혀
 		return super.onPrepareOptionsMenu(menu);
 	}
 

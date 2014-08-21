@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.plus.model.people.Person.Image;
 import com.kmbridge.itdoc.R;
@@ -30,6 +31,7 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 	private LayoutInflater inflator; 
 	
 	RelativeLayout relative_morock;
+	RelativeLayout relative_ohworae;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,16 +60,30 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 				setContents(textArr);
 				setDoctorLayout(index);
 				break;
+		case 1: setClinicLayout(index);
+		//String[] textArr = getResources().getStringArray(R.array.choose_clinic_contents_1_array);
+		//setContents(textArr);
+		break;		
 		}
 		
 	}
 	
 	private void setClinicLayout(int index){
-		RelativeLayout layout = (RelativeLayout) inflator.inflate(R.layout.hard_search_clinic_list_item, clinicContainLayout, false);
-		//relative_morock = (RelativeLayout) findViewById(R.id.relative_layout_morock_info);
-		relative_morock = (RelativeLayout) layout.findViewById(R.id.relative_layout_morock_info);
-		relative_morock.setOnClickListener(this);
-		clinicContainLayout.addView(layout);
+		if(index==0)
+		{
+			RelativeLayout layout = (RelativeLayout) inflator.inflate(R.layout.hard_search_clinic_list_item, clinicContainLayout, false);
+			relative_morock = (RelativeLayout) layout.findViewById(R.id.relative_layout_morock_info);
+			relative_morock.setOnClickListener(this);
+			clinicContainLayout.addView(layout);
+		}
+		else if(index==1)
+		{
+			RelativeLayout layout = (RelativeLayout) inflator.inflate(R.layout.ohworae_info_item, clinicContainLayout, false);
+			relative_ohworae = (RelativeLayout) layout.findViewById(R.id.relative_layout_ohworae_info);
+			relative_ohworae.setOnClickListener(this);
+			clinicContainLayout.addView(layout);
+		}
+		
 	}
 	
 	private void setDoctorLayout(int index){
@@ -95,6 +111,10 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			intent.putExtra("clinicNumber", 12);
 			startActivity(intent);
+			break;
+			
+		case R.id.relative_layout_ohworae_info:
+			Toast.makeText(this, "준비 중 입니다.", Toast.LENGTH_SHORT).show();
 			break;
 		}
 

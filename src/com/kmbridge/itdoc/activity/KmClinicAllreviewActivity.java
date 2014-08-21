@@ -123,7 +123,7 @@ public class KmClinicAllreviewActivity extends Activity {
 			setFavorImage(userReviewFavorType, j); //리뷰 평가 이미지 지정
 			
 		}
-		for(int i=0; i< doctorList.size(); i++)
+		for(int i=0; i<Math.min(reViewUserKeyword.length,doctorList.size()); i++)
 		{
 			//키워드 대표사진
 			int keywordNum = (doctorList.get(i).getId())%10;

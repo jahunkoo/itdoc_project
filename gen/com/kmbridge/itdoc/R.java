@@ -1755,8 +1755,8 @@ containing a value of this type.
     
          */
         public static final int action_next=0x7f05002c;
-        public static final int action_previous=0x7f0501b5;
-        public static final int action_search=0x7f0501b4;
+        public static final int action_previous=0x7f0501b6;
+        public static final int action_search=0x7f0501b5;
         public static final int activity_chooser_view_content=0x7f050039;
         public static final int always=0x7f05000b;
         public static final int autocomplete_textview_fragment_search=0x7f050188;
@@ -1976,6 +1976,7 @@ containing a value of this type.
         public static final int relativeLayout_user_manager=0x7f05011a;
         public static final int relative_layout_hanbang_info=0x7f05018b;
         public static final int relative_layout_morock_info=0x7f050195;
+        public static final int relative_layout_ohworae_info=0x7f0501b3;
         public static final int relativelayout_fragment_intro=0x7f050175;
         public static final int relativelayout_intro=0x7f050098;
         public static final int relativelayout_left_drawer=0x7f0501a9;
@@ -2105,7 +2106,7 @@ containing a value of this type.
         public static final int textview_left_drawer_bottom_comment=0x7f0501b0;
         public static final int textview_left_drawer_bottom_name=0x7f0501ae;
         public static final int textview_main_drawer_item=0x7f0501b2;
-        public static final int textview_search_list_item=0x7f0501b3;
+        public static final int textview_search_list_item=0x7f0501b4;
         public static final int textview_slide_screen_comment=0x7f050185;
         public static final int textview_slide_screen_divide_line=0x7f050183;
         public static final int textview_userManager_center_line=0x7f05011b;
@@ -2291,11 +2292,12 @@ containing a value of this type.
         public static final int main_drawer_layout=0x7f030058;
         public static final int main_drawer_list_item=0x7f030059;
         public static final int main_drawer_list_section=0x7f03005a;
-        public static final int review_list_item_1=0x7f03005b;
-        public static final int search_list_item=0x7f03005c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03005d;
-        public static final int test=0x7f03005e;
-        public static final int user_follower_item=0x7f03005f;
+        public static final int ohworae_info_item=0x7f03005b;
+        public static final int review_list_item_1=0x7f03005c;
+        public static final int search_list_item=0x7f03005d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03005e;
+        public static final int test=0x7f03005f;
+        public static final int user_follower_item=0x7f030060;
     }
     public static final class menu {
         public static final int activity_basic_actions=0x7f0d0000;
