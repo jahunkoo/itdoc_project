@@ -2,9 +2,12 @@ package com.kmbridge.itdoc.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -26,6 +29,10 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 	Button btnComplate;
 	ImageView imgDisplayImage;
 	TextView txtFaceSelectResult;
+	
+	EditText myEditText;
+	ScrollView myScrollView;
+	
 	public TextView txtVisitedChoice;
 	//TextView txtKeywordDisplay;
 	public int clinicNumber;
@@ -36,6 +43,8 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_visited);
+		
+		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		// 인텐트로 넘겨준 값을 받아온다.
 		Intent intent = getIntent();
@@ -109,6 +118,9 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 		txtVisitedChoice = (TextView) findViewById(R.id.kmclinic_visited_choice);
 		btnComplate = (Button) findViewById(R.id.btn_complate);
 		imgDisplayImage = (ImageView) findViewById(R.id.imageview_visited);
+		myEditText = (EditText) findViewById(R.id.edit_text_comment);
+		myScrollView = (ScrollView) findViewById(R.id.myScrollView);
+		
 	}
 
 	private void setListener() {
@@ -118,6 +130,9 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 		btnCamera.setOnClickListener(this);
 		txtVisitedChoice.setOnClickListener(this);
 		btnComplate.setOnClickListener(this);
+		myScrollView.setOnClickListener(this);
+		myEditText.setOnClickListener(this);
+
 	}
 
 	private void callImageActivity(){
@@ -160,6 +175,10 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 			//dialogactivity.showDialog();
 			//mMainDialog = new MainDialog();
 			//mMainDialog.show(getFragmentManager(), "");
+		case R.id.edit_text_comment:
+			myScrollView.scrollBy(0, 2000);
+			Log.d("kim5","asd");
+			break;
 		case R.id.btn_complate:
 			/*Intent intent = new Intent(this, KmClinicDetailActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

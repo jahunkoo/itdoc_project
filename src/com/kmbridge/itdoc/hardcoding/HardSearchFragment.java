@@ -54,6 +54,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 	ImageView item12;
 	ImageView item13;
 	ImageView item14;
+	ImageView item15;
 	ListView recentListView;
 
 	String[] keywords1 = null;
@@ -94,6 +95,7 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		item12 = (ImageView) rootView.findViewById(R.id.search_item12);
 		item13 = (ImageView) rootView.findViewById(R.id.search_item13);
 		item14 = (ImageView) rootView.findViewById(R.id.search_item14);
+		item15 = (ImageView) rootView.findViewById(R.id.search_item15);
 		
 		item1.setOnClickListener(this);
 		item2.setOnClickListener(this);
@@ -109,7 +111,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		item12.setOnClickListener(this);
 		item13.setOnClickListener(this);
 		item14.setOnClickListener(this);
-
+		item15.setOnClickListener(this);
+		
 		searchButton.setOnClickListener(this);
 		StringBuffer keywordBuffer = new StringBuffer();
 		keywordBuffer.append("M자 탈모, 열성, 원형, 지루성 탈모,비만 다이어트, 피부, 교통사고 후유증, 전신관절통증, 한약, 보약,")
@@ -313,6 +316,11 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 		case R.id.search_item14:
 			ArrayList<KmClinicView> item14 = load.searchClinicListByKeyword("탈모");
 			serachResult(item14);
+			break;
+			
+		case R.id.search_item15:
+			ArrayList<KmClinicView> item15 = load.searchClinicListByKeyword("내과");
+			serachResult(item15);
 			break;
 
 		default:

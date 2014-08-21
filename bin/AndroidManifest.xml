@@ -140,7 +140,7 @@
             android:label="@string/title_activity_visited" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.KmClinicMoreInfoActivity" />
+                android:value=".activity.KmClinicDetailActivity" />
         </activity>
         <activity
             android:name=".dialog.VisitedDialogActivity"
