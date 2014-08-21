@@ -1,11 +1,14 @@
 package com.kmbridge.itdoc.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,7 +17,7 @@ import com.google.android.gms.plus.model.people.Person.Image;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.image.ImageManager;
 
-public class SupporterActivity extends ActionBarActivity{
+public class SupporterActivity extends ActionBarActivity implements OnClickListener{
 
 	private TextView titleTextView;
 	private LinearLayout clinicContainLayout;
@@ -25,6 +28,8 @@ public class SupporterActivity extends ActionBarActivity{
 	private TextView body2_3TextView;
 	private LinearLayout doctorContainLayout;
 	private LayoutInflater inflator; 
+	
+	RelativeLayout relative_morock;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,6 @@ public class SupporterActivity extends ActionBarActivity{
 		body2_2TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_2);
 		body2_3TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_3);
 		doctorContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_doctor_img);
-		
 		
 		//1번 메니페스트
 		//2번 ActionBarActivity달기
@@ -60,6 +64,9 @@ public class SupporterActivity extends ActionBarActivity{
 	
 	private void setClinicLayout(int index){
 		RelativeLayout layout = (RelativeLayout) inflator.inflate(R.layout.hard_search_clinic_list_item, clinicContainLayout, false);
+		//relative_morock = (RelativeLayout) findViewById(R.id.relative_layout_morock_info);
+		relative_morock = (RelativeLayout) layout.findViewById(R.id.relative_layout_morock_info);
+		relative_morock.setOnClickListener(this);
 		clinicContainLayout.addView(layout);
 	}
 	
@@ -78,6 +85,19 @@ public class SupporterActivity extends ActionBarActivity{
 		
 	}
 	
-	
+	@Override
+	public void onClick(View v) {
+
+		switch (v.getId())
+		{
+		case R.id.relative_layout_morock_info:
+			Intent intent = new Intent(this, KmClinicDetailActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("clinicNumber", 12);
+			startActivity(intent);
+			break;
+		}
+
+	}
 	
 }

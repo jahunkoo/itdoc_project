@@ -48,6 +48,8 @@
            android:layout_gravity="center_horizontal"
            android:gravity="center"
            android:orientation="vertical">
+            
+           
            
        </LinearLayout>
        <TextView 	style="@style/suppoters_line_text" />
