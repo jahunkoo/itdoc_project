@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -69,10 +70,21 @@ public class HanbangInfoFragment extends Fragment implements OnClickListener{
 			Bitmap bitmap = ImageManager.decodeSampledBitmapFromResource(getResources(), imgSrcArr[i], ImageManager.screenWidth);
 			
 			int bitmapHeight = bitmap.getHeight();
+			Log.d("koo", "bitmapHeight :"+bitmapHeight);
 			if(bitmapHeight>560){
 				int remainHeight = bitmapHeight - 560;
 				bitmap = Bitmap.createBitmap(bitmap, 0, remainHeight/2, bitmap.getWidth(), 560, null, false);
+			}else if(bitmapHeight<560){
+				  int bitmapWidth = bitmap.getWidth();
+			      bitmapHeight = bitmap.getHeight();
+			      float yScale = 560 / bitmapHeight;
+			      Matrix matrix = new Matrix();
+			      matrix.postScale(1, yScale);
+			      Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmapWidth, bitmapHeight, matrix, true);
+			      bitmap = scaledBitmap ;
+			      Log.d("koo", "bitmapHeight in <560:"+bitmapHeight);
 			}
+			
 			
 			clinicImgView.setImageBitmap(bitmap);
 			

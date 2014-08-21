@@ -215,7 +215,16 @@
         <item>[지루성 탈모]\n모락 한의원\n이성환 한의사님</item>
         <item>[만성 비염]\n오월애 한의원\n조성호 한의사님</item>
     </string-array>
-     <string-array name="choose_clinic_contents_0_array">
+    <string-array name="choose_clinic_contents_0_array">
+         <item >[지루성 탈모]\n모락 한의원\n이성환 한의사님</item>
+         <item >지루성 탈모의 명의로 모락한의원이 선정되었습니다.</item>
+         <item >선정 이유</item>
+         <item >1. 치료건수 : 모락 한의원은 지루성 탈모 치료건수가 국내에서 가장 많은 한의원으로 총 13205건의 치료건수를 기록하고 있습니다.</item>
+         <item >2. 경력 : 모락 한의원의 이성환 한의사님은 現대한탈모학회의 회장을 역임하고 있으며 탈모분야의 권위자로서 다른 한의사에게 귀감이 되는 한의사님입니다.</item>
+         <item >3. 치료법 : 모락 한의원은 체질개선을 통해 완전한 탈모치료를 추구하고 있으며 모낭강화를 통해 근본적인 치료로 효과를 장기간 유지합니다.</item>
+         <item >4. 추천 한의사</item>
+     </string-array>
+     <string-array name="choose_clinic_contents_1_array">
          <item >[만성 비염]\n오월애 한의원\n조성호 한의사님</item>
          <item >만성 비염 치료의 명의로 오월해 한의원이 선정되었습니다.</item>
          <item >선정 이유</item>
