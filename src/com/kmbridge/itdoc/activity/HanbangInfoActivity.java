@@ -16,9 +16,9 @@ public class HanbangInfoActivity extends ActionBarActivity{
 		
 		Bundle bundle = getIntent().getExtras();
 		String position = bundle.getString("position");
-		if(position.equals("up")){
+		if(position.equals("0")){
 			Log.d("koo", "test up");
-		}else if(position.equals("down")){
+		}else if(position.equals("1")){
 			Log.d("koo", "test down");
 		}
 		

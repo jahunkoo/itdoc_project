@@ -64,7 +64,8 @@ public class HardSearchFragment extends Fragment implements OnClickListener, OnI
 	SharedPreferenceUtil share = new SharedPreferenceUtil();
 
 	public static final String RECENT_KEYWORD = "recentKeyword";
-
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

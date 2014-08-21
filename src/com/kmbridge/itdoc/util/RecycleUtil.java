@@ -22,7 +22,6 @@ public class RecycleUtil {
 		root.setBackgroundDrawable(null);
 
 		if (root instanceof ViewGroup) {
-			Log.d("kim","RecycleUtil(24) view is instanceof ViewGroup");
 			ViewGroup group = (ViewGroup) root;
 			int count = group.getChildCount();
 			for (int i = 0; i < count; i++) {
@@ -30,7 +29,6 @@ public class RecycleUtil {
 			}
 
 			if (!(root instanceof AdapterView)) {
-				Log.d("kim","RecycleUtil(32) view is not instanceof AdapterView");
 				group.removeAllViews();
 			}
 

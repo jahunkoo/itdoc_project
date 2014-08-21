@@ -1,5 +1,6 @@
 package com.kmbridge.itdoc.activity;
 
+import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,8 +57,7 @@ import com.kmbridge.itdoc.image.RoundedImageView;
 import com.kmbridge.itdoc.util.ItDocConstants;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
-
-public class MainDrawerActivity extends FragmentActivity implements OnClickListener,FragmentManager.OnBackStackChangedListener{
+public class MainDrawerActivity extends FragmentActivity implements OnClickListener, FragmentManager.OnBackStackChangedListener {
 
 	public ImageLoader imageLoader;
 	public boolean closeApplication;
@@ -79,39 +79,42 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 1;
 	private final int POSITION_KOK_LIST_FRAGMENT = 2;
-	
-	private final int POSITION_SEARCH_FRAGMENT = 4;	
+
+	private final int POSITION_SEARCH_FRAGMENT = 4;
 	private final int POSITION_HANIKOK_SUPPOTERS = 5;
-	//private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
-	
+	// private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
+
 	private final int POSITION_HANIKOK_HANBANG_INFO = 7;
 	// action view 좀 돼라
 	private final int POSITION_Q_AND_A_FRAGMENT = 8;
-	
-	int position = -1;
+
+	private int position = -1;
+	private int lastPosition = POSITION_KMCLINIC_LIST_FRAGMENT;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_drawer);
-		
+
 		imageLoader = new ImageLoader(this);
-		
+
 		mTitle = mDrawerTitle = getTitle();
 		// ********** stringarray 받기 시작
 		setDrawerTitleList();
 		// ********** end
 
-		//************************************ koo *********************************************************
-		DisplayMetrics displayMetrics = new DisplayMetrics(); 
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
-		Log.d("koo", "dpi:"+displayMetrics.densityDpi);
-		
-		ImageManager.screenWidth = displayMetrics.widthPixels; 
+		// ************************************ koo
+		// *********************************************************
+		DisplayMetrics displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		Log.d("koo", "dpi:" + displayMetrics.densityDpi);
+
+		ImageManager.screenWidth = displayMetrics.widthPixels;
 		ImageManager.screenHeight = displayMetrics.heightPixels;
-		Log.d("koo", "screen size=width:"+ImageManager.screenWidth +",height:"+ImageManager.screenHeight);
-		//************************************ koo *********************************************************
-		
+		Log.d("koo", "screen size=width:" + ImageManager.screenWidth + ",height:" + ImageManager.screenHeight);
+		// ************************************ koo
+		// *********************************************************
+
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerRelativeLayout = (RelativeLayout) findViewById(R.id.relativelayout_left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -123,15 +126,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		// mDrawerList.setAdapter(new
 		// ArrayAdapter<String>(this,R.layout.main_drawer_list_item,
 		// mDrawerMenuTitles));
-		
-		//mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.main_drawer_list_item, mDrawerMenuTitles));
-		mDrawerList.setAdapter(new DrawerTitleAdapter(this,R.layout.main_drawer_list_item, mDrawerMenuTitleList));
+
+		// mDrawerList.setAdapter(new
+		// ArrayAdapter<String>(this,R.layout.main_drawer_list_item,
+		// mDrawerMenuTitles));
+		mDrawerList.setAdapter(new DrawerTitleAdapter(this, R.layout.main_drawer_list_item, mDrawerMenuTitleList));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		setDrawerLeft();
-		
-		
-		
+
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -158,96 +161,89 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		if (savedInstanceState == null) {
 			firstItem();
-			//selectItem(POSITION_KMCLINIC_LIST_FRAGMENT);
-			//DselectItem(POSITION_HANIKOK_SUPPOTERS);
+			// selectItem(POSITION_KMCLINIC_LIST_FRAGMENT);
+			// DselectItem(POSITION_HANIKOK_SUPPOTERS);
 		}
-		
+
 		LoadData load = new LoadData(this);
-		
+
 		fragmentManager.addOnBackStackChangedListener(this);
-		
-		
-		
+
 	}
 
-	
-	
 	private void firstItem() {
 		createFirstKmClinicListFragment(fragmentManager, POSITION_KMCLINIC_LIST_FRAGMENT);
 	}
 
-
-	private String userEmail;	//없으면 null로 명시함
+	private String userEmail; // 없으면 null로 명시함
 	private boolean isLogin;
 	private LinearLayout leftBottomLayout;
-	
+
 	public void setDrawerLeft() {
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				try {
-					userEmail = "test@gmail.com";
-				}finally{
-					if(userEmail == null){
-						Log.d("koo", "userEmail is null");
-						isLogin = false;
-						beforeLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_before_login , null);
-						leftBottomLayout = beforeLoginLayout;
-						Button button = (Button) leftBottomLayout .findViewById(R.id.button_left_drawer_bottom_login_or_register);
-						button.setOnClickListener(this);
-						leftDrawerBottomLayout.addView(leftBottomLayout);
-					}else{
-						isLogin = true;
-						afterLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_after_login , null);
-						leftBottomLayout= afterLoginLayout;
-						
-						//환경설정 이미지 클릭시 컨피그(환경설정)액티비티로 이동하는 버튼
-						ImageButton imgBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imagebutton_left_drawer_bottom_setting);
-						imgBtn.setOnClickListener(this);
-						
-						TextView nameTextView = (TextView) leftBottomLayout.findViewById(R.id.textview_left_drawer_bottom_name);
-						nameTextView.setOnClickListener(this);
-						String profileName = "윤 성수";
-						nameTextView.setText(profileName);
-						
-						ImageView img = null;//사용자 사진 저장 객체
-						img = (ImageView) leftBottomLayout.findViewById (R.id.imageview_left_drawer_bottom_profile);
-						Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face3);
-						bitmap = RoundedImageView.getRoundedBitmap(bitmap, 80);
-						img.setImageBitmap(bitmap);
-						
-						
-						//사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
-						ImageButton imgProfileBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
-						imgProfileBtn.setOnClickListener(this);
-						leftDrawerBottomLayout.addView(leftBottomLayout);
-					}
-					leftBottomLayout.setOnClickListener(this);
-				}
-		
+		try {
+			userEmail = "test@gmail.com";
+		} finally {
+			if (userEmail == null) {
+				Log.d("koo", "userEmail is null");
+				isLogin = false;
+				beforeLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_before_login, null);
+				leftBottomLayout = beforeLoginLayout;
+				Button button = (Button) leftBottomLayout.findViewById(R.id.button_left_drawer_bottom_login_or_register);
+				button.setOnClickListener(this);
+				leftDrawerBottomLayout.addView(leftBottomLayout);
+			} else {
+				isLogin = true;
+				afterLoginLayout = (LinearLayout) inflator.inflate(R.layout.main_drawer_item_bottom_after_login, null);
+				leftBottomLayout = afterLoginLayout;
+
+				// 환경설정 이미지 클릭시 컨피그(환경설정)액티비티로 이동하는 버튼
+				ImageButton imgBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imagebutton_left_drawer_bottom_setting);
+				imgBtn.setOnClickListener(this);
+
+				TextView nameTextView = (TextView) leftBottomLayout.findViewById(R.id.textview_left_drawer_bottom_name);
+				nameTextView.setOnClickListener(this);
+				String profileName = "윤 성수";
+				nameTextView.setText(profileName);
+
+				ImageView img = null;// 사용자 사진 저장 객체
+				img = (ImageView) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
+				Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face3);
+				bitmap = RoundedImageView.getRoundedBitmap(bitmap, 80);
+				img.setImageBitmap(bitmap);
+
+				// 사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
+				ImageButton imgProfileBtn = (ImageButton) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
+				imgProfileBtn.setOnClickListener(this);
+				leftDrawerBottomLayout.addView(leftBottomLayout);
+			}
+			leftBottomLayout.setOnClickListener(this);
+		}
+
 	}
-	
-	
-	
+
 	private LinearLayout afterLoginLayout;
 	private LinearLayout beforeLoginLayout;
-	public void setLayoutVisible(boolean isShowAfterLayout ,boolean isShowBeforeLayout){
-		if(isShowAfterLayout)	afterLoginLayout.setVisibility(View.VISIBLE);
-		else 					afterLoginLayout.setVisibility(View.GONE);
-		
-		if(isShowBeforeLayout)	beforeLoginLayout.setVisibility(View.VISIBLE);
-		else					beforeLoginLayout.setVisibility(View.GONE);
+
+	public void setLayoutVisible(boolean isShowAfterLayout, boolean isShowBeforeLayout) {
+		if (isShowAfterLayout)
+			afterLoginLayout.setVisibility(View.VISIBLE);
+		else
+			afterLoginLayout.setVisibility(View.GONE);
+
+		if (isShowBeforeLayout)
+			beforeLoginLayout.setVisibility(View.VISIBLE);
+		else
+			beforeLoginLayout.setVisibility(View.GONE);
 	}
-	
-	private void setDrawerTitleList(){
-		String[] mDrawerSectionTitles = getResources().getStringArray(
-				R.array.drawer_menu_title_section_array);
-		
-		String[] mDrawerHonikokItemTitles = getResources().getStringArray(
-				R.array.drawer_menu_title_item_array_honikok);
-		String[] mDrawerSearchItemTitles = getResources().getStringArray(
-				R.array.drawer_menu_title_item_array_search);
-		String[] mDrawerPlusItemTitles = getResources().getStringArray(
-				R.array.drawer_menu_title_item_array_plus);
-		
+
+	private void setDrawerTitleList() {
+		String[] mDrawerSectionTitles = getResources().getStringArray(R.array.drawer_menu_title_section_array);
+
+		String[] mDrawerHonikokItemTitles = getResources().getStringArray(R.array.drawer_menu_title_item_array_honikok);
+		String[] mDrawerSearchItemTitles = getResources().getStringArray(R.array.drawer_menu_title_item_array_search);
+		String[] mDrawerPlusItemTitles = getResources().getStringArray(R.array.drawer_menu_title_item_array_plus);
+
 		List<Title> titleList = new ArrayList<Title>();
 		for (int i = 0; i < mDrawerSectionTitles.length; i++) {
 			SectionTitle sectionTitle = new SectionTitle();
@@ -260,21 +256,21 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 					itemTitle.setItemTitle(mDrawerHonikokItemTitles[j]);
 					titleList.add(itemTitle);
 				}
-				
+
 			} else if (i == 1) {
 				for (int j = 0; j < mDrawerSearchItemTitles.length; j++) {
 					ItemTitle itemTitle = new ItemTitle();
 					itemTitle.setItemTitle(mDrawerSearchItemTitles[j]);
 					titleList.add(itemTitle);
 				}
-				
+
 			} else if (i == 2) {
 				for (int j = 0; j < mDrawerPlusItemTitles.length; j++) {
 					ItemTitle itemTitle = new ItemTitle();
 					itemTitle.setItemTitle(mDrawerPlusItemTitles[j]);
 					titleList.add(itemTitle);
 				}
-				
+
 			}
 		}
 
@@ -304,11 +300,12 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 	// ******************************************** end
 	// ***************************************************
-	
+
 	// **************************************** actionBar 부분
 	// ***************************************************
-	
+
 	public SearchView searchView;
+
 	// onCreateOptionsMenu는 말그대로 actionBar에서 옵션메뉴를 추가할때 MenuInflater를 이용해서 생성하는
 	// 부분
 	@Override
@@ -317,7 +314,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		MenuInflater inflater = getMenuInflater();
 
 		inflater.inflate(R.menu.activity_basic_actions, menu);
-		
+
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -329,6 +326,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	// 이 메서드는 drawer화면이 전환될 때마다 수행됨 -> 그 이유가 토글에서 invalidateOptionsMenu()를 실행했기
 	// 때문임.
 	public MenuItem searchItem;
+
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
@@ -343,7 +341,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		menu.findItem(R.id.action_search).setVisible(!drawerOpen); // drawer가
 																	// 닫혀있으면
 																	// 안보이지
-		if(FRAGMENT_TAG.equals("SEARCH"))searchItem.setVisible(false);	//만약 혀
+		if (FRAGMENT_TAG.equals("SEARCH"))
+			searchItem.setVisible(false); // 만약 혀
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -360,8 +359,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		switch (item.getItemId()) {
 		case R.id.action_search:
 			MenuInflater inflater = getMenuInflater();
-			searchItem.setVisible(false); 
-			selectItem(POSITION_SEARCH_FRAGMENT);			
+			searchItem.setVisible(false);
+			selectItem(POSITION_SEARCH_FRAGMENT);
 			// create intent to perform web search for this planet
 			/*
 			 * Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
@@ -398,294 +397,367 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	}
 
 	/**
-	 * private final int POSITION_KOK_LIST_FRAGMENT = 2;
-	private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
-	private final int POSITION_Q_AND_A_FRAGMENT = 9;
+	 * private final int POSITION_KOK_LIST_FRAGMENT = 2; private final int
+	 * POSITION_SELLUP_CHOICE_FRAGMENT = 6; private final int
+	 * POSITION_Q_AND_A_FRAGMENT = 9;
+	 * 
 	 * @param position
 	 */
 	private void selectItem(int position) {
 		this.position = position;
-		switch (position) {
-		case POSITION_KOK_LIST_FRAGMENT:
-			//Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
-			createMyKokListFragment(fragmentManager, position);
-			break;
-		case POSITION_Q_AND_A_FRAGMENT:
-			Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
-			break;
-		case POSITION_SEARCH_FRAGMENT:
-			createSearchFragment(fragmentManager, position);
-			break;
-		case POSITION_KMCLINIC_LIST_FRAGMENT:
-			createKmClinicListFragment(fragmentManager, position);
-			break;
-		case POSITION_HANIKOK_SUPPOTERS:
-			createSupportersFragment(fragmentManager, position);
-			break;
-		case POSITION_HANIKOK_HANBANG_INFO:
-			createHanbangInfoFragment(fragmentManager, position);
-			break;
+
+		if (position == lastPosition) {
+			Log.d("kim", "MainDrawerActivity(410) 현재 위치 입니다.");
+		} else {
+
+			switch (position) {
+
+			case POSITION_KOK_LIST_FRAGMENT:
+				// Toast.makeText(this, "준비중입니다. :)",
+				// Toast.LENGTH_SHORT).show();
+				createMyKokListFragment(fragmentManager, position);
+				break;
+			case POSITION_Q_AND_A_FRAGMENT:
+				Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
+				break;
+			case POSITION_SEARCH_FRAGMENT:
+				createSearchFragment(fragmentManager, position);
+				break;
+			case POSITION_KMCLINIC_LIST_FRAGMENT:
+				createKmClinicListFragment(fragmentManager, position);
+				break;
+			case POSITION_HANIKOK_SUPPOTERS:
+				createSupportersFragment(fragmentManager, position);
+				break;
+			case POSITION_HANIKOK_HANBANG_INFO:
+				createHanbangInfoFragment(fragmentManager, position);
+				break;
+			}
+			lastPosition = position;
+			Log.d("kim", "FragmentList is " + FragmentTagList.toString());
 		}
+
 	}
+
 	// *********************************************end***************************************************
-	
-	// create fragment ******************************************************************
+
+	// create fragment
+	// ******************************************************************
 	private String FRAGMENT_TAG;
+
+	protected ArrayList<String> FragmentTagList = new ArrayList<String>();
+
 	private void createHanbangInfoFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = HanbangInfoFragment.create(this);
 		FRAGMENT_TAG = "HANBANG_INFO";
-		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		FragmentTagList.add(FRAGMENT_TAG);
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment, FRAGMENT_TAG).addToBackStack(null).commit();
 		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-		fragment.getView().setVisibility(View.GONE);
-		
+		if (fragment == null) {
+
+		} else {
+			fragment.getView().setVisibility(View.GONE);
+		}
+
 		afterFragmentCreate(position);
 	}
-	
-	private void createSupportersFragment(FragmentManager fragmentManager,int position) {
+
+	private void createSupportersFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = SuppotersFragment.create(this);
 		FRAGMENT_TAG = "SUPPORTERS";
-		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		FragmentTagList.add(FRAGMENT_TAG);
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment, FRAGMENT_TAG).addToBackStack(null).commit();
+
 		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-		fragment.getView().setVisibility(View.GONE);
-		
+
+		if (fragment == null) {
+
+		} else {
+			fragment.getView().setVisibility(View.GONE);
+		}
 		afterFragmentCreate(position);
 	}
-	
+
 	private void createKmClinicListFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = ClinicListFragment.create(this);
 		FRAGMENT_TAG = "CLINIC_LIST";
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
-		
+		FragmentTagList.add(FRAGMENT_TAG);
+		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, FRAGMENT_TAG).addToBackStack(null).commit();
+
 		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-		fragment.getView().setVisibility(View.VISIBLE);
-		//fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-		
-		
-		afterFragmentCreate(position);	
+
+		if (fragment == null) {
+
+		} else {
+			fragment.getView().setVisibility(View.VISIBLE);
+		}
+
+		// fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+
+		afterFragmentCreate(position);
 	}
-	
-	
-	//추가
+
+	// 추가
 	private void createMyKokListFragment(FragmentManager fragmentManager, int position) {
-		/*Fragment fragment = MyKokListFragment.create(this);
-		FRAGMENT_TAG = "CLINIC_LIST";
-		fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
-		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-		fragment.getView().setVisibility(View.VISIBLE);
-		searchItem.setVisible(false); 
-		
-		afterFragmentCreate(position);	*/
-		
+		/*
+		 * Fragment fragment = MyKokListFragment.create(this); FRAGMENT_TAG =
+		 * "CLINIC_LIST";
+		 * fragmentManager.beginTransaction().replace(R.id.content_frame,
+		 * fragment,FRAGMENT_TAG).addToBackStack(null).commit(); fragment =
+		 * fragmentManager.findFragmentByTag("CLINIC_LIST");
+		 * fragment.getView().setVisibility(View.VISIBLE);
+		 * searchItem.setVisible(false);
+		 * 
+		 * afterFragmentCreate(position);
+		 */
+
 		SharedPreferenceUtil.setData(this, "follow", "check");
 		LoadData load;
 		load = new LoadData(this);
-		
 		ArrayList<KmClinicView> item1 = load.searchClinicListByKeyword("피부");
-		
+
 		Fragment fragment = SearchResultClinicListFragment.create(this, item1);
-		FragmentManager fragmentManager1 = this.getSupportFragmentManager();
-		fragmentManager1.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
-		
-		
-		
-		//Fragment fragment = MyKokListFragment.create(this);
 		FRAGMENT_TAG = "MYKOK_LIST";
-		//fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
-		fragment = fragmentManager1.findFragmentByTag("CLINIC_LIST");
-		fragment.getView().setVisibility(View.GONE);
-		
+		FragmentTagList.add(FRAGMENT_TAG);
+		// FragmentManager fragmentManager1 = this.getSupportFragmentManager();
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment, FRAGMENT_TAG).addToBackStack(null).commit();
+		// Fragment fragment = MyKokListFragment.create(this);
+		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+
+		// fragmentManager.beginTransaction().add(R.id.content_frame,
+		// fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		if (fragment == null) {
+
+		} else {
+			fragment.getView().setVisibility(View.GONE);
+		}
+
 		afterFragmentCreate(position);
 	}
 
 	private void createFirstKmClinicListFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = ClinicListFragment.create(this);
-		FRAGMENT_TAG = "CLINIC_LIST";
-		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).disallowAddToBackStack().commit();
-		
-		afterFragmentCreate(position);	
+		FRAGMENT_TAG = "FIRST_CLINIC_LIST";
+		FragmentTagList.add(FRAGMENT_TAG);
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment, FRAGMENT_TAG).disallowAddToBackStack().commit();
+
+		afterFragmentCreate(position);
 	}
-	
+
 	private void createSearchFragment(FragmentManager fragmentManager, int position) {
 		Fragment fragment = HardSearchFragment.create(this);
 		FRAGMENT_TAG = "SEARCH";
-		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,FRAGMENT_TAG).addToBackStack(null).commit();
+		FragmentTagList.add(FRAGMENT_TAG);
+		fragmentManager.beginTransaction().add(R.id.content_frame, fragment, FRAGMENT_TAG).addToBackStack(null).commit();
 		fragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-		fragment.getView().setVisibility(View.GONE);
-		searchItem.setVisible(false); 
-		
-		afterFragmentCreate(position);	
+		if (fragment == null) {
+
+		} else {
+			fragment.getView().setVisibility(View.GONE);
+		}
+		searchItem.setVisible(false);
+
+		afterFragmentCreate(position);
 	}
 
-	private void afterFragmentCreate(int position){
+	private void afterFragmentCreate(int position) {
 		mDrawerList.setItemChecked(position, true);
 		ItemTitle title = (ItemTitle) mDrawerMenuTitleList.get(position);
 		setTitle(title.getItemTitle());
 		mDrawerLayout.closeDrawer(mDrawerRelativeLayout);
 	}
+
 	// end **********************************************************
-	
+
 	@Override
 	public void onClick(View v) {
 
-		switch (v.getId())
-		{
-			case R.id.button_left_drawer_bottom_login_or_register:
-				Intent intent_register = new Intent(this,UserManagerActivity.class);
-				//intent_register.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-				startActivity(intent_register);
-				break;
-				
-			case R.id.imageview_left_drawer_bottom_profile:
-				Intent intent_profile_picture = new Intent(this,ProfilePictureActivity.class);
-				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-				//startActivityForResult(intent_setting,0);
-				startActivity(intent_profile_picture);
-				break;
-				
-			case R.id.textview_left_drawer_bottom_name:
-				Intent intentUserProfile = new Intent(this,UserProfileActivity.class);
-				intentUserProfile.putExtra(ItDocConstants.EMAIL, "test@gmail.com");
-				startActivity(intentUserProfile);
-				break;
-				
-			case R.id.imagebutton_left_drawer_bottom_setting:
-				Log.d("kim","config_click!");
-				Intent intent_setting = new Intent(this,ConfigActivity.class);
-				//intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-				//startActivityForResult(intent_setting,0);
-				startActivity(intent_setting);
-				break;
-		}
-	}
+		switch (v.getId()) {
+		case R.id.button_left_drawer_bottom_login_or_register:
+			Intent intent_register = new Intent(this, UserManagerActivity.class);
+			// intent_register.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			startActivity(intent_register);
+			break;
 
-	
-	@Override
-	public void onBackPressed() {
-		Fragment fragment =  getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
-		//FragmentManager manager = getSupportFragmentManager();
-		if(isLastFragment){
-			if (!isPressed) {
-	            Toast.makeText(this, "'뒤로'버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
-	            isPressed = true;
-	            mHandler.sendEmptyMessageDelayed(0, 2000);
-	         } else {
-	            super.onBackPressed();
-	         }
-		}else{
-			if(fragment !=null){
-				String tag = fragment.getTag();
-				if(tag.equals("SEARCH")){
-					//fragment =  getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-					//fragment.getView().setVisibility(View.VISIBLE);
-					//*****************************actionbar title setting ***********************
-					getActionBar().setTitle(R.string.title_activity_main_drawer);
-					searchItem.setVisible(true);
-					//****************************************************************************
-					/*fragment = ClinicListFragment.create(this);
-					FRAGMENT_TAG = "CLINIC_LIST";
-					fragmentManager.beginTransaction().replace(R.id.content_frame, fragment,FRAGMENT_TAG).commit();
-					*/
-				}else if(tag.equals("CLINIC_LIST")){
-					
-				}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)){
-					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-					//fragment.getView().setVisibility(View.VISIBLE);
-				}else if(tag.equals(ItDocConstants.TAG_FRAGMENT_SUPPORT)){
-					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-					//fragment.getView().setVisibility(View.VISIBLE);
-					//*****************************actionbar title setting ***********************
-					getActionBar().setTitle(R.string.title_activity_main_drawer);
-					searchItem.setVisible(true);
-					//****************************************************************************
-				}else if(tag.equals("HANBANG_INFO")){
-					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-					//fragment.getView().setVisibility(View.VISIBLE);
-					//*****************************actionbar title setting ***********************
-					getActionBar().setTitle(R.string.title_activity_main_drawer);
-					searchItem.setVisible(true);
-					//****************************************************************************
-				}else if(tag.equals("MYKOK_LIST")){
-					//fragment = getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
-					//fragment.getView().setVisibility(View.VISIBLE);
-					//*****************************actionbar title setting ***********************
-					getActionBar().setTitle(R.string.title_activity_main_drawer);
-					searchItem.setVisible(true);
-					//****************************************************************************
-				}
-			}
-		
-			super.onBackPressed();
-		}
-		
-		
-		
-	}
-	private boolean isPressed;
-    private Handler mHandler = new Handler() {
+		case R.id.imageview_left_drawer_bottom_profile:
+			Intent intent_profile_picture = new Intent(this, ProfilePictureActivity.class);
+			// intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			// startActivityForResult(intent_setting,0);
+			startActivity(intent_profile_picture);
+			break;
 
-        @Override
-        public void handleMessage(Message msg) {
+		case R.id.textview_left_drawer_bottom_name:
+			Intent intentUserProfile = new Intent(this, UserProfileActivity.class);
+			intentUserProfile.putExtra(ItDocConstants.EMAIL, "test@gmail.com");
+			startActivity(intentUserProfile);
+			break;
 
-           if (msg.what == 0) {
-              isPressed = false;
-           }
-        }
-     };
-     
-	      
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode ,data);
-		switch(resultCode){
-		case Activity.RESULT_OK: 
-			//*****************************actionbar title setting ***********************
-			getActionBar().setTitle(R.string.title_activity_main_drawer);
-			//****************************************************************************
-			Bundle bundle = data.getExtras();
-			boolean isLogin = bundle.getBoolean("isLogin");
-			if(isLogin)	setLayoutVisible(true, false);
-			else		setLayoutVisible(false, true);
-			
+		case R.id.imagebutton_left_drawer_bottom_setting:
+			Log.d("kim", "config_click!");
+			Intent intent_setting = new Intent(this, ConfigActivity.class);
+			// intent_setting.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			// startActivityForResult(intent_setting,0);
+			startActivity(intent_setting);
 			break;
 		}
 	}
 
+	@Override
+	public void onBackPressed() {
+		Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+
+		// FragmentManager manager = getSupportFragmentManager();
+		if (isLastFragment) {
+			if (!isPressed) {
+				Toast.makeText(this, "'뒤로'버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+				isPressed = true;
+				mHandler.sendEmptyMessageDelayed(0, 2000);
+			} else {
+				super.onBackPressed();
+			}
+		} else {
+			FragmentTagList.remove(FragmentTagList.size() - 1);
+			String tag = FragmentTagList.get(FragmentTagList.size() - 1);
+			if (FragmentTagList.size() != 0) {
+				Log.d("kim", "FragmentList is " + FragmentTagList.toString());
+				if (tag.equals("SEARCH")) {
+					// fragment =
+					// getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					// fragment.getView().setVisibility(View.VISIBLE);
+					// *****************************actionbar title setting
+					// ***********************
+					getActionBar().setTitle("한의원 검색하기");
+					searchItem.setVisible(false);
+					// ****************************************************************************
+					/*
+					 * fragment = ClinicListFragment.create(this); FRAGMENT_TAG
+					 * = "CLINIC_LIST";
+					 * fragmentManager.beginTransaction().replace
+					 * (R.id.content_frame, fragment,FRAGMENT_TAG).commit();
+					 */
+				} else if (tag.equals("CLINIC_LIST")) {
+					getActionBar().setTitle("둘러보기");
+					searchItem.setVisible(true);
+					fragment = ClinicListFragment.create(this);
+					FRAGMENT_TAG = "CLINIC_LIST";
+					fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, FRAGMENT_TAG).addToBackStack(null).commit();
+
+				} else if (tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)) {
+					// fragment =
+					// getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					// fragment.getView().setVisibility(View.VISIBLE);
+					searchItem.setVisible(true);
+				} else if (tag.equals(ItDocConstants.TAG_FRAGMENT_SUPPORT)) {
+					// fragment =
+					// getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					// fragment.getView().setVisibility(View.VISIBLE);
+					// *****************************actionbar title setting
+					// ***********************
+					getActionBar().setTitle("추천 한의원");
+					searchItem.setVisible(true);
+					// ****************************************************************************
+				} else if (tag.equals("HANBANG_INFO")) {
+					// fragment =
+					// getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					// fragment.getView().setVisibility(View.VISIBLE);
+					// *****************************actionbar title setting
+					// ***********************
+					getActionBar().setTitle("한의콕s 한방정보");
+					searchItem.setVisible(true);
+					// ****************************************************************************
+				} else if (tag.equals("MYKOK_LIST")) {
+					// fragment =
+					// getSupportFragmentManager().findFragmentByTag("CLINIC_LIST");
+					// fragment.getView().setVisibility(View.VISIBLE);
+					// *****************************actionbar title setting
+					// ***********************
+					getActionBar().setTitle("나의 콕!리스트");
+					searchItem.setVisible(true);
+					// ****************************************************************************
+				} else if (tag.equals("FIRST_CLINIC_LIST")) {
+					getActionBar().setTitle("둘러보기");
+					searchItem.setVisible(true);
+					fragment = ClinicListFragment.create(this);
+					FRAGMENT_TAG = "FIRST_CLINIC_LIST";
+					fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, FRAGMENT_TAG).disallowAddToBackStack().commit();
+					
+				}
+			}
+
+			super.onBackPressed();
+		}
+
+	}
+
+	private boolean isPressed;
+	private Handler mHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+
+			if (msg.what == 0) {
+				isPressed = false;
+			}
+		}
+	};
+
+	/*
+	 * @Override protected void onActivityResult(int requestCode, int
+	 * resultCode, Intent data) { super.onActivityResult(requestCode, resultCode
+	 * ,data); switch(resultCode){ case Activity.RESULT_OK:
+	 * //*****************************actionbar title setting
+	 * ***********************
+	 * getActionBar().setTitle(R.string.title_activity_main_drawer);
+	 * //**********
+	 * ****************************************************************** Bundle
+	 * bundle = data.getExtras(); boolean isLogin =
+	 * bundle.getBoolean("isLogin"); if(isLogin) setLayoutVisible(true, false);
+	 * else setLayoutVisible(false, true);
+	 * 
+	 * break; } }
+	 */
 	private boolean isLastFragment = true;
+
 	@Override
 	public void onBackStackChanged() {
 		isLastFragment = false;
 		int fragmentCount = fragmentManager.getBackStackEntryCount();
-		
-		Log.d("koo", "fragment backstack count:"+fragmentCount);
-		if(fragmentCount == 0){
+
+		Log.d("koo", "fragment backstack count:" + fragmentCount);
+		if (fragmentCount == 0) {
 			isLastFragment = true;
-			//Toast.makeText(this, "last fragment", Toast.LENGTH_LONG).show();
+			// Toast.makeText(this, "last fragment", Toast.LENGTH_LONG).show();
 			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-			listFragment.getView().setVisibility(View.VISIBLE);
-		}else{
-			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
-			listFragment.getView().setVisibility(View.VISIBLE);
-		}
-		
-		
-		
-		List<Fragment> fragmentList = fragmentManager.getFragments();
-		for(int i=0;i<fragmentList.size() ;i++){
-			Fragment f = fragmentList.get(i);
-			if(f != null){
-				if(f == null){
-					Log.d("koo", "fragment null");
-				}else{
-					Log.d("koo", "fragment tag:"+f.getTag());
-				}
-				
+			if (listFragment == null) {
+
+			} else {
+				listFragment.getView().setVisibility(View.VISIBLE);
 			}
-				
+		} else {
+			Fragment listFragment = fragmentManager.findFragmentByTag("CLINIC_LIST");
+
+			if (listFragment == null) {
+
+			} else {
+				listFragment.getView().setVisibility(View.VISIBLE);
+			}
+
 		}
+
+		List<Fragment> fragmentList = fragmentManager.getFragments();
+		for (int i = 0; i < fragmentList.size(); i++) {
+			Fragment f = fragmentList.get(i);
+			if (f != null) {
+				if (f == null) {
+					Log.d("koo", "fragment null");
+				} else {
+					Log.d("koo", "fragment tag:" + f.getTag());
+				}
+
+			}
+
+		}
+
 	}
 
-	
-	
-	
-	
 }

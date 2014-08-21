@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.activity.KmClinicDetailActivity;
 import com.kmbridge.itdoc.activity.KmClinicMoreDoctorActivity;
+import com.kmbridge.itdoc.activity.MainDrawerActivity;
 
 public class ClinicListFragment extends Fragment {
 
@@ -39,7 +40,6 @@ public class ClinicListFragment extends Fragment {
 	public void setContext(Context context) {
 		this.context = context;
 	}
-	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
