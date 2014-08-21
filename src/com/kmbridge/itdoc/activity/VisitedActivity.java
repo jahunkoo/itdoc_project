@@ -18,8 +18,9 @@ import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.hardcoding.HardImageSelectHelperActivity;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 
-public class VisitedActivity extends HardImageSelectHelperActivity implements OnClickListener {
-	//MainDialog mMainDialog;
+public class VisitedActivity extends HardImageSelectHelperActivity implements
+		OnClickListener {
+	// MainDialog mMainDialog;
 	private VisitedDialog visitedDlg;
 	private View.OnClickListener mClickListener;
 	Button btnFaceNice;
@@ -29,85 +30,74 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 	Button btnComplate;
 	ImageView imgDisplayImage;
 	TextView txtFaceSelectResult;
-	
+
 	EditText myEditText;
 	ScrollView myScrollView;
-	
+
 	public TextView txtVisitedChoice;
-	//TextView txtKeywordDisplay;
+	// TextView txtKeywordDisplay;
 	public int clinicNumber;
-	
+
 	ScrollView scrollView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_visited);
-		
-		//getActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
+		// getActionBar().setDisplayHomeAsUpEnabled(true);
+
 		// 인텐트로 넘겨준 값을 받아온다.
 		Intent intent = getIntent();
 		clinicNumber = intent.getExtras().getInt("clinicNumber");
-		
+
 		// json파서 로드
 		LoadData load = new LoadData(this);
 		// 한의원 객체를 가져옴
-		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
+		KmClinicDetailView KmClinicview = load
+				.getKmClinicDetailView(clinicNumber);
 		// 병원 이름 지정
 		getActionBar().setTitle(KmClinicview.getName());
 
 		setLayout();
 		setListener();
-		
-//		ActionBarActivity actionBarActivity = new ActionBarActivity();
-//		actionBarActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
+		// ActionBarActivity actionBarActivity = new ActionBarActivity();
+		// actionBarActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 		getSelectedImageFile(); // extract selected & saved image file.
 		/*
-		ScrollView scroll = (ScrollView)findViewById(R.id.visited_scroll);
-		scroll.post(new Runnable()
-		{
-		@Override
-		public void run()
-		{
-		ScrollView scroll = (ScrollView)findViewById(R.id.visited_scroll);
-		scroll.fullScroll(ScrollView.FOCUS_UP);
-
-		}
-		}); */
-		
-	}
-	
-
-/*	public static class MainDialog extends DialogFragment {
-
-		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
-			AlertDialog.Builder mBuilder = new AlertDialog.Builder(
-					getActivity());
-			LayoutInflater mLayoutInflater = getActivity().getLayoutInflater();
-			mBuilder.setView(mLayoutInflater.inflate(R.layout.dialog_visited, null));
-			return mBuilder.create();
-		}
-
-		@Override
-		public void onStop() {
-			super.onStop();
-		}
+		 * ScrollView scroll = (ScrollView)findViewById(R.id.visited_scroll);
+		 * scroll.post(new Runnable() {
+		 * 
+		 * @Override public void run() { ScrollView scroll =
+		 * (ScrollView)findViewById(R.id.visited_scroll);
+		 * scroll.fullScroll(ScrollView.FOCUS_UP);
+		 * 
+		 * } });
+		 */
 
 	}
-	
-	public void ONCLICK_DIALOG(View v) {
-		switch (v.getId()) {
-		case R.id.dialogi_item0:
-			keywordData+="한방 다이어트";
-			txtKeywordDisplay.setText(keywordData);
-			break;
-		}
 
-	}*/
-
+	/*
+	 * public static class MainDialog extends DialogFragment {
+	 * 
+	 * @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
+	 * AlertDialog.Builder mBuilder = new AlertDialog.Builder( getActivity());
+	 * LayoutInflater mLayoutInflater = getActivity().getLayoutInflater();
+	 * mBuilder.setView(mLayoutInflater.inflate(R.layout.dialog_visited, null));
+	 * return mBuilder.create(); }
+	 * 
+	 * @Override public void onStop() { super.onStop(); }
+	 * 
+	 * }
+	 * 
+	 * public void ONCLICK_DIALOG(View v) { switch (v.getId()) { case
+	 * R.id.dialogi_item0: keywordData+="한방 다이어트";
+	 * txtKeywordDisplay.setText(keywordData); break; }
+	 * 
+	 * }
+	 */
 
 	private void setLayout() {
 		btnFaceNice = (Button) findViewById(R.id.btn_face_nice);
@@ -120,7 +110,7 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 		imgDisplayImage = (ImageView) findViewById(R.id.imageview_visited);
 		myEditText = (EditText) findViewById(R.id.edit_text_comment);
 		myScrollView = (ScrollView) findViewById(R.id.myScrollView);
-		
+
 	}
 
 	private void setListener() {
@@ -135,15 +125,13 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 
 	}
 
-	private void callImageActivity(){
+	private void callImageActivity() {
 		super.callActivity = this;
 		setImageSizeBoundary(400);
 		setCropOption(1, 1);
 		startSelectImage();
 	}
-	
-	
-	
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -172,23 +160,37 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements On
 		case R.id.kmclinic_visited_choice:
 			visitedDlg = new VisitedDialog(this, mClickListener);
 			visitedDlg.show();
-			//dialogactivity.showDialog();
-			//mMainDialog = new MainDialog();
-			//mMainDialog.show(getFragmentManager(), "");
+			// dialogactivity.showDialog();
+			// mMainDialog = new MainDialog();
+			// mMainDialog.show(getFragmentManager(), "");
 		case R.id.edit_text_comment:
-			myScrollView.scrollBy(0, 2000);
-			Log.d("kim5","asd");
+			// myScrollView.scrollTo(0,600);
+			scrollToEnd();
+			Log.d("kim5", "scroll");
 			break;
 		case R.id.btn_complate:
-			/*Intent intent = new Intent(this, KmClinicDetailActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.putExtra("clinicNumber", clinicNumber);
-			startActivity(intent);*/
-			//finish();
+			/*
+			 * Intent intent = new Intent(this, KmClinicDetailActivity.class);
+			 * intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			 * intent.putExtra("clinicNumber", clinicNumber);
+			 * startActivity(intent);
+			 */
+			finish();
 		}
 	}
 
-	
-	
+	/*public void scrollToEnd() {
+		myScrollView.post(new Runnable() {
+			@Override
+			public void run() {
+				myScrollView.fullScroll(View.FOCUS_DOWN);
+			}
 
+		});
+	}*/
+
+	public void scrollToEnd()
+	{
+		myScrollView.fullScroll(View.FOCUS_DOWN);
+	}
 }

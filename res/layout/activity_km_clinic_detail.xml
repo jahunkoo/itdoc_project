@@ -489,16 +489,26 @@
 
         <Button
             android:id="@+id/btn_activity_km_clilic_detail_visited"
+            android:background="#E61D47"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="0.5"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginBottom="1dp"
+            android:textColor="#ffffff"
             android:text="가봤다" />
 
         <Button
             android:id="@+id/btn_activity_km_clinic_detail_call"
+            android:background="#E61D47"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="0.5"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:textColor="#ffffff"
             android:text="전화하기" />
     </LinearLayout>
 
