@@ -1,9 +1,8 @@
 package com.kmbridge.itdoc.util;
 
-import java.util.Set;
-
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.kmbridge.itdoc.exception.RecordNotFoundException;
 
@@ -24,6 +23,7 @@ public class SharedPreferenceUtil extends ItDocUtil{
 	 * @return
 	 */
 	public static boolean setData(Context context, String key, String value){
+		
 		SharedPreferences pref = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = pref.edit();
 		editor.putString(key, value);
