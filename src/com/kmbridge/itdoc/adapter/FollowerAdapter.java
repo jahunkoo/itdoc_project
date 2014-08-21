@@ -131,6 +131,7 @@ public class FollowerAdapter extends BaseAdapter {
 		String pictureName = followList.get(position).getPicturePath();
 		String arr[] = pictureName.split(".png");
 		pictureName = arr[0];
+		
 		int pictureId = context.getResources().getIdentifier(pictureName, "drawable", context.getPackageName());
 
 		face.setImageResource(pictureId);

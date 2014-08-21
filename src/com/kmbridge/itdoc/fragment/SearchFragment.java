@@ -43,6 +43,14 @@ public class SearchFragment extends Fragment implements OnClickListener, OnItemC
 
 	public static final String RECENT_KEYWORD = "recentKeyword";
 
+	
+	
+	@Override
+	public void onResume() {
+		Log.d("kim","SearchFragment onResume");
+		super.onResume();
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
