@@ -638,9 +638,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				} else if (tag.equals("CLINIC_LIST")) {
 					getActionBar().setTitle("둘러보기");
 					searchItem.setVisible(true);
-					fragment = ClinicListFragment.create(this);
-					FRAGMENT_TAG = "CLINIC_LIST";
-					fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, FRAGMENT_TAG).addToBackStack(null).commit();
 
 				} else if (tag.equals(ItDocConstants.TAG_FRAGMENT_CLINIC_LIST)) {
 					// fragment =

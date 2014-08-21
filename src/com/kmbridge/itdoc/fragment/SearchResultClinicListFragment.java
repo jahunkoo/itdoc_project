@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.adapter.ClinicListAdapter;
+import com.kmbridge.itdoc.adapter.HardSearchResultAdapter;
+import com.kmbridge.itdoc.adapter.KooJahunSearchResultAdapter;
 import com.kmbridge.itdoc.adapter.SearchResultAdapter;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.util.RecycleUtil;
@@ -48,8 +50,8 @@ public class SearchResultClinicListFragment extends Fragment {
 		 */
 		View rootView = inflater.inflate(R.layout.fragment_clinic_list, container, false);
 
-		SearchResultAdapter searchResultAdapter = new SearchResultAdapter(email, context, kmClinicViewList);
-
+		//SearchResultAdapter searchResultAdapter = new SearchResultAdapter(email, context, kmClinicViewList);
+		KooJahunSearchResultAdapter searchResultAdapter = new KooJahunSearchResultAdapter(email, context, kmClinicViewList);
 		mListView = (ListView) rootView.findViewById(R.id.listview_clinic_list);
 		mListView.setAdapter(searchResultAdapter);
 

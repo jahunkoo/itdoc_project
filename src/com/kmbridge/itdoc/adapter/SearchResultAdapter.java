@@ -7,6 +7,7 @@ import java.util.List;
 import lazyList.ImageLoader;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.kmbridge.itdoc.dto.KmClinicDetailView;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.hardcoding.LoadData;
+import com.kmbridge.itdoc.image.ImageManager;
 import com.kmbridge.itdoc.util.RecycleUtil;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
@@ -37,7 +39,6 @@ public class SearchResultAdapter extends BaseAdapter {
 	public Context context;
 
 	private List<WeakReference<View>> mRecycleList = new ArrayList<WeakReference<View>>();
-
 	public List<ClinicListItem> clinicListItemList = new ArrayList<ClinicListItem>();
 
 	public void recycle() {
@@ -65,7 +66,6 @@ public class SearchResultAdapter extends BaseAdapter {
 		for (int i = 0; i < kmClinicViewList.size(); i++) {
 
 			KmClinicView kmClinicView = kmClinicViewList.get(i);
-
 			String local = kmClinicView.getBigRegionName() + " " + kmClinicView.getMiddleRegionName();
 
 			int id = kmClinicView.getId();
@@ -77,11 +77,6 @@ public class SearchResultAdapter extends BaseAdapter {
 			String keyword = kmClinicView.getKeywordList().get(0);
 			int type = kmClinicView.getType();
 
-			try {
-				Thread.currentThread().sleep(40);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			clinicListItemList.add(new ClinicListItem(id, picturepath, name, regionName, keyword, followNum, likeNum, type));
 
 		}
@@ -178,8 +173,9 @@ public class SearchResultAdapter extends BaseAdapter {
 		// 실제로 이걸로 코드를 짜 보면 이미지의 크기가 제 멋대로 뜬다.
 		// Bitmap bitmap = com.kmbridge.itdoc.image.ImageManager.decodeSampledBitmapFromResource(context.getResources(), clinicPictureId, 128, 64);
 		// img.setImageBitmap(bitmap);
-		
-		img.setImageResource(clinicPictureId);
+		//img.setImageResource(clinicPictureId);
+		Bitmap bitmap = ImageManager.decodeSampledBitmapFromResource(context.getResources() , clinicPictureId, ImageManager.screenWidth);
+		img.setImageBitmap(bitmap);
 
 		// 추천한 사람 뿌리기
 		List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
