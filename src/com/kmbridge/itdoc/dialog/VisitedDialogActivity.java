@@ -34,7 +34,7 @@ public class VisitedDialogActivity extends Dialog implements OnClickListener {
 
 	public VisitedDialogActivity(Context context,View.OnClickListener clicklistener) {
 		super(context);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.setCanceledOnTouchOutside(false);// 다이알로그 바깥영역 터치시, 다이알로그 닫히지 않기
 		this.setCancelable(true); // 백키로 다이알로그 닫기
 
@@ -46,7 +46,7 @@ public class VisitedDialogActivity extends Dialog implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_visited_dialog);
-		
+		setTitle("	어떤 치료를 받았나요?");
 		setLayout();
 		setListener();
 	}
