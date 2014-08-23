@@ -100,6 +100,7 @@ public class KmClinicAllreviewActivity extends Activity {
 			
 			String userReview = reviewList.get(j).getComment();
 			String userReviewData = reviewList.get(j).getReviewTime();
+			String sub_userReviewData = userReviewData.substring(0, 10);
 			
 			int userReviewFavorType = reviewList.get(j).getFavoriteType(); //추천이미지에 따른 번호를 가져옴.
 			//int favorPictureId = setFavorImage(userReviewFavorType);
@@ -109,15 +110,15 @@ public class KmClinicAllreviewActivity extends Activity {
 			
 			reViewUserName[j].setText(UserName); //이름지정
 			reViewUserImage[j].setImageResource(pictureId); //사진지정
-			reViewUserDate[j].setText(userReviewData); //리뷰 작성 시간 지정
+			reViewUserDate[j].setText(sub_userReviewData); //리뷰 작성 시간 지정
 			reViewUserReview[j].setText(userReview); //리뷰지정 
 			//reViewTypeImage[j].setImageResource(favorPictureId); //리뷰 평가 이미지 지정
 			
-			int favorId1 = getResources().getIdentifier("emoticon_good_grey", "drawable", this.getPackageName());
+			int favorId1 = getResources().getIdentifier("img_good_off", "drawable", this.getPackageName());
 			reViewTypeImage1[j].setImageResource(favorId1);
-			int favorId2 = getResources().getIdentifier("emoticon_soso_grey", "drawable", this.getPackageName());
+			int favorId2 = getResources().getIdentifier("img_notbad_off", "drawable", this.getPackageName());
 			reViewTypeImage2[j].setImageResource(favorId2);
-			int favorId3 = getResources().getIdentifier("emoticon_bad_grey", "drawable", this.getPackageName());
+			int favorId3 = getResources().getIdentifier("img_bad_off", "drawable", this.getPackageName());
 			reViewTypeImage3[j].setImageResource(favorId3);
 			
 			setFavorImage(userReviewFavorType, j); //리뷰 평가 이미지 지정
@@ -139,18 +140,18 @@ public class KmClinicAllreviewActivity extends Activity {
 		Log.d("kim2","type:"+type);
 		if(type==1)
 		{
-			favorId = getResources().getIdentifier("emoticon_good_red", "drawable", this.getPackageName());
+			favorId = getResources().getIdentifier("img_good_on", "drawable", this.getPackageName());
 			Log.d("kim2",""+favorId);
 			reViewTypeImage1[number].setImageResource(favorId);//리뷰 평가 이미지 지정
 		}
 		else if(type==2)
 		{
-			favorId = getResources().getIdentifier("emoticon_soso_red", "drawable", this.getPackageName());
+			favorId = getResources().getIdentifier("img_notbad_on", "drawable", this.getPackageName());
 			reViewTypeImage2[number].setImageResource(favorId); //리뷰 평가 이미지 지정
 		}
 		else if(type==3)
 		{
-			favorId = getResources().getIdentifier("emoticon_bad_red", "drawable", this.getPackageName());
+			favorId = getResources().getIdentifier("img_bad_on", "drawable", this.getPackageName());
 			reViewTypeImage3[number].setImageResource(favorId);//리뷰 평가 이미지 지정
 		}
 	}

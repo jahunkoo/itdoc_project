@@ -136,21 +136,21 @@ public class VisitedActivity extends HardImageSelectHelperActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_face_nice:
-			btnFaceNice.setBackgroundResource(R.drawable.face_nice_on);
-			btnFaceNotbad.setBackgroundResource(R.drawable.face_notbad_off);
-			btnFaceBad.setBackgroundResource(R.drawable.face_bad_off);
+			btnFaceNice.setBackgroundResource(R.drawable.img_good_on);
+			btnFaceNotbad.setBackgroundResource(R.drawable.img_notbad_off);
+			btnFaceBad.setBackgroundResource(R.drawable.img_bad_off);
 			txtFaceSelectResult.setText("추천");
 			break;
 		case R.id.btn_face_notbad:
-			btnFaceNice.setBackgroundResource(R.drawable.face_nice_off);
-			btnFaceNotbad.setBackgroundResource(R.drawable.face_notbad_on);
-			btnFaceBad.setBackgroundResource(R.drawable.face_bad_off);
+			btnFaceNice.setBackgroundResource(R.drawable.img_good_off);
+			btnFaceNotbad.setBackgroundResource(R.drawable.img_notbad_on);
+			btnFaceBad.setBackgroundResource(R.drawable.img_bad_off);
 			txtFaceSelectResult.setText("괜찮다");
 			break;
 		case R.id.btn_face_bad:
-			btnFaceNice.setBackgroundResource(R.drawable.face_nice_off);
-			btnFaceNotbad.setBackgroundResource(R.drawable.face_notbad_off);
-			btnFaceBad.setBackgroundResource(R.drawable.face_bad_on);
+			btnFaceNice.setBackgroundResource(R.drawable.img_good_off);
+			btnFaceNotbad.setBackgroundResource(R.drawable.img_notbad_off);
+			btnFaceBad.setBackgroundResource(R.drawable.img_bad_on);
 			txtFaceSelectResult.setText("비추천");
 			break;
 		case R.id.btn_camara:

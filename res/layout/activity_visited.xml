@@ -84,7 +84,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/face_nice_off" />
+                    android:background="@drawable/img_good_off" />
 
                 <Button
                     android:id="@+id/btn_face_notbad"
@@ -94,7 +94,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/face_notbad_off" />
+                    android:background="@drawable/img_notbad_off" />
 
                 <Button
                     android:id="@+id/btn_face_bad"
@@ -105,7 +105,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/face_bad_off" />
+                    android:background="@drawable/img_bad_off" />
             </LinearLayout>
 
             <LinearLayout
