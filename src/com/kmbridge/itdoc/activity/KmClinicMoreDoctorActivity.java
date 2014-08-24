@@ -60,7 +60,7 @@ public class KmClinicMoreDoctorActivity extends Activity {
 		//한의원 한의사 리스트를 가져옴
 		List<KmDoctor> doctorList = new ArrayList<KmDoctor>();
 		doctorList = KmClinicview.getDoctorList();
-		for(int i=0; i< doctorList.size(); i++)
+		for(int i=0; i< Math.min(doctorList.size(),layoutDoctor.length); i++)
 		{
 			layoutDoctor[i].setVisibility(View.VISIBLE);
 			

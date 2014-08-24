@@ -1,21 +1,26 @@
 package com.kmbridge.itdoc.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import android.view.View.OnClickListener;
+
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.plus.model.people.Person.Image;
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.image.ImageManager;
 
-public class SupporterActivity extends ActionBarActivity{
+public class SupporterActivity extends ActionBarActivity implements OnClickListener{
 
 	private TextView titleTextView;
 	private LinearLayout clinicContainLayout;
@@ -27,6 +32,9 @@ public class SupporterActivity extends ActionBarActivity{
 	private TextView body2_4TextView;
 	private LinearLayout doctorContainLayout;
 	private LayoutInflater inflator; 
+	
+	RelativeLayout relative_morock;
+	RelativeLayout relative_ohworae;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +52,6 @@ public class SupporterActivity extends ActionBarActivity{
 		
 		doctorContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_doctor_img);
 		
-		
 		//1번 메니페스트
 		//2번 ActionBarActivity달기
 		//3번째 이거 추가
@@ -58,18 +65,33 @@ public class SupporterActivity extends ActionBarActivity{
 				setContents(textArr);
 				setDoctorLayout(index);
 				break;
+
 		case 1:	setClinicLayout(index);
 				String[] textArr2 = getResources().getStringArray(R.array.choose_clinic_contents_1_array);
 				setContents(textArr2);
 				setDoctorLayout(index);
 				break;
+
 		}
 		
 	}
 	
 	private void setClinicLayout(int index){
-		RelativeLayout layout = (RelativeLayout) inflator.inflate(R.layout.hard_search_clinic_list_item, clinicContainLayout, false);
-		clinicContainLayout.addView(layout);
+		if(index==0)
+		{
+			RelativeLayout layout = (RelativeLayout) inflator.inflate(R.layout.hard_search_clinic_list_item, clinicContainLayout, false);
+			relative_morock = (RelativeLayout) layout.findViewById(R.id.relative_layout_morock_info);
+			relative_morock.setOnClickListener(this);
+			clinicContainLayout.addView(layout);
+		}
+		else if(index==1)
+		{
+			RelativeLayout layout = (RelativeLayout) inflator.inflate(R.layout.ohworae_info_item, clinicContainLayout, false);
+			relative_ohworae = (RelativeLayout) layout.findViewById(R.id.relative_layout_ohworae_info);
+			relative_ohworae.setOnClickListener(this);
+			clinicContainLayout.addView(layout);
+		}
+		
 	}
 	
 	private void setDoctorLayout(int index){
@@ -90,6 +112,23 @@ public class SupporterActivity extends ActionBarActivity{
 		}
 	}
 	
-	
+	@Override
+	public void onClick(View v) {
+
+		switch (v.getId())
+		{
+		case R.id.relative_layout_morock_info:
+			Intent intent = new Intent(this, KmClinicDetailActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("clinicNumber", 12);
+			startActivity(intent);
+			break;
+			
+		case R.id.relative_layout_ohworae_info:
+			Toast.makeText(this, "준비 중 입니다.", Toast.LENGTH_SHORT).show();
+			break;
+		}
+
+	}
 	
 }

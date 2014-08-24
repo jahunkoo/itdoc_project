@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_layout_morock_info"
     android:layout_width="match_parent"
     android:layout_height="250dp"
     android:background="#DCDCDC"
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="강남 보성한의원"
+            android:text="모락 한의원"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -40,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:text="8"
+                android:text="21"
                 android:textColor="#B2EBF4" />
 
             <TextView
@@ -56,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:text="12"
+                android:text="17"
                 android:textColor="#B2EBF4" />
 
             <TextView
@@ -65,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:text="서울시 강남구 선릉로 513" />
+                android:text="서울시 강남구 테헤란로 123" />
         </LinearLayout>
     </LinearLayout>
     <ImageView
@@ -73,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="asdf"
-        android:src="@drawable/biman_bosung"
+        android:src="@drawable/kmclinic12"
         android:layout_above="@id/linearlayout_clinic_list_item"/>
     
     <ImageView

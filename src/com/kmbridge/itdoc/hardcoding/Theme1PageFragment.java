@@ -3,6 +3,7 @@ package com.kmbridge.itdoc.hardcoding;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,13 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.MainDrawerActivity;
 import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.fragment.SearchResultClinicListFragment;
+import com.kmbridge.itdoc.image.ImageManager;
 import com.kmbridge.itdoc.util.ItDocConstants;
 
 public class Theme1PageFragment extends Fragment implements OnClickListener{
@@ -42,7 +44,6 @@ public class Theme1PageFragment extends Fragment implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mPageNumber = getArguments().getInt("page");
-		
 		fragmentManager = getActivity().getSupportFragmentManager();
 		
 	}
@@ -57,6 +58,9 @@ public class Theme1PageFragment extends Fragment implements OnClickListener{
 		}
 		
 		kmClinicTheme = (ImageView) rootView.findViewById(R.id.imageview_clinic_list_item_clinicimage);
+		//Bitmap bm = ImageManager.decodeSampledBitmapFromResource(getResources(), R.drawable.theme1, ImageManager.screenWidth/2);
+		//bm = ImageManager.getRoundedBitmap(bm, bm.getWidth());
+		//kmClinicTheme.setImageBitmap(bm);
 		kmClinicTheme.setOnClickListener(this);
 		
 		//((TextView) rootView.findViewById(R.id.number)).setText(mPageNumber + "");
@@ -81,6 +85,9 @@ public class Theme1PageFragment extends Fragment implements OnClickListener{
 		Fragment fragment = SearchResultClinicListFragment.create(context, kmClinicViewList,true);
 		FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 		fragmentManager.beginTransaction().add(R.id.content_frame, fragment,ItDocConstants.TAG_FRAGMENT_CLINIC_LIST).addToBackStack(null).commit();
+		
+		MainDrawerActivity.FragmentTagList.add("SEARCH_RESULT");
+		
 		getActivity().getActionBar().setTitle(keyword + " 검색 결과");
 		
 		// InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
