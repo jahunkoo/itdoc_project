@@ -57,7 +57,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_weight="0.2"
                 android:gravity="center_horizontal"
                 android:text="추천한 이웃들"
@@ -68,34 +69,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="left"
                 android:orientation="horizontal"
-                android:gravity="center_horizontal"
                 android:weightSum="1" >
 
                 <ImageView
                     android:id="@+id/like_user0"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="27dp" />
 
                 <ImageView
                     android:id="@+id/like_user1"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp" />
 
                 <ImageView
                     android:id="@+id/like_user2"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp" />
 
                 <ImageView
                     android:id="@+id/like_user3"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp" />
 
                 <ImageView
                     android:id="@+id/like_user4"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -131,8 +137,9 @@
 
                         <ImageView
                             android:id="@+id/km_detail_user_picture"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp" />
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -147,7 +154,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="15dp"
                             android:text="사용자 이름"
-                            android:textSize="20sp" />
+                            android:textSize="15sp" />
 
                         <TextView
                             android:id="@+id/txtReviewKeyword"
@@ -155,7 +162,8 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="5dp"
                             android:text="키워드"
-                            android:textColor="#ff0000" />
+                            android:textColor="#ff0000"
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -168,9 +176,9 @@
                             android:id="@+id/txtReviewDate"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="15dp"
                             android:layout_weight="0.1"
                             android:text="리뷰 시간 들어갈 곳"
-                            android:layout_marginTop="15dp"
                             android:textColor="#5CD1E5"
                             android:textSize="13sp" />
                     </LinearLayout>
@@ -194,9 +202,10 @@
 
                         <ImageView
                             android:id="@+id/review_user_favorImg1"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="15dp"
                             android:src="@drawable/img_good_off" />
 
@@ -205,6 +214,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="5dp"
                             android:text="추천"
                             android:textColor="#ff0000" />
@@ -218,8 +228,8 @@
 
                         <ImageView
                             android:id="@+id/review_user_favorImg2"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp"
                             android:src="@drawable/img_notbad_off" />
@@ -242,9 +252,10 @@
 
                         <ImageView
                             android:id="@+id/review_user_favorImg3"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="15dp"
                             android:src="@drawable/img_bad_off" />
 
@@ -253,6 +264,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="5dp"
                             android:text="개선필요"
                             android:textColor="#ff0000" />
@@ -264,9 +276,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
                     android:text="리뷰 들어 갈 곳" />
 
                 <Button
@@ -298,11 +311,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
-                    android:text="한의원 설명" />
+                    android:text="한의원 설명"
+                    android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/kmclinic_detail_picture2"
@@ -314,10 +328,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
-                    android:text="한의원 설명 들어갈 곳" />
+                    android:text="한의원 설명 들어갈 곳"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -326,7 +342,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
-                    android:text="진료 시간" />
+                    android:text="진료 시간"
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -341,16 +358,18 @@
                     android:id="@+id/txt_kmclin_time"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
+                    android:gravity="left"
                     android:text="진료시간 들어갈 곳" />
 
                 <TextView
                     android:id="@+id/txt_kmclin_time2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
+                    android:gravity="left"
                     android:text="진료시간 들어갈 곳" />
 
                 <Button
@@ -379,21 +398,23 @@
                 <TextView
                     android:id="@+id/txt_kmclinic_map"
                     android:layout_width="260dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="230dp"
                     android:background="@drawable/img_map_bg"
-                    android:text="    정지행 한의원\n    서울특별시 강남구 신사동 586-6    "
-                    android:textColor="#ff0000" />
+                    android:gravity="left|center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="#ff0000"
+                    android:textSize="12sp" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:orientation="vertical" >
 
                 <View
@@ -408,14 +429,18 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="center_horizontal"
-                    android:text="의료진 설명" />
+                    android:text="의료진 설명"
+                    android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/kmDetailDoctorImg"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
+                    android:layout_gravity="center_horizontal"
                     android:background="@drawable/user7" />
 
                 <TextView
@@ -433,18 +458,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
-                    android:text="의료진 설명 코멘트 들어갈 곳" />
+                    android:text="의료진 설명 코멘트 들어갈 곳"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
-                    android:text="학력정보" />
+                    android:text="학력정보"
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -459,18 +488,20 @@
                     android:id="@+id/txt_doctor_academy"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="0.1"
-                    android:gravity="center_horizontal"
                     android:text="학력정보 들어갈곳" />
 
                 <Button
                     android:id="@+id/kmclinic_detail_moredoctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="70dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/btn_more_doctor"
-                    android:gravity="center_horizontal|center_vertical" />
+                    android:background="@drawable/btn_more_doctor" >
+                </Button>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -481,21 +512,19 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:weightSum="1" >
-
-        <Button
+        
+        <ImageView
             android:id="@+id/btn_activity_km_clilic_detail_visited"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:background="@drawable/btn_visited" />
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_new_visited3"/>
 
-        <Button
+        <ImageView
             android:id="@+id/btn_activity_km_clinic_detail_call"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.5"
-            android:background="@drawable/btn_call2" />
+            android:background="@drawable/btn_new_call3"/>
     </LinearLayout>
 
 </RelativeLayout>
