@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,6 +33,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -63,6 +66,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public boolean closeApplication;
 	protected DrawerLayout mDrawerLayout;
 	protected RelativeLayout mDrawerRelativeLayout;
+	public FrameLayout mDrawerContentFrame;
 	protected LinearLayout leftDrawerBottomLayout;
 	protected ListView mDrawerList;
 	protected ActionBarDrawerToggle mDrawerToggle;
@@ -77,16 +81,19 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	public Fragment fragment;
 	public FragmentManager fragmentManager = getSupportFragmentManager();
 
+	private final int POSITION_SEARCH_FRAGMENT = 0;
 	private final int POSITION_KMCLINIC_LIST_FRAGMENT = 1;
-	private final int POSITION_KOK_LIST_FRAGMENT = 2;
+	private final int POSITION_HANIKOK_SUPPOTERS = 2;
+	private final int POSITION_HANIKOK_HANBANG_INFO = 3;
+	private final int POSITION_KOK_LIST_FRAGMENT = 4;
 
-	private final int POSITION_SEARCH_FRAGMENT = 4;
-	private final int POSITION_HANIKOK_SUPPOTERS = 5;
+	
+	
 	// private final int POSITION_SELLUP_CHOICE_FRAGMENT = 6;
 
-	private final int POSITION_HANIKOK_HANBANG_INFO = 7;
+	
 	// action view 좀 돼라
-	private final int POSITION_Q_AND_A_FRAGMENT = 8;
+	//private final int POSITION_Q_AND_A_FRAGMENT = 8;
 
 	private int position = -1;
 	private int lastPosition = POSITION_KMCLINIC_LIST_FRAGMENT;
@@ -100,7 +107,8 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 		mTitle = mDrawerTitle = getTitle();
 		// ********** stringarray 받기 시작
-		setDrawerTitleList();
+		//setDrawerTitleList();
+		setNewDrawerTitleList(); 
 		// ********** end
 
 		// ************************************ koo
@@ -116,12 +124,13 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 		// *********************************************************
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerContentFrame = (FrameLayout) findViewById(R.id.content_frame);
 		mDrawerRelativeLayout = (RelativeLayout) findViewById(R.id.relativelayout_left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		leftDrawerBottomLayout = (LinearLayout) mDrawerRelativeLayout.findViewById(R.id.linearlayout_left_drawer_bottom);
 		// set a custom shadow that overlays the main content when the drawer
 		// opens
-		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+		//mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 		// Set the adapter for the list view
 		// mDrawerList.setAdapter(new
 		// ArrayAdapter<String>(this,R.layout.main_drawer_list_item,
@@ -151,7 +160,6 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				// getActionBar().setTitle(mDrawerTitle);
 				getActionBar().setTitle(mDrawerTitle);
 				invalidateOptionsMenu(); // creates call to
 											// onPrepareOptionsMenu()
@@ -169,6 +177,18 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 		fragmentManager.addOnBackStackChangedListener(this);
 
+	}
+
+	private void setNewDrawerTitleList() {
+		String[] mDrawerItemTitles = getResources().getStringArray(R.array.drawer_menu_title_section_array_new);
+		List<Title> titleList = new ArrayList<Title>();
+		for(int i=0;i<mDrawerItemTitles.length;i++){
+			ItemTitle itemTitle = new ItemTitle();
+			itemTitle.setItemTitle(mDrawerItemTitles[i]);
+			titleList.add(itemTitle);
+		}
+		
+		mDrawerMenuTitleList = titleList;
 	}
 
 	private void firstItem() {
@@ -203,13 +223,15 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 
 				TextView nameTextView = (TextView) leftBottomLayout.findViewById(R.id.textview_left_drawer_bottom_name);
 				nameTextView.setOnClickListener(this);
-				String profileName = "윤 성수";
+				nameTextView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/NotoSansKRRegular.otf"));
+				String profileName = "윤성수";
+				nameTextView.setTextSize(16f);
 				nameTextView.setText(profileName);
 
 				ImageView img = null;// 사용자 사진 저장 객체
 				img = (ImageView) leftBottomLayout.findViewById(R.id.imageview_left_drawer_bottom_profile);
 				Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.face3);
-				bitmap = RoundedImageView.getRoundedBitmap(bitmap, 80);
+				bitmap = RoundedImageView.getRoundedBitmap(bitmap, 100);
 				img.setImageBitmap(bitmap);
 
 				// 사용자 이미지 클릭시 프로필픽쳐 액티비티로 이동하는 버튼
@@ -404,6 +426,7 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 	 * @param position
 	 */
 	private void selectItem(int position) {
+		
 		this.position = position;
 
 			switch (position) {
@@ -413,9 +436,11 @@ public class MainDrawerActivity extends FragmentActivity implements OnClickListe
 				// Toast.LENGTH_SHORT).show();
 				createMyKokListFragment(fragmentManager, position);
 				break;
+				/*
 			case POSITION_Q_AND_A_FRAGMENT:
 				Toast.makeText(this, "준비중입니다. :)", Toast.LENGTH_SHORT).show();
 				break;
+				*/
 			case POSITION_SEARCH_FRAGMENT:
 				createSearchFragment(fragmentManager, position);
 				break;

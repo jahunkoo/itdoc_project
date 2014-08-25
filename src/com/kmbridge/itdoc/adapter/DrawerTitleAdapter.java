@@ -3,6 +3,7 @@ package com.kmbridge.itdoc.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,9 +26,11 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 	private List<Title> titleList;
 	private LayoutInflater inflator;
 	private int layoutResId; 
+	private Context context;
 	
 	public DrawerTitleAdapter(Context context,int resource,List<Title> titleList) {
 		super(context, resource, titleList);
+		this.context = context;
 		this.titleList =titleList;  
 		this.layoutResId = resource;
 		inflator = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -39,7 +42,6 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 		//if(view == null) view = inflator.inflate(layoutResId, null);
 			
 		//******************************** drawer 하단 레이아웃에 새로운 레이아웃 추가 ***********
-
 		Title title = titleList.get(position);
 		if(title!=null){
 			if(title.isSection()){
@@ -53,8 +55,11 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 				view = inflator.inflate(layoutResId, null);
 				ItemTitle itemTitle = (ItemTitle) title;
 				TextView textView = (TextView) view.findViewById(R.id.textview_main_drawer_item);
+				textView.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/NotoSansKRRegular.otf"));
+				
 				textView.setText(itemTitle.getItemTitle());
-				textView.setTextSize(13f);
+				textView.setTextSize(16f);
+				
 			}
 		}
 		

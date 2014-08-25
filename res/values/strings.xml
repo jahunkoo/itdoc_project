@@ -30,7 +30,7 @@
     <!-- main_drawer_activity related -->
     <string name="action_search">search</string>
     <string name="action_settings">action_setting</string>
-
+    
     <string-array name="drawer_menu_title_section_array">
         <item>한의콕</item>
         <item>한의원 정보</item>
@@ -241,8 +241,14 @@
      
      
      
-     
-     
+     <!-- 20140824 new menu title -->
+     <string-array name="drawer_menu_title_section_array_new">
+		<item >검색하기</item>    
+	    <item >둘러보기</item>
+	    <item >분야별  BEST 한의원</item>
+	    <item >건강 정보</item>
+	    <item >콕 리스트</item>
+	</string-array>
      
      
      

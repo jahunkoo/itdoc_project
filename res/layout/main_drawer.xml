@@ -4,11 +4,11 @@
     android:layout_height="match_parent" >
 
     <!-- The main content view -->
-
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
     <!-- The navigation drawer -->
 
     <RelativeLayout
@@ -16,17 +16,24 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start" 
-        android:background="@color/background_holo_light">
-<!--android:background="@android:color/background_light"  -->
+        android:background="@android:color/transparent"
+        >
+<!--
+android:background="@color/background_holo_light"
+android:background="@android:color/background_light"  -->
         <ListView
             android:id="@+id/left_drawer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            
+          	
+          	android:paddingTop="40dp"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
-            android:dividerHeight="0dp" />
+            android:dividerHeight="0dp"
+            android:background="@android:color/background_light"
+            android:alpha="0.75" />
+
         
          <LinearLayout 
             android:id="@+id/linearlayout_left_drawer_bottom"
@@ -34,11 +41,16 @@
         	android:layout_height="wrap_content"
        	 	android:layout_alignParentBottom="true"
        	 	android:layout_centerHorizontal="true"
-        	android:orientation="vertical" >
+        	android:orientation="vertical"
+        	android:background="@android:color/background_light"
+            android:alpha="0.75"
+        	>
             
-          
-             
-         </LinearLayout> 
+         </LinearLayout>
+          <TextView 
+              	android:layout_above="@id/linearlayout_left_drawer_bottom"
+              	android:layout_centerHorizontal="true"
+               	style="@style/main_drawer_line_text" />
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="강남 보성한의원"
+            android:text="강남보성 한의원"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -86,19 +86,20 @@
         android:layout_marginTop="20dp"
         android:background="#80000000"
         android:paddingBottom="5dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:paddingTop="5dp"
         android:text="다이어트"
         android:textColor="#FFFFFF"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/imageview_clinic_list_item_follow_img"
         android:layout_marginTop="16dp"
+        android:layout_marginLeft="65dp"
         android:layout_toRightOf="@+id/textview_clinic_list_item_keyword"
         android:src="@drawable/face1" />
 
@@ -114,8 +115,8 @@
 
      <ImageView
          android:id="@+id/imageView2"
-         android:layout_width="35dp"
-         android:layout_height="35dp"
+         android:layout_width="40dp"
+         android:layout_height="40dp"
          android:layout_alignTop="@+id/imageView1"
          android:layout_marginLeft="10dp"
          android:layout_toRightOf="@+id/imageView1"
@@ -123,8 +124,8 @@
 
      <ImageView
          android:id="@+id/ImageView01"
-         android:layout_width="35dp"
-         android:layout_height="35dp"
+         android:layout_width="40dp"
+         android:layout_height="40dp"
          android:layout_alignTop="@+id/imageView2"
          android:layout_marginLeft="10dp"
          android:layout_toRightOf="@+id/imageView2"
@@ -132,8 +133,8 @@
 
      <ImageView
          android:id="@+id/ImageView02"
-         android:layout_width="35dp"
-         android:layout_height="35dp"
+         android:layout_width="40dp"
+         android:layout_height="40dp"
          android:layout_alignTop="@+id/ImageView01"
          android:layout_toRightOf="@+id/ImageView01"
           android:layout_marginLeft="10dp"
