@@ -225,7 +225,7 @@
          <item >4. 추천 한의사</item>
      </string-array>
      <string-array name="choose_clinic_contents_1_array">
-         <item >[만성 비염]\n오월애 한의원\n조성호 한의사님</item>
+         <item >[만성 비염]\n오월애 한의원 조성호 한의사님</item>
          <item >만성 비염 치료의 명의로 오월해 한의원이 선정되었습니다.</item>
          <item >선정 이유</item>
          <item >1. 치료법 : 오월애 한의원은 비염 치료에 조성호 한의사님이 직접 개발한 비염약과 사암침법을 사용합니다. 비염약의 주된 재료로는 개 쓸개와 목련 꽃봉오리 그리고 참외 꼭지입니다. 개 쓸개는 단백질을 용해하는 성분이고 목련 꽃봉오리는 콧구멍을 열리게 하고, 참외 꼭지는 매운맛으로 인해 콧속이 시원해지는 효과가 있습니다.</item>
@@ -251,9 +251,12 @@
 	</string-array>
      
      
-     
-     
-     
+     <string name="textview_layout_morak_0"> 한의계 교수,연구진,동료 한의사,사용자들의 추천과 논문,서적,메스컴 등의 자료를 토대로 1차 후보군을 선정 → 후보군에 한하여 세부 조사를 실시하여 최종 선정되며, 선정 이유는 투명하게 공개되고 있습니다.</string>
+     <string name="textview_layout_morak_1">모락 한의원은 탈모 중에서도 지루성 탈모에 대한 치료 케이스가 가장 많으며 총 2,500건에 달합니다.</string>     
+     <string name="textview_layout_morak_2">이성환 한의사님은 現 대한탈모학회 회장을 역임하고 있으며, 20년째 역삼동에서 한의원을 해오고 계십니다.</string>
+     <string name="textview_layout_morak_3">이성환 한의사님의 연구인 「지루성 탈모 환자에 자비환이 미치는 영향」은 대한한의학회지 2013년 8월 호에 게재되었으며, 2013년 좋은 논문으로 선정되었습니다.</string>
+     <string name="textview_layout_morak_4">따라서 한의콕은 2014년 8월 Best 지루성 탈모 분야에 모락 한의원을 선정합니다^^</string>
+     <string name="textview_layout_morak_5">모락 한의원으로 가시려면 아래를 click</string>
      
      
      
