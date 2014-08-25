@@ -84,7 +84,10 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 
 	TextView name;
 	Button gotoFollower;
-
+	
+	private TextView favoriteGoodText;
+	private TextView favoriteSoSoText;
+	private TextView favoriteBadText;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -124,6 +127,11 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		// List<ReviewKeyword> listKeyword =
 		// load.getAllReviewView().get(2).getReviewKeywordList();
 
+		//추천, 괜찮다, 개선필요 에 대한 텍스트뷰 
+		favoriteGoodText = (TextView) findViewById(R.id.TextView02);
+		favoriteSoSoText = (TextView) findViewById(R.id.TextView01);
+		favoriteBadText = (TextView) findViewById(R.id.textView5);
+		
 		// 병원 사진 지정
 		kmClinicImage = (ImageView) findViewById(R.id.kmclinic_detail_picture);
 		kmClinicImage2 = (ImageView) findViewById(R.id.kmclinic_detail_picture2);
@@ -335,12 +343,21 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 			favorId = getResources().getIdentifier("img_good_on","drawable", this.getPackageName());
 			Log.d("kim2", "" + favorId);
 			kmClinicEmotionImg1.setImageResource(favorId); // 리뷰 평가 이미지 지정
+			favoriteGoodText.setTextColor(getResources().getColor(R.color.text_red));
+			favoriteSoSoText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteBadText.setTextColor(getResources().getColor(R.color.text_black));
 		} else if (type == 2) {
 			favorId = getResources().getIdentifier("img_notbad_on","drawable", this.getPackageName());
 			kmClinicEmotionImg2.setImageResource(favorId); // 리뷰 평가 이미지 지정
+			favoriteGoodText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteSoSoText.setTextColor(getResources().getColor(R.color.text_red));
+			favoriteBadText.setTextColor(getResources().getColor(R.color.text_black));
 		} else if (type == 3) {
 			favorId = getResources().getIdentifier("img_bad_on","drawable", this.getPackageName());
 			kmClinicEmotionImg3.setImageResource(favorId); // 리뷰 평가 이미지 지정
+			favoriteGoodText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteSoSoText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteBadText.setTextColor(getResources().getColor(R.color.text_red));
 		}
 
 	}

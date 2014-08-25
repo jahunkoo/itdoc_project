@@ -3,7 +3,7 @@
 
     <!-- menifest related -->
     <!-- actionbar titles -->
-    <string name="app_name">itdoc</string>
+    <string name="app_name">hanikok</string>
     <string name="basic_activity_title">기본</string>
     <string name="title_activity_login">로그인</string>
     <string name="title_activity_user_manager">회원가입 및 로그인</string>

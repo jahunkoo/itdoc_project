@@ -4,4 +4,6 @@
 <color name="user_profile_label_separator">#80000000</color>
 <color name="background_holo_light">#fff3f3f3</color>
 
+<color name="text_red">#ff0000</color>
+<color name="text_black">#000000</color>
 </resources>
