@@ -37,19 +37,17 @@
     <style name="suppoters_sentence">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">?android:attr/textAppearance</item>
+        <item name="android:textSize">16sp</item>
+      	<item name="android:lineSpacingExtra">10sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:gravity">left|center_vertical</item>
     </style>
 
-    <style name="suppoters_sentence_bold">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">?android:attr/textAppearance</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:layout_marginTop">20dp</item>
+    <style name="suppoters_sentence_bold" parent="suppoters_sentence">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:gravity">left|center_vertical</item>
-        <item name="android:textStyle">bold</item>
+        <!-- <item name="android:textStyle">bold</item> -->
     </style>
 
     <style name="main_drawer_line_text">
@@ -77,6 +75,13 @@
     <style name="suppoters_basic_text" parent="suppoters_basic_style">
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textSize">16sp</item>
+      	<item name="android:lineSpacingExtra">10sp</item>
         
     </style>
+    
+  <!--   <style name="hanbang_info_rounded_text" >
+        <item name="android:background">#7099CC00</item>
+        <item name="android:">#7099CC00</item>
+        </style> -->
 </resources>
