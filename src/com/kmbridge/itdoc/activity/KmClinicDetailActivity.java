@@ -39,8 +39,10 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 	Button detailAllreview; // 리뷰 모두 보기
 	Button detailClinicMoreInfo;
 	Button detailClinicMoreDoctor;
-	Button detailClinicVisited;
-	Button detailClinicCall;
+	//Button detailClinicVisited;
+	ImageView detailClinicVisited;
+	//Button detailClinicCall;
+	ImageView detailClinicCall;
 
 	TextView kmName;
 	TextView kmLoacation;
@@ -349,8 +351,8 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		detailAllreview = (Button) findViewById(R.id.kmclinic_detail_review);
 		detailClinicMoreInfo = (Button) findViewById(R.id.kmclinic_detail_moreinfo);
 		detailClinicMoreDoctor = (Button) findViewById(R.id.kmclinic_detail_moredoctor);
-		detailClinicVisited = (Button) findViewById(R.id.btn_activity_km_clilic_detail_visited);
-		detailClinicCall = (Button) findViewById(R.id.btn_activity_km_clinic_detail_call);
+		detailClinicVisited = (ImageView) findViewById(R.id.btn_activity_km_clilic_detail_visited);
+		detailClinicCall = (ImageView) findViewById(R.id.btn_activity_km_clinic_detail_call);
 		txtKmclinicMap = (TextView) findViewById(R.id.txt_kmclinic_map);
 		txtReviewKeyword = (TextView) findViewById(R.id.txtReviewKeyword);
 		txtKmclinicComment = (TextView) findViewById(R.id.txtKmclinicComment);
@@ -369,11 +371,9 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		txtMoreInfoWeekDay = (TextView) findViewById(R.id.txt_kmclin_time);
 		txtMoreInfoWeekend = (TextView) findViewById(R.id.txt_kmclin_time2);
 
-		Drawable alphaVisited = ((Button) findViewById(R.id.btn_activity_km_clilic_detail_visited))
-				.getBackground();
+		//Drawable alphaVisited = ((Button) findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
 		// alphaVisited.setAlpha(99);
-		Drawable alphaCall = ((Button) findViewById(R.id.btn_activity_km_clinic_detail_call))
-				.getBackground();
+		//Drawable alphaCall = ((Button) findViewById(R.id.btn_activity_km_clinic_detail_call)).getBackground();
 		// alphaCall.setAlpha(99);
 	}
 
