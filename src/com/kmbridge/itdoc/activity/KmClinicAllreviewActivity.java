@@ -135,9 +135,12 @@ public class KmClinicAllreviewActivity extends Activity {
 			int keywordNum = (doctorList.get(i).getId())%10;
 			Log.d("kim4","test"+keywordNum);
 			reViewUserKeyword[i].setText(reviewKeyword[keywordNum]);
-			if(KmClinicview.getId() == 12){
+			if(KmClinicview.getId() == 2){
+				reViewUserKeyword[i].setText(reviewKeyword[1]);
+			}else if(KmClinicview.getId() == 12){
 				reViewUserKeyword[i].setText(reviewKeyword[13]);
 			}
+			
 		}
 
 		
