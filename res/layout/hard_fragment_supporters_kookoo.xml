@@ -16,13 +16,19 @@
             android:orientation="vertical" >
         </LinearLayout>
         
-        <Button 
+        <Button
             android:id="@+id/button_fragment_supporters_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="480dp"
+            android:background="#90E81D47"
+            android:padding="10dp"
             android:text="명의 검색"
-            android:layout_alignParentBottom="true"/>
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
     </RelativeLayout>
 
 </ScrollView>

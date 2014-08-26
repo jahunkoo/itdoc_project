@@ -17,33 +17,32 @@
 
             <LinearLayout
                 android:id="@+id/layout_user1_review1"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"
                 android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:orientation="vertical"
                     android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user1_Image"
                         android:layout_width="70dp"
-                        android:layout_height="70dp"/>
+                        android:layout_height="70dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -51,17 +50,14 @@
                         android:id="@+id/review_user1_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_marginTop="15dp"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/review_user1_keyword"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:textColor="#ff0000" />
                 </LinearLayout>
 
@@ -70,29 +66,27 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
                     android:orientation="vertical"
-                    android:gravity="center_horizontal|center_vertical"
                     android:weightSum="1" >
 
                     <TextView
                         android:id="@+id/review_user1_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
-                        android:textColor="#0000ff"
-                        android:textSize="7sp" />
+                        android:textColor="#5CD1E5"
+                        android:layout_marginTop="15dp"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layout_user1_review2"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
@@ -116,7 +110,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:id="@+id/TextView02"
@@ -138,7 +132,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:id="@+id/TextView01"
@@ -160,7 +154,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:id="@+id/textView5"
@@ -171,6 +165,7 @@
                             android:text="개선필요" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/review_user1_review"
                     android:layout_width="match_parent"
@@ -192,33 +187,32 @@
 
             <LinearLayout
                 android:id="@+id/layout_user2_review1"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"
                 android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:orientation="vertical"
                     android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user2_Image"
                         android:layout_width="70dp"
-                        android:layout_height="70dp"/>
+                        android:layout_height="70dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -226,17 +220,14 @@
                         android:id="@+id/review_user2_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_marginTop="15dp"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/review_user2_keyword"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
                         android:textColor="#ff0000" />
                 </LinearLayout>
 
@@ -245,29 +236,27 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
                     android:orientation="vertical"
-                    android:gravity="center_horizontal|center_vertical"
                     android:weightSum="1" >
 
                     <TextView
                         android:id="@+id/review_user2_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
-                        android:textColor="#0000ff"
-                        android:textSize="7sp" />
+                        android:textColor="#5CD1E5"
+                        android:layout_marginTop="15dp"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/layout_user2_review2"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
@@ -290,7 +279,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -311,7 +300,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -332,7 +321,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -342,6 +331,7 @@
                             android:text="개선필요" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/review_user2_review"
                     android:layout_width="match_parent"
@@ -360,36 +350,35 @@
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/layout_user3_review1"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"
                 android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:orientation="vertical"
                     android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user3_Image"
                         android:layout_width="70dp"
-                        android:layout_height="70dp"/>
+                        android:layout_height="70dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:layout_gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -397,17 +386,14 @@
                         android:id="@+id/review_user3_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_marginTop="15dp"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/review_user3_keyword"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
                         android:textColor="#ff0000" />
                 </LinearLayout>
 
@@ -416,29 +402,27 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
                     android:orientation="vertical"
-                    android:gravity="center_horizontal|center_vertical"
                     android:weightSum="1" >
 
                     <TextView
                         android:id="@+id/review_user3_date"
+                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
-                        android:textColor="#0000ff"
-                        android:textSize="7sp" />
+                        android:textColor="#5CD1E5"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/layout_user3_review2"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
@@ -461,7 +445,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -482,7 +466,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -503,7 +487,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -513,6 +497,7 @@
                             android:text="개선필요" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/review_user3_review"
                     android:layout_width="match_parent"
@@ -531,36 +516,36 @@
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/layout_user4_review1"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"
                 android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:orientation="vertical"
                     android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user4_Image"
                         android:layout_width="70dp"
-                        android:layout_height="70dp"/>
+                        android:layout_height="70dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_weight="0.3"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -568,17 +553,14 @@
                         android:id="@+id/review_user4_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_marginTop="15dp"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/review_user4_keyword"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
                         android:textColor="#ff0000" />
                 </LinearLayout>
 
@@ -587,30 +569,27 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
                     android:orientation="vertical"
-                    android:gravity="center_horizontal|center_vertical"
                     android:weightSum="1" >
 
                     <TextView
                         android:id="@+id/review_user4_date"
+                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
-                        android:textColor="#0000ff"
-                        android:text="시간"
-                        android:textSize="7sp" />
+                        android:textColor="#5CD1E5"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/layout_user4_review2"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
@@ -633,7 +612,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -654,7 +633,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -675,7 +654,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -685,6 +664,7 @@
                             android:text="개선필요" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/review_user4_review"
                     android:layout_width="match_parent"
@@ -703,37 +683,36 @@
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
             </LinearLayout>
-            
-            
+
             <LinearLayout
                 android:id="@+id/layout_user5_review1"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"
                 android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
-                    android:orientation="vertical"
                     android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user5_Image"
                         android:layout_width="70dp"
-                        android:layout_height="70dp"/>
+                        android:layout_height="70dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_weight="0.3"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -741,17 +720,14 @@
                         android:id="@+id/review_user5_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_marginTop="15dp"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/review_user5_keyword"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
                         android:textColor="#ff0000" />
                 </LinearLayout>
 
@@ -760,29 +736,27 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.3"
                     android:orientation="vertical"
-                    android:gravity="center_horizontal|center_vertical"
                     android:weightSum="1" >
 
                     <TextView
                         android:id="@+id/review_user5_date"
+                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="20dp"
                         android:gravity="center_horizontal"
-                        android:textColor="#0000ff"
-                        android:textSize="7sp" />
+                        android:textColor="#5CD1E5"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/layout_user5_review2"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
+                android:visibility="invisible"
                 android:weightSum="1" >
 
                 <LinearLayout
@@ -805,7 +779,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -826,7 +800,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -847,7 +821,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"/>
+                            android:layout_marginTop="15dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -857,6 +831,7 @@
                             android:text="개선필요" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/review_user5_review"
                     android:layout_width="match_parent"
@@ -875,10 +850,6 @@
                     android:layout_marginTop="10dp"
                     android:background="#BDBDBD" />
             </LinearLayout>
-            
-            
-            
-            
         </LinearLayout>
     </ScrollView>
 

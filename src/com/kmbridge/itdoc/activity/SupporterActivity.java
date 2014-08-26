@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+
 import android.view.View.OnClickListener;
+
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 	private TextView body2_1TextView;
 	private TextView body2_2TextView;
 	private TextView body2_3TextView;
+	private TextView body2_4TextView;
 	private LinearLayout doctorContainLayout;
 	private LayoutInflater inflator; 
 	
@@ -45,8 +48,10 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 		body2_1TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_1);
 		body2_2TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_2);
 		body2_3TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_3);
-		doctorContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_doctor_img);
+		body2_4TextView		= (TextView) findViewById(R.id.textview_choice_clinic_body_2_4);
 		
+		doctorContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_doctor_img);
+		getActionBar().setTitle("분야별 Best 한의원");
 		//1번 메니페스트
 		//2번 ActionBarActivity달기
 		//3번째 이거 추가
@@ -55,19 +60,53 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 		String position = getIntent().getExtras().getString("position");
 		int index = Integer.parseInt(position);
 		switch(index){
-		case 0: setClinicLayout(index);
-				String[] textArr = getResources().getStringArray(R.array.choose_clinic_contents_0_array);
-				setContents(textArr);
+		case 0: setContentView(R.layout.activity_supporters_morak_choice);
+				setElement(index);
+				setClinicLayout(index);
+				//String[] textArr = getResources().getStringArray(R.array.choose_clinic_contents_0_array);
+				//setContents(textArr);
+				//setDoctorLayout(index);
+				break;
+
+		case 1:	setContentView(R.layout.activity_supporters_choice);
+				setElement(index);
+				setClinicLayout(index);
+				String[] textArr2 = getResources().getStringArray(R.array.choose_clinic_contents_1_array);
+				setContents(textArr2);
 				setDoctorLayout(index);
 				break;
-		case 1: setClinicLayout(index);
-		//String[] textArr = getResources().getStringArray(R.array.choose_clinic_contents_1_array);
-		//setContents(textArr);
-		break;		
+
 		}
 		
 	}
 	
+	private void setElement(int index) {
+		if(index == 0){
+			//titleTextView 		= (TextView) findViewById(R.id.textview_choice_clinic_top_title);
+			clinicContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_clinic);
+			//body1TextView 		= (TextView) findViewById(R.id.textview_choice_clinic_body_1);
+			//body2TitleTextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_title);
+			//body2_1TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_1);
+			//body2_2TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_2);
+			//body2_3TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_3);
+			//body2_4TextView		= (TextView) findViewById(R.id.textview_choice_clinic_body_2_4);
+			
+			doctorContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_doctor_img);
+		}else if(index == 1){
+			titleTextView 		= (TextView) findViewById(R.id.textview_choice_clinic_top_title);
+			clinicContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_clinic);
+			body1TextView 		= (TextView) findViewById(R.id.textview_choice_clinic_body_1);
+			body2TitleTextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_title);
+			body2_1TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_1);
+			body2_2TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_2);
+			body2_3TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_3);
+			body2_4TextView		= (TextView) findViewById(R.id.textview_choice_clinic_body_2_4);
+			
+			doctorContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_doctor_img);
+
+		}				
+	}
+
 	private void setClinicLayout(int index){
 		if(index==0)
 		{
@@ -98,7 +137,10 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 		body2_1TextView.setText(textArr[3]);
 		body2_2TextView.setText(textArr[4]);
 		body2_3TextView.setText(textArr[5]); 	
-		
+		if(textArr.length==7){
+			body2_4TextView.setText(textArr[6]);
+			body2_4TextView.setVisibility(View.VISIBLE);
+		}
 	}
 	
 	@Override

@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.kmbridge.itdoc.R;
 import com.kmbridge.itdoc.activity.SupporterActivity;
+import com.kmbridge.itdoc.dialog.DoctorRecommendDialog;
 import com.kmbridge.itdoc.image.ImageManager;
 
 public class SuppotersFragment extends Fragment implements OnClickListener{
@@ -53,8 +54,13 @@ public class SuppotersFragment extends Fragment implements OnClickListener{
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.hard_fragment_supporters_kookoo, container, false);
-		 
+		View rootView = inflater.inflate(R.layout.hard_fragment_supporters_kimkim, container, false);
+		
+		// 자훈이형이 짠 코드로서, 당장 급하게 레이아웃을 바꾸기 위한 하드코딩을 하고자 전체 주석처리 하였다.
+		
+		
+		
+		/* 
 		LinearLayout containLayout = (LinearLayout) rootView.findViewById(R.id.linearlayout_fragment_supporters_main);		
 		
 		for(int i=0;i<introduceArr.length;i++){
@@ -81,10 +87,19 @@ public class SuppotersFragment extends Fragment implements OnClickListener{
 			
 			containLayout.addView(elementLayout);
 		}
+		*/
+		TextView textView = (TextView) rootView.findViewById(R.id.button_fragment_supporters_main);
+		textView.setTag("textView");
+		textView.setOnClickListener(this);
 		
-		Button button = (Button) rootView.findViewById(R.id.button_fragment_supporters_main);
-		button.setTag("button");
-		button.setOnClickListener(this);
+		View viewItem1 = rootView.findViewById(R.id.include_supporters_item1);
+		viewItem1.setTag("viewItem1");
+		viewItem1.setOnClickListener(this);
+		
+		View viewItem2 = rootView.findViewById(R.id.include_supporters_item2);
+		viewItem2.setTag("viewItem2");
+		viewItem2.setOnClickListener(this);
+		
 		return rootView;
 	}
 	
@@ -102,8 +117,16 @@ public class SuppotersFragment extends Fragment implements OnClickListener{
 			Log.d("koo", "clicked view tag:"+tag);
 			intent.putExtra("position", tag);
 			getActivity().startActivity(intent);
-		}else if(tag.equals("button")){
+		}else if(tag.equals("textView")){
 			Log.d("koo", "clicked view tag:"+tag);
+			DoctorRecommendDialog dialog = new DoctorRecommendDialog(context);
+			dialog.show();
+		}else if(tag.equals("viewItem1")) {
+			intent.putExtra("position","0");
+			getActivity().startActivity(intent);
+		}else if(tag.equals("viewItem2")) {
+			intent.putExtra("position","1");
+			getActivity().startActivity(intent);
 		}
 		
 	}

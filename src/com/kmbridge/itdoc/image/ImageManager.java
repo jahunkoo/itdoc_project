@@ -3,7 +3,14 @@ package com.kmbridge.itdoc.image;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.Bitmap.Config;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
@@ -119,4 +126,36 @@ public class ImageManager {
 		return resizedBitmap;
 	}*/
 	
+	public static Bitmap getRoundedBitmap(Bitmap bmp, int radius) {
+		Bitmap sbmp;
+
+		if (bmp.getWidth() != radius || bmp.getHeight() != radius) {
+			float smallest = Math.min(bmp.getWidth(), bmp.getHeight());
+			float factor = smallest / radius;
+			sbmp = Bitmap.createScaledBitmap(bmp,
+					(int) (bmp.getWidth() / factor),
+					(int) (bmp.getHeight() / factor), false);
+		} else {
+			sbmp = bmp;
+		}
+
+		Bitmap output = Bitmap.createBitmap(radius, radius, Config.ARGB_8888);
+		Canvas canvas = new Canvas(output);
+
+		final int color = 0xffa19774;
+		final Paint paint = new Paint();
+		final Rect rect = new Rect(0, 0, radius, radius);
+
+		paint.setAntiAlias(true);
+		paint.setFilterBitmap(true);
+		paint.setDither(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(Color.parseColor("#BAB399"));
+		canvas.drawCircle(radius / 2 + 0.7f, radius / 2 + 0.7f,
+				radius / 2 + 0.1f, paint);
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+		canvas.drawBitmap(sbmp, rect, rect, paint);
+
+		return output;
+	}
 }

@@ -49,14 +49,13 @@ public class SearchResultClinicListFragment extends Fragment {
 		 * e.printStackTrace(); }
 		 */
 		View rootView = inflater.inflate(R.layout.fragment_clinic_list, container, false);
-
+		HardSearchResultAdapter searchResultAdapter = new HardSearchResultAdapter(email, context, kmClinicViewList);
 		//SearchResultAdapter searchResultAdapter = new SearchResultAdapter(email, context, kmClinicViewList);
-		KooJahunSearchResultAdapter searchResultAdapter = new KooJahunSearchResultAdapter(email, context, kmClinicViewList);
+		//KooJahunSearchResultAdapter searchResultAdapter = new KooJahunSearchResultAdapter(email, context, kmClinicViewList);
 		mListView = (ListView) rootView.findViewById(R.id.listview_clinic_list);
 		mListView.setAdapter(searchResultAdapter);
 
 		return rootView;
-
 	}
 	
 	@Override

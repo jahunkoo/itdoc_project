@@ -34,9 +34,8 @@
     <ListView
         android:id="@+id/listview_fragment_search_recent_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:visibility="gone"
-        >
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
     </ListView>
 
     <View
@@ -56,14 +55,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="6" >
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="50dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3" >
@@ -76,8 +72,8 @@
                     <ImageButton
                         android:id="@+id/search_item1"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item1" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_skin_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -94,10 +90,10 @@
                     <ImageButton
                         android:id="@+id/search_item2"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
+                        android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item2" />
+                        android:background="@drawable/search_item_nose_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -114,8 +110,8 @@
                     <ImageButton
                         android:id="@+id/search_item3"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item3" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_diet_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -127,9 +123,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_weight="1"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3" >
@@ -142,11 +137,11 @@
                     <ImageButton
                         android:id="@+id/search_item4"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item4" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_disk_off" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="디스크/관절" />
@@ -160,10 +155,10 @@
                     <ImageButton
                         android:id="@+id/search_item5"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
+                        android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item5" />
+                        android:background="@drawable/search_item_beauty_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -180,8 +175,8 @@
                     <ImageButton
                         android:id="@+id/search_item6"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item6" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_child_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -193,9 +188,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_weight="1"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3" >
@@ -208,8 +202,8 @@
                     <ImageButton
                         android:id="@+id/search_item7"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item7" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_oriental_medicine_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -226,10 +220,10 @@
                     <ImageButton
                         android:id="@+id/search_item8"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
+                        android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item8" />
+                        android:background="@drawable/search_item_stomach_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -246,8 +240,8 @@
                     <ImageButton
                         android:id="@+id/search_item9"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item9" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_mother_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -259,9 +253,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_weight="1"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3" >
@@ -274,8 +267,8 @@
                     <ImageButton
                         android:id="@+id/search_item10"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item10" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_needle_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -292,10 +285,10 @@
                     <ImageButton
                         android:id="@+id/search_item11"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
+                        android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item11" />
+                        android:background="@drawable/search_item_man_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -312,22 +305,21 @@
                     <ImageButton
                         android:id="@+id/search_item12"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item12" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_oldman_off" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="당뇨-고혈압" />
+                        android:text="당뇨/고혈압" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_weight="1"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3" >
@@ -340,11 +332,11 @@
                     <ImageButton
                         android:id="@+id/search_item13"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item13" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_stress_off" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="스트레스/정신" />
@@ -358,10 +350,10 @@
                     <ImageButton
                         android:id="@+id/search_item14"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
+                        android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item14" />
+                        android:background="@drawable/search_item_bald_off" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -378,8 +370,8 @@
                     <ImageButton
                         android:id="@+id/search_item15"
                         android:layout_width="70dp"
-                        android:layout_height="85dp"
-                        android:background="@drawable/search_item15" />
+                        android:layout_height="70dp"
+                        android:background="@drawable/search_item_internal_off" />
 
                     <TextView
                         android:layout_width="match_parent"

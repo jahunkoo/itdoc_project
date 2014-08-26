@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black" >
+
+            <LinearLayout
+                android:id="@+id/linearlayout_fragment_supporters_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <include
+                    android:id="@+id/include_supporters_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    layout="@layout/layout_best_clinic_item1" />
+
+                <include
+                    android:id="@+id/include_supporters_item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    layout="@layout/layout_best_clinic_item2" />
+
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    layout="@layout/layout_best_clinic_item3" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/button_fragment_supporters_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:background="#90E81D47"
+        android:paddingBottom="5dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="5dp"
+        android:text="명의 검색"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
+</RelativeLayout>
