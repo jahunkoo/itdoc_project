@@ -1,6 +1,5 @@
 package com.kmbridge.itdoc.adapter;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +24,6 @@ import com.kmbridge.itdoc.dto.KmClinicView;
 import com.kmbridge.itdoc.dto.UserSimpleInfo;
 import com.kmbridge.itdoc.hardcoding.LoadData;
 import com.kmbridge.itdoc.image.ImageManager;
-import com.kmbridge.itdoc.util.RecycleUtil;
 import com.kmbridge.itdoc.util.SharedPreferenceUtil;
 
 public class HardSearchResultAdapter extends ArrayAdapter implements OnClickListener{
@@ -128,10 +125,10 @@ public class HardSearchResultAdapter extends ArrayAdapter implements OnClickList
 			view.setTag((Integer) position);
 			
 			// 추천한 이웃들 사진 지정
-			likeUser[0] = (ImageView) view.findViewById(R.id.imageView1);
-			likeUser[1] = (ImageView) view.findViewById(R.id.imageView2);
-			likeUser[2] = (ImageView) view.findViewById(R.id.ImageView01);
-			likeUser[3] = (ImageView) view.findViewById(R.id.ImageView02);
+			likeUser[0] = (ImageView) view.findViewById(R.id.ImageView02);
+			likeUser[1] = (ImageView) view.findViewById(R.id.ImageView01);
+			likeUser[2] = (ImageView) view.findViewById(R.id.imageView2);
+			likeUser[3] = (ImageView) view.findViewById(R.id.imageView1);
 		}
 		
 		ImageView imgView;

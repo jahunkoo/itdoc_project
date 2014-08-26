@@ -69,7 +69,7 @@
                         android:id="@+id/search_item1"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_skin_off" />
+                        android:background="@drawable/search_item1" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                         android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item_nose_off" />
+                        android:background="@drawable/search_item2" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                         android:id="@+id/search_item3"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_diet_off" />
+                        android:background="@drawable/search_item3" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                         android:id="@+id/search_item4"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_disk_off" />
+                        android:background="@drawable/search_item4" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -154,7 +154,7 @@
                         android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item_beauty_off" />
+                        android:background="@drawable/search_item5" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                         android:id="@+id/search_item6"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_child_off" />
+                        android:background="@drawable/search_item6" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -199,7 +199,7 @@
                         android:id="@+id/search_item7"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_oriental_medicine_off" />
+                        android:background="@drawable/search_item7" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -219,7 +219,7 @@
                         android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item_stomach_off" />
+                        android:background="@drawable/search_item8" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -237,7 +237,7 @@
                         android:id="@+id/search_item9"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_mother_off" />
+                        android:background="@drawable/search_item9" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -264,7 +264,7 @@
                         android:id="@+id/search_item10"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_needle_off" />
+                        android:background="@drawable/search_item10" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -284,7 +284,7 @@
                         android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item_man_off" />
+                        android:background="@drawable/search_item11" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -302,7 +302,7 @@
                         android:id="@+id/search_item12"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_oldman_off" />
+                        android:background="@drawable/search_item12" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -329,7 +329,7 @@
                         android:id="@+id/search_item13"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_stress_off" />
+                        android:background="@drawable/search_item13" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -349,7 +349,7 @@
                         android:layout_height="70dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
-                        android:background="@drawable/search_item_bald_off" />
+                        android:background="@drawable/search_item14" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -367,7 +367,7 @@
                         android:id="@+id/search_item15"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:background="@drawable/search_item_internal_off" />
+                        android:background="@drawable/search_item15" />
 
                     <TextView
                         android:layout_width="match_parent"

@@ -159,7 +159,7 @@
 
         <TextView
             style="@style/suppoters_basic_text"
-            android:text="@string/textview_layout_morak_1" />
+            android:text="@string/textview_layout_morak_2" />
 
         <LinearLayout
             style="@style/suppoters_basic_style"
