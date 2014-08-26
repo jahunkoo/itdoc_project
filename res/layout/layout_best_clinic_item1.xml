@@ -43,7 +43,7 @@
         android:layout_height="match_parent"
         android:contentDescription="asdf"
         android:layout_above="@id/linearlayout_clinic_list_item"
-        android:src="@drawable/biman_bosung" />
+        android:src="@drawable/kmclinic12" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -52,7 +52,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/imageview_clinic_list_item_follow_img"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="160dp"
+        android:layout_marginLeft="152dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/face1" />
 
