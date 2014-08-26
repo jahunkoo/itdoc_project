@@ -59,6 +59,8 @@
 
         <TextView
             android:id="@+id/textview_hanbang_info_main1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             style="@style/suppoters_sentence"
             android:text="@string/textview_hanbang_info_up_main1" />
 
@@ -74,40 +76,58 @@
         <TextView
             android:id="@+id/textview_hanbang_info_0"
             style="@style/suppoters_sentence_bold"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="@string/textview_hanbang_info_up_main2_title" />
 
         <TextView
             style="@style/suppoters_sentence"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main2" />
 
         <TextView
             android:id="@+id/textview_hanbang_info_1"
             style="@style/suppoters_sentence_bold"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="@string/textview_hanbang_info_up_main3_title" />
 
         <TextView
             style="@style/suppoters_sentence"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main3" />
 
         <TextView
             style="@style/suppoters_sentence"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main3_2" />
 
         <TextView
             android:id="@+id/textview_hanbang_info_2"
             style="@style/suppoters_sentence_bold"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="@string/textview_hanbang_info_up_main3_3_0" />
 
         <TextView
             style="@style/suppoters_sentence"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main3_3" />
 
         <TextView
             style="@style/suppoters_sentence"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main3_4" />
 
         <TextView
             style="@style/suppoters_sentence"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main3_5" />
 
         <ImageView
@@ -122,15 +142,21 @@
         <TextView
             android:id="@+id/textview_hanbang_info_3"
             style="@style/suppoters_sentence_bold"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="@string/textview_hanbang_info_up_main4_title" />
 
         <TextView
             style="@style/suppoters_sentence"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main4" />
 
         <TextView
             style="@style/suppoters_sentence"
             android:layout_marginBottom="-15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/textview_hanbang_info_up_main4_2" />
 
         <TextView

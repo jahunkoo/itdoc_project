@@ -146,6 +146,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
+                        android:layout_marginLeft="-20dp"
                         android:orientation="vertical" >
 
                         <TextView
@@ -328,8 +329,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="0.1"
                     android:text="한의원 설명 들어갈 곳"
@@ -338,8 +339,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="15dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
                     android:text="진료 시간"
@@ -358,7 +359,7 @@
                     android:id="@+id/txt_kmclin_time"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
                     android:text="진료시간 들어갈 곳" />
@@ -367,7 +368,7 @@
                     android:id="@+id/txt_kmclin_time2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
                     android:text="진료시간 들어갈 곳" />
@@ -458,8 +459,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:text="의료진 설명 코멘트 들어갈 곳"
@@ -468,7 +469,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
@@ -488,8 +489,8 @@
                     android:id="@+id/txt_doctor_academy"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
                     android:layout_weight="0.1"
                     android:text="학력정보 들어갈곳" />
 

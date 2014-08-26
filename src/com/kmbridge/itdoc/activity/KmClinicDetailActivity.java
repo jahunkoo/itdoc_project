@@ -107,8 +107,7 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		LoadData load = new LoadData(this);
 
 		// 한의원 객체를 가져옴
-		KmClinicDetailView KmClinicview = load
-				.getKmClinicDetailView(clinicNumber);
+		KmClinicDetailView KmClinicview = load.getKmClinicDetailView(clinicNumber);
 
 		// List<UserSimpleInfo> simpleList = new ArrayList<UserSimpleInfo>();
 		// simpleList = KmClinicview.getUserSimpleInfoList();
@@ -140,9 +139,8 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		String ClinicPictureName = KmClinicview.getPicturePath();
 		String[] ClinicArr = ClinicPictureName.split(".png");
 		String resClinName = ClinicArr[0];
-		// Log.d("kim4","Path : "+resName);
-		int clinicPictureId = getResources().getIdentifier(resClinName,
-				"drawable", this.getPackageName());
+		Log.d("kim4","Path : "+resClinName);
+		int clinicPictureId = getResources().getIdentifier(resClinName,"drawable", this.getPackageName());
 		// Log.d("kim4","Resource :"+pictureId);
 
 		// 원래 있던 코드

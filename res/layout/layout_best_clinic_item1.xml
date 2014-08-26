@@ -43,7 +43,7 @@
         android:layout_height="match_parent"
         android:contentDescription="asdf"
         android:layout_above="@id/linearlayout_clinic_list_item"
-        android:src="@drawable/biman_bosung" />
+        android:src="@drawable/kmclinic12" />
 
     <ImageView
         android:id="@+id/imageView1"
