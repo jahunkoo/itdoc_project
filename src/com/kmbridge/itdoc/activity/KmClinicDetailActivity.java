@@ -39,8 +39,10 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 	Button detailAllreview; // 리뷰 모두 보기
 	Button detailClinicMoreInfo;
 	Button detailClinicMoreDoctor;
-	Button detailClinicVisited;
-	Button detailClinicCall;
+	//Button detailClinicVisited;
+	ImageView detailClinicVisited;
+	//Button detailClinicCall;
+	ImageView detailClinicCall;
 
 	TextView kmName;
 	TextView kmLoacation;
@@ -82,7 +84,10 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 
 	TextView name;
 	Button gotoFollower;
-
+	
+	private TextView favoriteGoodText;
+	private TextView favoriteSoSoText;
+	private TextView favoriteBadText;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -122,6 +127,11 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		// List<ReviewKeyword> listKeyword =
 		// load.getAllReviewView().get(2).getReviewKeywordList();
 
+		//추천, 괜찮다, 개선필요 에 대한 텍스트뷰 
+		favoriteGoodText = (TextView) findViewById(R.id.TextView02);
+		favoriteSoSoText = (TextView) findViewById(R.id.TextView01);
+		favoriteBadText = (TextView) findViewById(R.id.textView5);
+		
 		// 병원 사진 지정
 		kmClinicImage = (ImageView) findViewById(R.id.kmclinic_detail_picture);
 		kmClinicImage2 = (ImageView) findViewById(R.id.kmclinic_detail_picture2);
@@ -333,12 +343,21 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 			favorId = getResources().getIdentifier("img_good_on","drawable", this.getPackageName());
 			Log.d("kim2", "" + favorId);
 			kmClinicEmotionImg1.setImageResource(favorId); // 리뷰 평가 이미지 지정
+			favoriteGoodText.setTextColor(getResources().getColor(R.color.text_red));
+			favoriteSoSoText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteBadText.setTextColor(getResources().getColor(R.color.text_black));
 		} else if (type == 2) {
 			favorId = getResources().getIdentifier("img_notbad_on","drawable", this.getPackageName());
 			kmClinicEmotionImg2.setImageResource(favorId); // 리뷰 평가 이미지 지정
+			favoriteGoodText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteSoSoText.setTextColor(getResources().getColor(R.color.text_red));
+			favoriteBadText.setTextColor(getResources().getColor(R.color.text_black));
 		} else if (type == 3) {
 			favorId = getResources().getIdentifier("img_bad_on","drawable", this.getPackageName());
 			kmClinicEmotionImg3.setImageResource(favorId); // 리뷰 평가 이미지 지정
+			favoriteGoodText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteSoSoText.setTextColor(getResources().getColor(R.color.text_black));
+			favoriteBadText.setTextColor(getResources().getColor(R.color.text_red));
 		}
 
 	}
@@ -349,8 +368,8 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		detailAllreview = (Button) findViewById(R.id.kmclinic_detail_review);
 		detailClinicMoreInfo = (Button) findViewById(R.id.kmclinic_detail_moreinfo);
 		detailClinicMoreDoctor = (Button) findViewById(R.id.kmclinic_detail_moredoctor);
-		detailClinicVisited = (Button) findViewById(R.id.btn_activity_km_clilic_detail_visited);
-		detailClinicCall = (Button) findViewById(R.id.btn_activity_km_clinic_detail_call);
+		detailClinicVisited = (ImageView) findViewById(R.id.btn_activity_km_clilic_detail_visited);
+		detailClinicCall = (ImageView) findViewById(R.id.btn_activity_km_clinic_detail_call);
 		txtKmclinicMap = (TextView) findViewById(R.id.txt_kmclinic_map);
 		txtReviewKeyword = (TextView) findViewById(R.id.txtReviewKeyword);
 		txtKmclinicComment = (TextView) findViewById(R.id.txtKmclinicComment);
@@ -369,11 +388,9 @@ public class KmClinicDetailActivity extends ActionBarActivity implements
 		txtMoreInfoWeekDay = (TextView) findViewById(R.id.txt_kmclin_time);
 		txtMoreInfoWeekend = (TextView) findViewById(R.id.txt_kmclin_time2);
 
-		Drawable alphaVisited = ((Button) findViewById(R.id.btn_activity_km_clilic_detail_visited))
-				.getBackground();
+		//Drawable alphaVisited = ((Button) findViewById(R.id.btn_activity_km_clilic_detail_visited)).getBackground();
 		// alphaVisited.setAlpha(99);
-		Drawable alphaCall = ((Button) findViewById(R.id.btn_activity_km_clinic_detail_call))
-				.getBackground();
+		//Drawable alphaCall = ((Button) findViewById(R.id.btn_activity_km_clinic_detail_call)).getBackground();
 		// alphaCall.setAlpha(99);
 	}
 

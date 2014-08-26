@@ -53,20 +53,26 @@
             android:paddingLeft="20dp" >
 
             <TextView
+                android:id="@+id/textview_support_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="분야별" />
+                android:text="분야별"
+                android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/textview_support_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" BEST "
+                android:textSize="18sp"
                 android:textColor="#E50038" />
 
             <TextView
+                android:id="@+id/textview_support_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="한의원이란?" />
+                android:text="한의원이란?" 
+                android:textSize="18sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -86,22 +92,22 @@
         </LinearLayout>
 
         <TextView
-            style="@style/suppoters_basic_style"
+            style="@style/suppoters_basic_text"
             android:layout_marginTop="5dp"
             android:text="@string/textview_layout_morak_0" />
 
         <TextView
             style="@style/suppoters_new_line_text"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:id="@+id/textview_choice_clinic_body_1"
             style="@style/suppoters_basic_style"
             android:layout_gravity="left|center_vertical"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="5dp"
-            android:text="선정이유" />
+            android:text="선정이유"
+            android:textSize="18sp" />
 
         <LinearLayout
             style="@style/suppoters_basic_style"
@@ -115,6 +121,7 @@
                 android:src="@drawable/item_number_1" />
 
             <TextView
+                android:id="@+id/textview_support_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -141,13 +148,13 @@
                 android:src="@drawable/item_number_2" />
 
             <TextView
+                android:id="@+id/textview_support_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:text="경력" />
-
         </LinearLayout>
 
         <TextView
@@ -166,6 +173,7 @@
                 android:src="@drawable/item_number_3" />
 
             <TextView
+                android:id="@+id/textview_support_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"

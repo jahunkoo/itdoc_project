@@ -1,24 +1,11 @@
 package com.kmbridge.itdoc.fragment;
 
-import com.kmbridge.itdoc.R;
-import com.kmbridge.itdoc.activity.HanbangInfoActivity;
-import com.kmbridge.itdoc.activity.SupporterActivity;
-import com.kmbridge.itdoc.hardcoding.PageFragment;
-import com.kmbridge.itdoc.image.ImageManager;
-
-
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +13,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.kmbridge.itdoc.R;
+import com.kmbridge.itdoc.activity.HanbangInfoActivity;
+import com.kmbridge.itdoc.image.ImageManager;
 
 public class HanbangInfoFragment extends Fragment implements OnClickListener{
 	
@@ -54,6 +47,7 @@ public class HanbangInfoFragment extends Fragment implements OnClickListener{
 		introduce1 = getResources().getString(R.string.info_fragment_name);
 		imgSrcArr = new int[titleArr.length];
 		imgSrcArr[0] = R.drawable.theme3;
+		imgSrcArr[1] = R.drawable.theme2;
 		super.onCreate(savedInstanceState);
 	}
 
@@ -62,12 +56,21 @@ public class HanbangInfoFragment extends Fragment implements OnClickListener{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.hard_fragment_supporters_kookoo, container, false);
 		LinearLayout containLayout = (LinearLayout) rootView.findViewById(R.id.linearlayout_fragment_supporters_main);
-		
+		Log.d("koo", "actionbar height:"+getActivity().getActionBar().getHeight());
+		Log.d("koo", "height:"+ImageManager.screenHeight);
+		Log.d("koo", "want height:"+(ImageManager.screenHeight-getActivity().getActionBar().getHeight())/2);
 		for(int i=0;i<titleArr.length;i++){
 			RelativeLayout elementLayout = (RelativeLayout) inflater.inflate(R.layout.layout_item_hanbang_info_main, container, false);
 			
 			ImageView clinicImgView = (ImageView) elementLayout.findViewById(R.id.imageview_hard_hanbang_info_up);
 			Bitmap bitmap = ImageManager.decodeSampledBitmapFromResource(getResources(), imgSrcArr[i], ImageManager.screenWidth);
+			if(i==1){
+				TextView introduceText = (TextView) elementLayout.findViewById(R.id.textview_hard_hanbang_info_introduce_up);
+				introduceText.setBackgroundResource(R.drawable.rounded_corner_box_2);
+				TextView titleText = (TextView) elementLayout.findViewById(R.id.textview_hard_hanbang_info_title_up);
+				introduceText.setText(titleArr[i]);
+				titleText.setText("가슴이 커지는 침 매선침!"); 
+			}
 			
 			int bitmapHeight = bitmap.getHeight();
 			Log.d("koo", "bitmapHeight :"+bitmapHeight);
@@ -77,10 +80,12 @@ public class HanbangInfoFragment extends Fragment implements OnClickListener{
 			}else if(bitmapHeight<560){
 				  int bitmapWidth = bitmap.getWidth();
 			      bitmapHeight = bitmap.getHeight();
-			      float yScale = 560 / bitmapHeight;
-			      Matrix matrix = new Matrix();
-			      matrix.postScale(1, yScale);
-			      Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmapWidth, bitmapHeight, matrix, true);
+			      float yScale = 570f / (float)bitmapHeight;
+			      //Matrix matrix = new Matrix();
+			      //matrix.postScale(yScale, yScale);
+			      //Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmapWidth, bitmapHeight, matrix, true);
+			      Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmapWidth*yScale), 570, true);
+			      clinicImgView.setScaleType(ScaleType.CENTER_CROP);
 			      bitmap = scaledBitmap ;
 			      Log.d("koo", "bitmapHeight in <560:"+bitmapHeight);
 			}

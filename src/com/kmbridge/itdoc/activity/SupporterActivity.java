@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -82,15 +83,28 @@ public class SupporterActivity extends ActionBarActivity implements OnClickListe
 	
 	private void setElement(int index) {
 		if(index == 0){
+			TextView text0 = (TextView) findViewById(R.id.textview_support_0);
+			TextView text1 = (TextView) findViewById(R.id.textview_support_1);
+			TextView text2 = (TextView) findViewById(R.id.textview_support_2);
+			
 			//titleTextView 		= (TextView) findViewById(R.id.textview_choice_clinic_top_title);
 			clinicContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_clinic);
-			//body1TextView 		= (TextView) findViewById(R.id.textview_choice_clinic_body_1);
+			body1TextView 		= (TextView) findViewById(R.id.textview_choice_clinic_body_1);
+			TextView text3 = (TextView) findViewById(R.id.textview_support_3);
+			TextView text4 = (TextView) findViewById(R.id.textview_support_4);
+			TextView text5 = (TextView) findViewById(R.id.textview_support_5);
 			//body2TitleTextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_title);
 			//body2_1TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_1);
 			//body2_2TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_2);
 			//body2_3TextView 	= (TextView) findViewById(R.id.textview_choice_clinic_body_2_3);
 			//body2_4TextView		= (TextView) findViewById(R.id.textview_choice_clinic_body_2_4);
-			
+			text0.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/nanum_bold.ttf"));
+			text1.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/nanum_bold.ttf"));
+			text2.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/nanum_bold.ttf"));
+			text3.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/nanum_bold.ttf"));
+			text4.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/nanum_bold.ttf"));
+			text5.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/nanum_bold.ttf"));
+			body1TextView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/nanum_bold.ttf"));
 			doctorContainLayout =  (LinearLayout) findViewById(R.id.linearlayout_choice_clinic_contain_doctor_img);
 		}else if(index == 1){
 			titleTextView 		= (TextView) findViewById(R.id.textview_choice_clinic_top_title);

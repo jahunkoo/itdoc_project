@@ -52,8 +52,7 @@ public class ConnectionBridge {
 			connection.setMethod(HttpConnectionModule.GET);
 			connection.downloadTask.execute(targetUrl);
 			String result = connection.downloadTask.get();
-			bigRegionList = (ArrayList<BigRegion>) new JsonParser(methodUrl)
-					.parse(result);
+			bigRegionList = (ArrayList<BigRegion>) new JsonParser(methodUrl).parse(result);
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

@@ -19,6 +19,7 @@
                 android:id="@+id/layout_user1_review1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal"
@@ -28,21 +29,23 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="0.2"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user1_Image"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.5"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -51,14 +54,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/review_user1_keyword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="#ff0000" />
+                        android:gravity="left"
+                        android:textColor="#ff0000"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -72,9 +77,9 @@
                         android:id="@+id/review_user1_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
                         android:gravity="center_horizontal"
                         android:textColor="#5CD1E5"
-                        android:layout_marginTop="15dp"
                         android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -107,17 +112,19 @@
 
                         <ImageView
                             android:id="@+id/review_user1_favorImg1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="20dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
-                            android:id="@+id/TextView02"
+                            android:id="@+id/textview_01_good"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
+                            android:layout_marginLeft="20dp"
                             android:text="추천" />
                     </LinearLayout>
 
@@ -129,13 +136,13 @@
 
                         <ImageView
                             android:id="@+id/review_user1_favorImg2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
-                            android:id="@+id/TextView01"
+                            android:id="@+id/textview_01_soso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -151,15 +158,17 @@
 
                         <ImageView
                             android:id="@+id/review_user1_favorImg3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="15dp" />
 
                         <TextView
-                            android:id="@+id/textView5"
+                            android:id="@+id/textview_01_bad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:text="개선필요" />
@@ -171,9 +180,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal" />
+                    android:layout_weight="0.1"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -198,21 +208,22 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="0.2"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user2_Image"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.5"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -221,14 +232,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/review_user2_keyword"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="#ff0000" />
+                        android:gravity="left"
+                        android:textColor="#ff0000"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -242,9 +255,9 @@
                         android:id="@+id/review_user2_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
                         android:gravity="center_horizontal"
                         android:textColor="#5CD1E5"
-                        android:layout_marginTop="15dp"
                         android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -276,15 +289,18 @@
 
                         <ImageView
                             android:id="@+id/review_user2_favorImg1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="20dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_02_good"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="5dp"
                             android:text="추천" />
                     </LinearLayout>
@@ -297,12 +313,13 @@
 
                         <ImageView
                             android:id="@+id/review_user2_favorImg2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_02_soso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -318,16 +335,19 @@
 
                         <ImageView
                             android:id="@+id/review_user2_favorImg3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginRight="20dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_02_bad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
+                            android:layout_marginRight="20dp"
                             android:text="개선필요" />
                     </LinearLayout>
                 </LinearLayout>
@@ -337,9 +357,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal" />
+                    android:layout_weight="0.1"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -364,21 +385,22 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="0.2"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user3_Image"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.5"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -387,14 +409,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/review_user3_keyword"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="#ff0000" />
+                        android:gravity="left"
+                        android:textColor="#ff0000"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -406,9 +430,9 @@
 
                     <TextView
                         android:id="@+id/review_user3_date"
-                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
                         android:gravity="center_horizontal"
                         android:textColor="#5CD1E5"
                         android:textSize="13sp" />
@@ -442,16 +466,19 @@
 
                         <ImageView
                             android:id="@+id/review_user3_favorImg1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_03_good"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
+                            android:layout_marginLeft="20dp"
                             android:text="추천" />
                     </LinearLayout>
 
@@ -463,12 +490,13 @@
 
                         <ImageView
                             android:id="@+id/review_user3_favorImg2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_03_soso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -484,15 +512,18 @@
 
                         <ImageView
                             android:id="@+id/review_user3_favorImg3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_03_bad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="5dp"
                             android:text="개선필요" />
                     </LinearLayout>
@@ -503,9 +534,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal" />
+                    android:layout_weight="0.1"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -530,22 +562,23 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="0.2"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user4_Image"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.5"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -554,14 +587,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/review_user4_keyword"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="#ff0000" />
+                        android:gravity="left"
+                        android:textColor="#ff0000"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -573,9 +608,9 @@
 
                     <TextView
                         android:id="@+id/review_user4_date"
-                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
                         android:gravity="center_horizontal"
                         android:textColor="#5CD1E5"
                         android:textSize="13sp" />
@@ -609,15 +644,18 @@
 
                         <ImageView
                             android:id="@+id/review_user4_favorImg1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="20dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_04_good"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="5dp"
                             android:text="추천" />
                     </LinearLayout>
@@ -630,12 +668,13 @@
 
                         <ImageView
                             android:id="@+id/review_user4_favorImg2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_04_soso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -651,15 +690,18 @@
 
                         <ImageView
                             android:id="@+id/review_user4_favorImg3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_04_bad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="5dp"
                             android:text="개선필요" />
                     </LinearLayout>
@@ -670,9 +712,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal" />
+                    android:layout_weight="0.1"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -697,22 +740,23 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="0.2"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
                     <ImageView
                         android:id="@+id/review_user5_Image"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.5"
                     android:orientation="vertical"
                     android:weightSum="1" >
 
@@ -721,14 +765,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/review_user5_keyword"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="#ff0000" />
+                        android:gravity="left"
+                        android:textColor="#ff0000"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -740,9 +786,9 @@
 
                     <TextView
                         android:id="@+id/review_user5_date"
-                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
                         android:gravity="center_horizontal"
                         android:textColor="#5CD1E5"
                         android:textSize="13sp" />
@@ -776,15 +822,18 @@
 
                         <ImageView
                             android:id="@+id/review_user5_favorImg1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_05_good"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="5dp"
                             android:text="추천" />
                     </LinearLayout>
@@ -797,12 +846,13 @@
 
                         <ImageView
                             android:id="@+id/review_user5_favorImg2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_05_soso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -818,15 +868,18 @@
 
                         <ImageView
                             android:id="@+id/review_user5_favorImg3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="15dp" />
 
                         <TextView
+                            android:id="@+id/textview_05_bad"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="5dp"
                             android:text="개선필요" />
                     </LinearLayout>
@@ -837,9 +890,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
-                    android:gravity="center_horizontal" />
+                    android:layout_weight="0.1"/>
 
                 <View
                     android:layout_width="match_parent"

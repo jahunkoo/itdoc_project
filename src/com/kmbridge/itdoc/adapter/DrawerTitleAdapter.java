@@ -58,7 +58,7 @@ public class DrawerTitleAdapter extends ArrayAdapter<Title> {
 				textView.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/NotoSansKRRegular.otf"));
 				
 				textView.setText(itemTitle.getItemTitle());
-				textView.setTextSize(16f);
+				textView.setTextSize(17.5f);
 				
 			}
 		}

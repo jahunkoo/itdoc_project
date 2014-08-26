@@ -46,6 +46,11 @@ public class KmClinicAllreviewActivity extends Activity {
 	ImageView reViewTypeImage2[] = new ImageView[5];
 	ImageView reViewTypeImage3[] = new ImageView[5];
 	
+	//추천, 괜찮다, 개선필요에 해당하는 TextView 배열
+	TextView reViewFavoriteGoodText[] = new TextView[5];
+	TextView reViewFavoriteSoSoText[] = new TextView[5];
+	TextView reViewFavoriteBadText[] = new TextView[5];
+	
 	// 레이아웃 지정
 	LinearLayout layoutUserReview1[] = new LinearLayout[5];
 	// 레이아웃 지정
@@ -143,16 +148,25 @@ public class KmClinicAllreviewActivity extends Activity {
 			favorId = getResources().getIdentifier("img_good_on", "drawable", this.getPackageName());
 			Log.d("kim2",""+favorId);
 			reViewTypeImage1[number].setImageResource(favorId);//리뷰 평가 이미지 지정
+			reViewFavoriteGoodText[number].setTextColor(getResources().getColor(R.color.text_red));
+			reViewFavoriteSoSoText[number].setTextColor(getResources().getColor(R.color.text_black));
+			reViewFavoriteBadText[number].setTextColor(getResources().getColor(R.color.text_black));
 		}
 		else if(type==2)
 		{
 			favorId = getResources().getIdentifier("img_notbad_on", "drawable", this.getPackageName());
 			reViewTypeImage2[number].setImageResource(favorId); //리뷰 평가 이미지 지정
+			reViewFavoriteGoodText[number].setTextColor(getResources().getColor(R.color.text_black));
+			reViewFavoriteSoSoText[number].setTextColor(getResources().getColor(R.color.text_red));
+			reViewFavoriteBadText[number].setTextColor(getResources().getColor(R.color.text_black));
 		}
 		else if(type==3)
 		{
 			favorId = getResources().getIdentifier("img_bad_on", "drawable", this.getPackageName());
 			reViewTypeImage3[number].setImageResource(favorId);//리뷰 평가 이미지 지정
+			reViewFavoriteGoodText[number].setTextColor(getResources().getColor(R.color.text_black));
+			reViewFavoriteSoSoText[number].setTextColor(getResources().getColor(R.color.text_black));
+			reViewFavoriteBadText[number].setTextColor(getResources().getColor(R.color.text_red));
 		}
 	}
 
@@ -223,6 +237,24 @@ public class KmClinicAllreviewActivity extends Activity {
 		layoutUserReview2[3] = (LinearLayout) findViewById(R.id.layout_user4_review2);
 		layoutUserReview2[4] = (LinearLayout) findViewById(R.id.layout_user5_review2);
 
+		reViewFavoriteGoodText[0] = (TextView) findViewById(R.id.textview_01_good);
+		reViewFavoriteGoodText[1] = (TextView) findViewById(R.id.textview_02_good);
+		reViewFavoriteGoodText[2] = (TextView) findViewById(R.id.textview_03_good);
+		reViewFavoriteGoodText[3] = (TextView) findViewById(R.id.textview_04_good);
+		reViewFavoriteGoodText[4] = (TextView) findViewById(R.id.textview_05_good);
+		
+		reViewFavoriteSoSoText[0] = (TextView) findViewById(R.id.textview_01_soso);
+		reViewFavoriteSoSoText[1] = (TextView) findViewById(R.id.textview_02_soso);
+		reViewFavoriteSoSoText[2] = (TextView) findViewById(R.id.textview_03_soso);
+		reViewFavoriteSoSoText[3] = (TextView) findViewById(R.id.textview_04_soso);
+		reViewFavoriteSoSoText[4] = (TextView) findViewById(R.id.textview_05_soso);
+		
+		reViewFavoriteBadText[0] =  (TextView) findViewById(R.id.textview_01_bad);
+		reViewFavoriteBadText[1] =  (TextView) findViewById(R.id.textview_02_bad);
+		reViewFavoriteBadText[2] =  (TextView) findViewById(R.id.textview_03_bad);
+		reViewFavoriteBadText[3] =  (TextView) findViewById(R.id.textview_04_bad);
+		reViewFavoriteBadText[4] =  (TextView) findViewById(R.id.textview_05_bad);
+		
 	}
 
 	private void setListener() {
