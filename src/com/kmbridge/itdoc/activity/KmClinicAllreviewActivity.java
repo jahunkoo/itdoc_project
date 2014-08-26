@@ -143,6 +143,11 @@ public class KmClinicAllreviewActivity extends Activity {
 			
 		}
 
+		if(KmClinicview.getId() == 2){
+			reViewUserKeyword[2].setText(reviewKeyword[1]);
+			reViewUserKeyword[3].setText(reviewKeyword[1]);
+		}
+		
 		
 	}
 
