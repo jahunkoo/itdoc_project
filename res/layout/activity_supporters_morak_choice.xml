@@ -193,12 +193,15 @@
 
         <TextView
             style="@style/suppoters_new_line_text"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp" />
 
         <TextView
             style="@style/suppoters_basic_text"
-            android:text="@string/textview_layout_morak_5" />
+            android:text="@string/textview_layout_morak_5"
+            android:layout_gravity="right"
+            android:textColor="@android:color/darker_gray" />
+		
 
         <LinearLayout
             android:id="@+id/linearlayout_choice_clinic_contain_clinic"
