@@ -57,7 +57,7 @@ public class KmClinicAllreviewActivity extends Activity {
 	LinearLayout layoutUserReview2[] = new LinearLayout[5];
 	
 	//의사 사진
-	String reviewKeyword[] = {"피부","비염","다이어트","디스크","한방","아이","보약","위장","여성","남성","침","당뇨","스트레스","탈모"};
+	String reviewKeyword[] = {"피부","다이어트","비염","디스크","한방","아이","보약","위장","여성","남성","침","당뇨","스트레스","탈모"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -135,8 +135,19 @@ public class KmClinicAllreviewActivity extends Activity {
 			int keywordNum = (doctorList.get(i).getId())%10;
 			Log.d("kim4","test"+keywordNum);
 			reViewUserKeyword[i].setText(reviewKeyword[keywordNum]);
+			if(KmClinicview.getId() == 2){
+				reViewUserKeyword[i].setText(reviewKeyword[1]);
+			}else if(KmClinicview.getId() == 12){
+				reViewUserKeyword[i].setText(reviewKeyword[13]);
+			}
+			
 		}
 
+		if(KmClinicview.getId() == 2){
+			reViewUserKeyword[2].setText(reviewKeyword[1]);
+			reViewUserKeyword[3].setText(reviewKeyword[1]);
+		}
+		
 		
 	}
 

@@ -35,6 +35,7 @@ public class HanbangInfoActivity extends FragmentActivity{
 			Log.d("koo", "test down");
 		}
 		*/
+		
 		Fragment fregment = new HanBangInnerFragment();
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		transaction.add(R.id.content_frame, fregment);
